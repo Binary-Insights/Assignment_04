@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project LANTERN - PDF Extraction Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project LANTERN Dashboard</h1>
+        <p>Welcome to the PDF Extraction Pipeline Dashboard. Use the buttons below to interact with the system.</p>
+        
+        <button class="button" onclick="runPipeline()">Run Full Pipeline</button>
+        <button class="button" onclick="showMetrics()">Show Metrics</button>
+        <button class="button" onclick="launchViewer()">Launch Streamlit Viewer</button>
+        
+        <div id="status">Status: Ready</div>
+    </div>
+
+    <script>
+        function runPipeline() {
+            document.getElementById('status').innerText = 'Status: Running pipeline...';
+            // Simulate API call or command execution
+            setTimeout(() => {
+                document.getElementById('status').innerText = 'Status: Pipeline completed!';
+            }, 2000);
+        }
+
+        function showMetrics() {
+            document.getElementById('status').innerText = 'Status: Loading metrics...';
+            // Simulate loading metrics
+            setTimeout(() => {
+                document.getElementById('status').innerText = 'Status: Metrics displayed (check console)';
+                console.log('Sample Metrics: Accuracy 95%, Processing Time 120s');
+            }, 1000);
+        }
+
+        function launchViewer() {
+            document.getElementById('status').innerText = 'Status: Launching Streamlit viewer...';
+            // Simulate launching viewer
+            setTimeout(() => {
+                document.getElementById('status').innerText = 'Status: Streamlit viewer launched!';
+                window.open('http://localhost:8501', '_blank');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
