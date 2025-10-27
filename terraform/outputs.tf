@@ -28,14 +28,19 @@ output "security_group_id" {
   value       = aws_security_group.app_sg.id
 }
 
-output "ecr_repository_url" {
-  description = "ECR repository URL"
-  value       = aws_ecr_repository.app_repo.repository_url
+output "ecr_repository_api_url" {
+  description = "ECR API repository URL"
+  value       = aws_ecr_repository.api_repo.repository_url
+}
+
+output "ecr_repository_streamlit_url" {
+  description = "ECR Streamlit repository URL"
+  value       = aws_ecr_repository.streamlit_repo.repository_url
 }
 
 output "ecr_registry" {
   description = "ECR registry URI"
-  value       = aws_ecr_repository.app_repo.registry_id
+  value       = aws_ecr_repository.api_repo.registry_id
 }
 
 output "cloudwatch_log_group" {

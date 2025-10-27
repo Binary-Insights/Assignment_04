@@ -180,9 +180,9 @@ data "aws_ami" "ubuntu" {
   }
 }
 
-# ECR Repository
-resource "aws_ecr_repository" "app_repo" {
-  name                 = "assignment-04"
+# ECR Repositories
+resource "aws_ecr_repository" "api_repo" {
+  name                 = "assignment-04-api"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -190,7 +190,20 @@ resource "aws_ecr_repository" "app_repo" {
   }
 
   tags = {
-    Name = "assignment-04-repo"
+    Name = "assignment-04-api-repo"
+  }
+}
+
+resource "aws_ecr_repository" "streamlit_repo" {
+  name                 = "assignment-04-streamlit"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  tags = {
+    Name = "assignment-04-streamlit-repo"
   }
 }
 
