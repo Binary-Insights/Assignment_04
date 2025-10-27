@@ -32,3 +32,4 @@ streamlit run streamlit_chat.py
 Notes:
 - The app expects `OPENAI_API_KEY` either in environment variables or in Streamlit secrets.
 - On Windows, `uvloop` is not supported — this doesn't affect Streamlit-based usage.
+# Updated
