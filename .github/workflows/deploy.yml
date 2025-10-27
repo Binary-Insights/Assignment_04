@@ -81,25 +81,29 @@ jobs:
           EC2_HOST: ${{ steps.ec2.outputs.instance_ip }}
           ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AWS_REGION: ${{ env.AWS_REGION }}
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts 2>/dev/null || true
 
-          ssh -i ~/.ssh/id_rsa $EC2_USER@$EC2_HOST << 'DEPLOY_SCRIPT'
+          ssh -i ~/.ssh/id_rsa $EC2_USER@$EC2_HOST << EOF
           set -e
+          export AWS_REGION=$AWS_REGION
+          export ECR_REGISTRY=$ECR_REGISTRY
+          export OPENAI_API_KEY=$OPENAI_API_KEY
           cd /opt/assignment-04
 
           # Log in to ECR
-          aws ecr get-login-password --region $AWS_REGION | \
-            docker login --username AWS --password-stdin $ECR_REGISTRY
+          aws ecr get-login-password --region \$AWS_REGION | \\
+            docker login --username AWS --password-stdin \$ECR_REGISTRY
 
           # Create docker-compose.yml with latest images
-          cat > docker-compose.yml <<'EOF'
+          cat > docker-compose.yml <<'COMPOSE_EOF'
           services:
             api:
-              image: ${{ needs.build-and-push.outputs.image_uri }}-api:latest
+              image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/assignment-04-api:latest
               container_name: assignment-04-api
               ports:
                 - "8000:8000"
@@ -108,17 +112,17 @@ jobs:
               restart: unless-stopped
 
             streamlit:
-              image: ${{ needs.build-and-push.outputs.image_uri }}-streamlit:latest
+              image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/assignment-04-streamlit:latest
               container_name: assignment-04-streamlit
               ports:
                 - "8501:8501"
               environment:
                 - PYTHONUNBUFFERED=1
-                - OPENAI_API_KEY=$OPENAI_API_KEY
+                - OPENAI_API_KEY=\$OPENAI_API_KEY
               restart: unless-stopped
               depends_on:
                 - api
-          EOF
+          COMPOSE_EOF
 
           # Pull and deploy
           docker-compose pull
@@ -127,7 +131,7 @@ jobs:
           # Verify deployment
           sleep 10
           docker-compose ps
-          DEPLOY_SCRIPT
+          EOF
 
       - name: Verify deployment
         env:
