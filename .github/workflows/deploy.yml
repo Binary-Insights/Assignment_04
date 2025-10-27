@@ -1,0 +1,140 @@
+name: Build and Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REGISTRY_NAME: assignment-04
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    outputs:
+      image_uri: ${{ steps.image.outputs.image_uri }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Docker images
+        run: |
+          docker build -f Dockerfile.api -t ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REGISTRY_NAME }}-api:latest .
+          docker build -f Dockerfile.streamlit -t ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REGISTRY_NAME }}-streamlit:latest .
+
+      - name: Push Docker images to ECR
+        run: |
+          docker push ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REGISTRY_NAME }}-api:latest
+          docker push ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REGISTRY_NAME }}-streamlit:latest
+
+      - name: Output image URIs
+        id: image
+        run: |
+          echo "image_uri=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REGISTRY_NAME }}" >> $GITHUB_OUTPUT
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Get EC2 instance details
+        id: ec2
+        run: |
+          INSTANCE_IP=$(aws ec2 describe-instances \
+            --filters "Name=tag:Name,Values=assignment-04-app" "Name=instance-state-name,Values=running" \
+            --query "Reservations[0].Instances[0].PublicIpAddress" \
+            --output text)
+          echo "instance_ip=$INSTANCE_IP" >> $GITHUB_OUTPUT
+
+      - name: Deploy to EC2
+        env:
+          EC2_USER: ubuntu
+          EC2_HOST: ${{ steps.ec2.outputs.instance_ip }}
+          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts 2>/dev/null || true
+
+          ssh -i ~/.ssh/id_rsa $EC2_USER@$EC2_HOST << 'DEPLOY_SCRIPT'
+          set -e
+          cd /opt/assignment-04
+
+          # Log in to ECR
+          aws ecr get-login-password --region $AWS_REGION | \
+            docker login --username AWS --password-stdin $ECR_REGISTRY
+
+          # Create docker-compose.yml with latest images
+          cat > docker-compose.yml <<'EOF'
+          services:
+            api:
+              image: ${{ needs.build-and-push.outputs.image_uri }}-api:latest
+              container_name: assignment-04-api
+              ports:
+                - "8000:8000"
+              environment:
+                - PYTHONUNBUFFERED=1
+              restart: unless-stopped
+
+            streamlit:
+              image: ${{ needs.build-and-push.outputs.image_uri }}-streamlit:latest
+              container_name: assignment-04-streamlit
+              ports:
+                - "8501:8501"
+              environment:
+                - PYTHONUNBUFFERED=1
+                - OPENAI_API_KEY=$OPENAI_API_KEY
+              restart: unless-stopped
+              depends_on:
+                - api
+          EOF
+
+          # Pull and deploy
+          docker-compose pull
+          docker-compose up -d
+
+          # Verify deployment
+          sleep 10
+          docker-compose ps
+          DEPLOY_SCRIPT
+
+      - name: Verify deployment
+        env:
+          EC2_HOST: ${{ steps.ec2.outputs.instance_ip }}
+        run: |
+          echo "FastAPI: http://$EC2_HOST:8000"
+          echo "Streamlit: http://$EC2_HOST:8501"
+          sleep 10
+          curl -f http://$EC2_HOST:8000/health || echo "FastAPI not yet ready"
+          echo "Deployment complete!"
