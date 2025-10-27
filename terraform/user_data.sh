@@ -26,6 +26,8 @@ apt-get install -y awscli
 
 # Create app directory
 mkdir -p /opt/assignment-04
+chown -R ubuntu:ubuntu /opt/assignment-04
+chmod -R 755 /opt/assignment-04
 cd /opt/assignment-04
 
 # Log Docker daemon output
