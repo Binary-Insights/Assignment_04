@@ -28,6 +28,11 @@ output "security_group_id" {
   value       = aws_security_group.app_sg.id
 }
 
+output "ssh_key_name" {
+  description = "SSH key pair name"
+  value       = aws_key_pair.deployer.key_name
+}
+
 output "ecr_repository_api_url" {
   description = "ECR API repository URL"
   value       = aws_ecr_repository.api_repo.repository_url

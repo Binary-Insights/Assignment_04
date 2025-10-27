@@ -24,6 +24,16 @@ data "aws_subnets" "default" {
   }
 }
 
+# SSH Key Pair for EC2 access
+resource "aws_key_pair" "deployer" {
+  key_name   = "assignment-04-deployer"
+  public_key = file(var.ssh_public_key_path)
+
+  tags = {
+    Name = "assignment-04-deployer-key"
+  }
+}
+
 # Security Group for EC2
 resource "aws_security_group" "app_sg" {
   name        = "assignment-04-sg"
@@ -142,6 +152,7 @@ resource "aws_instance" "app" {
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
   vpc_security_group_ids = [aws_security_group.app_sg.id]
   subnet_id              = data.aws_subnets.default.ids[0]
+  key_name               = aws_key_pair.deployer.key_name
 
   # Root volume size
   root_block_device {
@@ -184,6 +195,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_ecr_repository" "api_repo" {
   name                 = "assignment-04-api"
   image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
   image_scanning_configuration {
     scan_on_push = true
@@ -197,6 +209,7 @@ resource "aws_ecr_repository" "api_repo" {
 resource "aws_ecr_repository" "streamlit_repo" {
   name                 = "assignment-04-streamlit"
   image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
   image_scanning_configuration {
     scan_on_push = true

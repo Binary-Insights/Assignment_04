@@ -16,6 +16,12 @@ variable "allowed_ssh_cidr" {
   default     = ["0.0.0.0/0"] # Change this to your IP for security
 }
 
+variable "ssh_public_key_path" {
+  description = "Path to SSH public key file"
+  type        = string
+  default     = "~/.ssh/sshKey.pub"
+}
+
 variable "ecr_registry" {
   description = "ECR registry URL"
   type        = string
