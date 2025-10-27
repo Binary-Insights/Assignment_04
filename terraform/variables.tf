@@ -19,7 +19,7 @@ variable "allowed_ssh_cidr" {
 variable "ssh_public_key_path" {
   description = "Path to SSH public key file"
   type        = string
-  default     = "~/.ssh/sshKey.pub"
+  default     = "/home/enigmasentry/.ssh/assignment-04-key.pub"
 }
 
 variable "ecr_registry" {
