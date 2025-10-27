@@ -4,8 +4,8 @@ output "instance_id" {
 }
 
 output "instance_public_ip" {
-  description = "EC2 instance public IP"
-  value       = aws_instance.app.public_ip
+  description = "EC2 instance Elastic IP (static)"
+  value       = aws_eip.app_eip.public_ip
 }
 
 output "instance_public_dns" {
@@ -15,12 +15,17 @@ output "instance_public_dns" {
 
 output "fastapi_url" {
   description = "FastAPI endpoint URL"
-  value       = "http://${aws_instance.app.public_ip}:8000"
+  value       = "http://${aws_eip.app_eip.public_ip}:8000"
 }
 
 output "streamlit_url" {
   description = "Streamlit endpoint URL"
-  value       = "http://${aws_instance.app.public_ip}:8501"
+  value       = "http://${aws_eip.app_eip.public_ip}:8501"
+}
+
+output "elastic_ip" {
+  description = "Elastic IP address (static)"
+  value       = aws_eip.app_eip.public_ip
 }
 
 output "security_group_id" {

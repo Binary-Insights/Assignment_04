@@ -69,9 +69,10 @@ jobs:
       - name: Get EC2 instance details
         id: ec2
         run: |
-          INSTANCE_IP=$(aws ec2 describe-instances \
-            --filters "Name=tag:Name,Values=assignment-04-app" "Name=instance-state-name,Values=running" \
-            --query "Reservations[0].Instances[0].PublicIpAddress" \
+          INSTANCE_IP=$(aws ec2 describe-addresses \
+            --filters "Name=tag:Name,Values=assignment-04-eip" \
+            --query "Addresses[0].PublicIp" \
+            --region us-east-1 \
             --output text)
           echo "instance_ip=$INSTANCE_IP" >> $GITHUB_OUTPUT
 

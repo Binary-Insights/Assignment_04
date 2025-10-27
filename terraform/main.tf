@@ -175,6 +175,20 @@ resource "aws_instance" "app" {
   ]
 }
 
+# Elastic IP for EC2 (static public IP)
+resource "aws_eip" "app_eip" {
+  instance = aws_instance.app.id
+  domain   = "vpc"
+
+  tags = {
+    Name = "assignment-04-eip"
+  }
+
+  depends_on = [
+    aws_instance.app
+  ]
+}
+
 # Find latest Ubuntu 22.04 LTS AMI
 data "aws_ami" "ubuntu" {
   most_recent = true
