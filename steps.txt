@@ -1,0 +1,11 @@
+Lab 0:
+python scripts/discover/fetch_ai50.py
+output: data/forbes_ai50_seed.json
+
+Lab 1:
+python scripts/discover/discover_links.py
+output: data/company_pages.json 
+data/company_pages_discovered.json 
+
+python scripts/discover/process_pages.py
+output: data/raw/<company_id>/...
