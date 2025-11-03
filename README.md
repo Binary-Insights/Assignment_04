@@ -1,36 +1,27 @@
-Simple Streamlit ChatBot using OpenAI
+# Project ORBIT — PE Dashboard for Forbes AI 50
 
-This repository includes a minimal Streamlit chat app that uses the OpenAI ChatCompletion API.
+This is the starter package for **Assignment 2 — DAMG7245**.
 
-Files added:
-- `streamlit_chat.py` — Streamlit app (run with `streamlit run streamlit_chat.py`).
-- `requirements.txt` — dependencies to install in a virtual environment.
+## Run locally (dev)
 
-Setup (Windows PowerShell):
-
-```powershell
-# create venv with python 3.11 explicitly (if needed)
-py -3.11 -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn src.api:app --reload
+# in another terminal
+streamlit run src/streamlit_app.py
 ```
 
-Set your OpenAI API key in an environment variable:
+## Docker (app layer only)
 
-```powershell
-setx OPENAI_API_KEY "sk-..."  # persistent for new shells; or use $env:OPENAI_API_KEY in current session
-$env:OPENAI_API_KEY = "sk-..." # for current PowerShell session only
+```bash
+cd docker
+docker compose up --build
 ```
 
-Run the Streamlit app:
+This starts:
+- FastAPI: http://localhost:8000
+- Streamlit: http://localhost:8501
 
-```powershell
-streamlit run streamlit_chat.py
-```
-
-Notes:
-- The app expects `OPENAI_API_KEY` either in environment variables or in Streamlit secrets.
-- On Windows, `uvloop` is not supported — this doesn't affect Streamlit-based usage.
-# Updated
-# Deployment ready with Elastic IP
+# Add instructions on running on the cloud based on your setup and links to Codelabs, architecture diagrams etc.
