@@ -1,4 +1,8 @@
-data
+# Data folder — ignore actual data files but allow .dvc metadata files
+/data/*
+!/data/*.dvc
+!/data/**/.dvc
+!/data/.dvc
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
