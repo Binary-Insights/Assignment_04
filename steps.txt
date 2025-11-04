@@ -1,5 +1,6 @@
 Lab 0:
 python scripts/discover/fetch_ai50.py
+data/manual_fallback.json
 output: data/forbes_ai50_seed.json
 
 Lab 1:
