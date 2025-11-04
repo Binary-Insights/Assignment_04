@@ -4,20 +4,58 @@ output: data/forbes_ai50_seed.json
 
 Lab 1:
 python scripts/discover/discover_links.py
+python scripts/discover/discover_links.py --limit 5
 output: data/company_pages.json 
 data/company_pages_discovered.json 
 
 python scripts/discover/process_pages.py
 output: data/raw/<company_id>/...
 
+# To discover pages using llm rather than using traditional techniuqes
+python scripts/discover/llm_page_finder.py --website "https://worldlabs.ai/" --page-type "careers"
+output: 
+{
+  "request": {
+    "website_url": "https://worldlabs.ai/",
+    "page_type": "careers",
+    "page_content_snippet": "World Labs"
+  },
+  "result": {
+    "page_type": "careers",
+    "discovered_url": "https://jobs.ashbyhq.com/worldlabs",
+    "confidence": 1.0,
+    "reasoning": "Original URL replaced with validated alternative. The URL follows the common pattern for careers pages, which is typically structured as '/careers'. Given the company name and the absence of static links, this is a logical assumption.",
+    "alternative_urls": [
+      "https://worldlabs.ai/careers",
+      "https://worldlabs.ai/hiring",
+      "https://jobs.ashbyhq.com/worldlabs",
+      "https://jobs.lever.co/worldlabs"
+    ]
+  }
+}
 
 
+-------
+Debug 
+
+Step 1: 
+python scripts/discover/debug_links.py 2>&1 | grep -v "InsecureRequestWarning"
+
+  warnings.warn(
+  warnings.warn(
+Fetching: https://worldlabs.ai/
+Status: 200
+Content length: 12996
+
+Total <a> tags found: 0
+
+First 20 links:
+
+--- FILTERING FOR CAREER/JOB LINKS ---
 
 
-
-
-
-
+Step 2: 
+python scripts/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | head -80
 
 
 

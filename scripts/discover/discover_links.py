@@ -2,7 +2,8 @@
 """Discover key pages (homepage, about, product, careers, blog) for Forbes AI 50 companies.
 
 Reads: data/forbes_ai50_seed.json
-Writes: data/discover/company_pages_discovered.json, data/discover/company_pages.json
+Writes: data/company_pages.json 
+        data/company_pages_discovered.json
 
 Fully automated - discovers URLs for:
 - homepage
@@ -11,8 +12,51 @@ Fully automated - discovers URLs for:
 - /careers
 - /blog or /news
 
+Features:
+- Traditional discovery: Web scraping + common URL pattern probing
+- LLM fallback: When traditional methods fail, uses llm_page_finder.py to discover pages
+- Pattern matching: Tests common URL patterns (/careers, /jobs, /hiring, etc.)
+- Manual overrides: Supports manual_overrides.json for known edge cases
+
 Usage:
+  # Process all companies with LLM fallback (default)
   python scripts/discover/discover_links.py
+
+  # Process only first N companies with LLM fallback
+  python scripts/discover/discover_links.py --limit 5
+  python scripts/discover/discover_links.py -n 5
+
+  # Process WITHOUT LLM fallback (faster but may miss some pages)
+  python scripts/discover/discover_links.py --no-llm-fallback
+  python scripts/discover/discover_links.py --limit 10 --no-llm-fallback
+
+  # Custom delay between requests (default: 0.5s)
+  python scripts/discover/discover_links.py --delay 1.0 --limit 10
+
+  # Custom input/output paths
+  python scripts/discover/discover_links.py --input data/custom.json --output data/results.json
+
+Arguments:
+  --input FILE              Input JSON file (default: data/forbes_ai50_seed.json)
+  --output FILE             Output JSON file (default: data/company_pages.json)
+  --discovered FILE         Output file with discovery candidates (default: data/company_pages_discovered.json)
+  -n, --limit N             Limit to first N companies (useful for testing)
+  --delay SECONDS           Delay between HTTP requests (default: 0.5)
+  --no-llm-fallback         Disable LLM fallback discovery (speeds up but may miss pages)
+
+Environment:
+  Set OPENAI_API_KEY or ANTHROPIC_API_KEY for LLM fallback to work.
+  (Not required if using --no-llm-fallback)
+
+Examples:
+  # Quick test with 5 companies and LLM fallback
+  python scripts/discover/discover_links.py -n 5
+
+  # Full discovery with LLM fallback (takes ~10 minutes for 50 companies)
+  python scripts/discover/discover_links.py
+
+  # Fast discovery without LLM fallback (takes ~2 minutes for 50 companies)
+  python scripts/discover/discover_links.py --no-llm-fallback
 """
 import json
 import logging
@@ -343,7 +387,7 @@ def probe_common_paths(homepage_url, page_type):
     return candidates
 
 
-def discover_page_links(homepage_url, page_type):
+def discover_page_links(homepage_url, page_type, use_llm_fallback=True):
     """Discover links for a specific page type."""
     logger = logging.getLogger('discover_links')
     
@@ -361,7 +405,21 @@ def discover_page_links(homepage_url, page_type):
     candidates.extend(probed)
     
     if not candidates:
-        logger.warning(f"No candidates found for {page_type}")
+        logger.warning(f"No candidates found for {page_type} using traditional methods")
+        
+        # Try LLM fallback if enabled
+        if use_llm_fallback:
+            logger.info(f"Attempting LLM-based fallback discovery...")
+            best_url, llm_candidates = discover_page_with_llm_fallback(homepage_url, page_type)
+            
+            if best_url:
+                logger.info(f"✓ LLM fallback succeeded: {best_url}")
+                return best_url, llm_candidates
+            else:
+                logger.warning(f"LLM fallback also failed for {page_type}")
+        else:
+            logger.info(f"LLM fallback disabled (--no-llm-fallback flag)")
+        
         return None, []
     
     # Sort by score (desc)
@@ -386,19 +444,190 @@ def discover_page_links(homepage_url, page_type):
     return None, []
 
 
+def discover_page_with_llm_fallback(homepage_url, page_type):
+    """
+    Fallback discovery using LLM page finder when traditional methods fail.
+    
+    Calls the llm_page_finder.py script and converts results to the same format
+    as discover_page_links for consistency.
+    
+    Args:
+        homepage_url: Company website URL
+        page_type: Type of page to discover
+    
+    Returns:
+        (best_url, candidates) tuple
+        - best_url: The discovered URL or None
+        - candidates: List of alternative URLs
+    """
+    logger = logging.getLogger('discover_links')
+    
+    try:
+        import subprocess
+        import json
+        
+        logger.info(f"[LLM FALLBACK] Attempting LLM-based discovery for {page_type} page")
+        
+        # Call llm_page_finder.py
+        cmd = [
+            "python",
+            "scripts/discover/llm_page_finder.py",
+            "--website", homepage_url,
+            "--page-type", page_type
+        ]
+        
+        logger.debug(f"[LLM FALLBACK] Running command: {' '.join(cmd)}")
+        
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=60  # 60 second timeout for LLM
+        )
+        
+        if result.returncode != 0:
+            logger.warning(f"[LLM FALLBACK] LLM discovery failed with return code {result.returncode}")
+            logger.debug(f"[LLM FALLBACK] Error output: {result.stderr[:200]}")
+            return None, []
+        
+        # Parse the JSON output
+        # Note: llm_page_finder.py may print debug info before the JSON, so we need to extract the JSON
+        try:
+            output_text = result.stdout.strip()
+            
+            # Try to find JSON in the output (it starts with '{' and ends with '}')
+            # This handles cases where debug output precedes the JSON
+            json_start = output_text.find('{')
+            json_end = output_text.rfind('}') + 1
+            
+            if json_start == -1 or json_end == 0:
+                logger.error(f"[LLM FALLBACK] No JSON found in LLM output")
+                logger.debug(f"[LLM FALLBACK] Full output was: {output_text[:300]}")
+                return None, []
+            
+            # Extract JSON substring
+            json_str = output_text[json_start:json_end]
+            logger.debug(f"[LLM FALLBACK] Extracted JSON: {json_str[:100]}...")
+            
+            # Parse JSON
+            output = json.loads(json_str)
+            discovered_url = output.get("result", {}).get("discovered_url")
+            confidence = output.get("result", {}).get("confidence", 0.0)
+            reasoning = output.get("result", {}).get("reasoning", "")
+            alternatives = output.get("result", {}).get("alternative_urls", [])
+            
+            if discovered_url:
+                logger.info(f"[LLM FALLBACK] ✓ Found {page_type} page: {discovered_url} (confidence: {confidence})")
+                
+                # Convert to discover_links format
+                candidates = [
+                    {
+                        "url": discovered_url,
+                        "text": f"[LLM Discovery] {reasoning[:80]}",
+                        "score": int(confidence * 100),  # Convert 0.0-1.0 to 0-100 score
+                        "page_type": page_type
+                    }
+                ]
+                
+                # Add alternatives
+                for i, alt_url in enumerate(alternatives[:3]):
+                    if alt_url and alt_url != discovered_url:
+                        candidates.append({
+                            "url": alt_url,
+                            "text": f"[LLM Alternative {i+1}]",
+                            "score": int(confidence * 80),  # Slightly lower score for alternatives
+                            "page_type": page_type
+                        })
+                
+                return discovered_url, candidates
+            else:
+                logger.warning(f"[LLM FALLBACK] LLM found no {page_type} page (confidence too low)")
+                return None, []
+        
+        except json.JSONDecodeError as e:
+            logger.error(f"[LLM FALLBACK] Failed to parse LLM JSON output: {e}")
+            logger.debug(f"[LLM FALLBACK] Attempted to parse: {json_str[:200] if 'json_str' in locals() else 'N/A'}")
+            logger.debug(f"[LLM FALLBACK] Full output was: {output_text[:300] if 'output_text' in locals() else 'N/A'}")
+            return None, []
+    
+    except subprocess.TimeoutExpired:
+        logger.warning(f"[LLM FALLBACK] LLM discovery timed out after 60 seconds")
+        return None, []
+    except FileNotFoundError:
+        logger.error(f"[LLM FALLBACK] llm_page_finder.py not found at scripts/discover/llm_page_finder.py")
+        return None, []
+    except Exception as e:
+        logger.error(f"[LLM FALLBACK] Unexpected error during LLM fallback: {e}")
+        return None, []
+
+
 def main():
     logger = setup_logging()
     logger.info("=== Starting Company Pages Discovery ===")
     
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", default="data/forbes_ai50_seed.json")
-    parser.add_argument("--output", default="data/company_pages.json")
-    parser.add_argument("--discovered", default="data/company_pages_discovered.json")
-    parser.add_argument("--delay", type=float, default=0.5)
-    parser.add_argument("--limit", type=int, default=None, help="Limit to first N companies (useful for testing)")
+    parser = argparse.ArgumentParser(
+        description="Discover key pages (homepage, about, product, careers, blog) for Forbes AI 50 companies.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Process all companies
+  python scripts/discover/discover_links.py
+
+  # Process only first 5 companies
+  python scripts/discover/discover_links.py --limit 5
+  python scripts/discover/discover_links.py -n 5
+
+  # Custom input/output paths
+  python scripts/discover/discover_links.py --input data/custom_companies.json --output data/custom_pages.json
+
+  # Adjust delay between requests
+  python scripts/discover/discover_links.py --delay 1.0 --limit 10
+        """
+    )
+    parser.add_argument(
+        "--input", 
+        default="data/forbes_ai50_seed.json",
+        help="Input JSON file with companies list (default: data/forbes_ai50_seed.json)"
+    )
+    parser.add_argument(
+        "--output", 
+        default="data/company_pages.json",
+        help="Output JSON file with discovered pages (default: data/company_pages.json)"
+    )
+    parser.add_argument(
+        "--discovered", 
+        default="data/company_pages_discovered.json",
+        help="Output JSON file with all discovered candidates (default: data/company_pages_discovered.json)"
+    )
+    parser.add_argument(
+        "--delay", 
+        type=float, 
+        default=0.5,
+        help="Delay (in seconds) between requests (default: 0.5)"
+    )
+    parser.add_argument(
+        "-n", "--limit", 
+        type=int, 
+        default=None, 
+        help="Limit to first N companies (useful for testing). E.g., -n 5 or --limit 10"
+    )
+    parser.add_argument(
+        "--no-llm-fallback",
+        action="store_true",
+        help="Disable LLM-based fallback discovery when traditional methods fail (speeds up discovery)"
+    )
     args = parser.parse_args()
     
     logger.info(f"Arguments: input={args.input}, output={args.output}, discovered={args.discovered}")
+    if args.limit:
+        logger.info(f"Processing limited to first {args.limit} companies (--limit {args.limit})")
+    else:
+        logger.info(f"Processing all companies from input file")
+    logger.info(f"Delay between requests: {args.delay}s")
+    if args.no_llm_fallback:
+        logger.info(f"LLM fallback: DISABLED (--no-llm-fallback flag)")
+    else:
+        logger.info(f"LLM fallback: ENABLED (will use llm_page_finder.py for missing page types)")
     
     # Create output directory
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
@@ -409,8 +638,9 @@ def main():
         
         # Apply limit if specified
         if args.limit:
+            original_count = len(companies)
             companies = companies[:args.limit]
-            logger.info(f"Processing limited to first {args.limit} companies")
+            logger.info(f"Limited companies from {original_count} to {len(companies)}")
         
         results = []
         discovered_results = []
@@ -466,7 +696,7 @@ def main():
                         "page_type": page_type
                     }]
                 else:
-                    best_url, candidates = discover_page_links(website, page_type)
+                    best_url, candidates = discover_page_links(website, page_type, use_llm_fallback=not args.no_llm_fallback)
                     discovered_pages[page_type] = candidates
                 
                 pages[page_type] = best_url

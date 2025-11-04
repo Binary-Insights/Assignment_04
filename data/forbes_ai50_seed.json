@@ -1,7 +1,7 @@
 [
   {
     "company_name": "World Labs",
-    "website": "https://www.worldlabs.ai/",
+    "website": "https://worldlabs.ai/",
     "linkedin": "https://www.linkedin.com/company/world-labs",
     "hq_city": "San Francisco",
     "hq_country": "United States",
@@ -31,7 +31,7 @@
   },
   {
     "company_name": "Anysphere",
-    "website": "https://www.anysphere.com/",
+    "website": "https://anysphere.inc/",
     "linkedin": "https://www.linkedin.com/company/anysphere",
     "hq_city": "San Francisco",
     "hq_country": "United States",
@@ -51,7 +51,7 @@
   },
   {
     "company_name": "Captions",
-    "website": "https://www.captions.ai",
+    "website": "https://clearcaptions.com/facebook/",
     "linkedin": "https://www.linkedin.com/company/captions",
     "hq_city": "New York",
     "hq_country": "United States",
@@ -71,13 +71,13 @@
   },
   {
     "company_name": "Coactive AI",
-    "website": "https://coactiveai.com",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/coactive-ai",
     "hq_city": "San Jose",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Cohere",
@@ -121,7 +121,7 @@
   },
   {
     "company_name": "DeepL",
-    "website": "https://www.deepl.com",
+    "website": "https://www.deepl.com/en/translator",
     "linkedin": "https://www.linkedin.com/company/deepl",
     "hq_city": "Cologne",
     "hq_country": "Germany",
@@ -141,7 +141,7 @@
   },
   {
     "company_name": "Figure AI",
-    "website": "https://www.figure.ai",
+    "website": "https://www.figure-ai.ai/",
     "linkedin": "https://www.linkedin.com/company/figure-ai",
     "hq_city": "San Jose",
     "hq_country": "United States",
@@ -151,13 +151,13 @@
   },
   {
     "company_name": "Fireworks AI",
-    "website": "https://fireworks.ai",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/fireworks-ai",
     "hq_city": "Redwood City",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Glean",
@@ -171,13 +171,13 @@
   },
   {
     "company_name": "Harvey",
-    "website": "https://www.harvey.ai",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/harvey",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Hebbia",
@@ -241,13 +241,13 @@
   },
   {
     "company_name": "Midjourney",
-    "website": "https://www.midjourney.com",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/midjourney",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Mistral AI",
@@ -271,13 +271,13 @@
   },
   {
     "company_name": "OpenAI",
-    "website": "https://openai.com",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/openai",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "OpenEvidence",
@@ -291,13 +291,13 @@
   },
   {
     "company_name": "Perplexity AI",
-    "website": "https://www.perplexity.ai",
-    "linkedin": "https://www.linkedin.com/company/perplexityai",
+    "website": "",
+    "linkedin": "https://www.linkedin.com/company/perplexity-ai",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Photoroom",
@@ -311,13 +311,13 @@
   },
   {
     "company_name": "Pika",
-    "website": "https://pika.art",
-    "linkedin": "https://www.linkedin.com/company/pika-labs",
+    "website": "",
+    "linkedin": "https://www.linkedin.com/company/pika",
     "hq_city": "Palo Alto",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Runway",
@@ -331,13 +331,13 @@
   },
   {
     "company_name": "Sakana AI",
-    "website": "https://www.sakana.ai",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/sakana-ai",
     "hq_city": "Tokyo",
     "hq_country": "Japan",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "SambaNova",
@@ -371,23 +371,23 @@
   },
   {
     "company_name": "Skild AI",
-    "website": "https://www.skild.ai",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/skild-ai",
     "hq_city": "Pittsburgh",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Snorkel AI",
-    "website": "https://snorkel.ai",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/snorkel-ai",
     "hq_city": "Redwood City",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Speak",
@@ -411,7 +411,7 @@
   },
   {
     "company_name": "Suno",
-    "website": "https://suno.com",
+    "website": "https://suno.com/home",
     "linkedin": "https://www.linkedin.com/company/suno",
     "hq_city": "Cambridge",
     "hq_country": "United States",
@@ -431,7 +431,7 @@
   },
   {
     "company_name": "Thinking Machine Labs",
-    "website": "https://thinkingmachines.ai/",
+    "website": "https://www.thinking-machine-labs.com/",
     "linkedin": "https://www.linkedin.com/company/thinking-machine-labs",
     "hq_city": "San Francisco",
     "hq_country": "United States",
@@ -441,13 +441,13 @@
   },
   {
     "company_name": "Together AI",
-    "website": "https://www.together.ai",
+    "website": "",
     "linkedin": "https://www.linkedin.com/company/together-ai",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
-    "url_verified": true,
-    "source": "manual"
+    "url_verified": false,
+    "source": "auto_search"
   },
   {
     "company_name": "Vannevar Labs",
