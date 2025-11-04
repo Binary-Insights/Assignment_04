@@ -1,0 +1,4 @@
+[core]
+    remote = dvc-assignment-04
+['remote "dvc-assignment-04"']
+    url = s3://dvc-assignment-04/assignment_04
