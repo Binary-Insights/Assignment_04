@@ -178,6 +178,32 @@ def fetch_ai50_list():
         return []
 
 
+def is_trusted_domain(url):
+    """
+    Validate that a URL is a legitimate company website, not a redirect or forum trap.
+    Rejects URLs that contain suspicious patterns like forums, threads, or unrelated domains.
+    """
+    suspicious_patterns = [
+        '/threads/',
+        '/forums/',
+        '/forum/',
+        'pr.ai',  # Common redirect trap
+        'forum.',
+        '/t/',
+        'reddit.com',
+        'news.ycombinator.com',
+        'github.com',
+        'twitter.com',
+    ]
+    
+    url_lower = url.lower()
+    for pattern in suspicious_patterns:
+        if pattern in url_lower:
+            return False
+    
+    return True
+
+
 def search_company_info(company_name, manual_fallback_data):
     """
     Search for company website using domain pattern matching.
@@ -205,17 +231,21 @@ def search_company_info(company_name, manual_fallback_data):
             return details
         
         # Generate likely company domain patterns
+        # Prioritize .ai domains first since these are AI companies
         company_name_lower = company_name.lower()
         
         domain_patterns = [
-            f"https://www.{company_name_lower.replace(' ', '')}.com",
-            f"https://www.{company_name_lower.replace(' ', '-')}.com",
-            f"https://{company_name_lower.replace(' ', '')}.com",
-            f"https://{company_name_lower.replace(' ', '-')}.com",
+            # .ai domains first (primary for AI companies)
             f"https://www.{company_name_lower.replace(' ', '')}.ai",
             f"https://www.{company_name_lower.replace(' ', '-')}.ai",
             f"https://{company_name_lower.replace(' ', '')}.ai",
             f"https://{company_name_lower.replace(' ', '-')}.ai",
+            # .com domains second (fallback)
+            f"https://www.{company_name_lower.replace(' ', '')}.com",
+            f"https://www.{company_name_lower.replace(' ', '-')}.com",
+            f"https://{company_name_lower.replace(' ', '')}.com",
+            f"https://{company_name_lower.replace(' ', '-')}.com",
+            # .io domains third (tech companies often use .io)
             f"https://www.{company_name_lower.replace(' ', '')}.io",
             f"https://www.{company_name_lower.replace(' ', '-')}.io",
         ]
@@ -225,9 +255,14 @@ def search_company_info(company_name, manual_fallback_data):
             try:
                 response = requests.head(domain, headers=HEADERS, timeout=3, allow_redirects=True)
                 if response.status_code == 200:
-                    details["website"] = response.url
-                    logger.debug(f"Found website for {company_name}: {response.url}")
-                    break
+                    # Validate that the final URL (after redirects) is trusted
+                    final_url = response.url
+                    if is_trusted_domain(final_url):
+                        details["website"] = final_url
+                        logger.debug(f"Found website for {company_name}: {final_url}")
+                        break
+                    else:
+                        logger.debug(f"Rejected suspicious URL for {company_name}: {final_url}")
             except Exception:
                 continue
         

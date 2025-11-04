@@ -51,7 +51,7 @@
   },
   {
     "company_name": "Captions",
-    "website": "https://www.captions.ai",
+    "website": "https://www.captions.ai/",
     "linkedin": "https://www.linkedin.com/company/captions",
     "hq_city": "New York",
     "hq_country": "United States",
@@ -91,7 +91,7 @@
   },
   {
     "company_name": "Crusoe",
-    "website": "https://crusoe.com/",
+    "website": "https://www.crusoe.ai/",
     "linkedin": "https://www.linkedin.com/company/crusoe",
     "hq_city": "San Francisco",
     "hq_country": "United States",
@@ -121,7 +121,7 @@
   },
   {
     "company_name": "DeepL",
-    "website": "https://www.deepl.com",
+    "website": "https://www.deepl.com/en/translator",
     "linkedin": "https://www.linkedin.com/company/deepl",
     "hq_city": "Cologne",
     "hq_country": "Germany",
@@ -141,13 +141,13 @@
   },
   {
     "company_name": "Figure AI",
-    "website": "https://www.figure.ai",
+    "website": "https://www.figure.ai/",
     "linkedin": "https://www.linkedin.com/company/figure-ai",
     "hq_city": "San Jose",
     "hq_country": "United States",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   },
   {
     "company_name": "Fireworks AI",
@@ -161,7 +161,7 @@
   },
   {
     "company_name": "Glean",
-    "website": "https://www.glean.com/",
+    "website": "https://www.glean.ai/",
     "linkedin": "https://www.linkedin.com/company/glean",
     "hq_city": "Palo Alto",
     "hq_country": "United States",
@@ -227,7 +227,7 @@
     "hq_country": "United Kingdom",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   },
   {
     "company_name": "Mercor",
@@ -261,13 +261,13 @@
   },
   {
     "company_name": "Notion",
-    "website": "https://www.notion.com/",
+    "website": "https://www.notion.so/",
     "linkedin": "https://www.linkedin.com/company/notion",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   },
   {
     "company_name": "OpenAI",
@@ -321,7 +321,7 @@
   },
   {
     "company_name": "Runway",
-    "website": "https://runway.com/",
+    "website": "https://runwayml.com/",
     "linkedin": "https://www.linkedin.com/company/runway",
     "hq_city": "New York",
     "hq_country": "United States",
@@ -361,7 +361,7 @@
   },
   {
     "company_name": "Sierra",
-    "website": "https://www.sierra.com/",
+    "website": "https://sierra.ai/",
     "linkedin": "https://www.linkedin.com/company/sierra",
     "hq_city": "San Francisco",
     "hq_country": "United States",
@@ -411,33 +411,33 @@
   },
   {
     "company_name": "Suno",
-    "website": "https://suno.com",
+    "website": "https://suno.com/",
     "linkedin": "https://www.linkedin.com/company/suno",
     "hq_city": "Cambridge",
     "hq_country": "United States",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   },
   {
     "company_name": "Synthesia",
-    "website": "https://www.synthesia.com/",
+    "website": "https://www.synthesia.io/",
     "linkedin": "https://www.linkedin.com/company/synthesia",
     "hq_city": "London",
     "hq_country": "United Kingdom",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   },
   {
     "company_name": "Thinking Machine Labs",
     "website": "https://thinkingmachines.ai/",
-    "linkedin": "https://www.linkedin.com/company/thinking-machine-labs",
+    "linkedin": "https://www.linkedin.com/company/thinkingmachinesai",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   },
   {
     "company_name": "Together AI",
@@ -497,6 +497,6 @@
     "hq_country": "United States",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   }
 ]
