@@ -4,7 +4,7 @@
 !/data/**/.dvc
 !/data/.dvc
 
-
+!data/manual_fallback.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
