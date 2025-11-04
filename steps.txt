@@ -9,3 +9,55 @@ data/company_pages_discovered.json
 
 python scripts/discover/process_pages.py
 output: data/raw/<company_id>/...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------
+dvc initialization:
+
+uv pip install dvc
+dvc init          
+aws configure      
+aws configure list   
+aws s3 ls         
+uv pip install "dvc[s3]"
+vc remote add -d dvc-assignment-04 s3://dvc-assignment-04/assignment_04
+dvc remote list   
+dvc pull
+
+for push:
+
+dvc add <folder/file_name>  (eg:data)
+#Commit the changes to Git not to track the files inside dvc
+git add data.dvc .gitignore
+git commit -m "Track data file with DVC"
+git push
+
+Push the actual data to your DVC remote storage (e.g., S3):
+dvc push
+
+in order to track the files in both dvc and .gitignore 
+/data/*
+!/data/*.dvc
+!/data/**/.dvc
+!/data/.dvc
