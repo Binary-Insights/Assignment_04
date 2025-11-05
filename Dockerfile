@@ -66,7 +66,7 @@ ARG CONSTRAINTS_URL="https://raw.githubusercontent.com/apache/airflow/constraint
 
 RUN python -m pip install --upgrade pip setuptools wheel \
  && uv pip install -c ${CONSTRAINTS_URL} \
-    apache-airflow \
+    apache-airflow==2.10.4 \
     apache-airflow-providers-amazon
 
 # ----------------------------

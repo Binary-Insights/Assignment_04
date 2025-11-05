@@ -72,7 +72,20 @@ x-airflow-common:
     # See https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/check-health.html#scheduler-health-check-server
     # yamllint enable rule:line-length
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
-
+    # Logging configuration - Fix for log server URL issue
+    AIRFLOW__LOGGING__LOGGING_LEVEL: INFO
+    AIRFLOW__WEBSERVER__LOG_FETCH_TIMEOUT_SEC: 5
+    AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+    # Disable remote logging to avoid "No host supplied" error
+    AIRFLOW__LOGGING__REMOTE_LOGGING: 'false'
+    
+    # Scheduler configuration - prevent state sync issues with CeleryExecutor
+    AIRFLOW__SCHEDULER__CATCHUP_BY_DEFAULT: 'false'
+    AIRFLOW__SCHEDULER__MAX_DAGRUNS_PER_LOOP_ITERATION: 20
+    AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC: 5
+    AIRFLOW__CELERY__WORKER_CONCURRENCY: 4
+    AIRFLOW__CELERY__WORKER_PREFETCH_MULTIPLIER: 1
+    AIRFLOW__CORE__ALLOW_ZERO_DAGRUN_DATETIMES: 'true'
 
     # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
