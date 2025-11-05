@@ -1,5 +1,6 @@
 # ===============================================
 #   Dockerfile for Forbes AI50 Dashboard + Airflow
+#   with Qdrant Vector Database Integration
 #   FastAPI + Streamlit + Airflow Orchestration
 # ===============================================
 FROM apache/airflow:2.10.4-python3.11
@@ -111,9 +112,18 @@ RUN uv pip install \
     "instructor>=1.11.3"
 
 # ----------------------------
+# Vector database (Qdrant)
+# ----------------------------
+RUN uv pip install \
+    "qdrant-client>=2.7.0"
+
+# ----------------------------
 # Workspace structure
 # ----------------------------
-ENV PYTHONPATH="/opt/airflow/workspace"
+ENV PYTHONPATH="/opt/airflow/workspace" \
+    QDRANT_URL=http://qdrant:6333 \
+    QDRANT_API_KEY="" \
+    QDRANT_COLLECTION_NAME=rag_chunks
 
 # Copy all workspace files (DAGs, src/, scripts/, data/, etc.)
 COPY . /opt/airflow/workspace
@@ -124,7 +134,11 @@ RUN mkdir -p /opt/airflow/workspace/chromedriver && \
     ln -s /opt/airflow/workspace/chromedriver/linux64/chromedriver /usr/local/bin/chromedriver 2>/dev/null || true
 
 # Expose ports
-EXPOSE 8000 8501 8080
+# 8080: Airflow Webserver
+# 8000: FastAPI Backend
+# 8501: Streamlit Frontend
+# 6333: Qdrant Vector DB
+EXPOSE 8080 8000 8501 6333
 
 # Set working directory
 WORKDIR /opt/airflow/workspace

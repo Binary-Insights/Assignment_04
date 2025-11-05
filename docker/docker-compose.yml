@@ -1,65 +1,21 @@
-# Licensed to the Apache Software Foundation (ASF) under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
-#
-#   http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing,
-# software distributed under the License is distributed on an
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-# KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
-# under the License.
-#
-
-# Basic Airflow cluster configuration for CeleryExecutor with Redis and PostgreSQL.
-#
-# WARNING: This configuration is for local development. Do not use it in a production deployment.
-#
-# This configuration supports basic configuration using environment variables or an .env file
-# The following variables are supported:
-#
-# AIRFLOW_IMAGE_NAME           - Docker image name used to run Airflow.
-#                                Default: apache/airflow:2.7.0
-# AIRFLOW_UID                  - User ID in Airflow containers
-#                                Default: 50000
-# AIRFLOW_PROJ_DIR             - Base path to which all the files will be volumed.
-#                                Default: .
-# Those configurations are useful mostly in case of standalone testing/running Airflow in test/try-out mode
-#
-# _AIRFLOW_WWW_USER_USERNAME   - Username for the administrator account (if requested).
-#                                Default: airflow
-# _AIRFLOW_WWW_USER_PASSWORD   - Password for the administrator account (if requested).
-#                                Default: airflow
-# _PIP_ADDITIONAL_REQUIREMENTS - Additional PIP requirements to add when starting all containers.
-#                                Use this option ONLY for quick checks. Installing requirements at container
-#                                startup is done EVERY TIME the service is started.
-#                                A better way is to build a custom image or extend the official image
-#                                as described in https://airflow.apache.org/docs/docker-stack/build.html.
-#                                Default: ''
-#
-# Feel free to modify this file to suit your needs.
+# ===============================================================
+# Forbes AI50 Dashboard + Airflow with Qdrant Vector Database
+# Combined docker-compose configuration
+# ===============================================================
 ---
-#version: '3.8'
+name: assignment-04
+
 x-airflow-common:
   &airflow-common
-  # In order to add custom dependencies or upgrade provider packages you can use your extended image.
-  # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
-  # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  # image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.7.0}
   build:
-    context: .
-    dockerfile: Dockerfile
-  image: assignment04:latest
+    context: ..
+    dockerfile: docker/Dockerfile
+  image: assignment04-airflow-qdrant:latest
   environment:
     &airflow-common-env
+    # Airflow Core Configuration
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-    # For backward compatibility, with Airflow <2.3
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
@@ -67,42 +23,48 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
-    # yamllint disable rule:line-length
-    # Use simple http server on scheduler for health checks
-    # See https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/check-health.html#scheduler-health-check-server
-    # yamllint enable rule:line-length
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
-    # Logging configuration - Fix for log server URL issue
+    
+    # Logging Configuration
     AIRFLOW__LOGGING__LOGGING_LEVEL: INFO
     AIRFLOW__WEBSERVER__LOG_FETCH_TIMEOUT_SEC: 5
     AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
-    # Disable remote logging to avoid "No host supplied" error
     AIRFLOW__LOGGING__REMOTE_LOGGING: 'false'
     
-    # Scheduler configuration - prevent state sync issues with CeleryExecutor
+    # Scheduler Configuration
     AIRFLOW__SCHEDULER__CATCHUP_BY_DEFAULT: 'false'
     AIRFLOW__SCHEDULER__MAX_DAGRUNS_PER_LOOP_ITERATION: 20
     AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC: 5
     AIRFLOW__CELERY__WORKER_CONCURRENCY: 4
     AIRFLOW__CELERY__WORKER_PREFETCH_MULTIPLIER: 1
     AIRFLOW__CORE__ALLOW_ZERO_DAGRUN_DATETIMES: 'true'
-
-    # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
-    # for other purpose (development, test and especially production usage) build/extend Airflow image.
-    # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+    
+    # Qdrant Vector Database Configuration
+    QDRANT_URL: http://qdrant:6333
+    QDRANT_API_KEY: ''
+    QDRANT_COLLECTION_NAME: rag_chunks
+    
+    # AWS Configuration
     AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
     AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
     S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+    
+    # Python Configuration
+    PYTHONUNBUFFERED: '1'
+    PYTHONPATH: /opt/airflow/workspace
+
   volumes:
-    - ${AIRFLOW_PROJ_DIR:-.}/src/dags:/opt/airflow/dags
-    - ${AIRFLOW_PROJ_DIR:-.}/src:/opt/airflow/src
-    - ${AIRFLOW_PROJ_DIR:-.}/scripts:/opt/airflow/scripts
-    - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
-    - ${AIRFLOW_PROJ_DIR:-.}/data/logs:/opt/airflow/data/logs
-    - ${AIRFLOW_PROJ_DIR:-.}/data/airflow/logs:/opt/airflow/logs
-    - ${AIRFLOW_PROJ_DIR:-.}/data/airflow/plugins:/opt/airflow/plugins
-    - ${AIRFLOW_PROJ_DIR:-.}:/opt/airflow/workspace
+    - ../src/dags:/opt/airflow/dags
+    - ../src:/opt/airflow/src
+    - ../scripts:/opt/airflow/scripts
+    - ../data:/opt/airflow/data
+    - ../data:/app/data
+    - ../data/logs:/opt/airflow/data/logs
+    - ../data/airflow/logs:/opt/airflow/logs
+    - ../data/airflow/plugins:/opt/airflow/plugins
+    - ..:/opt/airflow/workspace
+  
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -110,20 +72,23 @@ x-airflow-common:
       condition: service_healthy
     postgres:
       condition: service_healthy
+    qdrant:
+      condition: service_started
 
 services:
+  # ===============================================================
+  # Core Infrastructure Services
+  # ===============================================================
+  
   postgres:
     image: postgres:13
+    container_name: airflow-postgres
     ports:
       - "5432:5432"
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
-    networks:
-      - default
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
@@ -135,6 +100,7 @@ services:
 
   redis:
     image: redis:latest
+    container_name: airflow-redis
     expose:
       - 6379
     healthcheck:
@@ -145,8 +111,30 @@ services:
       start_period: 30s
     restart: on-failure
 
+  qdrant:
+    image: qdrant/qdrant:v1.12.0
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - ../qdrant_storage:/qdrant/storage
+    environment:
+      QDRANT_API_KEY: ""
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ===============================================================
+  # Airflow Services
+  # ===============================================================
+
   airflow-webserver:
     <<: *airflow-common
+    container_name: airflow-webserver
     command: webserver
     ports:
       - "8080:8080"
@@ -164,6 +152,7 @@ services:
 
   airflow-scheduler:
     <<: *airflow-common
+    container_name: airflow-scheduler
     command: scheduler
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8974/health"]
@@ -179,9 +168,9 @@ services:
 
   airflow-worker:
     <<: *airflow-common
+    container_name: airflow-worker
     command: celery worker
     healthcheck:
-      # yamllint disable rule:line-length
       test:
         - "CMD-SHELL"
         - 'celery --app airflow.providers.celery.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}" || celery --app airflow.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}"'
@@ -191,8 +180,6 @@ services:
       start_period: 30s
     environment:
       <<: *airflow-common-env
-      # Required to handle warm shutdown of the celery workers properly
-      # See https://airflow.apache.org/docs/docker-stack/entrypoint.html#signal-propagation
       DUMB_INIT_SETSID: "0"
     restart: on-failure
     depends_on:
@@ -202,6 +189,7 @@ services:
 
   airflow-triggerer:
     <<: *airflow-common
+    container_name: airflow-triggerer
     command: triggerer
     healthcheck:
       test: ["CMD-SHELL", 'airflow jobs check --job-type TriggererJob --hostname "$${HOSTNAME}"']
@@ -217,6 +205,7 @@ services:
 
   airflow-init:
     <<: *airflow-common
+    container_name: airflow-init
     entrypoint: /bin/bash
     user: "0:0"
     command:
@@ -241,8 +230,8 @@ services:
         chown -R "$${AIRFLOW_UID:-50000}:0" /sources/src/dags
         echo "✓ Directories created"
         
-        echo "3. Running Airflow version check..."
-        exec /entrypoint airflow version
+        echo "3. Running Airflow DB migrations..."
+        exec /entrypoint airflow db migrate
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_MIGRATE: "true"
@@ -251,26 +240,28 @@ services:
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
       _PIP_ADDITIONAL_REQUIREMENTS: ""
     volumes:
-      - ${AIRFLOW_PROJ_DIR:-.}:/sources
+      - ..:/sources
 
   airflow-cli:
     <<: *airflow-common
+    container_name: airflow-cli
     profiles:
       - debug
     environment:
       <<: *airflow-common-env
       CONNECTION_CHECK_MAX_COUNT: "0"
-    # Workaround for entrypoint issue. See: https://github.com/apache/airflow/issues/16252
     command:
       - bash
       - -c
       - airflow
 
-  # You can enable flower by adding "--profile flower" option e.g. docker-compose --profile flower up
-  # or by explicitly targeted on the command line e.g. docker-compose up flower.
-  # See: https://docs.docker.com/compose/profiles/
+  # ===============================================================
+  # Optional: Flower - Celery Monitoring
+  # ===============================================================
+  
   flower:
     <<: *airflow-common
+    container_name: airflow-flower
     command: celery flower
     profiles:
       - flower
@@ -288,9 +279,13 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
-  # FastAPI Backend Server
+  # ===============================================================
+  # Application Services
+  # ===============================================================
+
   fastapi:
     <<: *airflow-common
+    container_name: fastapi-backend
     command: bash -c "cd /opt/airflow/workspace && python -m uvicorn src.api:app --host 0.0.0.0 --port 8000"
     ports:
       - "8000:8000"
@@ -308,9 +303,9 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
-  # Streamlit Frontend Server
   streamlit:
     <<: *airflow-common
+    container_name: streamlit-frontend
     command: bash -c "cd /opt/airflow/workspace && streamlit run src/streamlit_app.py --server.port=8501 --server.address=0.0.0.0"
     ports:
       - "8501:8501"
@@ -330,6 +325,10 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+
+# ===============================================================
+# Volumes
+# ===============================================================
 
 volumes:
   postgres-db-volume:

@@ -5,12 +5,127 @@ output: data/forbes_ai50_seed.json
 
 Lab 1:
 python scripts/discover/discover_links.py
+python scripts/discover/discover_links.py --limit 5
 output: data/company_pages.json 
 data/company_pages_discovered.json 
 
-python scripts/discover/process_pages.py
+scripts/discover/process_discovered_pages.py
 output: data/raw/<company_id>/...
 
+# To discover pages using llm rather than using traditional techniuqes
+python scripts/discover/llm_page_finder.py --website "https://worldlabs.ai/" --page-type "careers"
+output: 
+{
+  "request": {
+    "website_url": "https://worldlabs.ai/",
+    "page_type": "careers",
+    "page_content_snippet": "World Labs"
+  },
+  "result": {
+    "page_type": "careers",
+    "discovered_url": "https://jobs.ashbyhq.com/worldlabs",
+    "confidence": 1.0,
+    "reasoning": "Original URL replaced with validated alternative. The URL follows the common pattern for careers pages, which is typically structured as '/careers'. Given the company name and the absence of static links, this is a logical assumption.",
+    "alternative_urls": [
+      "https://worldlabs.ai/careers",
+      "https://worldlabs.ai/hiring",
+      "https://jobs.ashbyhq.com/worldlabs",
+      "https://jobs.lever.co/worldlabs"
+    ]
+  }
+}
+
+
+
+
+# Basic run with verbose output:
+python scripts/rag/experimental_framework.py world_labs --verbose
+
+#  Custom output directory:
+python scripts/rag/experimental_framework.py world_labs --output data/my_results
+
+# Custom metadata and raw data paths:
+python scripts/rag/experimental_framework.py world_labs `
+  --metadata-base data/metadata `
+  --raw-base data/raw `
+  --output data/rag_experiments
+
+# All options combined: 
+python scripts/rag/experimental_framework.py world_labs `
+  --verbose `
+  --output data/rag_experiments `
+  --metadata-base data/metadata `
+  --raw-base data/raw
+
+
+# to ingest into qdrant vector database
+python scripts/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --chunk-file chunks_recursive.json --collection rag_chunks
+
+# This is a api call to check if there is chunks in the 
+curl -s http://localhost:6333/collections/world_labs_chunks | python -m json.tool
+
+
+
+
+# Lab 4
+
+# 1. Start the API
+python scripts/backend/rag_search_api.py
+
+# 2. In another terminal, run tests
+python scripts/backend/test_rag_search.py
+
+# 3. Access interactive docs
+# Open: http://localhost:8000/docs
+
+# Query "funding"
+curl -X POST http://localhost:8000/rag/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "funding", "top_k": 5}'
+
+# Query "spatial intelligence"
+curl -X POST http://localhost:8000/rag/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "spatial intelligence", "top_k": 5}'
+
+🎯 Key Features
+✅ Semantic similarity search using embeddings
+✅ Multiple embedding providers (OpenAI, HuggingFace)
+✅ Qdrant vector database integration
+✅ Type-safe Pydantic models
+✅ Comprehensive error handling
+✅ Rich metadata in results (keywords, source_file, page_type, etc.)
+✅ Interactive API documentation (docs)
+✅ Health check endpoints
+✅ Docker support
+✅ Extensive logging and debugging
+
+
+
+
+
+
+-------
+Debug 
+
+Step 1: 
+python scripts/discover/debug_links.py 2>&1 | grep -v "InsecureRequestWarning"
+
+  warnings.warn(
+  warnings.warn(
+Fetching: https://worldlabs.ai/
+Status: 200
+Content length: 12996
+
+Total <a> tags found: 0
+
+First 20 links:
+
+--- FILTERING FOR CAREER/JOB LINKS ---
+
+
+Step 2: 
+python scripts/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | head -80
 
 
 
@@ -23,14 +138,11 @@ output: data/raw/<company_id>/...
 
 
 
+------------------
 
+uv commands 
 
-
-
-
-
-
-
+uv pip compile pyproject.toml -o requirements.txt
 
 
 ---------

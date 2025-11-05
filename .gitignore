@@ -5,6 +5,9 @@
 !/data/.dvc
 
 !data/manual_fallback.json
+# qdrant storage folder
+qdrant_storage/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
