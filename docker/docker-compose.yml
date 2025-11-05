@@ -4,6 +4,7 @@
 # ===============================================================
 ---
 name: assignment-04
+env_file: ../.env
 
 x-airflow-common:
   &airflow-common
