@@ -657,6 +657,7 @@ Examples:
                 results.append({
                     "company_name": company_name,
                     "website": website,
+                    "linkedin": company.get("linkedin", ""),
                     "pages": {
                         "homepage": website,
                         "about": None,
@@ -705,6 +706,7 @@ Examples:
             results.append({
                 "company_name": company_name,
                 "website": website,
+                "linkedin": company.get("linkedin", ""),
                 "pages": pages
             })
             

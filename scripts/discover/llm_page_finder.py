@@ -446,227 +446,13 @@ def fetch_page_content(url: str, timeout: int = 10) -> Optional[dict]:
 
 
 # ============================================================================
-# Fallback Discovery Strategy
-# ============================================================================
-
-def fallback_discover_page_with_llm(
-    website_url: str,
-    page_type: str,
-    original_result: Optional[DiscoveryResult] = None
-) -> DiscoveryResult:
-    """
-    Fallback discovery method when primary discovery returns None or low confidence.
-    
-    Strategy:
-    1. Probe common URL patterns for the page type (e.g., /careers, /jobs, /hiring)
-    2. Check external job boards (Ashby, Lever, Greenhouse) for careers pages
-    3. Use alternative LLM prompt with different reasoning
-    4. Return best alternative found with confidence scores
-    
-    Args:
-        website_url: Base website URL
-        page_type: Type of page to discover
-        original_result: The original failed discovery result (for context)
-    
-    Returns:
-        DiscoveryResult with fallback strategy results
-    """
-    logger = logging.getLogger("llm_page_finder")
-    logger.info(f"[FALLBACK] Starting fallback discovery for {page_type} page")
-    print(f"\n[FALLBACK] === FALLBACK DISCOVERY STRATEGY ===")
-    print(f"[FALLBACK] Original discovery returned None or low confidence")
-    print(f"[FALLBACK] Attempting alternative discovery methods...\n")
-    
-    # Normalize URL
-    if not website_url.startswith(("http://", "https://")):
-        website_url = f"https://{website_url}"
-    parsed = urlparse(website_url)
-    base_domain = parsed.netloc.replace("www.", "")
-    company_name = base_domain.split(".")[0] if "." in base_domain else base_domain
-    
-    # Define common URL patterns by page type
-    common_patterns = {
-        "careers": ["/careers", "/career", "/jobs", "/job", "/hiring", "/team", "/work-with-us", "/join-us", "/apply"],
-        "product": ["/product", "/products", "/platform", "/features", "/solutions", "/services", "/solutions"],
-        "about": ["/about", "/about-us", "/company", "/about-company", "/who-we-are", "/our-story"],
-        "blog": ["/blog", "/news", "/press", "/media", "/insights", "/resources", "/articles", "/posts", "/updates"]
-    }
-    
-    # External job board patterns (for careers page type)
-    job_boards = [
-        (f"https://jobs.ashbyhq.com/{company_name}", "Ashby"),
-        (f"https://jobs.lever.co/{company_name}", "Lever"),
-        (f"https://{company_name}.greenhouse.io", "Greenhouse"),
-        (f"https://jobs.workable.com/{company_name}", "Workable"),
-    ]
-    
-    candidates = []
-    
-    # Step 1: Probe common patterns on company domain
-    print(f"[FALLBACK] Step 1: Probing common URL patterns for /{page_type}...")
-    patterns_to_try = common_patterns.get(page_type, [])
-    
-    for pattern in patterns_to_try:
-        probe_url = website_url.rstrip('/') + pattern
-        validation = validate_url_exists(probe_url, timeout=5)
-        
-        if validation["exists"]:
-            score = 0.85 if pattern == f"/{page_type}" else 0.70
-            candidates.append({
-                "url": probe_url,
-                "score": score,
-                "reason": f"Found via pattern matching: {pattern}",
-                "method": "pattern_probe"
-            })
-            print(f"[FALLBACK]   ✓ Found: {probe_url} (confidence: {score})")
-        else:
-            print(f"[FALLBACK]   ✗ Not found: {probe_url} (status: {validation['status_code']})")
-    
-    # Step 2: Check external job boards (if careers page)
-    if page_type == "careers":
-        print(f"\n[FALLBACK] Step 2: Checking external job boards...")
-        for board_url, board_name in job_boards:
-            validation = validate_url_exists(board_url, timeout=5)
-            
-            if validation["exists"]:
-                # Job boards get high score
-                score = 0.95
-                candidates.append({
-                    "url": board_url,
-                    "score": score,
-                    "reason": f"Found on {board_name} job board (external careers portal)",
-                    "method": "job_board"
-                })
-                print(f"[FALLBACK]   ✓ Found: {board_url} on {board_name} (confidence: {score})")
-            else:
-                print(f"[FALLBACK]   ✗ Not found on {board_name}")
-    
-    # Step 3: Use LLM with specific fallback prompt asking for alternatives
-    if not candidates:
-        print(f"\n[FALLBACK] Step 3: No patterns found. Using LLM with fallback prompt...")
-        
-        llm = get_llm()
-        
-        fallback_prompt = f"""You are a web analyst performing a fallback discovery for a {page_type} page.
-
-Website: {website_url}
-Company Domain: {base_domain}
-Company Name: {company_name}
-Page Type Needed: {page_type}
-
-IMPORTANT: The primary discovery methods failed or returned low confidence results.
-
-Your task: Suggest the MOST LIKELY URL based on:
-1. Common URL patterns: {', '.join(patterns_to_try[:3])}
-2. Industry standards for {page_type} pages
-3. Company size and sophistication level
-4. External job boards (if careers page): Ashby, Lever, Greenhouse
-
-Return a JSON with:
-- discovered_url: The single best URL guess
-- confidence: 0.0-1.0 (be realistic - this is a fallback guess)
-- reasoning: Why this is your best guess
-- alternative_urls: Other likely candidates
-
-Be specific and realistic. If you're not confident, indicate that in the confidence score."""
-        
-        try:
-            if OpenAI is None:
-                logger.error("OpenAI client not available for fallback")
-                discovered_url = None
-                confidence = 0.0
-                reasoning = "Fallback LLM lookup failed - OpenAI not available"
-            else:
-                client = instructor.patch(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
-                response = client.chat.completions.create(
-                    model="gpt-4o-mini",
-                    response_model=DiscoveredPage,
-                    messages=[{"role": "user", "content": fallback_prompt}],
-                    temperature=0.3
-                )
-                
-                print(f"[FALLBACK]   LLM fallback response:")
-                print(f"[FALLBACK]     - URL: {response.discovered_url}")
-                print(f"[FALLBACK]     - Confidence: {response.confidence}")
-                print(f"[FALLBACK]     - Reasoning: {response.reasoning[:80]}...")
-                
-                # Validate the LLM's fallback suggestion
-                if response.discovered_url:
-                    validation = validate_url_exists(response.discovered_url, timeout=5)
-                    if validation["exists"]:
-                        response.confidence = min(response.confidence, 0.90)  # Cap at 0.90 for fallback
-                    else:
-                        response.confidence = min(response.confidence, 0.40)  # Lower confidence for invalid URLs
-                
-                discovered_url = response.discovered_url
-                confidence = response.confidence
-                reasoning = response.reasoning
-                
-        except Exception as e:
-            logger.error(f"Fallback LLM lookup failed: {e}")
-            discovered_url = None
-            confidence = 0.0
-            reasoning = f"Fallback LLM lookup failed: {str(e)}"
-    
-    else:
-        # Use best candidate from patterns/job boards
-        candidates.sort(key=lambda x: x["score"], reverse=True)
-        best = candidates[0]
-        discovered_url = best["url"]
-        confidence = best["score"]
-        reasoning = best["reason"]
-        
-        print(f"\n[FALLBACK] Step 3: Using best pattern match")
-        print(f"[FALLBACK]   Selected: {discovered_url}")
-        print(f"[FALLBACK]   Confidence: {confidence}")
-        print(f"[FALLBACK]   Reason: {reasoning}")
-    
-    # === CONFIDENCE CONSTRAINT: Don't return if confidence <= 0.5 in fallback ===
-    print(f"\n[FALLBACK] CONFIDENCE CONSTRAINT CHECK:")
-    if discovered_url and confidence <= 0.5:
-        print(f"[FALLBACK]   Fallback confidence {confidence:.2f} <= 0.5 ✗")
-        print(f"[FALLBACK]   Clearing URL due to low confidence in fallback discovery")
-        reasoning = f"Fallback discovery confidence too low ({confidence:.2f} <= 0.5). {reasoning}"
-        discovered_url = None
-        confidence = 0.0
-    elif discovered_url:
-        print(f"[FALLBACK]   Fallback confidence {confidence:.2f} > 0.5 ✓")
-        print(f"[FALLBACK]   Accepting fallback discovery")
-    else:
-        print(f"[FALLBACK]   No URL found in fallback discovery")
-    
-    # Get alternatives (other high-scoring candidates)
-    alternatives = [c["url"] for c in candidates[1:3]] if len(candidates) > 1 else []
-    
-    request = DiscoveryRequest(
-        website_url=website_url,
-        page_type=page_type,
-        page_content_snippet=f"[Fallback discovery for {page_type}]"
-    )
-    
-    result = DiscoveredPage(
-        page_type=page_type,
-        discovered_url=discovered_url,
-        confidence=confidence,
-        reasoning=reasoning,
-        alternative_urls=alternatives
-    )
-    
-    print(f"[FALLBACK] === END FALLBACK DISCOVERY ===\n")
-    logger.info(f"[FALLBACK] Fallback discovery complete: {discovered_url} (confidence: {confidence})")
-    
-    return DiscoveryResult(request=request, result=result)
-
-
-# ============================================================================
 # Main Discovery Function
 # ============================================================================
 
 def discover_page_with_llm(
     website_url: str,
     page_type: str,
-    use_structured_output: bool = True,
-    enable_fallback: bool = True
+    use_structured_output: bool = True
 ) -> DiscoveryResult:
     """
     Discover a specific page type from a website using LLM + Instructor.
@@ -872,18 +658,7 @@ Be precise and specific with your answer."""
                 logger.info(f"Discovered URL: {response.discovered_url} (confidence: {response.confidence})")
                 print(f"[DEBUG] Final response confidence: {response.confidence}")
                 print("[DEBUG] === END INSTRUCTOR PATH (SUCCESS) ===\n")
-                
-                # === FALLBACK TRIGGER: If no URL or low confidence and fallback enabled ===
-                result_to_return = DiscoveryResult(request=request, result=response)
-                if enable_fallback and (response.discovered_url is None or response.confidence <= 0.5):
-                    print(f"\n[INFO] Primary discovery returned no URL or low confidence")
-                    print(f"[INFO] Triggering fallback discovery mechanism...\n")
-                    fallback_result = fallback_discover_page_with_llm(website_url, page_type, result_to_return)
-                    if fallback_result.result.discovered_url and fallback_result.result.confidence > response.confidence:
-                        logger.info(f"Fallback discovery found better result: {fallback_result.result.discovered_url}")
-                        return fallback_result
-                
-                return result_to_return
+                return DiscoveryResult(request=request, result=response)
 
         
         except Exception as e:
@@ -1061,18 +836,7 @@ Be precise and specific with your answer."""
         
         logger.info(f"Discovered URL: {discovered_url} (confidence: {confidence})")
         print("[DEBUG] === END FALLBACK PATH (MANUAL PARSING) ===\n")
-        
-        # === FALLBACK TRIGGER: If no URL or low confidence and fallback enabled ===
-        result_to_return = DiscoveryResult(request=request, result=result)
-        if enable_fallback and (discovered_url is None or confidence <= 0.5):
-            print(f"\n[INFO] Fallback path (manual parsing) returned no URL or low confidence")
-            print(f"[INFO] Triggering advanced fallback discovery mechanism...\n")
-            fallback_result = fallback_discover_page_with_llm(website_url, page_type, result_to_return)
-            if fallback_result.result.discovered_url and fallback_result.result.confidence > confidence:
-                logger.info(f"Advanced fallback found better result: {fallback_result.result.discovered_url}")
-                return fallback_result
-        
-        return result_to_return
+        return DiscoveryResult(request=request, result=result)
 
 
 # ============================================================================
@@ -1107,11 +871,6 @@ def main():
         action="store_true",
         help="Disable Instructor structured output (use fallback parsing)"
     )
-    parser.add_argument(
-        "--disable-fallback",
-        action="store_true",
-        help="Disable the fallback discovery mechanism"
-    )
     
     args = parser.parse_args()
     
@@ -1122,8 +881,7 @@ def main():
     result = discover_page_with_llm(
         website_url=args.website,
         page_type=args.page_type,
-        use_structured_output=not args.no_structured,
-        enable_fallback=not args.disable_fallback
+        use_structured_output=not args.no_structured
     )
     
     # Serialize result

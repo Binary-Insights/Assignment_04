@@ -8,7 +8,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src /app/src
 COPY data /app/data
 
-EXPOSE 8000
-EXPOSE 8501
+# Qdrant is provided as a separate service in docker-compose; applications
+# will talk to it at the hostname `qdrant` on port 6333. Provide a sensible
+# default URL to the app environment so it can connect when running in compose.
+ENV QDRANT_URL=http://qdrant:6333
+ENV QDRANT_API_KEY=
+ENV QDRANT_COLLECTION_NAME=rag_chunks
 
-CMD ["sh", "-c", "uvicorn src.api:app --host 0.0.0.0 --port 8000 & streamlit run src/streamlit_app.py --server.port 8501 --server.address 0.0.0.0"]
+CMD ["tail", "-f", "/dev/null"]

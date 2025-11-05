@@ -8,7 +8,7 @@ python scripts/discover/discover_links.py --limit 5
 output: data/company_pages.json 
 data/company_pages_discovered.json 
 
-python scripts/discover/process_pages.py
+scripts/discover/process_discovered_pages.py
 output: data/raw/<company_id>/...
 
 # To discover pages using llm rather than using traditional techniuqes
@@ -33,6 +33,75 @@ output:
     ]
   }
 }
+
+
+
+
+# Basic run with verbose output:
+python scripts/rag/experimental_framework.py world_labs --verbose
+
+#  Custom output directory:
+python scripts/rag/experimental_framework.py world_labs --output data/my_results
+
+# Custom metadata and raw data paths:
+python scripts/rag/experimental_framework.py world_labs `
+  --metadata-base data/metadata `
+  --raw-base data/raw `
+  --output data/rag_experiments
+
+# All options combined: 
+python scripts/rag/experimental_framework.py world_labs `
+  --verbose `
+  --output data/rag_experiments `
+  --metadata-base data/metadata `
+  --raw-base data/raw
+
+
+# to ingest into qdrant vector database
+python scripts/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --chunk-file chunks_recursive.json --collection rag_chunks
+
+# This is a api call to check if there is chunks in the 
+curl -s http://localhost:6333/collections/world_labs_chunks | python -m json.tool
+
+
+
+
+# Lab 4
+
+# 1. Start the API
+python scripts/backend/rag_search_api.py
+
+# 2. In another terminal, run tests
+python scripts/backend/test_rag_search.py
+
+# 3. Access interactive docs
+# Open: http://localhost:8000/docs
+
+# Query "funding"
+curl -X POST http://localhost:8000/rag/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "funding", "top_k": 5}'
+
+# Query "spatial intelligence"
+curl -X POST http://localhost:8000/rag/search \
+  -H "Content-Type: application/json" \
+  -d '{"query": "spatial intelligence", "top_k": 5}'
+
+🎯 Key Features
+✅ Semantic similarity search using embeddings
+✅ Multiple embedding providers (OpenAI, HuggingFace)
+✅ Qdrant vector database integration
+✅ Type-safe Pydantic models
+✅ Comprehensive error handling
+✅ Rich metadata in results (keywords, source_file, page_type, etc.)
+✅ Interactive API documentation (docs)
+✅ Health check endpoints
+✅ Docker support
+✅ Extensive logging and debugging
+
+
+
+
 
 
 -------
@@ -68,6 +137,11 @@ python scripts/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | 
 
 
 
+------------------
+
+uv commands 
+
+uv pip compile pyproject.toml -o requirements.txt
 
 
 ---------
