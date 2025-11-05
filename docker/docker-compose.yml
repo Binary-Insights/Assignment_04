@@ -50,6 +50,10 @@ x-airflow-common:
     AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
     S3_BUCKET_NAME: ${S3_BUCKET_NAME}
     
+    # LLM Configuration
+    OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+    
     # Python Configuration
     PYTHONUNBUFFERED: '1'
     PYTHONPATH: /opt/airflow/workspace
@@ -286,13 +290,15 @@ services:
   fastapi:
     <<: *airflow-common
     container_name: fastapi-backend
-    command: bash -c "cd /opt/airflow/workspace && python -m uvicorn src.api:app --host 0.0.0.0 --port 8000"
+    command: bash -c "cd /opt/airflow/workspace && python scripts/backend/rag_search_api.py"
     ports:
       - "8000:8000"
     environment:
       <<: *airflow-common-env
+      API_PORT: "8000"
+      API_HOST: "0.0.0.0"
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:8000/docs"]
+      test: ["CMD", "curl", "--fail", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 5

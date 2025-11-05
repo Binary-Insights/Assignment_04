@@ -1,4 +1,10 @@
 {
+  "Anysphere": {
+    "website": "https://anysphere.inc/",
+    "linkedin": "https://www.linkedin.com/company/anysphere",
+    "verified_by": "manual",
+    "notes": "Correct domain is .inc not .com"
+  },
   "Coactive AI": {
     "website": "https://coactiveai.com",
     "linkedin": "https://www.linkedin.com/company/coactive-ai",

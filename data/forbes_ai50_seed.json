@@ -31,13 +31,13 @@
   },
   {
     "company_name": "Anysphere",
-    "website": "https://www.anysphere.com/",
+    "website": "https://anysphere.inc/",
     "linkedin": "https://www.linkedin.com/company/anysphere",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
     "url_verified": true,
-    "source": "auto_search"
+    "source": "manual"
   },
   {
     "company_name": "Baseten",

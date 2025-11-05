@@ -115,7 +115,7 @@ RUN uv pip install \
 # Vector database (Qdrant)
 # ----------------------------
 RUN uv pip install \
-    "qdrant-client>=2.7.0"
+    "qdrant-client>=1.12.0,<2"
 
 # ----------------------------
 # Workspace structure
