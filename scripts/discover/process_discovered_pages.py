@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Process discovered company pages: Download HTML, extract links, and create provenance tracking.
+"""Process company pages: Download HTML, extract links, and create provenance tracking.
 
-Reads: data/company_pages_discovered.json
+Reads: data/company_pages.json (contains: homepage, about, product, careers, blog, linkedin)
 Creates:
 - data/raw/{company_slug}/{page_type}/{page_type}.html
 - data/raw/{company_slug}/{page_type}/links_extracted.json  
 - data/metadata/{company_slug}/discovered_pages_provenance.json
 
 Usage:
-  python scripts/discover/process_discovered_pages.py --input data/company_pages_discovered.json
+  python scripts/discover/process_discovered_pages.py
   python scripts/discover/process_discovered_pages.py --companies World Labs --delay 2.0
 """
 
@@ -893,13 +893,17 @@ def create_provenance_record(company_name, company_slug, pages_results):
 
 
 def process_company_pages(company_data, driver):
-    """Process all discovered pages for a single company, including LinkedIn page if available."""
+    """Process all company pages for a single company: both discovered and explicitly defined pages (about, product, careers, blog, homepage, linkedin)."""
     logger = logging.getLogger('process_discovered_pages')
     
     company_name = company_data.get('company_name', 'UNKNOWN')
     company_slug = slugify(company_name)
     website = company_data.get('website', '')
     linkedin_url = company_data.get('linkedin', '')
+    
+    # Try to get pages from different sources
+    # Priority: "pages" field (from company_pages.json) > "discovered_pages" field (from company_pages_discovered.json)
+    pages_dict = company_data.get('pages', {})
     discovered_pages = company_data.get('discovered_pages', {})
     
     logger.info(f"=== Processing {company_name} ===")
@@ -907,18 +911,32 @@ def process_company_pages(company_data, driver):
     if linkedin_url:
         logger.info(f"LinkedIn: {linkedin_url}")
     
-    if not discovered_pages and not linkedin_url:
-        logger.warning(f"No discovered pages or LinkedIn URL found for {company_name}, skipping")
+    # If we have pages dict, use those; otherwise fall back to discovered_pages
+    pages_to_process = {}
+    if pages_dict:
+        # Convert pages dict format to list format for consistent processing
+        # pages dict: {"about": "url", "product": null, "careers": "url", ...}
+        for page_type, page_url in pages_dict.items():
+            if page_url and page_type not in ['homepage']:  # Skip homepage, we'll handle it separately
+                pages_to_process[page_type] = [{'url': page_url}]
+    else:
+        pages_to_process = discovered_pages
+    
+    # Check if we have anything to process
+    has_pages = any(pages_to_process.get(pt) for pt in pages_to_process)
+    
+    if not has_pages and not linkedin_url:
+        logger.warning(f"No pages or LinkedIn URL found for {company_name}, skipping")
         return {
             'company_name': company_name,
             'company_slug': company_slug,
             'success': False,
-            'reason': 'No discovered pages or LinkedIn URL available'
+            'reason': 'No pages or LinkedIn URL available'
         }
     
     try:
-        # Create directory structure - include linkedin as a page type if URL exists
-        page_types = [page_type for page_type in discovered_pages.keys() if discovered_pages[page_type]]
+        # Create directory structure - include all page types
+        page_types = [page_type for page_type in pages_to_process.keys() if pages_to_process[page_type]]
         if linkedin_url:
             page_types.append('linkedin')
         
@@ -926,17 +944,17 @@ def process_company_pages(company_data, driver):
         
         pages_results = []
         
-        # Process each page type from discovered_pages
-        for page_type, pages in discovered_pages.items():
+        # Process each page type
+        for page_type, pages in pages_to_process.items():
             if not pages:
                 logger.info(f"  No pages found for {page_type}")
                 continue
             
-            logger.info(f"  Processing {page_type} pages ({len(pages)} found)...")
+            logger.info(f"  Processing {page_type} page...")
             
             # Process the first/primary page for this type
-            page_info = pages[0]  # Get the first page (usually the primary one)
-            page_url = page_info.get('url')
+            page_info = pages[0] if isinstance(pages, list) else pages
+            page_url = page_info.get('url') if isinstance(page_info, dict) else page_info
             
             if not page_url:
                 logger.warning(f"  No URL found for {page_type}, skipping")
@@ -1067,7 +1085,7 @@ def main():
     logger.info("=== Starting Discovered Pages Processing ===")
     
     # Hardcoded configuration
-    input_file = "data/company_pages_discovered.json"
+    input_file = "data/company_pages.json"
     companies_to_process = None  # Process all companies, or set to list like ['World Labs']
     limit = None  # No limit, or set to a number like 5
     extract_text = True  # Extract and clean text from HTML files

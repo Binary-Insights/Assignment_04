@@ -1,5 +1,5 @@
 from pydantic import BaseModel, HttpUrl
-from typing import List, Optional
+from typing import List, Optional, Literal
 from datetime import date
 
 class Provenance(BaseModel):
@@ -16,8 +16,8 @@ class Company(BaseModel):
     hq_state: Optional[str] = None
     hq_country: Optional[str] = None
     founded_year: Optional[int] = None
-    categories: List[str] = []
-    related_companies: List[str] = []
+    categories: Optional[List[str]] = None
+    related_companies: Optional[List[str]] = None
     total_raised_usd: Optional[float] = None
     last_disclosed_valuation_usd: Optional[float] = None
     last_round_name: Optional[str] = None
@@ -39,11 +39,11 @@ class Event(BaseModel):
     title: str
     description: Optional[str] = None
     round_name: Optional[str] = None
-    investors: List[str] = []
+    investors: Optional[List[str]] = None
     amount_usd: Optional[float] = None  # funding, contract, pricing deltas
     valuation_usd: Optional[float] = None
-    actors: List[str] = []  # investors, partners, customers, execs
-    tags: List[str] = []  # e.g., "Series B", "SOC2", "HIPAA"
+    actors: Optional[List[str]] = None  # investors, partners, customers, execs
+    tags: Optional[List[str]] = None  # e.g., "Series B", "SOC2", "HIPAA"
     schema_version: str = "2.0.0"
     provenance: List[Provenance] = []
 
@@ -55,10 +55,10 @@ class Snapshot(BaseModel):
     job_openings_count: Optional[int] = None
     engineering_openings: Optional[int] = None
     sales_openings: Optional[int] = None
-    hiring_focus: List[str] = []  # e.g., "sales","ml","security"
-    pricing_tiers: List[str] = []
-    active_products: List[str] = []
-    geo_presence: List[str] = []
+    hiring_focus: Optional[List[str]] = None  # e.g., "sales","ml","security"
+    pricing_tiers: Optional[List[str]] = None
+    active_products: Optional[List[str]] = None
+    geo_presence: Optional[List[str]] = None
     confidence: Optional[float] = None
     schema_version: str = "2.0.0"
     provenance: List[Provenance] = []
@@ -69,12 +69,12 @@ class Product(BaseModel):
     name: str
     description: Optional[str] = None
     pricing_model: Optional[str] = None # "seat", "usage", "tiered"
-    pricing_tiers_public: List[str] = []
+    pricing_tiers_public: Optional[List[str]] = None
     ga_date: Optional[date] = None
-    integration_partners: List[str] = []
+    integration_partners: Optional[List[str]] = None
     github_repo: Optional[str] = None
     license_type: Optional[str] = None
-    reference_customers: List[str] = []
+    reference_customers: Optional[List[str]] = None
     schema_version: str = "2.0.0"
     provenance: List[Provenance] = []
 
