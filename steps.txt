@@ -70,6 +70,7 @@ curl -s http://localhost:6333/collections/world_labs_chunks | python -m json.too
 
 # 1. Start the API
 python scripts/backend/rag_search_api.py
+uvicorn scripts.backend.rag_search_api:app --reload
 
 # 2. In another terminal, run tests
 python scripts/backend/test_rag_search.py
@@ -100,7 +101,22 @@ curl -X POST http://localhost:8000/rag/search \
 ✅ Extensive logging and debugging
 
 
+Enhanced Logging
+Added 7 emoji indicators for clarity:
 
+🔍 Qdrant search initiated
+🎯 Results ranked by similarity
+✅ Successful operation
+❌ Error/failure
+📊 Using Qdrant context
+⚠️ Fallback scenario
+⚙️ Strategy-driven action
+
+
+
+# Structured 
+# creates a json based on the pydantic model and stores in data/structured/{company_slug}.json
+python scripts/rag/structured_extraction.py --company-slug world_labs
 
 
 

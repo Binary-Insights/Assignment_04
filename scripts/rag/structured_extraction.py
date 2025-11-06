@@ -48,6 +48,9 @@ from rag_models import (
 # Load environment variables
 load_dotenv()
 
+# Global configuration
+FALLBACK_STRATEGY = 'qdrant_first'  # Can be: 'qdrant_only', 'raw_only', 'qdrant_first'
+
 def setup_logging():
     """Setup logging for structured_extraction script."""
     log_dir = "data/logs"
@@ -196,16 +199,26 @@ def index_company_pages_to_qdrant(
         
         points = []
         point_id = 1
+        chunks_per_source = {}  # Track chunks per source file
+        
+        logger.info(f"\nIndexing source files for {company_slug}:")
+        logger.info(f"{'─' * 60}")
         
         for page_type, text in pages_text.items():
             if not text:
                 continue
             
+            # Log source file information
+            source_file = f"data/raw/{company_slug}/{page_type}/text.txt"
+            logger.info(f"  📄 Source: {source_file}")
+            logger.info(f"     Content size: {len(text)} characters")
+            
             # Split text into chunks
             chunks = text_splitter.split_text(text)
-            logger.debug(f"Split {page_type} into {len(chunks)} chunks")
+            chunks_per_source[page_type] = len(chunks)
+            logger.info(f"     Chunks created: {len(chunks)} (500 chars, 100 char overlap)")
             
-            for chunk in chunks:
+            for chunk_idx, chunk in enumerate(chunks, 1):
                 try:
                     # Generate embedding
                     embedding = embeddings.embed_query(chunk)
@@ -218,13 +231,17 @@ def index_company_pages_to_qdrant(
                             "text": chunk,
                             "page_type": page_type,
                             "company_slug": company_slug,
+                            "source_file": source_file,
+                            "chunk_index": chunk_idx,
                         }
                     )
                     points.append(point)
                     point_id += 1
                 except Exception as e:
-                    logger.warning(f"Failed to embed chunk from {page_type}: {e}")
+                    logger.warning(f"Failed to embed chunk {chunk_idx} from {page_type}: {e}")
                     continue
+            
+            logger.info(f"     ✓ Processed {page_type}\n")
         
         if points:
             # Upsert points to Qdrant
@@ -232,7 +249,14 @@ def index_company_pages_to_qdrant(
                 collection_name=collection_name,
                 points=points,
             )
-            logger.info(f"Indexed {len(points)} chunks to Qdrant collection {collection_name}")
+            
+            # Summary logging
+            logger.info(f"{'─' * 60}")
+            logger.info(f"✓ Indexed {len(points)} total chunks to Qdrant")
+            logger.info(f"\nBreakdown by source:")
+            for source, count in sorted(chunks_per_source.items()):
+                logger.info(f"  • {source:15} → {count:3} chunks")
+            logger.info(f"{'─' * 60}\n")
         
         return collection_name
         
@@ -260,27 +284,93 @@ def search_qdrant_for_context(
         query_embedding = embeddings.embed_query(query)
         
         # Search Qdrant
+        logger.debug(f"🔍 Semantic search in Qdrant: '{query}'")
         results = qdrant_client.search(
             collection_name=collection_name,
             query_vector=query_embedding,
             limit=limit,
         )
         
-        # Extract context from results
+        # Extract context from results with full source tracking
         context_docs = []
-        for result in results:
-            context_docs.append({
+        for idx, result in enumerate(results, 1):
+            doc = {
                 "text": result.payload.get("text", ""),
                 "page_type": result.payload.get("page_type", ""),
                 "score": result.score,
-            })
+                "source_file": result.payload.get("source_file", ""),
+                "chunk_index": result.payload.get("chunk_index", ""),
+                "point_id": result.id,
+            }
+            context_docs.append(doc)
+            logger.debug(f"  🎯 Rank {idx}: {doc['source_file']} (chunk {doc['chunk_index']}, similarity: {result.score:.3f})")
         
-        logger.debug(f"Found {len(context_docs)} relevant documents for query")
+        logger.debug(f"✅ Qdrant search returned {len(context_docs)} documents")
         return context_docs
         
     except Exception as e:
-        logger.warning(f"Error searching Qdrant: {e}")
+        logger.warning(f"❌ Error searching Qdrant: {e}")
         return []
+
+
+def log_extraction_sources(
+    extraction_type: str,
+    company_id: str,
+    search_queries: List[str],
+    context_docs: List[Dict[str, Any]]
+) -> None:
+    """Log detailed source information for validation."""
+    logger = logging.getLogger('structured_extraction')
+    
+    if not context_docs:
+        logger.warning(f"  ⚠️  No Qdrant sources found for {extraction_type}")
+        return
+    
+    logger.info(f"\n  📊 {extraction_type.upper()} - Source Validation:")
+    logger.info(f"  {'─' * 70}")
+    
+    # Group by source file
+    sources_by_file = {}
+    for doc in context_docs:
+        source_file = doc.get('source_file', 'unknown')
+        if source_file not in sources_by_file:
+            sources_by_file[source_file] = []
+        sources_by_file[source_file].append(doc)
+    
+    # Log each source
+    for source_file in sorted(sources_by_file.keys()):
+        docs = sources_by_file[source_file]
+        logger.info(f"  Source: {source_file}")
+        logger.info(f"    Chunks used: {len(docs)}")
+        for doc in docs:
+            logger.info(f"      • Point ID {doc['point_id']}: chunk {doc['chunk_index']} (similarity: {doc['score']:.3f})")
+        logger.info(f"    Content preview: {docs[0]['text'][:100]}...")
+    
+    logger.info(f"  {'─' * 70}\n")
+
+
+def should_use_fallback(context_docs: List[Dict[str, Any]], extraction_type: str) -> bool:
+    """Determine if fallback should be used based on strategy and context availability."""
+    logger = logging.getLogger('structured_extraction')
+    
+    global FALLBACK_STRATEGY
+    
+    if context_docs:
+        # We have context, no fallback needed
+        return False
+    
+    # No context available, check strategy
+    if FALLBACK_STRATEGY == 'qdrant_only':
+        logger.error(f"❌ Strategy 'qdrant_only': No Qdrant results for {extraction_type}, FAILING")
+        return False
+    elif FALLBACK_STRATEGY == 'raw_only':
+        logger.warning(f"⚠️  Strategy 'raw_only': Ignoring Qdrant, using raw text for {extraction_type}")
+        return True
+    elif FALLBACK_STRATEGY == 'qdrant_first':
+        logger.warning(f"⚠️  Strategy 'qdrant_first': Fallback to raw text for {extraction_type}")
+        return True
+    
+    return False
 
 
 def load_company_page_text(company_slug: str, page_type: str) -> Optional[str]:
@@ -382,22 +472,36 @@ def extract_company_info(
         f"{company_name} funding raised valuation investment round",
     ]
     
-    # Search Qdrant for relevant context
+    # Determine search strategy
     context_docs = []
-    for query in search_queries:
-        docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
-        context_docs.extend(docs)
-    
-    # Build context from search results
     context_text = ""
-    if context_docs:
-        context_text = "\n\n".join([
-            f"[{doc['page_type']}] {doc['text'][:300]}"
-            for doc in context_docs[:10]  # Limit to top 10 results
-        ])
-    else:
-        # Fallback to raw text if Qdrant unavailable
+    
+    global FALLBACK_STRATEGY
+    
+    if FALLBACK_STRATEGY == 'raw_only':
+        logger.info(f"⚙️  Strategy 'raw_only' selected - skipping Qdrant search for company info")
         context_text = json.dumps(pages_text, indent=2)[:3000]
+    else:
+        # Try Qdrant search
+        for query in search_queries:
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
+            context_docs.extend(docs)
+        
+        if context_docs:
+            logger.info("📊 Using Qdrant context for company extraction")
+            context_text = "\n\n".join([
+                f"[{doc['page_type']}] {doc['text'][:300]}"
+                for doc in context_docs[:10]  # Limit to top 10 results
+            ])
+        elif FALLBACK_STRATEGY == 'qdrant_only':
+            logger.error("❌ Strategy 'qdrant_only': No Qdrant results for company info - ABORTING")
+            raise ValueError("No Qdrant context available and 'qdrant_only' strategy selected")
+        else:  # qdrant_first
+            logger.warning("⚠️  Fallback: Qdrant returned no results, using raw text instead")
+            context_text = json.dumps(pages_text, indent=2)[:3000]
+    
+    # Log extraction sources for validation
+    log_extraction_sources("Company Info", company_name, search_queries, context_docs)
     
     prompt = f"""Extract company information for "{company_name}" from the following web content and context:
 
@@ -456,21 +560,33 @@ def extract_events(
         f"milestones achievements awards recognition",
     ]
     
-    # Search Qdrant for relevant context
+    # Determine search strategy
     context_docs = []
-    for query in search_queries:
-        docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=2)
-        context_docs.extend(docs)
-    
-    # Build context from search results
     context_text = ""
-    if context_docs:
-        context_text = "\n\n".join([
-            f"[{doc['page_type']}] {doc['text'][:250]}"
-            for doc in context_docs[:15]  # Limit to top 15 results
-        ])
-    else:
+    
+    global FALLBACK_STRATEGY
+    
+    if FALLBACK_STRATEGY == 'raw_only':
+        logger.info(f"⚙️  Strategy 'raw_only' selected - skipping Qdrant search for events")
         context_text = json.dumps(pages_text, indent=2)[:3000]
+    else:
+        # Try Qdrant search
+        for query in search_queries:
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=2)
+            context_docs.extend(docs)
+        
+        if context_docs:
+            logger.info("📊 Using Qdrant context for events extraction")
+            context_text = "\n\n".join([
+                f"[{doc['page_type']}] {doc['text'][:250]}"
+                for doc in context_docs[:15]  # Limit to top 15 results
+            ])
+        elif FALLBACK_STRATEGY == 'qdrant_only':
+            logger.error("❌ Strategy 'qdrant_only': No Qdrant results for events - ABORTING")
+            raise ValueError("No Qdrant context available and 'qdrant_only' strategy selected")
+        else:  # qdrant_first
+            logger.warning("⚠️  Fallback: Qdrant returned no results for events, using raw text instead")
+            context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract all significant events for company ID "{company_id}" from the web content:
 
@@ -539,21 +655,33 @@ def extract_snapshots(
         f"job openings hiring positions vacancies",
     ]
     
-    # Search Qdrant for relevant context
+    # Determine search strategy
     context_docs = []
-    for query in search_queries:
-        docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
-        context_docs.extend(docs)
-    
-    # Build context from search results
     context_text = ""
-    if context_docs:
-        context_text = "\n\n".join([
-            f"[{doc['page_type']}] {doc['text'][:250]}"
-            for doc in context_docs[:15]
-        ])
-    else:
+    
+    global FALLBACK_STRATEGY
+    
+    if FALLBACK_STRATEGY == 'raw_only':
+        logger.info(f"⚙️  Strategy 'raw_only' selected - skipping Qdrant search for snapshots")
         context_text = json.dumps(pages_text, indent=2)[:3000]
+    else:
+        # Try Qdrant search
+        for query in search_queries:
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
+            context_docs.extend(docs)
+        
+        if context_docs:
+            logger.info("📊 Using Qdrant context for snapshots extraction")
+            context_text = "\n\n".join([
+                f"[{doc['page_type']}] {doc['text'][:250]}"
+                for doc in context_docs[:15]
+            ])
+        elif FALLBACK_STRATEGY == 'qdrant_only':
+            logger.error("❌ Strategy 'qdrant_only': No Qdrant results for snapshots - ABORTING")
+            raise ValueError("No Qdrant context available and 'qdrant_only' strategy selected")
+        else:  # qdrant_first
+            logger.warning("⚠️  Fallback: Qdrant returned no results for snapshots, using raw text instead")
+            context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract business snapshot information for company ID "{company_id}" from web content:
 
@@ -615,21 +743,33 @@ def extract_products(
         f"customers clients reference accounts",
     ]
     
-    # Search Qdrant for relevant context
+    # Determine search strategy
     context_docs = []
-    for query in search_queries:
-        docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
-        context_docs.extend(docs)
-    
-    # Build context
     context_text = ""
-    if context_docs:
-        context_text = "\n\n".join([
-            f"[{doc['page_type']}] {doc['text'][:250]}"
-            for doc in context_docs[:12]
-        ])
-    else:
+    
+    global FALLBACK_STRATEGY
+    
+    if FALLBACK_STRATEGY == 'raw_only':
+        logger.info(f"⚙️  Strategy 'raw_only' selected - skipping Qdrant search for products")
         context_text = json.dumps(pages_text, indent=2)[:3000]
+    else:
+        # Try Qdrant search
+        for query in search_queries:
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
+            context_docs.extend(docs)
+        
+        if context_docs:
+            logger.info("📊 Using Qdrant context for products extraction")
+            context_text = "\n\n".join([
+                f"[{doc['page_type']}] {doc['text'][:250]}"
+                for doc in context_docs[:12]
+            ])
+        elif FALLBACK_STRATEGY == 'qdrant_only':
+            logger.error("❌ Strategy 'qdrant_only': No Qdrant results for products - ABORTING")
+            raise ValueError("No Qdrant context available and 'qdrant_only' strategy selected")
+        else:  # qdrant_first
+            logger.warning("⚠️  Fallback: Qdrant returned no results for products, using raw text instead")
+            context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract product information for company ID "{company_id}" from web content:
 
@@ -691,21 +831,33 @@ def extract_leadership(
         f"previous company employment history",
     ]
     
-    # Search Qdrant for relevant context
+    # Determine search strategy
     context_docs = []
-    for query in search_queries:
-        docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
-        context_docs.extend(docs)
-    
-    # Build context
     context_text = ""
-    if context_docs:
-        context_text = "\n\n".join([
-            f"[{doc['page_type']}] {doc['text'][:250]}"
-            for doc in context_docs[:15]
-        ])
-    else:
+    
+    global FALLBACK_STRATEGY
+    
+    if FALLBACK_STRATEGY == 'raw_only':
+        logger.info(f"⚙️  Strategy 'raw_only' selected - skipping Qdrant search for leadership")
         context_text = json.dumps(pages_text, indent=2)[:3000]
+    else:
+        # Try Qdrant search
+        for query in search_queries:
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
+            context_docs.extend(docs)
+        
+        if context_docs:
+            logger.info("📊 Using Qdrant context for leadership extraction")
+            context_text = "\n\n".join([
+                f"[{doc['page_type']}] {doc['text'][:250]}"
+                for doc in context_docs[:15]
+            ])
+        elif FALLBACK_STRATEGY == 'qdrant_only':
+            logger.error("❌ Strategy 'qdrant_only': No Qdrant results for leadership - ABORTING")
+            raise ValueError("No Qdrant context available and 'qdrant_only' strategy selected")
+        else:  # qdrant_first
+            logger.warning("⚠️  Fallback: Qdrant returned no results for leadership, using raw text instead")
+            context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract leadership and key team members for company ID "{company_id}" from web content:
 
@@ -768,21 +920,33 @@ def extract_visibility(
         f"social media followers engagement",
     ]
     
-    # Search Qdrant for relevant context
+    # Determine search strategy
     context_docs = []
-    for query in search_queries:
-        docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=2)
-        context_docs.extend(docs)
-    
-    # Build context
     context_text = ""
-    if context_docs:
-        context_text = "\n\n".join([
-            f"[{doc['page_type']}] {doc['text'][:250]}"
-            for doc in context_docs[:10]
-        ])
-    else:
+    
+    global FALLBACK_STRATEGY
+    
+    if FALLBACK_STRATEGY == 'raw_only':
+        logger.info(f"⚙️  Strategy 'raw_only' selected - skipping Qdrant search for visibility")
         context_text = json.dumps(pages_text, indent=2)[:3000]
+    else:
+        # Try Qdrant search
+        for query in search_queries:
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=2)
+            context_docs.extend(docs)
+        
+        if context_docs:
+            logger.info("📊 Using Qdrant context for visibility extraction")
+            context_text = "\n\n".join([
+                f"[{doc['page_type']}] {doc['text'][:250]}"
+                for doc in context_docs[:10]
+            ])
+        elif FALLBACK_STRATEGY == 'qdrant_only':
+            logger.error("❌ Strategy 'qdrant_only': No Qdrant results for visibility - ABORTING")
+            raise ValueError("No Qdrant context available and 'qdrant_only' strategy selected")
+        else:  # qdrant_first
+            logger.warning("⚠️  Fallback: Qdrant returned no results for visibility, using raw text instead")
+            context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract visibility and public metrics for company ID "{company_id}" from web content:
 
@@ -939,15 +1103,26 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             notes=f"Extracted with semantic search via Qdrant on {datetime.now().isoformat()}"
         )
         
-        # Save results
-        output_dir = Path("data/structured")
-        output_dir.mkdir(parents=True, exist_ok=True)
+        # Save results to data/structured/
+        structured_dir = Path("data/structured")
+        structured_dir.mkdir(parents=True, exist_ok=True)
         
-        output_file = output_dir / f"{company_id}.json"
-        with open(output_file, 'w', encoding='utf-8') as f:
+        structured_file = structured_dir / f"{company_id}.json"
+        with open(structured_file, 'w', encoding='utf-8') as f:
             json.dump(payload.model_dump(mode='json'), f, indent=2, ensure_ascii=False, default=str)
         
-        logger.info(f"\n✓ Saved structured data to: {output_file}")
+        logger.info(f"\n✓ Saved structured data to: {structured_file}")
+        
+        # Also save to data/payloads/ for payload access
+        payloads_dir = Path("data/payloads")
+        payloads_dir.mkdir(parents=True, exist_ok=True)
+        
+        payload_file = payloads_dir / f"{company_id}.json"
+        with open(payload_file, 'w', encoding='utf-8') as f:
+            json.dump(payload.model_dump(mode='json'), f, indent=2, ensure_ascii=False, default=str)
+        
+        logger.info(f"✓ Saved payload data to: {payload_file}")
+        
         logger.info(f"  Company: {company.legal_name}")
         logger.info(f"  Events: {len(events)}")
         logger.info(f"  Snapshots: {len(snapshots)}")
@@ -993,8 +1168,20 @@ def main():
     parser = argparse.ArgumentParser(description="Extract structured data from web scrapes")
     parser.add_argument('--company-slug', type=str, help='Process specific company by slug')
     parser.add_argument('--verbose', action='store_true', help='Enable verbose logging')
+    parser.add_argument(
+        '--fallback-strategy',
+        type=str,
+        choices=['qdrant_only', 'raw_only', 'qdrant_first'],
+        default='qdrant_first',
+        help='Strategy for handling Qdrant failures: qdrant_only (fail if no Qdrant), raw_only (always use raw text), qdrant_first (prefer Qdrant, fallback to raw)'
+    )
     
     args = parser.parse_args()
+    
+    # Store fallback strategy globally for use in extraction functions
+    global FALLBACK_STRATEGY
+    FALLBACK_STRATEGY = args.fallback_strategy
+    logger.info(f"Fallback strategy: {args.fallback_strategy}")
     
     try:
         # Discover companies to process

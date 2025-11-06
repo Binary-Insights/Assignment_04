@@ -26,19 +26,22 @@ from __future__ import annotations
 
 import os
 import sys
+import json
 import logging
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 # Load environment variables from .env file
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    # Load from project root .env file
+    env_path = Path(__file__).resolve().parents[2] / ".env"
+    load_dotenv(env_path)
 except ImportError:
     pass
 
@@ -46,6 +49,17 @@ try:
     from qdrant_client import QdrantClient
 except ImportError:
     QdrantClient = None
+
+# Import RAG extraction utilities
+try:
+    import sys
+    from pathlib import Path as PathlibPath
+    sys.path.insert(0, str(PathlibPath(__file__).resolve().parent.parent / "rag"))
+    from rag_pipeline import generate_dashboard_with_retrieval
+except ImportError as e:
+    logger = logging.getLogger(__name__)
+    logger.warning(f"Could not import rag_pipeline: {e}")
+    generate_dashboard_with_retrieval = None
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -64,6 +78,7 @@ log_formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message
 # Console handler
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(log_formatter)
+console_handler.flush()  # Ensure immediate flush
 
 # File handler
 log_dir = Path("data/logs")
@@ -87,8 +102,15 @@ EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", None)  # None = use defaults
 API_HOST = os.environ.get("API_HOST", "0.0.0.0")
 API_PORT = int(os.environ.get("API_PORT", "8000"))
 
+# Data directory - go up 2 levels from scripts/backend/ to reach data/
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"
+
 logger.info(f"QDRANT_URL: {QDRANT_URL}")
 logger.info(f"EMBEDDING_PROVIDER: {EMBEDDING_PROVIDER or 'auto-detect'}")
+logger.info(f"DATA_DIR: {DATA_DIR}")
+logger.info(f"Seed file path: {DATA_DIR / 'forbes_ai50_seed.json'}")
+logger.info(f"Data dir exists: {DATA_DIR.exists()}")
+logger.info(f"Seed file exists: {(DATA_DIR / 'forbes_ai50_seed.json').exists()}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -195,6 +217,46 @@ class HealthResponse(BaseModel):
     status: str
     qdrant_url: str
     qdrant_connected: bool
+
+
+class StructuredDataResponse(BaseModel):
+    """Response model for structured company data."""
+    
+    company_id: str
+    data: Dict[str, Any] = Field(default_factory=dict)
+    status: str = "success"
+    message: Optional[str] = None
+
+
+class CompanyInfo(BaseModel):
+    """Individual company info from seed data."""
+    
+    company_name: str
+    website: str
+    linkedin: str
+    hq_city: str
+    hq_country: str
+    category: Optional[str] = None
+    url_verified: bool
+    source: str
+
+
+class CompaniesListResponse(BaseModel):
+    """Response model for companies list."""
+    
+    total: int
+    companies: List[CompanyInfo]
+
+
+class DashboardRAGResponse(BaseModel):
+    """Response model for RAG dashboard generation."""
+    
+    company_name: str
+    company_slug: str
+    markdown: str = Field(description="Dashboard markdown content")
+    context_results: List[ChunkResult] = Field(default_factory=list, description="Top-k context chunks retrieved from Qdrant")
+    status: str = "success"
+    message: Optional[str] = None
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -429,12 +491,286 @@ async def root():
         "endpoints": {
             "health": "/health",
             "search": "/rag/search",
+            "companies": "/companies",
+            "dashboard": "/dashboard/structured",
             "docs": "/docs",
             "redoc": "/redoc",
         },
         "provider": provider_name,
         "model": model_name,
     }
+
+
+@app.get("/companies", response_model=CompaniesListResponse)
+async def list_companies() -> CompaniesListResponse:
+    """
+    Get the list of Forbes AI50 seed companies.
+    
+    Returns:
+        CompaniesListResponse with all companies from the seed data
+    
+    Example:
+        GET /companies
+        
+        Response:
+        {
+            "total": 50,
+            "companies": [
+                {
+                    "company_name": "World Labs",
+                    "website": "https://worldlabs.ai/",
+                    "linkedin": "https://www.linkedin.com/company/world-labs",
+                    "hq_city": "San Francisco",
+                    "hq_country": "United States",
+                    "category": null,
+                    "url_verified": true,
+                    "source": "auto_search"
+                },
+                ...
+            ]
+        }
+    """
+    logger.info("Companies list request")
+    
+    seed_path = DATA_DIR / "forbes_ai50_seed.json"
+    
+    if not seed_path.exists():
+        logger.warning(f"Companies seed file not found: {seed_path}")
+        raise HTTPException(
+            status_code=404,
+            detail=f"Companies seed file not found: {seed_path}"
+        )
+    
+    try:
+        seed_data = json.loads(seed_path.read_text())
+        
+        # Validate and parse companies
+        companies = [CompanyInfo(**company) for company in seed_data]
+        
+        logger.info(f"Successfully loaded {len(companies)} companies")
+        
+        return CompaniesListResponse(
+            total=len(companies),
+            companies=companies
+        )
+        
+    except json.JSONDecodeError as e:
+        logger.error(f"Invalid JSON in {seed_path}: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Invalid JSON format in seed file: {str(e)}"
+        )
+    except ValueError as e:
+        logger.error(f"Invalid company data format: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Invalid company data format: {str(e)}"
+        )
+    except Exception as e:
+        logger.error(f"Error loading companies: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error loading companies: {str(e)}"
+        )
+
+
+@app.get("/dashboard/structured", response_model=StructuredDataResponse)
+async def get_structured_data(
+    company_slug: str = Query(
+        ...,
+        min_length=1,
+        description="Company slug (e.g., 'world-labs', 'anthropic')"
+    )
+) -> StructuredDataResponse:
+    """
+    Fetch structured extraction data for a company.
+    
+    This endpoint loads the JSON file containing all extracted structured data
+    for a company including company info, events, products, leadership, etc.
+    
+    Args:
+        company_slug: Company identifier (e.g., 'world-labs')
+    
+    Returns:
+        StructuredDataResponse with the company's structured data
+    
+    Raises:
+        HTTPException: If file not found or invalid format
+    
+    Example:
+        GET /dashboard/structured?company_slug=world-labs
+        
+        Response:
+        {
+            "company_id": "world-labs",
+            "data": {
+                "company_record": { ... },
+                "events": [ ... ],
+                "snapshots": [ ... ],
+                "products": [ ... ],
+                "leadership": [ ... ],
+                "visibility": [ ... ],
+                "notes": "..."
+            },
+            "status": "success"
+        }
+    """
+    logger.info(f"Dashboard request for company: {company_slug}")
+    
+    # Build the file path
+    # Convert slug to standard format (e.g., 'world-labs' or 'world_labs' to 'world-labs.json')
+    normalized_slug = company_slug.replace('_', '-').lower()
+    structured_file = Path("data/structured") / f"{normalized_slug}.json"
+    
+    logger.debug(f"Looking for file: {structured_file}")
+    
+    # Check if file exists
+    if not structured_file.exists():
+        logger.warning(f"Structured file not found: {structured_file}")
+        raise HTTPException(
+            status_code=404,
+            detail=f"No structured data found for company '{company_slug}'. "
+                   f"Tried: {structured_file}"
+        )
+    
+    try:
+        # Load the JSON file
+        with open(structured_file, 'r', encoding='utf-8') as f:
+            structured_data = json.load(f)
+        
+        logger.info(f"Successfully loaded structured data for {normalized_slug}")
+        
+        return StructuredDataResponse(
+            company_id=normalized_slug,
+            data=structured_data,
+            status="success",
+            message=f"Successfully loaded data from {structured_file.name}"
+        )
+        
+    except json.JSONDecodeError as e:
+        logger.error(f"Invalid JSON in {structured_file}: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Invalid JSON format in structured file: {str(e)}"
+        )
+    except Exception as e:
+        logger.error(f"Error loading structured data: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error loading structured data: {str(e)}"
+        )
+
+
+@app.post("/dashboard/rag", response_model=DashboardRAGResponse)
+async def generate_rag_dashboard(
+    company_name: str = Query(
+        ...,
+        min_length=1,
+        description="Company name (e.g., 'World Labs', 'Anthropic')"
+    )
+) -> DashboardRAGResponse:
+    """
+    Generate investor-facing dashboard using RAG retrieval and LLM generation.
+    
+    This endpoint:
+    1. Converts company name to slug format
+    2. Retrieves top-k context from Qdrant collection
+    3. Calls LLM with dashboard system prompt
+    4. Returns formatted markdown with 8 required sections
+    
+    Args:
+        company_name: Display name of the company (e.g., 'World Labs')
+    
+    Returns:
+        DashboardRAGResponse with markdown dashboard
+    
+    Raises:
+        HTTPException: If collection not found or generation fails
+    
+    Example:
+        POST /dashboard/rag?company_name=World%20Labs
+        
+        Response:
+        {
+            "company_name": "World Labs",
+            "company_slug": "world-labs",
+            "markdown": "# World Labs - Investor Diligence Dashboard\n\n## Company Overview\n...",
+            "status": "success"
+        }
+    """
+    logger.info(f"Dashboard RAG request for company: {company_name}")
+    
+    if generate_dashboard_with_retrieval is None:
+        logger.error("rag_pipeline module not available")
+        raise HTTPException(
+            status_code=500,
+            detail="RAG extraction module not available"
+        )
+    
+    # Convert company name to slug format
+    company_slug = company_name.lower().replace(" ", "-").replace("_", "-")
+    
+    try:
+        # Initialize Qdrant client
+        if QdrantClient is None:
+            raise RuntimeError("qdrant-client not installed")
+        
+        client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY or None, check_compatibility=False)
+        
+        # Initialize LLM client
+        llm_client = None
+        try:
+            from openai import OpenAI
+            api_key = os.environ.get("OPENAI_API_KEY")
+            if api_key:
+                llm_client = OpenAI(api_key=api_key)
+        except Exception as e:
+            logger.warning(f"Could not initialize LLM client: {e}")
+        
+        logger.info(f"Generating dashboard for {company_name} (slug: {company_slug})")
+        
+        # Generate dashboard and retrieve context
+        dashboard_markdown, search_results = generate_dashboard_with_retrieval(
+            company_name=company_name,
+            company_slug=company_slug,
+            qdrant_client=client,
+            llm_client=llm_client,
+            llm_model="gpt-4o",
+            top_k=10
+        )
+        
+        logger.info(f"DEBUG: Received {len(search_results) if search_results else 0} search results")
+        logger.info(f"DEBUG: Search results type: {type(search_results)}")
+        logger.info(f"DEBUG: Search results: {search_results}")
+        
+        # Convert search results to ChunkResult format
+        context_results = []
+        for result in search_results:
+            chunk_result = ChunkResult(
+                id=context_results.__len__(),
+                similarity_score=result.get("similarity_score", 0.0),
+                text=result.get("text", ""),
+                metadata=result.get("metadata", {})
+            )
+            context_results.append(chunk_result)
+        
+        logger.info(f"Successfully generated dashboard for {company_name} with {len(context_results)} context results")
+        
+        return DashboardRAGResponse(
+            company_name=company_name,
+            company_slug=company_slug,
+            markdown=dashboard_markdown,
+            context_results=context_results,
+            status="success",
+            message=f"Dashboard generated successfully for {company_name}"
+        )
+        
+    except Exception as e:
+        logger.error(f"Dashboard generation failed: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Dashboard generation failed: {str(e)}"
+        )
 
 
 # ─────────────────────────────────────────────────────────────────────────────

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, HttpUrl
-from typing import List, Optional
+from typing import List, Optional, Literal
 from datetime import date
 
 class Provenance(BaseModel):
