@@ -65,7 +65,8 @@ def generate_dashboard_markdown(
     company_name: str,
     search_results: List[Dict[str, Any]],
     llm_client: Any = None,
-    llm_model: str = "gpt-4o"
+    llm_model: str = "gpt-4o",
+    temperature: float = 0.1
 ) -> str:
     """
     Generate investor-facing dashboard markdown using RAG context and LLM.
@@ -75,6 +76,7 @@ def generate_dashboard_markdown(
         search_results: List of search results from Qdrant
         llm_client: OpenAI client (auto-initialized if None)
         llm_model: LLM model to use
+        temperature: Temperature for LLM generation (0.0-2.0, default 0.1 for deterministic output)
     
     Returns:
         Markdown string with dashboard content
@@ -126,11 +128,12 @@ Use markdown formatting with ## for section headers.
 """
     
     try:
-        logger.info(f"Calling LLM to generate dashboard for {company_name}")
+        logger.info(f"Calling LLM to generate dashboard for {company_name} (temperature={temperature})")
         
         response = llm_client.chat.completions.create(
             model=llm_model,
             max_tokens=4096,
+            temperature=temperature,
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_message}
@@ -196,7 +199,8 @@ def generate_dashboard_with_retrieval(
     qdrant_client: Any,
     llm_client: Any = None,
     llm_model: str = "gpt-4o",
-    top_k: int = 10
+    top_k: int = 10,
+    temperature: float = 0.1
 ) -> tuple[str, List[Dict[str, Any]]]:
     """
     Complete pipeline: retrieve context from Qdrant and generate dashboard.
@@ -208,6 +212,7 @@ def generate_dashboard_with_retrieval(
         llm_client: OpenAI client (optional)
         llm_model: LLM model to use
         top_k: Number of top results to retrieve
+        temperature: LLM temperature (0.0-2.0, default 0.1 for deterministic output)
     
     Returns:
         Tuple of (dashboard_markdown, search_results_list)
@@ -280,7 +285,8 @@ def generate_dashboard_with_retrieval(
             company_name=company_name,
             search_results=search_results,
             llm_client=llm_client,
-            llm_model=llm_model
+            llm_model=llm_model,
+            temperature=temperature
         )
         
         return dashboard, search_results

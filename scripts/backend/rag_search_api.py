@@ -61,6 +61,17 @@ except ImportError as e:
     logger.warning(f"Could not import rag_pipeline: {e}")
     generate_dashboard_with_retrieval = None
 
+# Import Structured pipeline utilities
+try:
+    import sys
+    from pathlib import Path as PathlibPath
+    sys.path.insert(0, str(PathlibPath(__file__).resolve().parent.parent / "structured"))
+    from structured_pipeline import generate_dashboard_from_payload
+except ImportError as e:
+    logger = logging.getLogger(__name__)
+    logger.warning(f"Could not import structured_pipeline: {e}")
+    generate_dashboard_from_payload = None
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 #  Configuration & Logging
@@ -255,6 +266,16 @@ class DashboardRAGResponse(BaseModel):
     company_slug: str
     markdown: str = Field(description="Dashboard markdown content")
     context_results: List[ChunkResult] = Field(default_factory=list, description="Top-k context chunks retrieved from Qdrant")
+    status: str = "success"
+    message: Optional[str] = None
+
+
+class DashboardStructuredResponse(BaseModel):
+    """Response model for structured dashboard generation."""
+    
+    company_name: str
+    company_slug: str
+    markdown: str = Field(description="Dashboard markdown content")
     status: str = "success"
     message: Optional[str] = None
 
@@ -574,90 +595,101 @@ async def list_companies() -> CompaniesListResponse:
         )
 
 
-@app.get("/dashboard/structured", response_model=StructuredDataResponse)
-async def get_structured_data(
-    company_slug: str = Query(
+
+
+@app.post("/dashboard/structured", response_model=DashboardStructuredResponse)
+async def generate_structured_dashboard(
+    company_name: str = Query(
         ...,
         min_length=1,
-        description="Company slug (e.g., 'world-labs', 'anthropic')"
+        description="Company name (e.g., 'World Labs', 'Anthropic')"
     )
-) -> StructuredDataResponse:
+) -> DashboardStructuredResponse:
     """
-    Fetch structured extraction data for a company.
+    Generate investor-facing dashboard from structured payload JSON.
     
-    This endpoint loads the JSON file containing all extracted structured data
-    for a company including company info, events, products, leadership, etc.
+    This endpoint:
+    1. Converts company name to slug format
+    2. Loads structured payload from data/payloads/<slug>.json
+    3. Calls LLM with dashboard system prompt
+    4. Returns formatted markdown dashboard
     
     Args:
-        company_slug: Company identifier (e.g., 'world-labs')
+        company_name: Display name of the company (e.g., 'World Labs')
     
     Returns:
-        StructuredDataResponse with the company's structured data
+        DashboardStructuredResponse with markdown dashboard
     
     Raises:
-        HTTPException: If file not found or invalid format
+        HTTPException: If payload not found or generation fails
     
     Example:
-        GET /dashboard/structured?company_slug=world-labs
+        POST /dashboard/structured?company_name=World%20Labs
         
         Response:
         {
-            "company_id": "world-labs",
-            "data": {
-                "company_record": { ... },
-                "events": [ ... ],
-                "snapshots": [ ... ],
-                "products": [ ... ],
-                "leadership": [ ... ],
-                "visibility": [ ... ],
-                "notes": "..."
-            },
+            "company_name": "World Labs",
+            "company_slug": "world-labs",
+            "markdown": "# World Labs - Investor Diligence Dashboard\n\n## Company Overview\n...",
             "status": "success"
         }
     """
-    logger.info(f"Dashboard request for company: {company_slug}")
+    logger.info(f"Structured dashboard request for company: {company_name}")
     
-    # Build the file path
-    # Convert slug to standard format (e.g., 'world-labs' or 'world_labs' to 'world-labs.json')
-    normalized_slug = company_slug.replace('_', '-').lower()
-    structured_file = Path("data/structured") / f"{normalized_slug}.json"
-    
-    logger.debug(f"Looking for file: {structured_file}")
-    
-    # Check if file exists
-    if not structured_file.exists():
-        logger.warning(f"Structured file not found: {structured_file}")
+    if generate_dashboard_from_payload is None:
+        logger.error("structured_pipeline module not available")
         raise HTTPException(
-            status_code=404,
-            detail=f"No structured data found for company '{company_slug}'. "
-                   f"Tried: {structured_file}"
+            status_code=500,
+            detail="Structured extraction module not available"
         )
+    
+    # Convert company name to slug format
+    company_slug = company_name.lower().replace(" ", "-").replace("_", "-")
     
     try:
-        # Load the JSON file
-        with open(structured_file, 'r', encoding='utf-8') as f:
-            structured_data = json.load(f)
+        # Initialize LLM client
+        llm_client = None
+        try:
+            from openai import OpenAI
+            api_key = os.environ.get("OPENAI_API_KEY")
+            if api_key:
+                llm_client = OpenAI(api_key=api_key)
+        except Exception as e:
+            logger.warning(f"Could not initialize LLM client: {e}")
         
-        logger.info(f"Successfully loaded structured data for {normalized_slug}")
+        logger.info(f"Generating structured dashboard for {company_name} (slug: {company_slug})")
         
-        return StructuredDataResponse(
-            company_id=normalized_slug,
-            data=structured_data,
-            status="success",
-            message=f"Successfully loaded data from {structured_file.name}"
+        # Generate dashboard from payload with deterministic temperature
+        dashboard_markdown = generate_dashboard_from_payload(
+            company_name=company_name,
+            company_slug=company_slug,
+            llm_client=llm_client,
+            llm_model="gpt-4o",
+            temperature=0.1  # Low temperature for deterministic output
         )
         
-    except json.JSONDecodeError as e:
-        logger.error(f"Invalid JSON in {structured_file}: {e}")
+        logger.info(f"Successfully generated structured dashboard for {company_name}")
+        
+        return DashboardStructuredResponse(
+            company_name=company_name,
+            company_slug=company_slug,
+            markdown=dashboard_markdown,
+            status="success",
+            message=f"Structured dashboard generated successfully for {company_name}"
+        )
+        
+    except FileNotFoundError as e:
+        logger.warning(f"Payload file not found for {company_name}: {e}")
         raise HTTPException(
-            status_code=500,
-            detail=f"Invalid JSON format in structured file: {str(e)}"
+            status_code=404,
+            detail=f"No structured payload found for company '{company_name}'. "
+                   f"Please run the structured extraction pipeline first."
         )
     except Exception as e:
-        logger.error(f"Error loading structured data: {e}", exc_info=True)
+        logger.error(f"Structured dashboard generation failed: {e}", exc_info=True)
         raise HTTPException(
             status_code=500,
-            detail=f"Error loading structured data: {str(e)}"
+            detail=f"Dashboard generation failed: {str(e)}"
         )
 
 
@@ -736,12 +768,9 @@ async def generate_rag_dashboard(
             qdrant_client=client,
             llm_client=llm_client,
             llm_model="gpt-4o",
-            top_k=10
+            top_k=10,
+            temperature=0.1  # Low temperature for deterministic output
         )
-        
-        logger.info(f"DEBUG: Received {len(search_results) if search_results else 0} search results")
-        logger.info(f"DEBUG: Search results type: {type(search_results)}")
-        logger.info(f"DEBUG: Search results: {search_results}")
         
         # Convert search results to ChunkResult format
         context_results = []
