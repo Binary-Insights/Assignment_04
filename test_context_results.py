@@ -18,8 +18,8 @@ except ImportError:
     print("dotenv not available, skipping .env loading")
 
 # Add scripts to path
-sys.path.insert(0, str(Path(__file__).resolve().parent / "scripts" / "rag"))
-sys.path.insert(0, str(Path(__file__).resolve().parent / "scripts" / "backend"))
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src" / "rag"))
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src" / "backend"))
 
 def test_rag_extraction():
     """Test the RAG extraction module directly"""

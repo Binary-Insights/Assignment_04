@@ -37,20 +37,20 @@ The script extracts data into the following Pydantic models:
 
 Process all companies:
 ```bash
-python scripts/rag/structured_extraction.py
+python src/rag/structured_extraction.py
 ```
 
 ### Process Specific Company
 
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### Verbose Mode
 
 Enable detailed logging:
 ```bash
-python scripts/rag/structured_extraction.py --verbose
+python src/rag/structured_extraction.py --verbose
 ```
 
 ## Architecture
@@ -289,7 +289,7 @@ export OPENAI_API_KEY="sk-..."
 ### "Company directory not found"
 Ensure web scraping has completed and data exists:
 ```bash
-python scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 ```
 
 ### "Validation error extracting company"

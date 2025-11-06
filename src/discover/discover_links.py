@@ -63,11 +63,24 @@ import logging
 import os
 import argparse
 import time
+from pathlib import Path
 from urllib.parse import urljoin, urlparse, parse_qs, urlunparse
+
+# Load environment variables from .env file at startup
+try:
+    from dotenv import load_dotenv
+    env_path = Path(__file__).resolve().parents[2] / ".env"
+    if env_path.exists():
+        load_dotenv(env_path)
+except ImportError:
+    pass
 
 import requests
 import urllib3
 from bs4 import BeautifulSoup
+
+# Import LLM page finder class
+from llm_page_finder import llm_page_finder
 
 # Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -448,8 +461,8 @@ def discover_page_with_llm_fallback(homepage_url, page_type):
     """
     Fallback discovery using LLM page finder when traditional methods fail.
     
-    Calls the llm_page_finder.py script and converts results to the same format
-    as discover_page_links for consistency.
+    Uses the llm_page_finder class to discover pages and returns results in
+    the same format as discover_page_links for consistency.
     
     Args:
         homepage_url: Company website URL
@@ -463,101 +476,61 @@ def discover_page_with_llm_fallback(homepage_url, page_type):
     logger = logging.getLogger('discover_links')
     
     try:
-        import subprocess
-        import json
-        
         logger.info(f"[LLM FALLBACK] Attempting LLM-based discovery for {page_type} page")
         
-        # Call llm_page_finder.py
-        cmd = [
-            "python",
-            "src/discover/llm_page_finder.py",
-            "--website", homepage_url,
-            "--page-type", page_type
-        ]
-        
-        logger.debug(f"[LLM FALLBACK] Running command: {' '.join(cmd)}")
-        
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=60  # 60 second timeout for LLM
+        # Create LLM page finder instance with optimized settings
+        finder = llm_page_finder(
+            website_url=homepage_url,
+            page_type=page_type,
+            use_structured_output=False,  # Use faster manual parsing
+            output=None,  # Don't save to file
+            log_level="WARNING"  # Reduce noise in logs
         )
         
-        if result.returncode != 0:
-            logger.warning(f"[LLM FALLBACK] LLM discovery failed with return code {result.returncode}")
-            logger.debug(f"[LLM FALLBACK] Error output: {result.stderr[:200]}")
+        # Get discovery result
+        logger.debug(f"[LLM FALLBACK] Running LLM discovery for {homepage_url}")
+        result = finder.discover_page()
+        
+        if not result:
+            logger.error(f"[LLM FALLBACK] No result from LLM discovery")
             return None, []
         
-        # Parse the JSON output
-        # Note: llm_page_finder.py may print debug info before the JSON, so we need to extract the JSON
-        try:
-            output_text = result.stdout.strip()
-            
-            # Try to find JSON in the output (it starts with '{' and ends with '}')
-            # This handles cases where debug output precedes the JSON
-            json_start = output_text.find('{')
-            json_end = output_text.rfind('}') + 1
-            
-            if json_start == -1 or json_end == 0:
-                logger.error(f"[LLM FALLBACK] No JSON found in LLM output")
-                logger.debug(f"[LLM FALLBACK] Full output was: {output_text[:300]}")
-                return None, []
-            
-            # Extract JSON substring
-            json_str = output_text[json_start:json_end]
-            logger.debug(f"[LLM FALLBACK] Extracted JSON: {json_str[:100]}...")
-            
-            # Parse JSON
-            output = json.loads(json_str)
-            discovered_url = output.get("result", {}).get("discovered_url")
-            confidence = output.get("result", {}).get("confidence", 0.0)
-            reasoning = output.get("result", {}).get("reasoning", "")
-            alternatives = output.get("result", {}).get("alternative_urls", [])
-            
-            if discovered_url:
-                logger.info(f"[LLM FALLBACK] ✓ Found {page_type} page: {discovered_url} (confidence: {confidence})")
-                
-                # Convert to discover_links format
-                candidates = [
-                    {
-                        "url": discovered_url,
-                        "text": f"[LLM Discovery] {reasoning[:80]}",
-                        "score": int(confidence * 100),  # Convert 0.0-1.0 to 0-100 score
-                        "page_type": page_type
-                    }
-                ]
-                
-                # Add alternatives
-                for i, alt_url in enumerate(alternatives[:3]):
-                    if alt_url and alt_url != discovered_url:
-                        candidates.append({
-                            "url": alt_url,
-                            "text": f"[LLM Alternative {i+1}]",
-                            "score": int(confidence * 80),  # Slightly lower score for alternatives
-                            "page_type": page_type
-                        })
-                
-                return discovered_url, candidates
-            else:
-                logger.warning(f"[LLM FALLBACK] LLM found no {page_type} page (confidence too low)")
-                return None, []
+        # Extract discovery details from the result
+        discovered_url = result.result.discovered_url
+        confidence = result.result.confidence
+        reasoning = result.result.reasoning
+        alternatives = result.result.alternative_urls
         
-        except json.JSONDecodeError as e:
-            logger.error(f"[LLM FALLBACK] Failed to parse LLM JSON output: {e}")
-            logger.debug(f"[LLM FALLBACK] Attempted to parse: {json_str[:200] if 'json_str' in locals() else 'N/A'}")
-            logger.debug(f"[LLM FALLBACK] Full output was: {output_text[:300] if 'output_text' in locals() else 'N/A'}")
+        # No URL found
+        if not discovered_url:
+            logger.warning(f"[LLM FALLBACK] No {page_type} page found")
             return None, []
-    
-    except subprocess.TimeoutExpired:
-        logger.warning(f"[LLM FALLBACK] LLM discovery timed out after 60 seconds")
-        return None, []
-    except FileNotFoundError:
-        logger.error(f"[LLM FALLBACK] llm_page_finder.py not found at src/discover/llm_page_finder.py")
-        return None, []
+        
+        # URL found - create candidates list with confidence scores
+        logger.info(f"[LLM FALLBACK] ✓ Found {page_type} page: {discovered_url} (confidence: {confidence})")
+        
+        # Convert to discover_links format
+        candidates = [{
+            "url": discovered_url,
+            "text": f"[LLM Discovery] {reasoning[:80]}",
+            "score": int(confidence * 100),  # Convert 0.0-1.0 to 0-100 score
+            "page_type": page_type
+        }]
+        
+        # Add alternatives with slightly lower scores
+        for i, alt_url in enumerate(alternatives[:3]):
+            if alt_url and alt_url != discovered_url:
+                candidates.append({
+                    "url": alt_url,
+                    "text": f"[LLM Alternative {i+1}]",
+                    "score": int(confidence * 80),  # Lower score for alternatives
+                    "page_type": page_type
+                })
+        
+        return discovered_url, candidates
+        
     except Exception as e:
-        logger.error(f"[LLM FALLBACK] Unexpected error during LLM fallback: {e}")
+        logger.error(f"[LLM FALLBACK] Error during LLM discovery: {str(e)}")
         return None, []
 
 

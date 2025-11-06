@@ -1,6 +1,6 @@
 # Scoring rules for discover_links.py
 
-This document explains exactly how candidate link `score` values are computed in `scripts/discover/discover_links.py`.
+This document explains exactly how candidate link `score` values are computed in `src/discover/discover_links.py`.
 
 ## High-level
 
@@ -67,7 +67,7 @@ Note: There are top-level constants (e.g., `SCORE_HOMEPAGE`, `SCORE_ABOUT`, ...)
    - If top score < -50 => treated as unacceptable and `None` is returned (with a short candidate list for inspection).
 
 8. Manual overrides
-   - If a manual override exists in `scripts/discover/manual_overrides.json` for a company + page type, that override URL is used and stored with `score: 1000`.
+   - If a manual override exists in `src/discover/manual_overrides.json` for a company + page type, that override URL is used and stored with `score: 1000`.
 
 ## Example breakdown
 
@@ -89,7 +89,7 @@ If that careers page were on `example-company.com`, the domain contribution woul
 
 ## Where to find the code
 
-- Main scoring: `scripts/discover/discover_links.py` -> function `score_candidate(...)`.
+- Main scoring: `src/discover/discover_links.py` -> function `score_candidate(...)`.
 - Candidate extraction and filtering: `discover_candidates_from_page(...)`.
 - Probing common paths: `probe_common_paths(...)`.
 - Selection and acceptance thresholds: `discover_page_links(...)`.

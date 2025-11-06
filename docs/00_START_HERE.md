@@ -58,7 +58,7 @@ export OPENAI_API_KEY="sk-..."
 export ANTHROPIC_API_KEY="sk-ant-..."
 
 # 3. Run your first discovery (2-8 seconds)
-python scripts/discover/llm_page_finder.py \
+python src/discover/llm_page_finder.py \
   --website "https://www.anthropic.com/" \
   --page-type "careers"
 
@@ -130,9 +130,9 @@ python scripts/discover/llm_page_finder.py \
 ## 📚 Documentation Quick Links
 
 ### For Developers (Getting Started)
-1. Start: [scripts/discover/QUICKSTART.md](scripts/discover/QUICKSTART.md) (5 min)
-2. Learn: [scripts/discover/LLM_PAGE_FINDER.md](scripts/discover/LLM_PAGE_FINDER.md) (20 min)
-3. Explore: [scripts/discover/examples.py](scripts/discover/examples.py) (run it)
+1. Start: [src/discover/QUICKSTART.md](src/discover/QUICKSTART.md) (5 min)
+2. Learn: [src/discover/LLM_PAGE_FINDER.md](src/discover/LLM_PAGE_FINDER.md) (20 min)
+3. Explore: [src/discover/examples.py](src/discover/examples.py) (run it)
 
 ### For Project Managers
 1. Overview: [DELIVERY_SUMMARY.md](DELIVERY_SUMMARY.md) (10 min)
@@ -142,7 +142,7 @@ python scripts/discover/llm_page_finder.py \
 ### For Integration/DevOps
 1. Architecture: [ARCHITECTURE_DIAGRAMS.md](ARCHITECTURE_DIAGRAMS.md) (15 min)
 2. Integration: [IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md) (10 min)
-3. Examples: [scripts/discover/examples.py](scripts/discover/examples.py) Example 5
+3. Examples: [src/discover/examples.py](src/discover/examples.py) Example 5
 
 ### For Finding What You Need
 - Master index: [README_DOCUMENTATION_INDEX.md](README_DOCUMENTATION_INDEX.md)
@@ -200,15 +200,15 @@ pip install -r requirements.txt
 export OPENAI_API_KEY="sk-..."
 
 # 3. Test single
-python scripts/discover/llm_page_finder.py \
+python src/discover/llm_page_finder.py \
   --website "https://www.anthropic.com/" \
   --page-type "careers"
 
 # 4. Test batch
-python scripts/discover/test_llm_finder.py --sample-count 3
+python src/discover/test_llm_finder.py --sample-count 3
 
 # 5. Run examples
-python scripts/discover/examples.py
+python src/discover/examples.py
 ```
 
 ---
@@ -274,28 +274,28 @@ See **examples.py Example 5** for code.
 
 ```bash
 # Single discovery
-python scripts/discover/llm_page_finder.py \
+python src/discover/llm_page_finder.py \
   --website "https://worldlabs.ai/" \
   --page-type "product"
 
 # With output file
-python scripts/discover/llm_page_finder.py \
+python src/discover/llm_page_finder.py \
   --website "https://www.abridge.com/" \
   --page-type "careers" \
   --output result.json
 
 # Batch test
-python scripts/discover/test_llm_finder.py \
+python src/discover/test_llm_finder.py \
   --sample-count 5 \
   --page-types product careers blog
 
 # Test specific company
-python scripts/discover/test_llm_finder.py \
+python src/discover/test_llm_finder.py \
   --website "https://www.anthropic.com/" \
   --page-type "careers"
 
 # Interactive examples
-python scripts/discover/examples.py
+python src/discover/examples.py
 ```
 
 ---
@@ -319,11 +319,11 @@ python scripts/discover/examples.py
 ### Immediate (5-15 minutes)
 1. Install: `pip install -r requirements.txt`
 2. Set API key: `export OPENAI_API_KEY="sk-..."`
-3. Run: `python scripts/discover/llm_page_finder.py --website "..." --page-type "..."`
+3. Run: `python src/discover/llm_page_finder.py --website "..." --page-type "..."`
 
 ### Short-term (1-2 hours)
-1. Run batch tests: `python scripts/discover/test_llm_finder.py --sample-count 5`
-2. Explore examples: `python scripts/discover/examples.py`
+1. Run batch tests: `python src/discover/test_llm_finder.py --sample-count 5`
+2. Explore examples: `python src/discover/examples.py`
 3. Compare with heuristic results
 
 ### Integration (1-2 days)
@@ -352,10 +352,10 @@ python scripts/discover/examples.py
 ## 📞 Support
 
 Need help? See:
-- Quick start: `scripts/discover/QUICKSTART.md`
-- Full reference: `scripts/discover/LLM_PAGE_FINDER.md`
+- Quick start: `src/discover/QUICKSTART.md`
+- Full reference: `src/discover/LLM_PAGE_FINDER.md`
 - Architecture: `ARCHITECTURE_DIAGRAMS.md`
-- Examples: `scripts/discover/examples.py`
+- Examples: `src/discover/examples.py`
 - Find what you need: `README_DOCUMENTATION_INDEX.md`
 
 ---

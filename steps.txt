@@ -4,14 +4,18 @@ output: data/forbes_ai50_seed.json
 
 Lab 1:
 python src/discover/discover_links.py
+python src/discover/discover_links.py -n 1
 python src/discover/discover_links.py --limit 5
+
 output: data/company_pages.json 
 data/company_pages_discovered.json 
 
-src/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 output: data/raw/<company_id>/...
 
-# To discover pages using llm rather than using traditional techniuqes
+# To discover pages using llm rather than using traditional techniques
+
+python src/discover/llm_page_finder.py
 python src/discover/llm_page_finder.py --website "https://worldlabs.ai/" --page-type "careers"
 output: 
 {

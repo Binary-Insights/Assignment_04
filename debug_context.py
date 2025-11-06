@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 # Add rag module to path
-sys.path.insert(0, str(Path(__file__).parent / "scripts" / "rag"))
+sys.path.insert(0, str(Path(__file__).parent / "src" / "rag"))
 
 from rag_pipeline import generate_dashboard_with_retrieval
 

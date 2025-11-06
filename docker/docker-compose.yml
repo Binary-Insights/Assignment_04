@@ -1,11 +1,14 @@
 name: assignment-04
 
 services:
-  app:
+  fastapi:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    container_name: pe-dashboard-app
+      target: base
+    container_name: pe-dashboard-api
+    ports:
+      - "8000:8000"
     volumes:
       - ../data:/app/data
     environment:
@@ -13,7 +16,28 @@ services:
       - QDRANT_URL=http://qdrant:6333
       - QDRANT_API_KEY=
       - QDRANT_COLLECTION_NAME=rag_chunks
+    command: uvicorn src.backend.rag_search_api:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
+      - qdrant
+
+  streamlit:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: base
+    container_name: pe-dashboard-ui
+    ports:
+      - "8501:8501"
+    volumes:
+      - ../data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - QDRANT_URL=http://qdrant:6333
+      - QDRANT_API_KEY=
+      - QDRANT_COLLECTION_NAME=rag_chunks
+    command: streamlit run src/frontend/streamlit_app.py
+    depends_on:
+      - fastapi
       - qdrant
 
   qdrant:
