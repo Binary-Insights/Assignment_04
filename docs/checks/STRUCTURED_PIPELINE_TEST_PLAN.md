@@ -5,7 +5,7 @@
 ### Step 1: Verify Files Exist
 ```bash
 # Check new module
-ls -la scripts/structured/structured_pipeline.py
+ls -la src/structured/structured_pipeline.py
 # Output: -rw-r--r-- ... structured_pipeline.py
 
 # Check payload data
@@ -13,7 +13,7 @@ ls -la data/payloads/ | head -5
 # Output: world-labs.json, anthropic.json, etc.
 
 # Check prompt file
-ls -la scripts/prompts/dashboard_system.md
+ls -la src/prompts/dashboard_system.md
 # Output: -rw-r--r-- ... dashboard_system.md
 
 # Check .env file
@@ -37,7 +37,7 @@ pip list | grep -E "fastapi|streamlit|openai|python-dotenv"
 
 ### Step 3: Verify Import Works
 ```bash
-cd scripts/structured
+cd src/structured
 python -c "from structured_pipeline import generate_dashboard_from_payload; print('✅ Import successful')"
 ```
 
@@ -50,7 +50,7 @@ python -c "from structured_pipeline import generate_dashboard_from_payload; prin
 **Command**:
 ```python
 import sys
-sys.path.insert(0, 'scripts/structured')
+sys.path.insert(0, 'src/structured')
 from structured_pipeline import (
     generate_dashboard_from_payload,
     generate_dashboard_markdown,
@@ -69,7 +69,7 @@ print("✅ All imports successful")
 **Command**:
 ```python
 import sys
-sys.path.insert(0, 'scripts/structured')
+sys.path.insert(0, 'src/structured')
 from structured_pipeline import get_dashboard_system_prompt
 
 prompt = get_dashboard_system_prompt()
@@ -87,7 +87,7 @@ print(f"✅ System prompt loaded: {len(prompt)} characters")
 **Command**:
 ```python
 import sys
-sys.path.insert(0, 'scripts/structured')
+sys.path.insert(0, 'src/structured')
 from structured_pipeline import format_payload_for_llm
 
 test_payload = {
@@ -116,7 +116,7 @@ print(f"✅ Payload formatting works: {len(context)} characters")
 **Command**:
 ```python
 import sys
-sys.path.insert(0, 'scripts/structured')
+sys.path.insert(0, 'src/structured')
 from structured_pipeline import generate_dashboard_from_payload
 import os
 
@@ -147,7 +147,7 @@ except Exception as e:
 **Command**:
 ```python
 import sys
-sys.path.insert(0, 'scripts/structured')
+sys.path.insert(0, 'src/structured')
 from structured_pipeline import generate_dashboard_from_payload
 
 try:
@@ -173,7 +173,7 @@ except Exception as e:
 **Command**:
 ```bash
 # In one terminal, start FastAPI
-cd scripts/backend
+cd src/backend
 python rag_search_api.py
 
 # In another terminal, test the endpoint
@@ -226,7 +226,7 @@ curl -X POST "http://localhost:8000/dashboard/structured?company_name=Unknown%20
 ### Test 8: Streamlit UI
 
 **Steps**:
-1. Start Streamlit: `streamlit run scripts/frontend/streamlit_app.py`
+1. Start Streamlit: `streamlit run src/frontend/streamlit_app.py`
 2. Navigate to http://localhost:8501
 3. Select "World Labs" from dropdown
 4. Click "Generate (Structured)" button
@@ -470,18 +470,18 @@ INFO Successfully generated structured dashboard for World Labs
 echo "✓ Checking prerequisites..."
 [ -f .env ] && echo "  ✓ .env exists"
 [ -d data/payloads ] && echo "  ✓ data/payloads exists"
-[ -f scripts/structured/structured_pipeline.py ] && echo "  ✓ structured_pipeline.py exists"
-[ -f scripts/prompts/dashboard_system.md ] && echo "  ✓ dashboard_system.md exists"
+[ -f src/structured/structured_pipeline.py ] && echo "  ✓ structured_pipeline.py exists"
+[ -f src/prompts/dashboard_system.md ] && echo "  ✓ dashboard_system.md exists"
 grep -q OPENAI_API_KEY .env && echo "  ✓ OPENAI_API_KEY set"
 ```
 
 **Step 2**: Start Services
 ```bash
 # Terminal 1
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
 
 # Terminal 2
-streamlit run scripts/frontend/streamlit_app.py
+streamlit run src/frontend/streamlit_app.py
 
 # Terminal 3 (monitoring)
 tail -f data/logs/rag_search_api.log

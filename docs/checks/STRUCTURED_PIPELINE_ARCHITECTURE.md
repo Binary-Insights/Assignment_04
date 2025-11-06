@@ -2,7 +2,7 @@
 
 ## File Location
 ```
-scripts/structured/structured_pipeline.py
+src/structured/structured_pipeline.py
 ```
 
 ## Module Purpose
@@ -62,7 +62,7 @@ print(dashboard)
 ```
 
 **Called By**:
-- `scripts/backend/rag_search_api.py` in `generate_structured_dashboard()` endpoint
+- `src/backend/rag_search_api.py` in `generate_structured_dashboard()` endpoint
 
 ---
 
@@ -78,7 +78,7 @@ def get_dashboard_system_prompt() -> str:
 **Purpose**: Load the dashboard system prompt from markdown file
 
 **Returns**:
-- System prompt string from `scripts/prompts/dashboard_system.md`
+- System prompt string from `src/prompts/dashboard_system.md`
 - Empty string if file not found
 
 **Shared With**:
@@ -421,7 +421,7 @@ except Exception as e:
 
 - [ ] Payload file exists at `data/payloads/world-labs.json`
 - [ ] `.env` has `OPENAI_API_KEY`
-- [ ] `scripts/prompts/dashboard_system.md` exists
+- [ ] `src/prompts/dashboard_system.md` exists
 - [ ] OpenAI API key is valid
 - [ ] Import works: `from structured_pipeline import generate_dashboard_from_payload`
 - [ ] Generated dashboard has all 8 required sections

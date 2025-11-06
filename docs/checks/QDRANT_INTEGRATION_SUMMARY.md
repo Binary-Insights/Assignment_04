@@ -2,7 +2,7 @@
 
 ## What Changed
 
-Updated `scripts/rag/structured_extraction.py` to use **Qdrant vector database** for intelligent semantic search before structured extraction.
+Updated `src/rag/structured_extraction.py` to use **Qdrant vector database** for intelligent semantic search before structured extraction.
 
 ## Key Updates
 
@@ -79,13 +79,13 @@ Pydantic Model
 
 ```bash
 # Extract single company
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # Extract all companies
-python scripts/rag/structured_extraction.py
+python src/rag/structured_extraction.py
 
 # Verbose mode
-python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --verbose
 ```
 
 ## Requirements
@@ -160,13 +160,13 @@ export OPENAI_API_KEY=sk-...
 
 ### "No page texts found"
 ```bash
-python scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 ```
 
 ## See Also
 
 - **Full Guide**: `QDRANT_EXTRACTION_GUIDE.md`
-- **Code**: `scripts/rag/structured_extraction.py`
-- **Models**: `scripts/rag/rag_models.py`
-- **Tests**: `scripts/rag/test_structured_extraction.py`
+- **Code**: `src/rag/structured_extraction.py`
+- **Models**: `src/rag/rag_models.py`
+- **Tests**: `src/rag/test_structured_extraction.py`
 - **Logs**: `data/logs/structured_extraction.log`

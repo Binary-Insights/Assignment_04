@@ -36,10 +36,10 @@
 docker-compose -f docker/docker-compose.yml up -d
 
 # 2. Extract data
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 3. Validate
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -65,7 +65,7 @@ Before running ANY guide, verify:
 - [ ] **Structured Data:** `ls data/structured/ | wc -l` (at least 1 file)
 - [ ] **Raw Data:** `ls data/raw/*/*/text.txt | wc -l` (has files)
 - [ ] **Environment:** `echo $OPENAI_API_KEY` (not empty)
-- [ ] **Script Exists:** `ls scripts/rag/validate_extraction_sources.py`
+- [ ] **Script Exists:** `ls src/rag/validate_extraction_sources.py`
 
 **Fix Missing Prerequisites:**
 ```bash
@@ -73,7 +73,7 @@ Before running ANY guide, verify:
 docker-compose -f docker/docker-compose.yml up -d
 
 # Extract data (creates structured files)
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # Check environment
 cat .env | grep -E "OPENAI_API_KEY|QDRANT_URL"
@@ -85,7 +85,7 @@ cat .env | grep -E "OPENAI_API_KEY|QDRANT_URL"
 
 ### Beginner: "Just run it"
 1. Read: `VALIDATION_QUICK_COMMANDS.md`
-2. Run: `python scripts/rag/validate_extraction_sources.py`
+2. Run: `python src/rag/validate_extraction_sources.py`
 3. Check: Output shows ✓ PASS or ✗ FAIL
 
 ### Intermediate: "Understand what it does"
@@ -188,7 +188,7 @@ Provenance Chain: ✗ FAIL
    └─ Check formats
 
 3. Run Validation
-   └─ python scripts/rag/validate_extraction_sources.py
+   └─ python src/rag/validate_extraction_sources.py
    └─ Wait for completion
    └─ Review output
 
@@ -208,7 +208,7 @@ Provenance Chain: ✗ FAIL
 
 | Issue | Solution | Guide |
 |-------|----------|-------|
-| "How do I run it?" | `python scripts/rag/validate_extraction_sources.py` | Quick Cmds |
+| "How do I run it?" | `python src/rag/validate_extraction_sources.py` | Quick Cmds |
 | "Qdrant not found" | Start Docker: `docker-compose up -d` | Complete |
 | "No structured files" | Extract first: `python structured_extraction.py` | Complete |
 | "Collection not found" | Re-extract company | Complete |
@@ -222,11 +222,11 @@ Provenance Chain: ✗ FAIL
 
 **What:** Script that verifies extraction data comes from real sources
 
-**Where:** `scripts/rag/validate_extraction_sources.py`
+**Where:** `src/rag/validate_extraction_sources.py`
 
 **When:** After extracting structured data
 
-**How:** `python scripts/rag/validate_extraction_sources.py`
+**How:** `python src/rag/validate_extraction_sources.py`
 
 **Why:** Ensures data quality & traceability
 
@@ -256,7 +256,7 @@ Your validation is complete when:
 
 **Technical:** `HOW_TO_RUN_VALIDATION.md` (currently open)
 
-**Main validation script:** `scripts/rag/validate_extraction_sources.py`
+**Main validation script:** `src/rag/validate_extraction_sources.py`
 
 ---
 
@@ -269,10 +269,10 @@ Your validation is complete when:
 docker-compose -f docker/docker-compose.yml up -d && sleep 5
 
 # Extract data
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # Validate
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 
 # That's it!
 ```

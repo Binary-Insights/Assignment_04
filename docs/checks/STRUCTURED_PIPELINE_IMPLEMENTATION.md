@@ -9,14 +9,14 @@ Created a new `structured_pipeline.py` module that mirrors the `rag_pipeline.py`
 
 ## Files Created
 
-### 1. `scripts/structured/structured_pipeline.py` (NEW)
+### 1. `src/structured/structured_pipeline.py` (NEW)
 
 **Purpose**: Dashboard generation from structured payload JSON files
 
 **Key Functions**:
 
 1. **`get_dashboard_system_prompt()`**
-   - Loads system prompt from `scripts/prompts/dashboard_system.md`
+   - Loads system prompt from `src/prompts/dashboard_system.md`
    - Same as `rag_pipeline.py`
 
 2. **`format_payload_for_llm(payload: Dict[str, Any]) -> str`**
@@ -48,7 +48,7 @@ Created a new `structured_pipeline.py` module that mirrors the `rag_pipeline.py`
 
 ## Files Modified
 
-### 2. `scripts/backend/rag_search_api.py`
+### 2. `src/backend/rag_search_api.py`
 
 #### Added Imports (after rag_pipeline imports)
 ```python
@@ -99,7 +99,7 @@ POST /dashboard/structured?company_name=World%20Labs
 - 500 if LLM generation fails
 - Clear error messages for troubleshooting
 
-### 3. `scripts/frontend/streamlit_app.py`
+### 3. `src/frontend/streamlit_app.py`
 
 #### Updated "Structured pipeline" Section
 
@@ -181,8 +181,8 @@ Both pipelines require:
 ## Testing the New Endpoint
 
 ### Using Streamlit UI
-1. Start FastAPI: `python scripts/backend/rag_search_api.py`
-2. Start Streamlit: `streamlit run scripts/frontend/streamlit_app.py`
+1. Start FastAPI: `python src/backend/rag_search_api.py`
+2. Start Streamlit: `streamlit run src/frontend/streamlit_app.py`
 3. Select company from dropdown
 4. Click "Generate (Structured)" button
 5. View markdown dashboard

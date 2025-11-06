@@ -6,13 +6,13 @@
 
 ```bash
 # DEFAULT: Try Qdrant, fallback to raw if unavailable
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # STRICT: Fail if Qdrant unavailable
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
 
 # BASELINE: Skip Qdrant entirely, use raw text only
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
 ```
 
 ---
@@ -105,14 +105,14 @@ Error: No Qdrant context available and 'qdrant_only' strategy selected
 ```bash
 # Process multiple companies with same strategy
 for company in world_labs anthropic openai; do
-  python scripts/rag/structured_extraction.py \
+  python src/rag/structured_extraction.py \
     --company-slug $company \
     --fallback-strategy qdrant_first
 done
 
 # Or with error handling
 for company in $(ls data/raw/); do
-  python scripts/rag/structured_extraction.py \
+  python src/rag/structured_extraction.py \
     --company-slug "$company" \
     --fallback-strategy qdrant_first || echo "Failed: $company"
 done
@@ -128,17 +128,17 @@ done
 docker ps | grep qdrant
 
 # Try qdrant_first instead (auto-fallback)
-python scripts/rag/structured_extraction.py --company-slug X --fallback-strategy qdrant_first
+python src/rag/structured_extraction.py --company-slug X --fallback-strategy qdrant_first
 
 # Or use raw_only to bypass Qdrant
-python scripts/rag/structured_extraction.py --company-slug X --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug X --fallback-strategy raw_only
 ```
 
 ### raw_only is slow - what to do?
 ```bash
 # Normal - raw_only uses full text context
 # Use qdrant_first for better performance
-python scripts/rag/structured_extraction.py --company-slug X --fallback-strategy qdrant_first
+python src/rag/structured_extraction.py --company-slug X --fallback-strategy qdrant_first
 ```
 
 ### Different results between strategies - expected?
@@ -165,19 +165,19 @@ python scripts/rag/structured_extraction.py --company-slug X --fallback-strategy
 
 ```bash
 # Default (recommended)
-python scripts/rag/structured_extraction.py --company-slug COMPANY
+python src/rag/structured_extraction.py --company-slug COMPANY
 
 # Strict validation
-python scripts/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy qdrant_only
+python src/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy qdrant_only
 
 # Baseline test
-python scripts/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy raw_only
 
 # With verbose logging
-python scripts/rag/structured_extraction.py --company-slug COMPANY --verbose
+python src/rag/structured_extraction.py --company-slug COMPANY --verbose
 
 # All at once
-python scripts/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy qdrant_first --verbose
+python src/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy qdrant_first --verbose
 ```
 
 ---

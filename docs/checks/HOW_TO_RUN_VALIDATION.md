@@ -25,7 +25,7 @@ echo $OPENAI_API_KEY
 
 ### Option 1: Run with Defaults
 ```bash
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 **What it does:**
@@ -103,7 +103,7 @@ Before validating, you need structured data:
 
 ```bash
 # Extract data for a company
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # This creates: data/structured/world-labs.json
 ls -la data/structured/
@@ -139,11 +139,11 @@ docker-compose -f docker/docker-compose.yml up -d
 sleep 5
 
 # 2. Extract structured data (if not already done)
-python scripts/rag/structured_extraction.py --company-slug world_labs
-python scripts/rag/structured_extraction.py --company-slug anthropic
+python src/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug anthropic
 
 # 3. Run validation
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 
 # 4. Review the output
 ```
@@ -250,10 +250,10 @@ Error validating Qdrant: QdrantException: Not found
 docker ps | grep qdrant
 
 # 2. Re-create collection by extracting
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 3. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ### Error: "Structured file not found"
@@ -264,13 +264,13 @@ Structured file not found: data/structured/world-labs.json
 **Solution:**
 ```bash
 # 1. Create structured file
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 2. Verify it was created
 ls -la data/structured/
 
 # 3. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ### Error: "No structured files found"
@@ -281,13 +281,13 @@ No structured files found
 **Solution:**
 ```bash
 # 1. Extract data for at least one company
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 2. Verify directory exists
 mkdir -p data/structured
 
 # 3. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ### Error: "Qdrant connection refused"
@@ -307,7 +307,7 @@ docker-compose -f docker/docker-compose.yml up -d
 sleep 5
 
 # 4. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -318,7 +318,7 @@ python scripts/rag/validate_extraction_sources.py
 
 ```bash
 # Set Python logging to DEBUG
-PYTHONLOGGING=DEBUG python scripts/rag/validate_extraction_sources.py
+PYTHONLOGGING=DEBUG python src/rag/validate_extraction_sources.py
 ```
 
 ### Validate Specific Company
@@ -328,7 +328,7 @@ The script validates ALL extracted files. To validate just one:
 ```bash
 # Option 1: Delete other structured files temporarily
 mv data/structured/anthropic.json data/structured/anthropic.json.bak
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 mv data/structured/anthropic.json.bak data/structured/anthropic.json
 
 # Option 2: Modify script to validate only one company
@@ -361,7 +361,7 @@ def main():
 
 Then run:
 ```bash
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ### Modify Qdrant URL
@@ -376,7 +376,7 @@ export QDRANT_URL="http://your-server:6333"
 echo "QDRANT_URL=http://your-server:6333" >> .env
 
 # Then run
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -389,10 +389,10 @@ python scripts/rag/validate_extraction_sources.py
 #!/bin/bash
 
 # Extract
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # Validate
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 
 # Check exit code
 if [ $? -eq 0 ]; then
@@ -413,7 +413,7 @@ for company in world_labs anthropic openai; do
     echo "Processing $company..."
     
     # Extract
-    python scripts/rag/structured_extraction.py --company-slug $company
+    python src/rag/structured_extraction.py --company-slug $company
     
     # Validate (only this company's file)
     # Can add custom validation logic here
@@ -557,15 +557,15 @@ Provenance Chain: ✓ PASS
 # All in one: Start, Extract, Validate
 docker-compose -f docker/docker-compose.yml up -d && \
 sleep 5 && \
-python scripts/rag/structured_extraction.py --company-slug world_labs && \
-python scripts/rag/validate_extraction_sources.py
+python src/rag/structured_extraction.py --company-slug world_labs && \
+python src/rag/validate_extraction_sources.py
 
 # Just run validation
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 
 # Run with specific company only (extract first)
-python scripts/rag/structured_extraction.py --company-slug world_labs && \
-python scripts/rag/validate_extraction_sources.py
+python src/rag/structured_extraction.py --company-slug world_labs && \
+python src/rag/validate_extraction_sources.py
 
 # Check Qdrant is ready
 curl -s http://localhost:6333/health | jq .

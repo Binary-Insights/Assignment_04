@@ -10,9 +10,9 @@ Created a **production-ready LLM-powered structured extraction system** that con
 
 | Component | Status | Files |
 |-----------|--------|-------|
-| **Extraction Engine** | ✅ Complete | `scripts/rag/structured_extraction.py` |
-| **Data Models** | ✅ Complete | `scripts/rag/rag_models.py` (updated) |
-| **Unit Tests** | ✅ Complete | `scripts/rag/test_structured_extraction.py` |
+| **Extraction Engine** | ✅ Complete | `src/rag/structured_extraction.py` |
+| **Data Models** | ✅ Complete | `src/rag/rag_models.py` (updated) |
+| **Unit Tests** | ✅ Complete | `src/rag/test_structured_extraction.py` |
 | **Logging** | ✅ Complete | `data/logs/structured_extraction.log` |
 
 ### Documentation
@@ -67,7 +67,7 @@ Output: Normalized JSON with structured company data
 
 ### Basic Command
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### What It Outputs
@@ -86,8 +86,8 @@ data/structured/world-labs.json
 ## 📁 Files Created
 
 ### Scripts (450+ lines of code)
-- `scripts/rag/structured_extraction.py` - Main extraction engine
-- `scripts/rag/test_structured_extraction.py` - Unit tests
+- `src/rag/structured_extraction.py` - Main extraction engine
+- `src/rag/test_structured_extraction.py` - Unit tests
 
 ### Documentation (2000+ words)
 - `STRUCTURED_EXTRACTION_QUICKSTART.md` - 5-minute guide
@@ -96,7 +96,7 @@ data/structured/world-labs.json
 - `RAG_STRUCTURED_EXTRACTION_README.md` - Integration guide
 
 ### Models (Updated)
-- `scripts/rag/rag_models.py` - Added `Literal` import
+- `src/rag/rag_models.py` - Added `Literal` import
 
 ## 🔧 Technical Stack
 
@@ -131,7 +131,7 @@ echo $OPENAI_API_KEY  # should show sk-...
 
 ### 3. Run Extraction
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### 4. Check Results
@@ -218,7 +218,7 @@ Fits into the complete RAG pipeline:
 
 Run validation tests:
 ```bash
-python scripts/rag/test_structured_extraction.py
+python src/rag/test_structured_extraction.py
 ```
 
 Expected output:
@@ -258,7 +258,7 @@ Expected output:
 
 1. **Try It Out**
    ```bash
-   python scripts/rag/structured_extraction.py --company-slug world_labs
+   python src/rag/structured_extraction.py --company-slug world_labs
    ```
 
 2. **Review Output**
@@ -268,7 +268,7 @@ Expected output:
 
 3. **Process All Companies**
    ```bash
-   python scripts/rag/structured_extraction.py
+   python src/rag/structured_extraction.py
    ```
 
 4. **Build Applications**
@@ -286,7 +286,7 @@ Expected output:
 | Technical deep dive | `docs/STRUCTURED_EXTRACTION.md` |
 | Features & examples | `STRUCTURED_EXTRACTION_SUMMARY.md` |
 | Troubleshooting | `docs/STRUCTURED_EXTRACTION.md` → "Troubleshooting" section |
-| Source code | `scripts/rag/structured_extraction.py` |
+| Source code | `src/rag/structured_extraction.py` |
 
 ## 🏆 Implementation Highlights
 
@@ -314,7 +314,7 @@ The system is complete and ready for production use.
 
 **Start extracting now:**
 ```bash
-python scripts/rag/structured_extraction.py
+python src/rag/structured_extraction.py
 ```
 
 **Questions?** Check the documentation files listed above.

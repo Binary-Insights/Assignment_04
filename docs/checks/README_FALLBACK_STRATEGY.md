@@ -10,7 +10,7 @@ Successfully implemented **full fallback strategy enforcement** in the structure
 
 ### 1. **Core Code Changes** (6 functions + 2 helper functions)
 
-#### Modified File: `scripts/rag/structured_extraction.py`
+#### Modified File: `src/rag/structured_extraction.py`
 
 **Global Configuration:**
 - Added `FALLBACK_STRATEGY` global variable (line ~51)
@@ -63,19 +63,19 @@ ALWAYS complete extraction ✓
 
 ### Default (Recommended for Production)
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### Strict Mode (Validation)
 ```bash
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug world_labs \
   --fallback-strategy qdrant_only
 ```
 
 ### Baseline Mode (Debugging)
 ```bash
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug world_labs \
   --fallback-strategy raw_only
 ```
@@ -178,7 +178,7 @@ See `TESTING_GUIDE_FALLBACK.md` for detailed tests.
 
 | File | Changes | Status |
 |------|---------|--------|
-| `scripts/rag/structured_extraction.py` | Strategy enforcement in 6 functions + CLI arg | ✅ Complete |
+| `src/rag/structured_extraction.py` | Strategy enforcement in 6 functions + CLI arg | ✅ Complete |
 
 ## Files Created
 
@@ -218,16 +218,16 @@ See `TESTING_GUIDE_FALLBACK.md` for detailed tests.
 
 ```bash
 # Production (default)
-python scripts/rag/structured_extraction.py --company-slug COMPANY
+python src/rag/structured_extraction.py --company-slug COMPANY
 
 # Validation (strict)
-python scripts/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy qdrant_only
+python src/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy qdrant_only
 
 # Baseline (debugging)
-python scripts/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy raw_only
 
 # With verbose logging
-python scripts/rag/structured_extraction.py --company-slug COMPANY --verbose
+python src/rag/structured_extraction.py --company-slug COMPANY --verbose
 ```
 
 ---

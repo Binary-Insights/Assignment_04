@@ -46,7 +46,6 @@ click==8.3.0
     #   streamlit
     #   typer
     #   uvicorn
-    #   yake
 diskcache==5.6.3
     # via instructor
 distlib==0.4.0
@@ -121,8 +120,6 @@ idna==3.11
     #   yarl
 instructor==1.12.0
     # via pe-dashboard-ai50 (pyproject.toml)
-jellyfish==1.2.1
-    # via yake
 jinja2==3.1.6
     # via
     #   altair
@@ -144,8 +141,6 @@ jsonschema==4.25.1
     # via altair
 jsonschema-specifications==2025.9.1
     # via jsonschema
-keybert==0.9.0
-    # via pe-dashboard-ai50 (pyproject.toml)
 langchain==1.0.3
     # via pe-dashboard-ai50 (pyproject.toml)
 langchain-anthropic==1.0.1
@@ -192,15 +187,12 @@ multidict==6.7.0
 narwhals==2.10.2
     # via altair
 networkx==3.5
-    # via
-    #   torch
-    #   yake
+    # via torch
 nodeenv==1.9.1
     # via pre-commit
 numpy==2.3.4
     # via
     #   pe-dashboard-ai50 (pyproject.toml)
-    #   keybert
     #   pandas
     #   pydeck
     #   qdrant-client
@@ -208,7 +200,6 @@ numpy==2.3.4
     #   scipy
     #   streamlit
     #   transformers
-    #   yake
 nvidia-cublas-cu12==12.8.4.1
     # via
     #   nvidia-cudnn-cu12
@@ -335,7 +326,6 @@ referencing==0.37.0
     #   jsonschema-specifications
 regex==2025.11.3
     # via
-    #   segtok
     #   tiktoken
     #   transformers
 requests==2.32.3
@@ -353,7 +343,6 @@ requests-toolbelt==1.0.0
 rich==13.9.4
     # via
     #   instructor
-    #   keybert
     #   streamlit
     #   typer
 rpds-py==0.28.0
@@ -363,22 +352,15 @@ rpds-py==0.28.0
 safetensors==0.6.2
     # via transformers
 scikit-learn==1.7.2
-    # via
-    #   pe-dashboard-ai50 (pyproject.toml)
-    #   keybert
-    #   sentence-transformers
+    # via sentence-transformers
 scipy==1.16.3
     # via
     #   scikit-learn
     #   sentence-transformers
-segtok==1.5.11
-    # via yake
 selenium==4.38.0
     # via pe-dashboard-ai50 (pyproject.toml)
 sentence-transformers==5.1.2
-    # via
-    #   pe-dashboard-ai50 (pyproject.toml)
-    #   keybert
+    # via pe-dashboard-ai50 (pyproject.toml)
 shellingham==1.5.4
     # via typer
 six==1.17.0
@@ -401,8 +383,6 @@ streamlit==1.38.0
     # via pe-dashboard-ai50 (pyproject.toml)
 sympy==1.14.0
     # via torch
-tabulate==0.9.0
-    # via yake
 tenacity==8.5.0
     # via
     #   instructor
@@ -479,8 +459,6 @@ wsproto==1.2.0
     # via trio-websocket
 xxhash==3.6.0
     # via langgraph
-yake==0.6.0
-    # via pe-dashboard-ai50 (pyproject.toml)
 yarl==1.22.0
     # via aiohttp
 zstandard==0.25.0

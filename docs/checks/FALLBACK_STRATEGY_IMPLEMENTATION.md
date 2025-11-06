@@ -2,7 +2,7 @@
 
 ## Overview
 
-Successfully implemented **fallback strategy enforcement** in `scripts/rag/structured_extraction.py`. The extraction pipeline now supports three runtime-controlled strategies for handling Qdrant vector search failures.
+Successfully implemented **fallback strategy enforcement** in `src/rag/structured_extraction.py`. The extraction pipeline now supports three runtime-controlled strategies for handling Qdrant vector search failures.
 
 ## What Was Implemented
 
@@ -69,7 +69,7 @@ else:
 Added `--fallback-strategy` argument to main():
 
 ```bash
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug world_labs \
   --fallback-strategy [qdrant_only|raw_only|qdrant_first]
 ```
@@ -94,7 +94,7 @@ Enhanced logging with emoji indicators for clarity:
 
 ### Example 1: Qdrant-First Mode (Default, Production)
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 **Log Output:**
@@ -109,7 +109,7 @@ Fallback strategy: qdrant_first
 
 ### Example 2: Qdrant-Only Mode (Strict, Testing)
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
 ```
 
 **Log Output:**
@@ -124,7 +124,7 @@ Error: No Qdrant context available and 'qdrant_only' strategy selected
 
 ### Example 3: Raw-Only Mode (Baseline, Debugging)
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
 ```
 
 **Log Output:**
@@ -203,19 +203,19 @@ else:  # 'qdrant_first'
 
 ### Test 1: Verify Qdrant-First Mode
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_first
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_first
 # Expected: Should see 📊 icons if Qdrant works, ⚠️ if it falls back
 ```
 
 ### Test 2: Verify Qdrant-Only Mode
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
 # Expected: Should see 📊 icons if Qdrant works, ❌ error if it doesn't
 ```
 
 ### Test 3: Verify Raw-Only Mode
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
 # Expected: Should see ⚙️ icons, skip all Qdrant searches, use raw text directly
 ```
 
@@ -223,7 +223,7 @@ python scripts/rag/structured_extraction.py --company-slug world_labs --fallback
 ```bash
 # Process multiple companies with strict strategy
 for company in $(ls data/raw/); do
-  python scripts/rag/structured_extraction.py --company-slug $company --fallback-strategy qdrant_first
+  python src/rag/structured_extraction.py --company-slug $company --fallback-strategy qdrant_first
 done
 ```
 
@@ -231,7 +231,7 @@ done
 
 | File | Changes |
 |------|---------|
-| `scripts/rag/structured_extraction.py` | Added strategy enforcement to 6 extraction functions + CLI argument |
+| `src/rag/structured_extraction.py` | Added strategy enforcement to 6 extraction functions + CLI argument |
 
 **Lines Changed:**
 - Line ~51: Global `FALLBACK_STRATEGY` variable
@@ -323,7 +323,7 @@ ValueError: No Qdrant context available and 'qdrant_only' strategy selected
 ---
 
 **Implementation Date:** Phase 9
-**Modified File:** `scripts/rag/structured_extraction.py`
+**Modified File:** `src/rag/structured_extraction.py`
 **Total Functions Enhanced:** 6 extraction functions + 1 helper function
 **CLI Arguments Added:** 1 (`--fallback-strategy`)
 **Status:** ✅ Ready for Testing

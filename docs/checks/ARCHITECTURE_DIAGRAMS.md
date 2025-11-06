@@ -98,7 +98,7 @@
 │                              ▼                                     │
 │  ┌─────────────────────────────────────────────────────────────┐  │
 │  │        STRUCTURED_PIPELINE.PY                              │  │
-│  │    (scripts/structured/structured_pipeline.py)             │  │
+│  │    (src/structured/structured_pipeline.py)             │  │
 │  └─────────────────────────────────────────────────────────────┘  │
 │                              │                                     │
 │   ┌──────────────────────────┴──────────────────────────────┐     │
@@ -167,7 +167,7 @@
 │ ┌─────────────────────────────────────────────────────┐   │     │
 │ │ 3b. Load system prompt                              │   │     │
 │ │     get_dashboard_system_prompt()                   │   │     │
-│ │     (from scripts/prompts/dashboard_system.md)      │   │     │
+│ │     (from src/prompts/dashboard_system.md)      │   │     │
 │ └──────────────────┬──────────────────────────────────┘   │     │
 │                    │                                       │     │
 │                    ▼                                       │     │
@@ -352,7 +352,7 @@
        │
        ▼
 ┌──────────────────────────────────────────────────────┐
-│     scripts/prompts/dashboard_system.md              │ ← Prompt
+│     src/prompts/dashboard_system.md              │ ← Prompt
 │                                                      │
 │  LLM System Prompt (shared with RAG)                 │
 │  Instructions for generating 8 sections              │

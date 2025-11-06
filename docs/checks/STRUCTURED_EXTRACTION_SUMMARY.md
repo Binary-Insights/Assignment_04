@@ -6,16 +6,16 @@ A complete **LLM-powered structured extraction pipeline** that converts messy we
 
 ### Files Created/Modified
 
-1. **`scripts/rag/structured_extraction.py`** (NEW)
+1. **`src/rag/structured_extraction.py`** (NEW)
    - Main extraction script using instructor + OpenAI
    - 550+ lines of production-ready code
    - Extracts all 6 data types: Company, Event, Snapshot, Product, Leadership, Visibility
 
-2. **`scripts/rag/rag_models.py`** (MODIFIED)
+2. **`src/rag/rag_models.py`** (MODIFIED)
    - Added `Literal` import for event type enums
    - Defines 6 Pydantic data models with full validation
 
-3. **`scripts/rag/test_structured_extraction.py`** (NEW)
+3. **`src/rag/test_structured_extraction.py`** (NEW)
    - Unit tests for all data models
    - Creates example company with realistic data
    - Validates JSON serialization
@@ -136,22 +136,22 @@ Web Content (text files)
 
 ### Process All Companies
 ```bash
-python scripts/rag/structured_extraction.py
+python src/rag/structured_extraction.py
 ```
 
 ### Process Specific Company
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### Verbose Mode
 ```bash
-python scripts/rag/structured_extraction.py --verbose
+python src/rag/structured_extraction.py --verbose
 ```
 
 ### Run Tests
 ```bash
-python scripts/rag/test_structured_extraction.py
+python src/rag/test_structured_extraction.py
 ```
 
 ## Pipeline Integration
@@ -294,7 +294,7 @@ All required packages already in `requirements.txt`:
 ## Next Steps
 
 ### Immediate
-1. Run on World Labs: `python scripts/rag/structured_extraction.py --company-slug world_labs`
+1. Run on World Labs: `python src/rag/structured_extraction.py --company-slug world_labs`
 2. Verify output: `cat data/structured/world-labs.json`
 3. Review logs: `tail -f data/logs/structured_extraction.log`
 
@@ -309,13 +309,13 @@ All required packages already in `requirements.txt`:
 ## Files Reference
 
 ### Main Script
-- `scripts/rag/structured_extraction.py` - Entry point, 550+ lines
+- `src/rag/structured_extraction.py` - Entry point, 550+ lines
 
 ### Models
-- `scripts/rag/rag_models.py` - Pydantic schemas
+- `src/rag/rag_models.py` - Pydantic schemas
 
 ### Tests
-- `scripts/rag/test_structured_extraction.py` - Unit tests
+- `src/rag/test_structured_extraction.py` - Unit tests
 
 ### Documentation
 - `docs/STRUCTURED_EXTRACTION.md` - Full guide

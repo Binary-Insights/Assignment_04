@@ -134,16 +134,16 @@ All extraction functions now enforce the strategy:
 
 ```bash
 # Production (recommended)
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # Strict validation
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only
 
 # Baseline test
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only
 
 # With verbose logging
-python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --verbose
 ```
 
 ---
@@ -170,13 +170,13 @@ python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
 cat TESTING_GUIDE_FALLBACK.md
 
 # 2. Run Test 1: Default behavior
-python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --verbose
 
 # 3. Run Test 2: Strict mode
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only --verbose
 
 # 4. Run Test 3: Baseline mode
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only --verbose
 
 # 5. Compare outputs
 diff data/structured/world-labs.json data/structured/world-labs-*.json
@@ -187,7 +187,7 @@ diff data/structured/world-labs.json data/structured/world-labs-*.json
 ## 📍 File Locations
 
 **Code:**
-- Main: `scripts/rag/structured_extraction.py`
+- Main: `src/rag/structured_extraction.py`
 
 **Documentation:**
 - `QUICK_REFERENCE_FALLBACK.md` ⭐ START HERE

@@ -12,7 +12,7 @@
 
 ## 📋 What Was Changed
 
-### File: `scripts/rag/structured_extraction.py`
+### File: `src/rag/structured_extraction.py`
 
 #### 1. Global Configuration Variable (NEW)
 ```python
@@ -131,26 +131,26 @@ ALWAYS complete extraction ✓
 
 ### Run with Default Strategy (qdrant_first)
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### Run with Strict Strategy (qdrant_only)
 ```bash
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug world_labs \
   --fallback-strategy qdrant_only
 ```
 
 ### Run with Baseline Strategy (raw_only)
 ```bash
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug world_labs \
   --fallback-strategy raw_only
 ```
 
 ### Run with Verbose Logging
 ```bash
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug world_labs \
   --fallback-strategy qdrant_first \
   --verbose
@@ -287,7 +287,7 @@ Quick reference with:
 
 ### Production Deployment (Recommended)
 ```bash
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug COMPANY_NAME \
   --fallback-strategy qdrant_first  # Default
 ```
@@ -295,7 +295,7 @@ python scripts/rag/structured_extraction.py \
 ### Batch Processing
 ```bash
 for company in $(ls data/raw/); do
-  python scripts/rag/structured_extraction.py \
+  python src/rag/structured_extraction.py \
     --company-slug "$company" \
     --fallback-strategy qdrant_first
 done
@@ -305,7 +305,7 @@ done
 ```bash
 # Ensure Qdrant is working for all companies
 for company in $(ls data/raw/); do
-  python scripts/rag/structured_extraction.py \
+  python src/rag/structured_extraction.py \
     --company-slug "$company" \
     --fallback-strategy qdrant_only || echo "Failed: $company"
 done
@@ -314,7 +314,7 @@ done
 ### Baseline Comparison
 ```bash
 # Generate baseline without semantic search
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug COMPANY_NAME \
   --fallback-strategy raw_only
 ```
@@ -377,7 +377,7 @@ curl http://localhost:6333/collections
 ls -la data/raw/COMPANY_NAME/
 
 # 4. Try raw_only (should always work if data exists)
-python scripts/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy raw_only
+python src/rag/structured_extraction.py --company-slug COMPANY --fallback-strategy raw_only
 ```
 
 ### qdrant_only Fails but qdrant_first Works
@@ -428,9 +428,9 @@ python scripts/rag/structured_extraction.py --company-slug COMPANY --fallback-st
 
 ## 📄 Related Files
 
-- `scripts/rag/structured_extraction.py` - Main extraction script (MODIFIED)
-- `scripts/rag/rag_models.py` - Pydantic models (unchanged, already fixed)
-- `scripts/rag/validate_extraction_sources.py` - Validation script (reference)
+- `src/rag/structured_extraction.py` - Main extraction script (MODIFIED)
+- `src/rag/rag_models.py` - Pydantic models (unchanged, already fixed)
+- `src/rag/validate_extraction_sources.py` - Validation script (reference)
 - `VALIDATION_GUIDE.md` - Comprehensive validation documentation
 - `FALLBACK_STRATEGY_IMPLEMENTATION.md` - Detailed technical documentation
 - `TESTING_GUIDE_FALLBACK.md` - Quick testing reference

@@ -24,7 +24,7 @@ data/payloads/{company_slug}.json
 
 ## Files Created
 
-### 1. **scripts/structured/structured_pipeline.py** (NEW)
+### 1. **src/structured/structured_pipeline.py** (NEW)
 - 300+ lines of production-ready code
 - Main entry point: `generate_dashboard_from_payload()`
 - Handles: file loading, context formatting, LLM generation, error handling
@@ -41,7 +41,7 @@ data/payloads/{company_slug}.json
 
 ## Files Modified
 
-### 1. **scripts/backend/rag_search_api.py**
+### 1. **src/backend/rag_search_api.py**
 
 **Changes**:
 ```python
@@ -68,7 +68,7 @@ async def generate_structured_dashboard(company_name: str) -> DashboardStructure
     # Return markdown
 ```
 
-### 2. **scripts/frontend/streamlit_app.py**
+### 2. **src/frontend/streamlit_app.py**
 
 **Changes**:
 ```python
@@ -193,9 +193,9 @@ Streamlit displays markdown dashboard
 
 Before considering complete, verify:
 
-- [ ] Module imports: `from scripts.structured.structured_pipeline import generate_dashboard_from_payload`
-- [ ] File exists: `scripts/structured/structured_pipeline.py` (created ✓)
-- [ ] API imports: `scripts/backend/rag_search_api.py` updated ✓
+- [ ] Module imports: `from src.structured.structured_pipeline import generate_dashboard_from_payload`
+- [ ] File exists: `src/structured/structured_pipeline.py` (created ✓)
+- [ ] API imports: `src/backend/rag_search_api.py` updated ✓
 - [ ] API endpoint: `POST /dashboard/structured` responds 200 OK
 - [ ] Streamlit UI: Button works, dashboard displays
 - [ ] Payload loading: Reads from `data/payloads/` ✓
@@ -211,7 +211,7 @@ Before considering complete, verify:
 ### 1. Verify Setup
 ```bash
 # Check file exists
-ls -la scripts/structured/structured_pipeline.py
+ls -la src/structured/structured_pipeline.py
 
 # Check payload data exists
 ls data/payloads/ | head -3
@@ -223,10 +223,10 @@ grep OPENAI_API_KEY .env
 ### 2. Start Services
 ```bash
 # Terminal 1: FastAPI backend
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
 
 # Terminal 2: Streamlit frontend
-streamlit run scripts/frontend/streamlit_app.py
+streamlit run src/frontend/streamlit_app.py
 
 # Terminal 3: Monitor logs (optional)
 tail -f data/logs/rag_search_api.log | grep -i structured
@@ -438,7 +438,7 @@ tail -f data/logs/rag_search_api.log
 ## Summary
 
 **What**: Complete structured payload → LLM → markdown pipeline  
-**Where**: `scripts/structured/structured_pipeline.py`  
+**Where**: `src/structured/structured_pipeline.py`  
 **How**: POST /dashboard/structured endpoint with OpenAI LLM  
 **Why**: Alternative to RAG for complete dataset visibility  
 **When**: Ready to test immediately  
@@ -448,11 +448,11 @@ tail -f data/logs/rag_search_api.log
 
 ## Quick Links
 
-- **Module**: `scripts/structured/structured_pipeline.py`
-- **API**: `scripts/backend/rag_search_api.py` (modified)
-- **UI**: `scripts/frontend/streamlit_app.py` (modified)
+- **Module**: `src/structured/structured_pipeline.py`
+- **API**: `src/backend/rag_search_api.py` (modified)
+- **UI**: `src/frontend/streamlit_app.py` (modified)
 - **Data**: `data/payloads/{company_slug}.json`
-- **Prompt**: `scripts/prompts/dashboard_system.md`
+- **Prompt**: `src/prompts/dashboard_system.md`
 - **Logs**: `data/logs/rag_search_api.log`
 - **Docs**: `STRUCTURED_PIPELINE_*.md` files
 

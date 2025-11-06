@@ -7,10 +7,10 @@
 docker-compose -f docker/docker-compose.yml up -d
 
 # 2. Extract structured data (if not already done)
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 3. Run validation
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -19,12 +19,12 @@ python scripts/rag/validate_extraction_sources.py
 
 ### Everything: Start Qdrant, Extract, Validate
 ```bash
-docker-compose -f docker/docker-compose.yml up -d && sleep 5 && python scripts/rag/structured_extraction.py --company-slug world_labs && python scripts/rag/validate_extraction_sources.py
+docker-compose -f docker/docker-compose.yml up -d && sleep 5 && python src/rag/structured_extraction.py --company-slug world_labs && python src/rag/validate_extraction_sources.py
 ```
 
 ### Just Validation (assumes Qdrant running and data extracted)
 ```bash
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ### Check if Qdrant is Ready
@@ -87,8 +87,8 @@ Provenance Chain: ✗ FAIL
 
 | Error | Solution |
 |-------|----------|
-| "Collection not found" | Run extraction: `python scripts/rag/structured_extraction.py --company-slug COMPANY` |
-| "No structured files found" | Create one: `python scripts/rag/structured_extraction.py --company-slug world_labs` |
+| "Collection not found" | Run extraction: `python src/rag/structured_extraction.py --company-slug COMPANY` |
+| "No structured files found" | Create one: `python src/rag/structured_extraction.py --company-slug world_labs` |
 | "Connection refused" | Start Qdrant: `docker-compose -f docker/docker-compose.yml up -d` |
 | "Source file missing" | Verify raw files: `ls -la data/raw/COMPANY/*/text.txt` |
 
@@ -98,7 +98,7 @@ Provenance Chain: ✗ FAIL
 
 | What | Where |
 |------|-------|
-| Validation script | `scripts/rag/validate_extraction_sources.py` |
+| Validation script | `src/rag/validate_extraction_sources.py` |
 | Structured data | `data/structured/*.json` |
 | Raw source data | `data/raw/COMPANY/PAGE_TYPE/text.txt` |
 | Qdrant | `http://localhost:6333` |
@@ -161,7 +161,7 @@ Provenance Chain: ✗ FAIL
 ## See Also
 
 - **Full Guide:** `HOW_TO_RUN_VALIDATION.md`
-- **Extraction Script:** `scripts/rag/structured_extraction.py`
+- **Extraction Script:** `src/rag/structured_extraction.py`
 - **Fallback Strategy:** `QUICK_REFERENCE_FALLBACK.md`
 - **Testing:** `TESTING_GUIDE_FALLBACK.md`
 

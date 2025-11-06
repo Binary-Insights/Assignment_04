@@ -18,7 +18,7 @@ ls -la data/raw/world_labs/
 **Purpose:** Verify default behavior with Qdrant preferred but fallback available
 
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --verbose
 ```
 
 **Expected Log Outputs:**
@@ -36,7 +36,7 @@ python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
 **Purpose:** Verify that extraction fails if Qdrant unavailable
 
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_only --verbose
 ```
 
 **Expected Behavior (if Qdrant works):**
@@ -53,7 +53,7 @@ python scripts/rag/structured_extraction.py --company-slug world_labs --fallback
 **Purpose:** Verify extraction works without Qdrant
 
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy raw_only --verbose
 ```
 
 **Expected Log Outputs:**
@@ -77,7 +77,7 @@ Compare quality/completeness across strategies:
 # Run with each strategy and compare output files
 for strategy in qdrant_first raw_only; do
   echo "Testing with strategy: $strategy"
-  python scripts/rag/structured_extraction.py \
+  python src/rag/structured_extraction.py \
     --company-slug test_company_$strategy \
     --fallback-strategy $strategy > logs/extraction_$strategy.log 2>&1
 done
@@ -118,7 +118,7 @@ Fallback strategy: qdrant_first
 # docker stop <qdrant_container>
 
 # 2. Run with qdrant_only (should fail)
-python scripts/rag/structured_extraction.py \
+python src/rag/structured_extraction.py \
   --company-slug world_labs \
   --fallback-strategy qdrant_only 2>&1 | grep -E "❌|Error|ABORT"
 
@@ -143,7 +143,7 @@ echo "Testing performance with different strategies..."
 
 for strategy in raw_only qdrant_first; do
   echo "Strategy: $strategy"
-  time python scripts/rag/structured_extraction.py \
+  time python src/rag/structured_extraction.py \
     --company-slug world_labs \
     --fallback-strategy $strategy > /dev/null 2>&1
 done
@@ -165,7 +165,7 @@ STRATEGY="qdrant_first"
 for company_dir in data/raw/*/; do
   company_name=$(basename "$company_dir")
   echo "Processing $company_name with strategy: $STRATEGY"
-  python scripts/rag/structured_extraction.py \
+  python src/rag/structured_extraction.py \
     --company-slug "$company_name" \
     --fallback-strategy "$STRATEGY" \
     --verbose 2>&1 | head -20
@@ -219,7 +219,7 @@ ls -la data/raw/world_labs/*/text.txt
 echo $OPENAI_API_KEY | head -c 10
 
 # 5. Try verbose mode
-python scripts/rag/structured_extraction.py --company-slug world_labs --verbose 2>&1 | grep -i error
+python src/rag/structured_extraction.py --company-slug world_labs --verbose 2>&1 | grep -i error
 ```
 
 ### If Qdrant Returns No Results
@@ -228,7 +228,7 @@ python scripts/rag/structured_extraction.py --company-slug world_labs --verbose 
 curl -s http://localhost:6333/collections/company_world_labs | jq '.result.points_count'
 
 # 2. Re-index the collection (if needed)
-python scripts/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_first
+python src/rag/structured_extraction.py --company-slug world_labs --fallback-strategy qdrant_first
 
 # 3. Check search query
 # (Look at search_queries in extract_company_info function)

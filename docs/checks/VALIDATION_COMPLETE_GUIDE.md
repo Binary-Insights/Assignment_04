@@ -7,10 +7,10 @@
 docker-compose -f docker/docker-compose.yml up -d
 
 # 2. Extract data (if needed)
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 3. Run validation
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 That's it! The script will validate all extracted files.
@@ -39,7 +39,7 @@ curl -s http://localhost:6333/health | jq .
 ls -la data/structured/
 
 # If empty, extract first
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### 3. Environment Variables Set ✅
@@ -68,7 +68,7 @@ ls -la data/raw/world_labs/blog/text.txt
 
 ### Standard Run (Validates All Files)
 ```bash
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 **What happens:**
@@ -193,10 +193,10 @@ Error validating Qdrant: QdrantException: Not found
 docker ps | grep qdrant
 
 # 2. Create collection by extracting
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 3. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -216,13 +216,13 @@ No structured files found
 mkdir -p data/structured
 
 # 2. Extract data
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 3. Verify file created
 ls -la data/structured/
 
 # 4. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -248,7 +248,7 @@ sleep 5
 curl -s http://localhost:6333/health | jq .
 
 # 4. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -268,13 +268,13 @@ python scripts/rag/validate_extraction_sources.py
 ls -la data/raw/world_labs/*/text.txt
 
 # 2. If missing, run scraper first
-python scripts/scraper.py --company-slug world_labs
+python src/scraper.py --company-slug world_labs
 
 # 3. Re-extract structured data
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 4. Try validation again
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -295,11 +295,11 @@ curl -s http://localhost:6333/health | jq .
 
 # 3. Download and scrape web pages (if needed)
 echo "Scraping pages..."
-python scripts/scraper.py --company-slug world_labs
+python src/scraper.py --company-slug world_labs
 
 # 4. Extract structured data
 echo "Extracting structured data..."
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 5. Verify extracted file created
 echo "Checking output..."
@@ -307,7 +307,7 @@ ls -la data/structured/world-labs.json
 
 # 6. Run validation
 echo "Running validation..."
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 
 # 7. Check result
 if [ $? -eq 0 ]; then
@@ -326,7 +326,7 @@ fi
 echo "Extracting multiple companies..."
 for company in world_labs anthropic openai; do
     echo "Processing: $company"
-    python scripts/rag/structured_extraction.py --company-slug $company
+    python src/rag/structured_extraction.py --company-slug $company
 done
 
 # Verify all files created
@@ -335,7 +335,7 @@ ls -lh data/structured/
 
 # Run single validation for all
 echo "Running validation..."
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ---
@@ -344,7 +344,7 @@ python scripts/rag/validate_extraction_sources.py
 
 | Item | Path | Purpose |
 |------|------|---------|
-| Validation script | `scripts/rag/validate_extraction_sources.py` | Runs validation checks |
+| Validation script | `src/rag/validate_extraction_sources.py` | Runs validation checks |
 | Raw data | `data/raw/{company}/*/text.txt` | Source web page text |
 | Extracted data | `data/structured/*.json` | Validated structured output |
 | Qdrant | `http://localhost:6333` | Vector database |
@@ -361,7 +361,7 @@ Before running, verify:
 - [ ] Structured data exists: `ls data/structured/`
 - [ ] Raw data exists: `ls data/raw/COMPANY/*/text.txt`
 - [ ] Environment variables set: `echo $OPENAI_API_KEY`
-- [ ] Python script exists: `ls scripts/rag/validate_extraction_sources.py`
+- [ ] Python script exists: `ls src/rag/validate_extraction_sources.py`
 
 ---
 
@@ -369,12 +369,12 @@ Before running, verify:
 
 ### Complete: Start, Extract, Validate
 ```bash
-docker-compose -f docker/docker-compose.yml up -d && sleep 5 && python scripts/rag/structured_extraction.py --company-slug world_labs && python scripts/rag/validate_extraction_sources.py
+docker-compose -f docker/docker-compose.yml up -d && sleep 5 && python src/rag/structured_extraction.py --company-slug world_labs && python src/rag/validate_extraction_sources.py
 ```
 
 ### Just Validate (assumes everything is ready)
 ```bash
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ### Check Qdrant Ready
@@ -424,7 +424,7 @@ Once validation succeeds, you can:
 
 - **Full Validation Guide:** `HOW_TO_RUN_VALIDATION.md`
 - **Quick Commands:** `VALIDATION_QUICK_COMMANDS.md`
-- **Extraction Script:** `scripts/rag/structured_extraction.py`
+- **Extraction Script:** `src/rag/structured_extraction.py`
 - **Fallback Strategy:** `QUICK_REFERENCE_FALLBACK.md`
 - **Testing Guide:** `TESTING_GUIDE_FALLBACK.md`
 

@@ -4,7 +4,7 @@
 
 ### Core Implementation (2 files)
 
-1. **`scripts/rag/structured_extraction.py`** (550+ lines)
+1. **`src/rag/structured_extraction.py`** (550+ lines)
    - Main extraction engine
    - 6 specialized extraction functions
    - LLM client initialization with instructor
@@ -22,7 +22,7 @@
      - `discover_companies_from_raw_data()` - Auto-discovery
      - `main()` - CLI entry point
 
-2. **`scripts/rag/test_structured_extraction.py`** (350+ lines)
+2. **`src/rag/test_structured_extraction.py`** (350+ lines)
    - Unit tests for all data models
    - Example data creation
    - Pydantic validation tests
@@ -40,7 +40,7 @@
 
 ### Data Models (1 file - updated)
 
-3. **`scripts/rag/rag_models.py`** (150+ lines)
+3. **`src/rag/rag_models.py`** (150+ lines)
    - **Updated**: Added `Literal` import for event type enums
    - **Models**:
      - `Provenance` - Source tracking
@@ -130,7 +130,7 @@
 
 ```
 Assignment_04/
-├── scripts/rag/
+├── src/rag/
 │   ├── structured_extraction.py          (550+ lines)
 │   ├── test_structured_extraction.py     (350+ lines)
 │   └── rag_models.py                     (updated)
@@ -163,7 +163,7 @@ Assignment_04/
 
 **Usage**:
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### `test_structured_extraction.py`
@@ -177,7 +177,7 @@ python scripts/rag/structured_extraction.py --company-slug world_labs
 
 **Usage**:
 ```bash
-python scripts/rag/test_structured_extraction.py
+python src/rag/test_structured_extraction.py
 ```
 
 ### `rag_models.py`
@@ -317,10 +317,10 @@ Documentation files
 → Read `docs/STRUCTURED_EXTRACTION.md`
 
 **Want to run it?**
-→ Execute: `python scripts/rag/structured_extraction.py`
+→ Execute: `python src/rag/structured_extraction.py`
 
 **Want to test?**
-→ Execute: `python scripts/rag/test_structured_extraction.py`
+→ Execute: `python src/rag/test_structured_extraction.py`
 
 **Need to understand architecture?**
 → Read `RAG_STRUCTURED_EXTRACTION_README.md`

@@ -2,7 +2,7 @@
 
 ## What Was Done
 
-Successfully upgraded `scripts/rag/structured_extraction.py` to use **Qdrant vector database for semantic search** before LLM-based structured extraction.
+Successfully upgraded `src/rag/structured_extraction.py` to use **Qdrant vector database for semantic search** before LLM-based structured extraction.
 
 ## Key Changes
 
@@ -49,7 +49,7 @@ Now orchestrates the full pipeline:
 
 | File | Status | Lines Changed | Notes |
 |------|--------|---------------|-------|
-| `scripts/rag/structured_extraction.py` | ✅ Updated | ~600 total, ~300 net new | Core extraction engine |
+| `src/rag/structured_extraction.py` | ✅ Updated | ~600 total, ~300 net new | Core extraction engine |
 | `QDRANT_EXTRACTION_GUIDE.md` | ✅ Created | ~400 | Comprehensive technical guide |
 | `QDRANT_INTEGRATION_SUMMARY.md` | ✅ Created | ~200 | Quick reference |
 | `QDRANT_E2E_INTEGRATION.md` | ✅ Created | ~500 | End-to-end pipeline docs |
@@ -102,7 +102,7 @@ docker run -p 6333:6333 qdrant/qdrant:latest
 export OPENAI_API_KEY=sk-...
 
 # 3. Extract
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### Expected Output
@@ -179,7 +179,7 @@ To test the implementation:
 python -c "from qdrant_client import QdrantClient; print('✓')"
 
 # 2. Test with real data
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # 3. Verify output
 cat data/structured/world-labs.json | jq . | head -20
@@ -197,12 +197,12 @@ tail -20 data/logs/structured_extraction.log
 
 2. **Verify Data Collection**
    ```bash
-   python scripts/discover/process_discovered_pages.py
+   python src/discover/process_discovered_pages.py
    ```
 
 3. **Run Extraction**
    ```bash
-   python scripts/rag/structured_extraction.py --company-slug world_labs
+   python src/rag/structured_extraction.py --company-slug world_labs
    ```
 
 4. **Review Output**
@@ -212,7 +212,7 @@ tail -20 data/logs/structured_extraction.log
 
 5. **Batch Process** (when ready)
    ```bash
-   python scripts/rag/structured_extraction.py  # All companies
+   python src/rag/structured_extraction.py  # All companies
    ```
 
 ## Documentation Files

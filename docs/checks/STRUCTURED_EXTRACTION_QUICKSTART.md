@@ -39,7 +39,7 @@ Should output: `sk-...` (your OpenAI key)
 Validate that all models work correctly:
 
 ```bash
-python scripts/rag/test_structured_extraction.py
+python src/rag/test_structured_extraction.py
 ```
 
 Expected output:
@@ -57,12 +57,12 @@ Expected output:
 
 **Option A: Extract specific company**
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 **Option B: Extract all companies**
 ```bash
-python scripts/rag/structured_extraction.py
+python src/rag/structured_extraction.py
 ```
 
 ### Step 5: Check Results
@@ -137,7 +137,7 @@ ERROR - Company directory not found: data/raw/world_labs
 
 **Fix**: Run web scraping first
 ```bash
-python scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 ```
 
 ### "OPENAI_API_KEY not set"
@@ -164,7 +164,7 @@ find data/raw/world_labs -name "text.txt" -type f
 
 If empty, run:
 ```bash
-python scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 ```
 
 ### Slow or timing out
@@ -189,17 +189,17 @@ The LLM can only extract what's explicitly mentioned. For missing fields, they'r
 
 ### Extract one company
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### Extract all companies with verbose logging
 ```bash
-python scripts/rag/structured_extraction.py --verbose
+python src/rag/structured_extraction.py --verbose
 ```
 
 ### Run validation tests
 ```bash
-python scripts/rag/test_structured_extraction.py
+python src/rag/test_structured_extraction.py
 ```
 
 ### View latest results
@@ -256,12 +256,12 @@ cat docs/STRUCTURED_EXTRACTION.md
 
 ### View Script
 ```bash
-cat scripts/rag/structured_extraction.py
+cat src/rag/structured_extraction.py
 ```
 
 ### View Models
 ```bash
-cat scripts/rag/rag_models.py
+cat src/rag/rag_models.py
 ```
 
 ### Check Logs
@@ -279,4 +279,4 @@ tail -f data/logs/structured_extraction.log
 
 ---
 
-Ready? Start with: `python scripts/rag/structured_extraction.py --company-slug world_labs`
+Ready? Start with: `python src/rag/structured_extraction.py --company-slug world_labs`

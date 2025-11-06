@@ -161,7 +161,7 @@ QDRANT_API_KEY=  # Optional, only if using cloud Qdrant
 ### 4. Prepare Data
 Run data collection pipeline first:
 ```bash
-python scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 ```
 
 This creates:
@@ -173,7 +173,7 @@ This creates:
 
 ### Extract Single Company
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 Output:
@@ -189,12 +189,12 @@ Output:
 
 ### Extract All Companies
 ```bash
-python scripts/rag/structured_extraction.py
+python src/rag/structured_extraction.py
 ```
 
 ### Verbose Output
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
+python src/rag/structured_extraction.py --company-slug world_labs --verbose
 ```
 
 ## Output Format
@@ -325,7 +325,7 @@ export OPENAI_API_KEY=sk-...
 ### "No page texts found"
 ```bash
 # Ensure process_discovered_pages.py ran successfully
-python scripts/discover/process_discovered_pages.py --company-slug world_labs
+python src/discover/process_discovered_pages.py --company-slug world_labs
 ls -la data/raw/world_labs/*/text.txt
 ```
 

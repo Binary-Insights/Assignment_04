@@ -30,7 +30,7 @@
 
 ### 1. Code Files
 
-#### `scripts/structured/structured_pipeline.py` (NEW)
+#### `src/structured/structured_pipeline.py` (NEW)
 - **Lines**: 330+
 - **Functions**: 5 (1 entry point, 4 helpers)
 - **Purpose**: Dashboard generation from JSON payloads
@@ -130,7 +130,7 @@
 
 ## Files Modified
 
-### 1. `scripts/backend/rag_search_api.py`
+### 1. `src/backend/rag_search_api.py`
 **Changes**:
 - Added import for `structured_pipeline` module
 - Added `DashboardStructuredResponse` response model
@@ -141,7 +141,7 @@
 
 **Lines Changed**: ~80 lines added/modified
 
-### 2. `scripts/frontend/streamlit_app.py`
+### 2. `src/frontend/streamlit_app.py`
 **Changes**:
 - Changed HTTP method from GET to POST
 - Updated parameter from `company_slug` to `company_name`
@@ -261,7 +261,7 @@ JSON Payload → Format Context → LLM Generation → Markdown Dashboard
 ## Testing Guide
 
 ### Pre-Flight (5 minutes)
-1. Verify files exist: `scripts/structured/structured_pipeline.py`
+1. Verify files exist: `src/structured/structured_pipeline.py`
 2. Verify .env has `OPENAI_API_KEY`
 3. Verify payload files exist: `ls data/payloads/`
 
@@ -292,10 +292,10 @@ JSON Payload → Format Context → LLM Generation → Markdown Dashboard
 ### Start Development
 ```bash
 # Terminal 1
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
 
 # Terminal 2
-streamlit run scripts/frontend/streamlit_app.py
+streamlit run src/frontend/streamlit_app.py
 
 # Terminal 3 (optional)
 tail -f data/logs/rag_search_api.log

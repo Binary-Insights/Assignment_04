@@ -11,11 +11,11 @@ services:
       - "8000:8000"
     volumes:
       - ../data:/app/data
+      - ../.env:/app/.env
+    env_file:
+      - ../.env
     environment:
       - PYTHONUNBUFFERED=1
-      - QDRANT_URL=http://qdrant:6333
-      - QDRANT_API_KEY=
-      - QDRANT_COLLECTION_NAME=rag_chunks
     command: uvicorn src.backend.rag_search_api:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       - qdrant
@@ -30,11 +30,11 @@ services:
       - "8501:8501"
     volumes:
       - ../data:/app/data
+      - ../.env:/app/.env
+    env_file:
+      - ../.env
     environment:
       - PYTHONUNBUFFERED=1
-      - QDRANT_URL=http://qdrant:6333
-      - QDRANT_API_KEY=
-      - QDRANT_COLLECTION_NAME=rag_chunks
     command: streamlit run src/frontend/streamlit_app.py
     depends_on:
       - fastapi

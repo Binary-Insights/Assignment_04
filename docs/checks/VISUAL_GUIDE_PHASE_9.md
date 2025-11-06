@@ -258,7 +258,7 @@ Legend:
 ### Example 1: Production Setup (qdrant_first)
 
 ```bash
-$ python scripts/rag/structured_extraction.py \
+$ python src/rag/structured_extraction.py \
     --company-slug world_labs
 
 Fallback strategy: qdrant_first
@@ -273,7 +273,7 @@ Fallback strategy: qdrant_first
 ### Example 2: Validation Mode (qdrant_only)
 
 ```bash
-$ python scripts/rag/structured_extraction.py \
+$ python src/rag/structured_extraction.py \
     --company-slug world_labs \
     --fallback-strategy qdrant_only
 
@@ -290,7 +290,7 @@ Error: No Qdrant context available and 'qdrant_only' strategy selected
 ### Example 3: Baseline Mode (raw_only)
 
 ```bash
-$ python scripts/rag/structured_extraction.py \
+$ python src/rag/structured_extraction.py \
     --company-slug world_labs \
     --fallback-strategy raw_only
 

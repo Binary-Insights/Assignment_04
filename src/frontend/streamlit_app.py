@@ -1,7 +1,13 @@
 import streamlit as st
 import requests
+import os
+from dotenv import load_dotenv
 
-API_BASE = "http://localhost:8000"
+# Load environment variables from .env file
+load_dotenv()
+
+# Get API URL from environment variable or use default
+API_BASE = os.getenv("FASTAPI_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="PE Dashboard (AI 50)", layout="wide")
 st.title("Project ORBIT – PE Dashboard for Forbes AI 50")

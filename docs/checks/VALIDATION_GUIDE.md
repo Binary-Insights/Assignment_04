@@ -12,7 +12,7 @@ This guide explains how to validate the extraction pipeline and ensure all extra
 Updated extraction functions now log the full provenance chain:
 
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 **Output Example:**
@@ -64,7 +64,7 @@ Each extraction logs which Qdrant documents were used:
 Run the dedicated validation script to audit all sources:
 
 ```bash
-python scripts/rag/validate_extraction_sources.py
+python src/rag/validate_extraction_sources.py
 ```
 
 ### What It Validates
@@ -277,7 +277,7 @@ print(point[0].payload)
 - [ ] Chunks indexed: Validate count matches expectations
 - [ ] Extraction runs: Check for no errors
 - [ ] JSON has provenance: `jq .company_record.provenance data/structured/*.json`
-- [ ] Validation passes: `python scripts/rag/validate_extraction_sources.py`
+- [ ] Validation passes: `python src/rag/validate_extraction_sources.py`
 
 ---
 

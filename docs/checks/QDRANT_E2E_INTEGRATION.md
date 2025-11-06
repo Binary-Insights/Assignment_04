@@ -110,7 +110,7 @@ QDRANT_URL=http://localhost:6333
 ### Step 3: Prepare Data
 ```bash
 # Download and scrape web pages
-python scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 
 # Verify data exists
 ls -la data/raw/world_labs/about/text.txt
@@ -119,7 +119,7 @@ ls -la data/raw/world_labs/about/text.txt
 ### Step 4: Run Extraction
 ```bash
 # Extract single company with Qdrant + LLM
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 Expected output:
@@ -380,7 +380,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 |-------|-------|-----|
 | "Connection refused" | Qdrant not running | `docker run -p 6333:6333 qdrant/qdrant:latest` |
 | "OPENAI_API_KEY not set" | Missing env var | `export OPENAI_API_KEY=sk-...` |
-| "No page texts found" | Web scraping not done | `python scripts/discover/process_discovered_pages.py` |
+| "No page texts found" | Web scraping not done | `python src/discover/process_discovered_pages.py` |
 | "Empty extraction results" | Bad search queries | Check `--verbose` output, increase `limit` |
 | "Slow embedding generation" | First-time indexing | Normal (10-30s), cached after |
 | "Memory error" | Too many large chunks | Reduce `chunk_size`, process fewer companies |
@@ -389,7 +389,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 1. **Run on Real Data**
    ```bash
-   python scripts/rag/structured_extraction.py --company-slug world_labs
+   python src/rag/structured_extraction.py --company-slug world_labs
    ```
 
 2. **Validate Output**
@@ -399,7 +399,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 3. **Process All Companies**
    ```bash
-   python scripts/rag/structured_extraction.py
+   python src/rag/structured_extraction.py
    ```
 
 4. **Build Dashboard**
@@ -416,9 +416,9 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 | File | Purpose |
 |------|---------|
-| `scripts/rag/structured_extraction.py` | Main extraction engine |
-| `scripts/rag/rag_models.py` | Pydantic models |
-| `scripts/rag/test_structured_extraction.py` | Unit tests |
+| `src/rag/structured_extraction.py` | Main extraction engine |
+| `src/rag/rag_models.py` | Pydantic models |
+| `src/rag/test_structured_extraction.py` | Unit tests |
 | `data/raw/{company_slug}` | Raw web scraping output |
 | `data/structured/{company_id}.json` | Final extracted data |
 | `data/logs/structured_extraction.log` | Execution logs |

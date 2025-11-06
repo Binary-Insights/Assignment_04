@@ -18,9 +18,9 @@ A production-ready **LLM-powered RAG pipeline** that extracts and normalizes mes
 
 | File | Lines | Purpose |
 |------|-------|---------|
-| `scripts/rag/structured_extraction.py` | 550+ | Main extraction engine with 6 extraction functions |
-| `scripts/rag/rag_models.py` | 150+ | Pydantic models (Company, Event, Snapshot, Product, Leadership, Visibility) |
-| `scripts/rag/test_structured_extraction.py` | 350+ | Unit tests with example data validation |
+| `src/rag/structured_extraction.py` | 550+ | Main extraction engine with 6 extraction functions |
+| `src/rag/rag_models.py` | 150+ | Pydantic models (Company, Event, Snapshot, Product, Leadership, Visibility) |
+| `src/rag/test_structured_extraction.py` | 350+ | Unit tests with example data validation |
 
 ### Documentation
 
@@ -91,7 +91,7 @@ echo $OPENAI_API_KEY  # should show sk-...
 ### 2. Run Tests (Optional)
 
 ```bash
-python scripts/rag/test_structured_extraction.py
+python src/rag/test_structured_extraction.py
 # Output: ✓ All tests passed!
 ```
 
@@ -99,10 +99,10 @@ python scripts/rag/test_structured_extraction.py
 
 ```bash
 # Extract specific company
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 # Or extract all companies
-python scripts/rag/structured_extraction.py
+python src/rag/structured_extraction.py
 ```
 
 ### 4. Verify Output
@@ -194,12 +194,12 @@ tail -f data/logs/structured_extraction.log
 
 ### Process with Verbose Logging
 ```bash
-python scripts/rag/structured_extraction.py --verbose
+python src/rag/structured_extraction.py --verbose
 ```
 
 ### Process Single Company
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### Monitor Extraction
@@ -298,7 +298,7 @@ export OPENAI_API_KEY="sk-..."
 ### "No page texts found"
 ```bash
 # Run web scraping first
-python scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 ```
 
 ### "Company directory not found"
@@ -326,29 +326,29 @@ head -100 data/raw/world_labs/about/text.txt
 | `STRUCTURED_EXTRACTION_QUICKSTART.md` | **Start here**: 5-minute guide |
 | `STRUCTURED_EXTRACTION_SUMMARY.md` | Feature overview and examples |
 | `docs/STRUCTURED_EXTRACTION.md` | Complete technical documentation |
-| `scripts/rag/structured_extraction.py` | Source code with inline comments |
+| `src/rag/structured_extraction.py` | Source code with inline comments |
 
 ## 🔄 Integration with Full RAG Pipeline
 
 ```
 1. Process Pages
-   scripts/discover/process_discovered_pages.py
+   src/discover/process_discovered_pages.py
    ↓ Creates: data/raw/{company}/*/text.txt
 
 2. Create Chunks
-   scripts/rag/experimental_framework.py  
+   src/rag/experimental_framework.py  
    ↓ Creates: chunks_recursive.json
 
 3. Ingest to Vector DB
-   scripts/rag/ingest_to_qdrant.py
+   src/rag/ingest_to_qdrant.py
    ↓ Uploads to Qdrant
 
 4. STRUCTURED EXTRACTION ← You are here
-   scripts/rag/structured_extraction.py
+   src/rag/structured_extraction.py
    ↓ Creates: data/structured/{company_id}.json
 
 5. Search API
-   scripts/backend/rag_search_api.py
+   src/backend/rag_search_api.py
    ↓ Provides: /rag/search endpoint
 ```
 
@@ -378,7 +378,7 @@ head -100 data/raw/world_labs/about/text.txt
 
 ### Extract World Labs
 ```bash
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 ```
 
 ### View Company Info
@@ -403,7 +403,7 @@ cat data/structured/world-labs.json | jq -r '.leadership[] | [.name, .role, .is_
 
 ## 🚀 Next Steps
 
-1. **Run extraction**: `python scripts/rag/structured_extraction.py --company-slug world_labs`
+1. **Run extraction**: `python src/rag/structured_extraction.py --company-slug world_labs`
 2. **Review output**: `cat data/structured/world-labs.json | jq .`
 3. **Check quality**: Manually verify against source pages
 4. **Batch process**: Run on all companies
@@ -418,13 +418,13 @@ Check: `STRUCTURED_EXTRACTION_QUICKSTART.md`
 Check: `docs/STRUCTURED_EXTRACTION.md`
 
 ### View Code
-Check: `scripts/rag/structured_extraction.py`
+Check: `src/rag/structured_extraction.py`
 
 ### Run Tests
 ```bash
-python scripts/rag/test_structured_extraction.py
+python src/rag/test_structured_extraction.py
 ```
 
 ---
 
-**Ready to extract?** Start with: `python scripts/rag/structured_extraction.py`
+**Ready to extract?** Start with: `python src/rag/structured_extraction.py`
