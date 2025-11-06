@@ -8,7 +8,7 @@ import logging
 def run_discover_ai50():
     logger = logging.getLogger(__name__)
     base_dir = '/opt/airflow/workspace'
-    script_path = os.path.join(base_dir, 'scripts', 'discover', 'fetch_ai50.py')
+    script_path = os.path.join(base_dir, 'src', 'discover', 'fetch_ai50.py')
     try:
         os.chdir(base_dir)
         result = subprocess.run(['python', script_path], capture_output=True, text=True, timeout=600)
@@ -24,7 +24,7 @@ def run_discover_ai50():
 def run_discover_ai50_links():
     logger = logging.getLogger(__name__)
     base_dir = '/opt/airflow/workspace'
-    script_path = os.path.join(base_dir, 'scripts', 'discover', 'discover_links.py')
+    script_path = os.path.join(base_dir, 'src', 'discover', 'discover_links.py')
     try:
         if not os.path.exists(script_path):
             logger.warning(f"Script not found: {script_path}. Skipping discover links.")

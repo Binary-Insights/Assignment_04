@@ -18,9 +18,9 @@ def run_process_discovered_pages():
     """
     logger = logging.getLogger(__name__)
     
-    # Set working directory to /opt/airflow (where data/ and workspace/ are mounted)
+    # Set working directory to /opt/airflow (where data/ and src/ are mounted)
     work_dir = '/opt/airflow'
-    script_path = os.path.join(work_dir, 'workspace', 'scripts', 'discover', 'process_discovered_pages.py')
+    script_path = os.path.join(work_dir, 'src', 'discover', 'process_discovered_pages.py')
     
     try:
         logger.info("="*70)

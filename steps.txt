@@ -198,10 +198,6 @@ uv commands
 # After editing pyproject.toml, regenerate requirements.txt:
 uv pip compile pyproject.toml -o requirements.txt
 
-# Install from requirements.txt locally (for development):
-uv pip install -r requirements.txt
-
-
 # ========================================================
 # DOCKER & DEPLOYMENT
 # ========================================================
