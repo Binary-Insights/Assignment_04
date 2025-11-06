@@ -16,13 +16,13 @@ The `/rag/search` endpoint enables semantic similarity search against your Qdran
 
 ```bash
 # Basic start (uses environment defaults)
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
 
 # With environment variables
 QDRANT_URL=http://localhost:6333 \
 EMBEDDING_PROVIDER=hf \
 VERBOSE=1 \
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
 ```
 
 ### 2. Access the API
@@ -51,7 +51,7 @@ curl http://localhost:8000/health
 ### 4. Run Tests
 
 ```bash
-python scripts/backend/test_rag_search.py
+python src/backend/test_rag_search.py
 ```
 
 ## Environment Variables
@@ -189,7 +189,7 @@ Uses OpenAI's embedding API.
 **Setup:**
 ```bash
 export OPENAI_API_KEY="sk-..."
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
 ```
 
 ### HuggingFace (Default fallback)
@@ -210,7 +210,7 @@ Uses local sentence-transformers model.
 
 **Setup:**
 ```bash
-EMBEDDING_PROVIDER=hf python scripts/backend/rag_search_api.py
+EMBEDDING_PROVIDER=hf python src/backend/rag_search_api.py
 ```
 
 ## Testing
@@ -218,7 +218,7 @@ EMBEDDING_PROVIDER=hf python scripts/backend/rag_search_api.py
 ### Run Full Test Suite
 
 ```bash
-python scripts/backend/test_rag_search.py
+python src/backend/test_rag_search.py
 ```
 
 Tests include:
@@ -316,7 +316,7 @@ export OPENAI_API_KEY="sk-..."
 **Solution:**
 ```bash
 # Ingest chunks first
-python scripts/rag/ingest_to_qdrant.py \
+python src/rag/ingest_to_qdrant.py \
   --input-dir data/rag_experiments \
   --collection world_labs_chunks
 ```
@@ -338,7 +338,7 @@ The search API integrates with your complete RAG pipeline:
 ```
 1. Web Scraping (discover/)
    ↓
-2. Text Extraction (scripts/scraper.py)
+2. Text Extraction (src/scraper.py)
    ↓
 3. Text Chunking (experimental_framework.py)
    ↓

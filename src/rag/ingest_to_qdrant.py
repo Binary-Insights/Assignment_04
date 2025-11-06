@@ -6,10 +6,10 @@ and upserts vectors + payload to Qdrant in batches.
 
 Usage examples:
   # using OpenAI embeddings (ensure OPENAI_API_KEY)
-  python scripts/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --collection world_labs_chunks
+  python src/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --collection world_labs_chunks
 
   # using local sentence-transformers (no API key required)
-  python scripts/rag/ingest_to_qdrant.py --embedding-provider hf --embedding-model all-MiniLM-L6-v2
+  python src/rag/ingest_to_qdrant.py --embedding-provider hf --embedding-model all-MiniLM-L6-v2
 
 Environment variables:
   OPENAI_API_KEY (optional) - if present, script will prefer OpenAI embeddings

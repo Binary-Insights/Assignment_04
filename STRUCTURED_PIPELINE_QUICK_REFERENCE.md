@@ -4,10 +4,10 @@
 
 | File | Purpose | Type |
 |------|---------|------|
-| `scripts/structured/structured_pipeline.py` | Dashboard generation from JSON | NEW |
-| `scripts/backend/rag_search_api.py` | FastAPI endpoints | MODIFIED |
-| `scripts/frontend/streamlit_app.py` | Streamlit UI | MODIFIED |
-| `scripts/prompts/dashboard_system.md` | LLM system prompt | SHARED |
+| `src/structured/structured_pipeline.py` | Dashboard generation from JSON | NEW |
+| `src/backend/rag_search_api.py` | FastAPI endpoints | MODIFIED |
+| `src/frontend/streamlit_app.py` | Streamlit UI | MODIFIED |
+| `src/prompts/dashboard_system.md` | LLM system prompt | SHARED |
 | `data/payloads/{slug}.json` | Structured payload files | DATA |
 
 ---
@@ -22,13 +22,13 @@ ls data/payloads/
 
 ### 2. Start Backend
 ```bash
-cd scripts/backend
+cd src/backend
 python rag_search_api.py
 ```
 
 ### 3. Start Frontend
 ```bash
-streamlit run scripts/frontend/streamlit_app.py
+streamlit run src/frontend/streamlit_app.py
 ```
 
 ### 4. Test Endpoint
@@ -193,7 +193,7 @@ ls -la .env
 grep OPENAI_API_KEY .env
 
 # Restart API server
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
 ```
 
 ### Issue: Timeout waiting for response
@@ -233,7 +233,7 @@ python scripts/backend/rag_search_api.py
 
 ### Simple Test
 ```python
-from scripts.structured.structured_pipeline import generate_dashboard_from_payload
+from src.structured.structured_pipeline import generate_dashboard_from_payload
 
 dashboard = generate_dashboard_from_payload(
     company_name="World Labs",
@@ -246,7 +246,7 @@ print(dashboard[:500])  # Print first 500 chars
 ### With Error Handling
 ```python
 import sys
-sys.path.insert(0, 'scripts/structured')
+sys.path.insert(0, 'src/structured')
 from structured_pipeline import generate_dashboard_from_payload
 
 try:
@@ -266,7 +266,7 @@ except Exception as e:
 ```python
 import json
 from pathlib import Path
-from scripts.structured.structured_pipeline import format_payload_for_llm
+from src.structured.structured_pipeline import format_payload_for_llm
 
 # Create minimal payload
 payload = {
@@ -289,7 +289,7 @@ print(context)
 
 ### Enable Verbose Logging
 ```bash
-VERBOSE=1 python scripts/backend/rag_search_api.py
+VERBOSE=1 python src/backend/rag_search_api.py
 ```
 
 ### Check Log File
@@ -345,7 +345,7 @@ else:
 ```
 Project Root/
 ├── .env                           ← OPENAI_API_KEY here
-├── scripts/
+├── src/
 │   ├── structured/
 │   │   └── structured_pipeline.py ← New module
 │   ├── backend/

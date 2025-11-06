@@ -35,4 +35,4 @@ echo ""
 
 # Start API
 cd "$(dirname "$0")/../.."
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py

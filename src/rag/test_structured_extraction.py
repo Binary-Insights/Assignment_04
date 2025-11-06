@@ -5,7 +5,7 @@ Validates that the structured extraction pipeline works correctly
 without requiring large amounts of LLM API calls.
 
 Usage:
-  python scripts/rag/test_structured_extraction.py
+  python src/rag/test_structured_extraction.py
 """
 
 import json

@@ -5,12 +5,12 @@ Provides /rag/search endpoint for querying the Qdrant vector database.
 Supports similarity search with configurable embedding providers.
 
 Usage:
-    python scripts/backend/rag_search_api.py
+    python src/backend/rag_search_api.py
     
     # Or with custom settings:
     QDRANT_URL=http://localhost:6333 \
     EMBEDDING_PROVIDER=hf \
-    python scripts/backend/rag_search_api.py
+    python src/backend/rag_search_api.py
 
 Environment variables:
     QDRANT_URL (default: http://localhost:6333)
@@ -113,7 +113,7 @@ EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", None)  # None = use defaults
 API_HOST = os.environ.get("API_HOST", "0.0.0.0")
 API_PORT = int(os.environ.get("API_PORT", "8000"))
 
-# Data directory - go up 2 levels from scripts/backend/ to reach data/
+# Data directory - go up 2 levels from src/backend/ to reach data/
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
 logger.info(f"QDRANT_URL: {QDRANT_URL}")

@@ -17,8 +17,8 @@ The extraction follows the schema defined in rag_models.py:
 - Visibility (news mentions, GitHub stars, ratings, etc.)
 
 Usage:
-  python scripts/rag/structured_extraction.py
-  python scripts/rag/structured_extraction.py --company-slug world_labs --verbose
+  python src/rag/structured_extraction.py
+  python src/rag/structured_extraction.py --company-slug world_labs --verbose
 """
 
 import json

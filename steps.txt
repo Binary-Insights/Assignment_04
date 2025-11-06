@@ -1,18 +1,18 @@
 Lab 0:
-python scripts/discover/fetch_ai50.py
+python src/discover/fetch_ai50.py
 output: data/forbes_ai50_seed.json
 
 Lab 1:
-python scripts/discover/discover_links.py
-python scripts/discover/discover_links.py --limit 5
+python src/discover/discover_links.py
+python src/discover/discover_links.py --limit 5
 output: data/company_pages.json 
 data/company_pages_discovered.json 
 
-scripts/discover/process_discovered_pages.py
+src/discover/process_discovered_pages.py
 output: data/raw/<company_id>/...
 
 # To discover pages using llm rather than using traditional techniuqes
-python scripts/discover/llm_page_finder.py --website "https://worldlabs.ai/" --page-type "careers"
+python src/discover/llm_page_finder.py --website "https://worldlabs.ai/" --page-type "careers"
 output: 
 {
   "request": {
@@ -38,19 +38,19 @@ output:
 
 
 # Basic run with verbose output:
-python scripts/rag/experimental_framework.py world_labs --verbose
+python src/rag/experimental_framework.py world_labs --verbose
 
 #  Custom output directory:
-python scripts/rag/experimental_framework.py world_labs --output data/my_results
+python src/rag/experimental_framework.py world_labs --output data/my_results
 
 # Custom metadata and raw data paths:
-python scripts/rag/experimental_framework.py world_labs `
+python src/rag/experimental_framework.py world_labs `
   --metadata-base data/metadata `
   --raw-base data/raw `
   --output data/rag_experiments
 
 # All options combined: 
-python scripts/rag/experimental_framework.py world_labs `
+python src/rag/experimental_framework.py world_labs `
   --verbose `
   --output data/rag_experiments `
   --metadata-base data/metadata `
@@ -58,7 +58,7 @@ python scripts/rag/experimental_framework.py world_labs `
 
 
 # to ingest into qdrant vector database
-python scripts/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --chunk-file chunks_recursive.json --collection rag_chunks
+python src/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --chunk-file chunks_recursive.json --collection rag_chunks
 
 # This is a api call to check if there is chunks in the 
 curl -s http://localhost:6333/collections/world_labs_chunks | python -m json.tool
@@ -69,11 +69,11 @@ curl -s http://localhost:6333/collections/world_labs_chunks | python -m json.too
 # Lab 4
 
 # 1. Start the API
-python scripts/backend/rag_search_api.py
-uvicorn scripts.backend.rag_search_api:app --reload
+python src/backend/rag_search_api.py
+uvicorn src.backend.rag_search_api:app --reload
 
 # 2. In another terminal, run tests
-python scripts/backend/test_rag_search.py
+python src/backend/test_rag_search.py
 
 # 3. Access interactive docs
 # Open: http://localhost:8000/docs
@@ -116,7 +116,7 @@ Added 7 emoji indicators for clarity:
 
 # Structured 
 # creates a json based on the pydantic model and stores in data/structured/{company_slug}.json
-python scripts/rag/structured_extraction.py --company-slug world_labs
+python src/rag/structured_extraction.py --company-slug world_labs
 
 
 
@@ -124,7 +124,7 @@ python scripts/rag/structured_extraction.py --company-slug world_labs
 Debug 
 
 Step 1: 
-python scripts/discover/debug_links.py 2>&1 | grep -v "InsecureRequestWarning"
+python src/discover/debug_links.py 2>&1 | grep -v "InsecureRequestWarning"
 
   warnings.warn(
   warnings.warn(
@@ -140,7 +140,7 @@ First 20 links:
 
 
 Step 2: 
-python scripts/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | head -80
+python src/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | head -80
 
 
 

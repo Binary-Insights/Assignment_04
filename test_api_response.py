@@ -58,7 +58,7 @@ try:
 except requests.exceptions.ConnectionError:
     print(f"❌ ERROR: Could not connect to API at {API_BASE}")
     print("   Make sure the FastAPI server is running:")
-    print("   cd scripts/backend && python rag_search_api.py")
+    print("   cd src/backend && python rag_search_api.py")
 except Exception as e:
     print(f"❌ ERROR: {e}")
 

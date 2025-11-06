@@ -5,10 +5,10 @@ Provides curl-like examples and Python test functions to verify the /rag/search 
 
 Usage:
     # Run the API first:
-    python scripts/backend/rag_search_api.py
+    python src/backend/rag_search_api.py
     
     # In another terminal, run the tests:
-    python scripts/backend/test_rag_search.py
+    python src/backend/test_rag_search.py
 """
 
 import requests
@@ -241,7 +241,7 @@ def main():
         print_success(f"API is running at {API_URL}")
     except Exception as e:
         print_error(f"Cannot reach API at {API_URL}: {e}")
-        print_info("Start the API with: python scripts/backend/rag_search_api.py")
+        print_info("Start the API with: python src/backend/rag_search_api.py")
         sys.exit(1)
     
     # Run tests
