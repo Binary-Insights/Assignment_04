@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     unzip \
     ca-certificates \
-    # Chrome dependencies
     fonts-liberation \
     libasound2 \
     libatk-bridge2.0-0 \
@@ -91,31 +90,36 @@ RUN uv pip install \
 # Web frameworks (FastAPI + Streamlit)
 # ----------------------------
 RUN uv pip install \
-    "fastapi>=0.119.1" \
-    "uvicorn>=0.38.0" \
-    "streamlit>=1.50.0"
+    "fastapi==0.115.0" \
+    "uvicorn==0.30.6" \
+    "streamlit==1.38.0"
 
 # ----------------------------
 # Data validation and utilities
 # ----------------------------
 RUN uv pip install \
-    "pydantic>=2.6.0" \
-    "python-dotenv>=1.1.1"
+    "pydantic==2.9.2" \
+    "python-dotenv==1.2.1"
 
 # ----------------------------
 # LLM and AI/ML stack
 # ----------------------------
 RUN uv pip install \
-    "langchain>=1.0.2" \
-    "langchain-openai>=1.0.1" \
-    "langchain-anthropic>=0.3.0" \
-    "instructor>=1.11.3"
+    "instructor>=1.12.0" \
+    "langchain>=1.0.3" \
+    "langchain-openai>=1.0.2" \
+    "langchain-anthropic>=1.0.1" \
+    "langchain-text-splitters>=1.0.0" \
+    "tiktoken>=0.12.0"
 
 # ----------------------------
-# Vector database (Qdrant)
+# Vector database and embeddings
 # ----------------------------
 RUN uv pip install \
-    "qdrant-client>=1.12.0,<2"
+    "qdrant-client>=1.15.1" \
+    "sentence-transformers>=2.2.2" \
+    "numpy>=1.26.4" \
+    "tqdm>=4.67.1"
 
 # ----------------------------
 # Workspace structure

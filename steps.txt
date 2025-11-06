@@ -1,19 +1,56 @@
+# ========================================================
+# DEPENDENCY MANAGEMENT
+# ========================================================
+# Project uses three dependency files:
+#
+# 1. pyproject.toml (SOURCE OF TRUTH)
+#    - Declares all direct dependencies with version ranges
+#    - Example: langchain>=1.0.3, qdrant-client>=1.15.1
+#    - Update this when adding/removing packages
+#
+# 2. requirements.txt (LOCKED VERSIONS - for local deployment)
+#    - Auto-generated from pyproject.toml
+#    - Contains all transitive dependencies with exact versions
+#    - Use for reproducible local development
+#    - REGENERATE after updating pyproject.toml:
+#      uv pip compile pyproject.toml -o requirements.txt
+#
+# 3. docker/Dockerfile (CONTAINER RUNTIME)
+#    - Installs packages inside Docker container
+#    - Uses version ranges from pyproject.toml
+#    - Ensure Dockerfile packages match pyproject.toml versions
+#    - Updated: 2025-11-06 to sync with pyproject.toml
+#
+# WORKFLOW:
+#   Edit pyproject.toml
+#        ↓
+#   Run: uv pip compile pyproject.toml -o requirements.txt
+#        ↓
+#   Verify Dockerfile matches pyproject.toml
+#        ↓
+#   Rebuild Docker: docker-compose build
+#
+# ========================================================
+
 Lab 0:
-python scripts/discover/fetch_ai50.py
-data/manual_fallback.json
+python src/discover/fetch_ai50.py
 output: data/forbes_ai50_seed.json
 
 Lab 1:
-python scripts/discover/discover_links.py
-python scripts/discover/discover_links.py --limit 5
+python src/discover/discover_links.py
+python src/discover/discover_links.py -n 1
+python src/discover/discover_links.py --limit 5
+
 output: data/company_pages.json 
 data/company_pages_discovered.json 
 
-scripts/discover/process_discovered_pages.py
+python src/discover/process_discovered_pages.py
 output: data/raw/<company_id>/...
 
-# To discover pages using llm rather than using traditional techniuqes
-python scripts/discover/llm_page_finder.py --website "https://worldlabs.ai/" --page-type "careers"
+# To discover pages using llm rather than using traditional techniques
+
+python src/discover/llm_page_finder.py
+python src/discover/llm_page_finder.py --website "https://worldlabs.ai/" --page-type "careers"
 output: 
 {
   "request": {
@@ -39,19 +76,19 @@ output:
 
 
 # Basic run with verbose output:
-python scripts/rag/experimental_framework.py world_labs --verbose
+python src/rag/experimental_framework.py world_labs --verbose
 
 #  Custom output directory:
-python scripts/rag/experimental_framework.py world_labs --output data/my_results
+python src/rag/experimental_framework.py world_labs --output data/my_results
 
 # Custom metadata and raw data paths:
-python scripts/rag/experimental_framework.py world_labs `
+python src/rag/experimental_framework.py world_labs `
   --metadata-base data/metadata `
   --raw-base data/raw `
   --output data/rag_experiments
 
 # All options combined: 
-python scripts/rag/experimental_framework.py world_labs `
+python src/rag/experimental_framework.py world_labs `
   --verbose `
   --output data/rag_experiments `
   --metadata-base data/metadata `
@@ -59,7 +96,7 @@ python scripts/rag/experimental_framework.py world_labs `
 
 
 # to ingest into qdrant vector database
-python scripts/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --chunk-file chunks_recursive.json --collection rag_chunks
+python src/rag/ingest_to_qdrant.py --input-dir data/rag_experiments --chunk-file chunks_recursive.json --collection rag_chunks
 
 # This is a api call to check if there is chunks in the 
 curl -s http://localhost:6333/collections/world_labs_chunks | python -m json.tool
@@ -70,10 +107,11 @@ curl -s http://localhost:6333/collections/world_labs_chunks | python -m json.too
 # Lab 4
 
 # 1. Start the API
-python scripts/backend/rag_search_api.py
+python src/backend/rag_search_api.py
+uvicorn src.backend.rag_search_api:app --reload
 
 # 2. In another terminal, run tests
-python scripts/backend/test_rag_search.py
+python src/backend/test_rag_search.py
 
 # 3. Access interactive docs
 # Open: http://localhost:8000/docs
@@ -101,7 +139,22 @@ curl -X POST http://localhost:8000/rag/search \
 ✅ Extensive logging and debugging
 
 
+Enhanced Logging
+Added 7 emoji indicators for clarity:
 
+🔍 Qdrant search initiated
+🎯 Results ranked by similarity
+✅ Successful operation
+❌ Error/failure
+📊 Using Qdrant context
+⚠️ Fallback scenario
+⚙️ Strategy-driven action
+
+
+
+# Structured 
+# creates a json based on the pydantic model and stores in data/structured/{company_slug}.json
+python src/rag/structured_extraction.py --company-slug world_labs
 
 
 
@@ -109,7 +162,7 @@ curl -X POST http://localhost:8000/rag/search \
 Debug 
 
 Step 1: 
-python scripts/discover/debug_links.py 2>&1 | grep -v "InsecureRequestWarning"
+python src/discover/debug_links.py 2>&1 | grep -v "InsecureRequestWarning"
 
   warnings.warn(
   warnings.warn(
@@ -125,7 +178,7 @@ First 20 links:
 
 
 Step 2: 
-python scripts/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | head -80
+python src/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | head -80
 
 
 
@@ -142,8 +195,52 @@ python scripts/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | 
 
 uv commands 
 
+# After editing pyproject.toml, regenerate requirements.txt:
 uv pip compile pyproject.toml -o requirements.txt
 
+# Install from requirements.txt locally (for development):
+uv pip install -r requirements.txt
+
+
+# ========================================================
+# DOCKER & DEPLOYMENT
+# ========================================================
+
+# NOTE: Use --env-file flag to load .env variables for docker-compose substitution
+# The .env file is also mounted as volume inside containers at /opt/airflow/workspace/.env
+# This enables:
+#   1. Variable substitution in docker-compose.yml (${AWS_ACCESS_KEY_ID}, etc.)
+#   2. Python code access to .env file via load_dotenv()
+
+# Build Docker image (fresh build, no cache):
+docker-compose --env-file .env -f docker/docker-compose.yml build --no-cache
+
+# Stop all running services:
+docker-compose --env-file .env -f docker/docker-compose.yml down
+
+# Start all services in background (after building):
+docker-compose --env-file .env -f docker/docker-compose.yml up -d
+
+# View logs in real-time:
+docker-compose --env-file .env -f docker/docker-compose.yml logs -f
+
+# View logs for specific service:
+docker-compose --env-file .env -f docker/docker-compose.yml logs -f fastapi
+docker-compose --env-file .env -f docker/docker-compose.yml logs -f streamlit
+docker-compose --env-file .env -f docker/docker-compose.yml logs -f airflow-scheduler
+
+# Stop and remove volumes (clean slate):
+docker-compose --env-file .env -f docker/docker-compose.yml down -v
+
+# Access services:
+# - Airflow Webserver: http://localhost:8080 (username: airflow, password: airflow)
+# - FastAPI Docs: http://localhost:8000/docs
+# - Streamlit App: http://localhost:8501
+# - Qdrant Console: http://localhost:6333/health
+
+# Note: All services use same Docker image built from docker/Dockerfile
+# Services inherit common configuration from x-airflow-common anchor in docker-compose.yml
+# Environment variables loaded from .env file (not committed to git)
 
 ---------
 dvc initialization:

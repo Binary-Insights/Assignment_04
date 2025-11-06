@@ -12,7 +12,7 @@ export OPENAI_API_KEY="sk-..."           # For OpenAI/GPT-4o-mini
 export ANTHROPIC_API_KEY="sk-ant-..."    # For Anthropic/Claude
 
 # 3. Run a test
-python scripts/discover/llm_page_finder.py \
+python src/discover/llm_page_finder.py \
   --website "https://www.anthropic.com/" \
   --page-type "careers"
 ```
@@ -21,14 +21,14 @@ python scripts/discover/llm_page_finder.py \
 
 ### Find Product Page
 ```bash
-python scripts/discover/llm_page_finder.py \
+python src/discover/llm_page_finder.py \
   --website "https://worldlabs.ai/" \
   --page-type "product"
 ```
 
 ### Find Careers Page & Save Output
 ```bash
-python scripts/discover/llm_page_finder.py \
+python src/discover/llm_page_finder.py \
   --website "https://www.abridge.com/" \
   --page-type "careers" \
   --output output/abridge_careers.json
@@ -36,12 +36,12 @@ python scripts/discover/llm_page_finder.py \
 
 ### Test Batch Discovery (3 companies)
 ```bash
-python scripts/discover/test_llm_finder.py --sample-count 3
+python src/discover/test_llm_finder.py --sample-count 3
 ```
 
 ### Test Single Company (All Page Types)
 ```bash
-python scripts/discover/test_llm_finder.py \
+python src/discover/test_llm_finder.py \
   --website "https://www.anthropic.com/" \
   --batch \
   --page-types product careers about blog
@@ -67,15 +67,15 @@ Each request returns:
 
 ## Files Created
 
-- `scripts/discover/llm_page_finder.py` — Main discovery script
-- `scripts/discover/test_llm_finder.py` — Test harness
-- `scripts/discover/LLM_PAGE_FINDER.md` — Full documentation
+- `src/discover/llm_page_finder.py` — Main discovery script
+- `src/discover/test_llm_finder.py` — Test harness
+- `src/discover/LLM_PAGE_FINDER.md` — Full documentation
 - Updated `requirements.txt` — New dependencies
 
 ## How It Works
 
 1. **Fetch**: Gets HTML from company website homepage
-2. **Parse**: Extracts text, removes scripts/styles, limits to 4000 chars
+2. **Parse**: Extracts text, removes src/styles, limits to 4000 chars
 3. **LLM**: Sends page type + content to LLM via LangChain
 4. **Structured Output**: Uses Instructor to validate and parse JSON response
 5. **Return**: Structured `DiscoveredPage` with URL, confidence, reasoning
@@ -119,7 +119,7 @@ pip install langchain langchain-openai instructor beautifulsoup4 anthropic
 
 ## Full Documentation
 
-See `scripts/discover/LLM_PAGE_FINDER.md` for:
+See `src/discover/LLM_PAGE_FINDER.md` for:
 - Complete API reference
 - Advanced configuration
 - Integration with heuristic discovery
