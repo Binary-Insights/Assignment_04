@@ -18,9 +18,6 @@ COPY data /app/data
 
 # Set environment variables
 ENV PYTHONPATH=/app
-ENV QDRANT_URL=http://qdrant:6333
-ENV QDRANT_API_KEY=
-ENV QDRANT_COLLECTION_NAME=rag_chunks
 
 # Default command - will be overridden by docker-compose
 CMD ["python", "-c", "import time; time.sleep(infinity)"]

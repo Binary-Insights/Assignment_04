@@ -1,23 +1,22 @@
 """
 FastAPI backend for RAG search endpoint.
 
-Provides /rag/search endpoint for querying the Pinecone vector database.
+Provides /rag/search endpoint for querying the Qdrant vector database.
 Supports similarity search with configurable embedding providers.
 
 Usage:
     python src/backend/rag_search_api.py
     
     # Or with custom settings:
-    PINECONE_API_KEY=your-key \
+    QDRANT_URL=http://localhost:6333 \
     EMBEDDING_PROVIDER=hf \
     python src/backend/rag_search_api.py
 
 Environment variables:
-    PINECONE_API_KEY (required)
-    PINECONE_INDEX_NAME (default: "bigdata-assignment-04")
-    PINECONE_NAMESPACE (default: "default")
+    QDRANT_URL (default: http://localhost:6333)
+    QDRANT_API_KEY (default: "")
     EMBEDDING_PROVIDER (choices: "openai", "hf"; default: auto-detect)
-    EMBEDDING_MODEL (default: "text-embedding-3-large" for OpenAI, "all-MiniLM-L6-v2" for HF)
+    EMBEDDING_MODEL (default: "text-embedding-3-small" for OpenAI, "all-MiniLM-L6-v2" for HF)
     API_HOST (default: 0.0.0.0)
     API_PORT (default: 8000)
     VERBOSE (set to "1" to enable debug logging)
@@ -28,8 +27,6 @@ from __future__ import annotations
 import os
 import sys
 import json
-import subprocess
-import logging
 import logging
 from typing import List, Dict, Any, Optional
 from pathlib import Path
@@ -49,9 +46,9 @@ except ImportError:
     pass
 
 try:
-    from pinecone import Pinecone
+    from qdrant_client import QdrantClient
 except ImportError:
-    Pinecone = None
+    QdrantClient = None
 
 # Import RAG extraction utilities
 try:
@@ -74,6 +71,7 @@ except ImportError as e:
     logger = logging.getLogger(__name__)
     logger.warning(f"Could not import structured_pipeline: {e}")
     generate_dashboard_from_payload = None
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 #  Configuration & Logging
@@ -118,7 +116,7 @@ API_PORT = int(os.environ.get("API_PORT", "8000"))
 # Data directory - go up 2 levels from src/backend/ to reach data/
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
-logger.info(f"PINECONE_INDEX_NAME: {os.environ.get('PINECONE_INDEX_NAME', 'bigdata-assignment-04')}")
+logger.info(f"QDRANT_URL: {QDRANT_URL}")
 logger.info(f"EMBEDDING_PROVIDER: {EMBEDDING_PROVIDER or 'auto-detect'}")
 logger.info(f"DATA_DIR: {DATA_DIR}")
 logger.info(f"Seed file path: {DATA_DIR / 'forbes_ai50_seed.json'}")
@@ -129,7 +127,7 @@ logger.info(f"Seed file exists: {(DATA_DIR / 'forbes_ai50_seed.json').exists()}"
 # ─────────────────────────────────────────────────────────────────────────────
 #  Embedding Functions
 # ─────────────────────────────────────────────────────────────────────────────
-def embed_query_openai(query: str, model: str = "text-embedding-3-large") -> List[float]:
+def embed_query_openai(query: str, model: str = "text-embedding-3-small") -> List[float]:
     """Embed a query using OpenAI API."""
     from openai import OpenAI
 
@@ -188,7 +186,7 @@ class SearchRequest(BaseModel):
     query: str = Field(..., min_length=1, description="Search query")
     collection_name: str = Field(
         default="rag_chunks",
-        description="Pinecone index name (deprecated, uses PINECONE_INDEX_NAME env var)"
+        description="Qdrant collection to search"
     )
     top_k: int = Field(
         default=5,
@@ -267,7 +265,7 @@ class DashboardRAGResponse(BaseModel):
     company_name: str
     company_slug: str
     markdown: str = Field(description="Dashboard markdown content")
-    context_results: List[ChunkResult] = Field(default_factory=list, description="Top-k context chunks retrieved from Pinecone")
+    context_results: List[ChunkResult] = Field(default_factory=list, description="Top-k context chunks retrieved from Qdrant")
     status: str = "success"
     message: Optional[str] = None
 
@@ -280,71 +278,6 @@ class DashboardStructuredResponse(BaseModel):
     markdown: str = Field(description="Dashboard markdown content")
     status: str = "success"
     message: Optional[str] = None
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  Pinecone Search Functions
-# ─────────────────────────────────────────────────────────────────────────────
-def search_pinecone(
-    query_embedding: List[float],
-    index_name: str = "bigdata-assignment-04",
-    top_k: int = 5,
-    threshold: Optional[float] = None,
-) -> List[Dict[str, Any]]:
-    """
-    Search Pinecone index for similar vectors.
-    
-    Args:
-        query_embedding: Query vector
-        index_name: Pinecone index name
-        top_k: Number of results to return
-        threshold: Similarity threshold (0-1)
-    
-    Returns:
-        List of results with id, score, and metadata
-    """
-    if Pinecone is None:
-        raise RuntimeError("pinecone-client not installed")
-
-    api_key = os.environ.get("PINECONE_API_KEY")
-    if not api_key:
-        raise RuntimeError("PINECONE_API_KEY not set")
-    
-    pc = Pinecone(api_key=api_key)
-    index = pc.Index(index_name)
-    
-    namespace = os.environ.get("PINECONE_NAMESPACE", "default")
-    
-    logger.debug(f"Searching Pinecone index '{index_name}' (namespace '{namespace}') with top_k={top_k}")
-    
-    try:
-        search_result = index.query(
-            vector=query_embedding,
-            top_k=top_k,
-            namespace=namespace,
-            include_metadata=True
-        )
-        
-        results = []
-        for match in search_result.get("matches", []):
-            score = match.get("score", 0)
-            # Apply threshold if specified
-            if threshold is None or score >= threshold:
-                results.append({
-                    "id": match.get("id", ""),
-                    "score": score,
-                    "payload": match.get("metadata", {}),
-                })
-        
-        logger.debug(f"Found {len(results)} results (threshold: {threshold})")
-        return results
-        
-    except Exception as e:
-        logger.error(f"Pinecone search failed: {e}")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Pinecone search failed: {str(e)}"
-        )
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -412,7 +345,7 @@ async def lifespan(app: FastAPI):
     # Startup
     global embed_fn, provider_name, model_name
     
-    logger.info("Starting RAG Search API with Pinecone...")
+    logger.info("Starting RAG Search API...")
     
     try:
         # Determine provider preference
@@ -429,18 +362,14 @@ async def lifespan(app: FastAPI):
         
         logger.info(f"Using embedding provider: {provider_name} ({model_name})")
         
-        # Test Pinecone connection
-        if Pinecone is not None:
+        # Test Qdrant connection
+        if QdrantClient is not None:
+            client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY or None)
             try:
-                api_key = os.environ.get("PINECONE_API_KEY")
-                if api_key:
-                    pc = Pinecone(api_key=api_key)
-                    index_name = os.environ.get("PINECONE_INDEX_NAME", "bigdata-assignment-04")
-                    index = pc.Index(index_name)
-                    stats = index.describe_index_stats()
-                    logger.info(f"Connected to Pinecone index '{index_name}': {stats.total_vector_count} vectors")
+                info = client.get_collection("rag_chunks")
+                logger.info(f"Connected to Qdrant collection 'rag_chunks': {info.points_count} points")
             except Exception as e:
-                logger.warning(f"Could not verify Pinecone connection: {e}")
+                logger.warning(f"Could not verify Qdrant collection: {e}")
     except Exception as e:
         logger.error(f"Startup failed: {e}")
         raise
@@ -456,7 +385,7 @@ async def lifespan(app: FastAPI):
 # ─────────────────────────────────────────────────────────────────────────────
 app = FastAPI(
     title="RAG Search API",
-    description="Vector similarity search against Pinecone vector database",
+    description="Vector similarity search against Qdrant database",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -470,35 +399,31 @@ model_name = None
 @app.get("/health", response_model=HealthResponse)
 async def health_check():
     """Health check endpoint."""
-    pinecone_connected = False
+    qdrant_connected = False
     
-    if Pinecone is not None:
+    if QdrantClient is not None:
         try:
-            api_key = os.environ.get("PINECONE_API_KEY")
-            if api_key:
-                pc = Pinecone(api_key=api_key)
-                index_name = os.environ.get("PINECONE_INDEX_NAME", "bigdata-assignment-04")
-                index = pc.Index(index_name)
-                stats = index.describe_index_stats()
-                pinecone_connected = True
+            client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY or None)
+            client.get_collection("qdrant")  # Try to get collections
+            qdrant_connected = True
         except Exception:
-            pinecone_connected = False
+            qdrant_connected = False
     
     return HealthResponse(
-        status="ok" if pinecone_connected else "degraded",
-        qdrant_url=os.environ.get("PINECONE_INDEX_NAME", "bigdata-assignment-04"),
-        qdrant_connected=pinecone_connected,
+        status="ok",
+        qdrant_url=QDRANT_URL,
+        qdrant_connected=qdrant_connected,
     )
 
 
 @app.post("/rag/search", response_model=SearchResponse)
 async def rag_search(request: SearchRequest) -> SearchResponse:
     """
-    Search the RAG vector database for similar chunks using Pinecone.
+    Search the RAG vector database for similar chunks.
     
     This endpoint:
     1. Embeds the query using the configured embedding provider
-    2. Searches Pinecone for similar vectors
+    2. Searches Qdrant for similar vectors
     3. Returns top-k chunks with metadata
     
     Query examples:
@@ -522,7 +447,7 @@ async def rag_search(request: SearchRequest) -> SearchResponse:
             detail="Embedding provider not initialized"
         )
     
-    logger.info(f"Search request: query='{request.query}', top_k={request.top_k}")
+    logger.info(f"Search request: query='{request.query}', collection='{request.collection_name}', top_k={request.top_k}")
     
     try:
         # Embed the query
@@ -530,12 +455,11 @@ async def rag_search(request: SearchRequest) -> SearchResponse:
         query_embedding = embed_fn(request.query)
         logger.debug(f"Query embedded: {len(query_embedding)} dimensions")
         
-        # Search Pinecone
-        logger.debug("Searching Pinecone...")
-        index_name = os.environ.get("PINECONE_INDEX_NAME", "bigdata-assignment-04")
-        results = search_pinecone(
+        # Search Qdrant
+        logger.debug("Searching Qdrant...")
+        results = search_qdrant(
             query_embedding=query_embedding,
-            index_name=index_name,
+            collection_name=request.collection_name,
             top_k=request.top_k,
             threshold=request.threshold,
         )
@@ -551,7 +475,7 @@ async def rag_search(request: SearchRequest) -> SearchResponse:
             
             chunk_results.append(
                 ChunkResult(
-                    id=chunk_results.__len__(),
+                    id=result["id"],
                     similarity_score=result["score"],
                     text=text_preview,
                     metadata=payload,
@@ -562,7 +486,7 @@ async def rag_search(request: SearchRequest) -> SearchResponse:
         
         return SearchResponse(
             query=request.query,
-            collection_name=index_name,
+            collection_name=request.collection_name,
             results=chunk_results,
             total_results=len(chunk_results),
             provider=provider_name,
@@ -684,15 +608,11 @@ async def generate_structured_dashboard(
     """
     Generate investor-facing dashboard from structured payload JSON.
     
-    Workflow:
+    This endpoint:
     1. Converts company name to slug format
-    2. Checks if structured payload exists at data/payloads/<slug>.json
-    3. If payload missing:
-       - Runs: python src/rag/ingest_to_pinecone.py --company-slug {slug}
-       - Runs: python src/rag/structured_extraction_search.py --company-slug {slug}
-       - Verifies payload was created
-    4. Generates dashboard from payload
-    5. Returns formatted markdown dashboard
+    2. Loads structured payload from data/payloads/<slug>.json
+    3. Calls LLM with dashboard system prompt
+    4. Returns formatted markdown dashboard
     
     Args:
         company_name: Display name of the company (e.g., 'World Labs')
@@ -701,9 +621,7 @@ async def generate_structured_dashboard(
         DashboardStructuredResponse with markdown dashboard
     
     Raises:
-        HTTPException: 
-            - 404: Payload not found or raw data missing
-            - 500: Generation or extraction fails
+        HTTPException: If payload not found or generation fails
     
     Example:
         POST /dashboard/structured?company_name=World%20Labs
@@ -712,11 +630,11 @@ async def generate_structured_dashboard(
         {
             "company_name": "World Labs",
             "company_slug": "world-labs",
-            "markdown": "# World Labs - Investor Diligence Dashboard\n...",
+            "markdown": "# World Labs - Investor Diligence Dashboard\n\n## Company Overview\n...",
             "status": "success"
         }
     """
-    logger.info(f"Structured dashboard request for: {company_name}")
+    logger.info(f"Structured dashboard request for company: {company_name}")
     
     if generate_dashboard_from_payload is None:
         logger.error("structured_pipeline module not available")
@@ -727,121 +645,8 @@ async def generate_structured_dashboard(
     
     # Convert company name to slug format
     company_slug = company_name.lower().replace(" ", "-").replace("_", "-")
-    payload_path = Path(f"data/payloads/{company_slug}.json")
-    raw_data_path = Path(f"data/raw/{company_slug}")
     
     try:
-        # Check if payload already exists
-        if payload_path.exists():
-            logger.info(f"✓ Payload already exists for {company_name}")
-        else:
-            logger.info(f"Payload missing for {company_name}, checking for raw data...")
-            
-            # Check if raw data exists
-            if not raw_data_path.exists():
-                logger.error(f"Raw data not found for {company_name}")
-                raise HTTPException(
-                    status_code=404,
-                    detail=(
-                        f"No structured payload and no raw data found for '{company_name}'. "
-                        f"Please run the discovery pipeline first: "
-                        f"`python src/discover/process_discovered_pages.py`"
-                    )
-                )
-            
-            logger.info(f"Raw data found, starting extraction pipeline...")
-            
-            # STEP 1: Run ingestion script
-            logger.info(f"STEP 1: Ingesting to Pinecone for {company_slug}...")
-            ingest_cmd = [
-                sys.executable,
-                "src/rag/ingest_to_pinecone.py",
-                "--company-slug", company_slug.replace("-", "_")
-            ]
-            
-            try:
-                result = subprocess.run(
-                    ingest_cmd,
-                    capture_output=True,
-                    text=True,
-                    timeout=300  # 5 minute timeout
-                )
-                
-                if result.returncode != 0:
-                    logger.error(f"Ingestion failed: {result.stderr}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Ingestion to Pinecone failed: {result.stderr[-500:]}"
-                    )
-                
-                logger.info(f"✓ Ingestion completed successfully")
-            
-            except subprocess.TimeoutExpired:
-                logger.error(f"Ingestion timeout for {company_slug}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Ingestion timeout (exceeded 5 minutes)"
-                )
-            
-            except Exception as e:
-                logger.error(f"Ingestion error: {str(e)}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Ingestion failed: {str(e)}"
-                )
-            
-            # STEP 2: Run extraction script
-            logger.info(f"STEP 2: Extracting structured data for {company_slug}...")
-            extraction_cmd = [
-                sys.executable,
-                "src/rag/structured_extraction_search.py",
-                "--company-slug", company_slug.replace("-", "_")
-            ]
-            
-            try:
-                result = subprocess.run(
-                    extraction_cmd,
-                    capture_output=True,
-                    text=True,
-                    timeout=600  # 10 minute timeout
-                )
-                
-                if result.returncode != 0:
-                    logger.error(f"Extraction failed: {result.stderr}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Structured extraction failed: {result.stderr[-500:]}"
-                    )
-                
-                logger.info(f"✓ Extraction completed successfully")
-            
-            except subprocess.TimeoutExpired:
-                logger.error(f"Extraction timeout for {company_slug}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Extraction timeout (exceeded 10 minutes)"
-                )
-            
-            except Exception as e:
-                logger.error(f"Extraction error: {str(e)}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Extraction failed: {str(e)}"
-                )
-            
-            # Verify payload was created
-            if not payload_path.exists():
-                logger.error(f"Extraction completed but payload not found at {payload_path}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Extraction completed but payload file was not created"
-                )
-            
-            logger.info(f"✓ Payload successfully created at {payload_path}")
-        
-        # STEP 3: Generate dashboard from payload
-        logger.info(f"STEP 3: Generating dashboard for {company_name}...")
-        
         # Initialize LLM client
         llm_client = None
         try:
@@ -852,7 +657,9 @@ async def generate_structured_dashboard(
         except Exception as e:
             logger.warning(f"Could not initialize LLM client: {e}")
         
-        # Generate dashboard from payload
+        logger.info(f"Generating structured dashboard for {company_name} (slug: {company_slug})")
+        
+        # Generate dashboard from payload with deterministic temperature
         dashboard_markdown = generate_dashboard_from_payload(
             company_name=company_name,
             company_slug=company_slug,
@@ -861,22 +668,25 @@ async def generate_structured_dashboard(
             temperature=0.1  # Low temperature for deterministic output
         )
         
-        logger.info(f"✓ Successfully generated dashboard for {company_name}")
+        logger.info(f"Successfully generated structured dashboard for {company_name}")
         
         return DashboardStructuredResponse(
             company_name=company_name,
             company_slug=company_slug,
             markdown=dashboard_markdown,
             status="success",
-            message=f"Dashboard generated for {company_name}"
+            message=f"Structured dashboard generated successfully for {company_name}"
         )
         
-    except HTTPException:
-        # Re-raise HTTP exceptions as-is
-        raise
-    
+    except FileNotFoundError as e:
+        logger.warning(f"Payload file not found for {company_name}: {e}")
+        raise HTTPException(
+            status_code=404,
+            detail=f"No structured payload found for company '{company_name}'. "
+                   f"Please run the structured extraction pipeline first."
+        )
     except Exception as e:
-        logger.error(f"Dashboard generation failed: {e}", exc_info=True)
+        logger.error(f"Structured dashboard generation failed: {e}", exc_info=True)
         raise HTTPException(
             status_code=500,
             detail=f"Dashboard generation failed: {str(e)}"
@@ -892,11 +702,11 @@ async def generate_rag_dashboard(
     )
 ) -> DashboardRAGResponse:
     """
-    Generate investor-facing dashboard using Pinecone RAG retrieval and LLM generation.
+    Generate investor-facing dashboard using RAG retrieval and LLM generation.
     
     This endpoint:
     1. Converts company name to slug format
-    2. Retrieves top-k context from Pinecone index
+    2. Retrieves top-k context from Qdrant collection
     3. Calls LLM with dashboard system prompt
     4. Returns formatted markdown with 8 required sections
     
@@ -907,7 +717,7 @@ async def generate_rag_dashboard(
         DashboardRAGResponse with markdown dashboard
     
     Raises:
-        HTTPException: If index not found or generation fails
+        HTTPException: If collection not found or generation fails
     
     Example:
         POST /dashboard/rag?company_name=World%20Labs
@@ -933,16 +743,11 @@ async def generate_rag_dashboard(
     company_slug = company_name.lower().replace(" ", "-").replace("_", "-")
     
     try:
-        # Initialize Pinecone
-        if Pinecone is None:
-            raise RuntimeError("pinecone-client not installed")
+        # Initialize Qdrant client
+        if QdrantClient is None:
+            raise RuntimeError("qdrant-client not installed")
         
-        api_key = os.environ.get("PINECONE_API_KEY")
-        if not api_key:
-            raise RuntimeError("PINECONE_API_KEY not set")
-        
-        pc = Pinecone(api_key=api_key)
-        index_name = os.environ.get("PINECONE_INDEX_NAME", "bigdata-assignment-04")
+        client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY or None, check_compatibility=False)
         
         # Initialize LLM client
         llm_client = None
@@ -954,13 +759,13 @@ async def generate_rag_dashboard(
         except Exception as e:
             logger.warning(f"Could not initialize LLM client: {e}")
         
-        logger.info(f"Generating dashboard for {company_name} (slug: {company_slug}) using Pinecone")
+        logger.info(f"Generating dashboard for {company_name} (slug: {company_slug})")
         
-        # Generate dashboard and retrieve context using Pinecone
+        # Generate dashboard and retrieve context
         dashboard_markdown, search_results = generate_dashboard_with_retrieval(
             company_name=company_name,
             company_slug=company_slug,
-            pinecone_index=pc.Index(index_name),
+            qdrant_client=client,
             llm_client=llm_client,
             llm_model="gpt-4o",
             top_k=10,
@@ -1003,9 +808,8 @@ async def generate_rag_dashboard(
 if __name__ == "__main__":
     import uvicorn
     
-    index_name = os.environ.get("PINECONE_INDEX_NAME", "bigdata-assignment-04")
     logger.info(f"Starting RAG Search API on {API_HOST}:{API_PORT}")
-    logger.info(f"Pinecone Index: {index_name}")
+    logger.info(f"Qdrant URL: {QDRANT_URL}")
     logger.info(f"API docs: http://{API_HOST}:{API_PORT}/docs")
     
     uvicorn.run(

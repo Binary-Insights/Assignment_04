@@ -12,7 +12,7 @@
   {
     "company_name": "Abridge",
     "website": "https://www.abridge.com/",
-    "linkedin": "https://www.linkedin.com/company/abridge",
+    "linkedin": "https://www.linkedin.com/company/abridgehq/",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
@@ -22,7 +22,7 @@
   {
     "company_name": "Anthropic",
     "website": "https://www.anthropic.com/",
-    "linkedin": "https://www.linkedin.com/company/anthropic",
+    "linkedin": "https://www.linkedin.com/company/anthropicresearch/",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
@@ -32,7 +32,7 @@
   {
     "company_name": "Anysphere",
     "website": "https://anysphere.inc/",
-    "linkedin": "https://www.linkedin.com/company/anysphere",
+    "linkedin": "https://www.linkedin.com/company/anysphereinc/",
     "hq_city": "San Francisco",
     "hq_country": "United States",
     "category": null,
@@ -51,8 +51,8 @@
   },
   {
     "company_name": "Captions",
-    "website": "https://clearcaptions.com/facebook/",
-    "linkedin": "https://www.linkedin.com/company/captions",
+    "website": "https://mirage.app/captions",
+    "linkedin": "https://www.linkedin.com/products/trymirage-captions/",
     "hq_city": "New York",
     "hq_country": "United States",
     "category": null,
@@ -62,7 +62,7 @@
   {
     "company_name": "Clay",
     "website": "https://www.clay.com/",
-    "linkedin": "https://www.linkedin.com/company/clay",
+    "linkedin": "https://www.linkedin.com/company/grow-with-clay/",
     "hq_city": "New York",
     "hq_country": "United States",
     "category": null,
@@ -71,8 +71,8 @@
   },
   {
     "company_name": "Coactive AI",
-    "website": "",
-    "linkedin": "https://www.linkedin.com/company/coactive-ai",
+    "website": "http://coactive.ai/",
+    "linkedin": "https://www.linkedin.com/company/coactiveai/",
     "hq_city": "San Jose",
     "hq_country": "United States",
     "category": null,
@@ -82,7 +82,7 @@
   {
     "company_name": "Cohere",
     "website": "https://cohere.com/",
-    "linkedin": "https://www.linkedin.com/company/cohere",
+    "linkedin": "https://www.linkedin.com/company/cohere-ai/",
     "hq_city": "Toronto",
     "hq_country": "Canada",
     "category": null,
@@ -91,7 +91,7 @@
   },
   {
     "company_name": "Crusoe",
-    "website": "https://crusoe.com/",
+    "website": "https://crusoe.ai/",
     "linkedin": "https://www.linkedin.com/company/crusoe",
     "hq_city": "San Francisco",
     "hq_country": "United States",

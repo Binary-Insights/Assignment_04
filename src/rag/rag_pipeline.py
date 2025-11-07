@@ -196,19 +196,19 @@ For full dashboard generation, ensure OPENAI_API_KEY is set and the LLM is avail
 def generate_dashboard_with_retrieval(
     company_name: str,
     company_slug: str,
-    qdrant_client: Any,
+    pinecone_index: Any,
     llm_client: Any = None,
     llm_model: str = "gpt-4o",
     top_k: int = 10,
     temperature: float = 0.1
 ) -> tuple[str, List[Dict[str, Any]]]:
     """
-    Complete pipeline: retrieve context from Qdrant and generate dashboard.
+    Complete pipeline: retrieve context from Pinecone and generate dashboard.
     
     Args:
         company_name: Display name of the company
         company_slug: Slug format for collection name (e.g., "world-labs")
-        qdrant_client: Qdrant client instance
+        pinecone_index: Pinecone index instance (from pc.Index(index_name))
         llm_client: OpenAI client (optional)
         llm_model: LLM model to use
         top_k: Number of top results to retrieve
@@ -221,10 +221,9 @@ def generate_dashboard_with_retrieval(
     
     logger.info(f"Generating dashboard with retrieval for {company_name}")
     
-    # Build collection name - use underscores, not hyphens
-    # Convert company_slug to use underscores for Qdrant collection naming
-    collection_slug = company_slug.replace("-", "_")
-    collection_name = f"company_{collection_slug}"
+    # Build namespace - use underscores, not hyphens
+    # Convert company_slug to use underscores for Pinecone namespace
+    namespace = company_slug.replace("-", "_")
     
     # Create search query
     search_query = (
@@ -233,8 +232,8 @@ def generate_dashboard_with_retrieval(
     )
     
     try:
-        # Retrieve context from Qdrant using OpenAI embeddings
-        logger.debug(f"Searching collection '{collection_name}' for context")
+        # Retrieve context from Pinecone using OpenAI embeddings
+        logger.debug(f"Searching Pinecone namespace '{namespace}' for context")
         
         # Initialize OpenAI client for embeddings
         try:
@@ -246,10 +245,10 @@ def generate_dashboard_with_retrieval(
             
             embed_client = OpenAI(api_key=api_key)
             
-            # Get embedding for search query
-            logger.debug("Creating query embedding with OpenAI")
+            # Get embedding for search query (use text-embedding-3-large for consistency)
+            logger.debug("Creating query embedding with OpenAI (text-embedding-3-large)")
             embedding_response = embed_client.embeddings.create(
-                model="text-embedding-3-small",
+                model="text-embedding-3-large",
                 input=search_query
             )
             query_embedding = embedding_response.data[0].embedding
@@ -258,27 +257,31 @@ def generate_dashboard_with_retrieval(
             logger.error(f"Failed to create OpenAI embedding: {e}")
             return f"# Error Generating Dashboard for {company_name}\n\nFailed to generate embeddings: {str(e)}", []
         
-        # Search Qdrant with the embedding
-        search_result = qdrant_client.search(
-            collection_name=collection_name,
-            query_vector=query_embedding,
-            limit=top_k,
+        # Search Pinecone with the embedding
+        namespace_val = os.environ.get("PINECONE_NAMESPACE", "default")
+        logger.debug(f"Querying Pinecone with namespace: {namespace_val}")
+        
+        search_result = pinecone_index.query(
+            vector=query_embedding,
+            top_k=top_k,
+            namespace=namespace_val,
+            include_metadata=True
         )
         
-        logger.info(f"DEBUG: Qdrant search returned {len(search_result) if search_result else 0} points")
+        logger.info(f"DEBUG: Pinecone search returned {len(search_result.get('matches', []))} matches")
         
         # Convert results to expected format
         search_results = []
-        for point in search_result:
-            payload = point.payload or {}
-            logger.debug(f"DEBUG: Point {point.id} - score: {point.score}, has text: {'text' in payload}")
+        for match in search_result.get("matches", []):
+            metadata = match.get("metadata", {})
+            logger.debug(f"DEBUG: Match {match['id']} - score: {match['score']}, has text: {'text' in metadata}")
             search_results.append({
-                "text": payload.get("text", ""),
-                "similarity_score": point.score,
-                "metadata": {k: v for k, v in payload.items() if k != "text"}
+                "text": metadata.get("text", ""),
+                "similarity_score": match.get("score", 0),
+                "metadata": {k: v for k, v in metadata.items() if k != "text"}
             })
         
-        logger.info(f"Retrieved {len(search_results)} results from Qdrant")
+        logger.info(f"Retrieved {len(search_results)} results from Pinecone")
         
         # Generate dashboard
         dashboard = generate_dashboard_markdown(

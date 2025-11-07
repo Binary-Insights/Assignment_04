@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""RAG-based Structured Extraction: Extract and normalize company data from web scrapes using LLM.
+"""RAG-based Structured Extraction: Extract and normalize company data using semantic search.
 
 This script:
 1. Reads text extracted from company web pages (data/raw/{company_slug}/{page_type}/text.txt)
 2. Queries Pinecone vector database to retrieve relevant context
 3. Uses instructor + OpenAI to extract structured data into Pydantic models
 4. Normalizes messy text data into clean, structured format
-5. Saves results as data/structured/{company_id}.json
+5. Saves results as data/payloads/{company_slug}/{company_id}.json
 
 The extraction follows the schema defined in rag_models.py:
 - Company (legal_name, website, headquarters, founding date, funding, etc.)
@@ -16,9 +16,12 @@ The extraction follows the schema defined in rag_models.py:
 - Leadership (founders, executives, roles, etc.)
 - Visibility (news mentions, GitHub stars, ratings, etc.)
 
+NOTE: This script expects Pinecone to be already indexed. Run ingest_to_pinecone.py first.
+
 Usage:
-  python src/rag/structured_extraction.py
+  python src/rag/structured_extraction.py --company-slug world_labs
   python src/rag/structured_extraction.py --company-slug world_labs --verbose
+  python src/rag/structured_extraction.py --all
 """
 
 import json
@@ -28,14 +31,12 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, List, Dict, Any
-from uuid import uuid4
 
 import instructor
 from openai import OpenAI
 from pydantic import BaseModel, ValidationError, Field
 from dotenv import load_dotenv
 from pinecone import Pinecone
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 
 # Import Pydantic models
@@ -50,18 +51,21 @@ load_dotenv()
 
 # Global configuration
 FALLBACK_STRATEGY = 'pinecone_first'  # Can be: 'pinecone_only', 'raw_only', 'pinecone_first'
-USE_RAW_TEXT = True  # Set to True to skip Pinecone and use raw text directly
+USE_RAW_TEXT = False  # Set to True to skip Pinecone and use raw text directly
+PINECONE_SEARCH_LIMIT = 10  # Increased from 5 to get more results per query
+PINECONE_MIN_SIMILARITY = 0.0  # Minimum similarity score (0.0 = accept all results)
 
-def setup_logging():
-    """Setup logging for structured_extraction script."""
+
+def setup_logging(script_name: str = 'structured_extraction'):
+    """Setup logging for extraction script."""
     log_dir = "data/logs"
     Path(log_dir).mkdir(parents=True, exist_ok=True)
     
-    logger = logging.getLogger('structured_extraction')
+    logger = logging.getLogger(script_name)
     logger.setLevel(logging.INFO)
     logger.handlers.clear()
     
-    file_handler = logging.FileHandler(f"{log_dir}/structured_extraction.log")
+    file_handler = logging.FileHandler(f"{log_dir}/{script_name}.log")
     file_handler.setLevel(logging.INFO)
     
     console_handler = logging.StreamHandler()
@@ -163,109 +167,14 @@ def get_embeddings_model():
     
     try:
         embeddings = OpenAIEmbeddings(
-            model="text-embedding-3-small",
+            model="text-embedding-3-large",
             api_key=api_key
         )
-        logger.debug("Initialized OpenAI embeddings model")
+        logger.debug("Initialized OpenAI embeddings model (text-embedding-3-large, dimension: 3072)")
         return embeddings
     except Exception as e:
         logger.error(f"Failed to initialize embeddings: {e}")
         raise
-
-
-def index_company_pages_to_pinecone(
-    company_slug: str, 
-    pages_text: Dict[str, str],
-    pinecone_index,
-    embeddings: Optional[OpenAIEmbeddings]
-) -> Optional[str]:
-    """Index company pages to Pinecone vector database."""
-    logger = logging.getLogger('structured_extraction')
-    
-    if not pinecone_index or not embeddings:
-        logger.debug("Pinecone index or embeddings not available, skipping indexing")
-        return None
-    
-    try:
-        namespace = os.getenv('PINECONE_NAMESPACE', 'default')
-        logger.info(f"Using Pinecone namespace: '{namespace}'")
-        
-        # Split and embed text from all pages using same chunking strategy
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=500,
-            chunk_overlap=100,
-        )
-        
-        vectors_to_upsert = []
-        chunks_per_source = {}  # Track chunks per source file
-        
-        logger.info(f"\nIndexing source files for {company_slug}:")
-        logger.info(f"{'─' * 60}")
-        
-        for page_type, text in pages_text.items():
-            if not text:
-                continue
-            
-            # Log source file information
-            source_file = f"data/raw/{company_slug}/{page_type}/text.txt"
-            logger.info(f"  📄 Source: {source_file}")
-            logger.info(f"     Content size: {len(text)} characters")
-            
-            # Split text into chunks
-            chunks = text_splitter.split_text(text)
-            chunks_per_source[page_type] = len(chunks)
-            logger.info(f"     Chunks created: {len(chunks)} (500 chars, 100 char overlap)")
-            
-            for chunk_idx, chunk in enumerate(chunks, 1):
-                try:
-                    # Generate embedding
-                    embedding = embeddings.embed_query(chunk)
-                    
-                    # Create unique ID for the vector
-                    vector_id = f"{company_slug}_{page_type}_{chunk_idx}_{str(uuid4())[:8]}"
-                    
-                    # Create vector tuple (id, embedding, metadata)
-                    vector = (
-                        vector_id,
-                        embedding,
-                        {
-                            "text": chunk,
-                            "page_type": page_type,
-                            "company_slug": company_slug,
-                            "source_file": source_file,
-                            "chunk_index": chunk_idx,
-                            "indexed_at": datetime.now().isoformat()
-                        }
-                    )
-                    vectors_to_upsert.append(vector)
-                except Exception as e:
-                    logger.warning(f"Failed to embed chunk {chunk_idx} from {page_type}: {e}")
-                    continue
-            
-            logger.info(f"     ✓ Processed {page_type}\n")
-        
-        if vectors_to_upsert:
-            # Upsert vectors to Pinecone
-            logger.info(f"Upserting {len(vectors_to_upsert)} vectors to Pinecone...")
-            upsert_response = pinecone_index.upsert(
-                vectors=vectors_to_upsert,
-                namespace=namespace
-            )
-            logger.info(f"✅ Upserted {len(vectors_to_upsert)} vectors")
-            
-            # Summary logging
-            logger.info(f"{'─' * 60}")
-            logger.info(f"✓ Indexed {len(vectors_to_upsert)} total chunks to Pinecone (namespace: '{namespace}')")
-            logger.info(f"\nBreakdown by source:")
-            for source, count in sorted(chunks_per_source.items()):
-                logger.info(f"  • {source:15} → {count:3} chunks")
-            logger.info(f"{'─' * 60}\n")
-        
-        return namespace
-        
-    except Exception as e:
-        logger.warning(f"Error indexing to Pinecone: {e}")
-        return None
 
 
 def search_pinecone_for_context(
@@ -273,9 +182,10 @@ def search_pinecone_for_context(
     company_slug: str,
     pinecone_index,
     embeddings: Optional[OpenAIEmbeddings],
-    limit: int = 5
+    limit: int = 10,
+    min_similarity: float = 0.0
 ) -> List[Dict[str, Any]]:
-    """Search Pinecone for relevant context using semantic search."""
+    """Search Pinecone for relevant context using semantic search with lenient matching."""
     logger = logging.getLogger('structured_extraction')
     
     if not pinecone_index or not embeddings:
@@ -288,33 +198,34 @@ def search_pinecone_for_context(
         # Generate embedding for query
         query_embedding = embeddings.embed_query(query)
         
-        # Search Pinecone with company-specific filter
-        logger.debug(f"🔍 Searching Pinecone (namespace '{namespace}'): '{query}' for company {company_slug}")
+        # Search Pinecone without company filter - rely on semantic relevance
+        # Note: We removed the company_slug filter because company_id (hyphenated) 
+        # doesn't match company_slug (underscored) in metadata
+        logger.debug(f"🔍 Searching Pinecone (namespace '{namespace}'): '{query}'")
         results = pinecone_index.query(
             vector=query_embedding,
             top_k=limit,
             namespace=namespace,
-            filter={
-                "company_slug": {"$eq": company_slug}
-            } if company_slug else None,
             include_metadata=True
         )
         
         # Extract context from results with full source tracking
         context_docs = []
         for idx, match in enumerate(results.matches, 1):
-            doc = {
-                "text": match.metadata.get("text", ""),
-                "page_type": match.metadata.get("page_type", ""),
-                "score": match.score,
-                "source_file": match.metadata.get("source_file", ""),
-                "chunk_index": match.metadata.get("chunk_index", ""),
-                "vector_id": match.id,
-            }
-            context_docs.append(doc)
-            logger.debug(f"  🎯 Rank {idx}: {doc['source_file']} (chunk {doc['chunk_index']}, similarity: {match.score:.3f})")
+            # Filter by minimum similarity
+            if match.score >= min_similarity:
+                doc = {
+                    "text": match.metadata.get("text", ""),
+                    "page_type": match.metadata.get("page_type", ""),
+                    "score": match.score,
+                    "source_file": match.metadata.get("source_file", ""),
+                    "chunk_index": match.metadata.get("chunk_index", ""),
+                    "vector_id": match.id,
+                }
+                context_docs.append(doc)
+                logger.debug(f"  🎯 Rank {idx}: {doc['source_file']} (chunk {doc['chunk_index']}, similarity: {match.score:.3f})")
         
-        logger.debug(f"✅ Pinecone search returned {len(context_docs)} documents")
+        logger.debug(f"✅ Pinecone search returned {len(context_docs)} documents (filtered by min_similarity >= {min_similarity})")
         return context_docs
         
     except Exception as e:
@@ -424,42 +335,6 @@ def load_all_company_pages(company_slug: str) -> Dict[str, str]:
     return pages_text
 
 
-def create_extraction_prompt(company_name: str, pages_text: Dict[str, str]) -> str:
-    """Create a comprehensive prompt for LLM-based extraction."""
-    
-    # Combine all page texts
-    combined_text = ""
-    for page_type, text in pages_text.items():
-        combined_text += f"\n\n## {page_type.upper()} PAGE:\n{text[:2000]}\n"
-    
-    prompt = f"""You are an expert data analyst extracting structured information about the company "{company_name}" from web pages.
-
-EXTRACTED WEB CONTENT:
-{combined_text}
-
-Extract and normalize the following information from the web content:
-
-1. **Company Information**: Legal name, brand name, website, headquarters location, founding year, categories
-2. **Financial Information**: Total funding raised, last valuation, last funding round details
-3. **Events**: Any funding rounds, M&A activities, product launches, partnerships, major hires, layoffs mentioned
-4. **Products**: Product names, descriptions, pricing models, integrations, GitHub repos
-5. **Leadership**: Founders and executives mentioned - name, role, start dates, backgrounds
-6. **Visibility**: News mentions, GitHub stars, ratings (if available)
-
-Guidelines:
-- Use ONLY information explicitly mentioned in the web content
-- For missing fields, leave them as null/empty - DO NOT infer or guess
-- Standardize date formats to YYYY-MM-DD
-- Extract company_id from website domain (e.g., world-labs from worldlabs.ai)
-- Extract all person IDs from names (e.g., john-doe from John Doe)
-- Include source URLs in provenance fields
-- Be conservative with data - if uncertain, leave blank
-
-Return structured data matching the Pydantic schemas."""
-    
-    return prompt
-
-
 def extract_company_info(
     client, 
     company_name: str, 
@@ -556,14 +431,24 @@ def extract_events(
     
     logger.info(f"Extracting events for {company_id}...")
     
-    # Build search queries for events
+    # Build search queries for events - using content from pages
     search_queries = [
-        f"funding rounds Series A B C seed investment capital raised",
-        f"M&A acquisition merger merger company",
-        f"product launch release announcement",
-        f"partnership partnership collaboration integration",
-        f"hiring jobs positions team expansion layoffs",
-        f"milestones achievements awards recognition",
+        f"{company_id} funding investment raised capital",
+        f"{company_id} announcement news update",
+        f"{company_id} partnership integration collaboration",
+        f"{company_id} product launch release",
+        f"{company_id} team hiring expansion",
+        f"Series funding round investment",
+    ]
+    
+    # Fallback queries if primary queries return no results
+    fallback_queries = [
+        "funding",
+        "investment",
+        "money",
+        "capital",
+        "announcement",
+        "partnership",
     ]
     
     # Determine search strategy
@@ -571,26 +456,49 @@ def extract_events(
     context_text = ""
     
     global USE_RAW_TEXT
+    global FALLBACK_STRATEGY
+    global PINECONE_SEARCH_LIMIT
+    global PINECONE_MIN_SIMILARITY
     
     if USE_RAW_TEXT:
         logger.info(f"⚙️  Using raw text mode for events")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Pinecone search with primary queries
+        logger.debug(f"Trying primary search queries for events...")
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=2)
+            docs = search_pinecone_for_context(
+                query, company_id, pinecone_index, embeddings, 
+                limit=PINECONE_SEARCH_LIMIT,
+                min_similarity=PINECONE_MIN_SIMILARITY
+            )
             context_docs.extend(docs)
         
+        # If no results, try fallback queries
+        if not context_docs:
+            logger.info(f"No results with primary queries, trying fallback queries...")
+            for query in fallback_queries:
+                docs = search_pinecone_for_context(
+                    query, company_id, pinecone_index, embeddings, 
+                    limit=PINECONE_SEARCH_LIMIT,
+                    min_similarity=PINECONE_MIN_SIMILARITY
+                )
+                context_docs.extend(docs)
+        
         if context_docs:
-            logger.info("📊 Using Pinecone context for events extraction")
+            logger.info(f"📊 Using {len(context_docs)} Pinecone results for events extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
-                for doc in context_docs[:15]  # Limit to top 15 results
+                for doc in context_docs[:20]  # Limit to top 20 results
             ])
         else:
-            logger.error("❌ No Pinecone results for events - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
-    
+            # No Pinecone results - check fallback strategy
+            if FALLBACK_STRATEGY == 'pinecone_only':
+                logger.error("❌ No Pinecone results for events - ABORTING (pinecone_only strategy)")
+                raise ValueError("No Pinecone context available for events")
+            else:
+                logger.warning(f"⚠️  No Pinecone results for events - Falling back to raw text ({FALLBACK_STRATEGY})")
+                context_text = json.dumps(pages_text, indent=2)[:3000]
     prompt = f"""Extract all significant events for company ID "{company_id}" from the web content:
 
 {context_text}
@@ -649,13 +557,24 @@ def extract_snapshots(
     
     logger.info(f"Extracting snapshots for {company_id}...")
     
-    # Search queries for snapshot data
+    # Search queries for snapshot data - using content from pages
     search_queries = [
-        f"headcount employees team size headcount growth hiring",
-        f"pricing tiers pricing model pricing plans subscription",
-        f"products features product offerings services",
-        f"geographic presence countries regions locations",
-        f"job openings hiring positions vacancies",
+        f"{company_id} team size headcount employees",
+        f"{company_id} pricing model plans features",
+        f"{company_id} products services offerings",
+        f"{company_id} hiring jobs positions openings",
+        f"{company_id} customers clients enterprise",
+        f"AI artificial intelligence technology platform",
+    ]
+    
+    # Fallback queries if primary queries return no results
+    fallback_queries = [
+        "team",
+        "headcount",
+        "employees",
+        "pricing",
+        "products",
+        "hiring",
     ]
     
     # Determine search strategy
@@ -663,25 +582,49 @@ def extract_snapshots(
     context_text = ""
     
     global USE_RAW_TEXT
+    global FALLBACK_STRATEGY
+    global PINECONE_SEARCH_LIMIT
+    global PINECONE_MIN_SIMILARITY
     
     if USE_RAW_TEXT:
         logger.info(f"⚙️  Using raw text mode for snapshots")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Pinecone search with primary queries
+        logger.debug(f"Trying primary search queries for snapshots...")
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_pinecone_for_context(
+                query, company_id, pinecone_index, embeddings,
+                limit=PINECONE_SEARCH_LIMIT,
+                min_similarity=PINECONE_MIN_SIMILARITY
+            )
             context_docs.extend(docs)
         
+        # If no results, try fallback queries
+        if not context_docs:
+            logger.info(f"No results with primary queries, trying fallback queries...")
+            for query in fallback_queries:
+                docs = search_pinecone_for_context(
+                    query, company_id, pinecone_index, embeddings,
+                    limit=PINECONE_SEARCH_LIMIT,
+                    min_similarity=PINECONE_MIN_SIMILARITY
+                )
+                context_docs.extend(docs)
+        
         if context_docs:
-            logger.info("📊 Using Pinecone context for snapshots extraction")
+            logger.info(f"📊 Using {len(context_docs)} Pinecone results for snapshots extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
-                for doc in context_docs[:15]
+                for doc in context_docs[:20]
             ])
         else:
-            logger.error("❌ No Pinecone results for snapshots - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            # No Pinecone results - check fallback strategy
+            if FALLBACK_STRATEGY == 'pinecone_only':
+                logger.error("❌ No Pinecone results for snapshots - ABORTING (pinecone_only strategy)")
+                raise ValueError("No Pinecone context available for snapshots")
+            else:
+                logger.warning(f"⚠️  No Pinecone results for snapshots - Falling back to raw text ({FALLBACK_STRATEGY})")
+                context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract business snapshot information for company ID "{company_id}" from web content:
 
@@ -734,13 +677,24 @@ def extract_products(
     
     logger.info(f"Extracting products for {company_id}...")
     
-    # Search queries for product data
+    # Search queries for product data - using content from pages
     search_queries = [
-        f"product name product description features",
-        f"pricing model pricing tiers pricing plans cost",
-        f"integrations partners integrations APIs",
-        f"GitHub repository source code open source",
-        f"customers clients reference accounts",
+        f"{company_id} product features description",
+        f"{company_id} pricing cost plans",
+        f"{company_id} integration API platform",
+        f"{company_id} use cases applications capabilities",
+        f"{company_id} technology innovation",
+        f"artificial intelligence computer vision pixel",
+    ]
+    
+    # Fallback queries if primary queries return no results
+    fallback_queries = [
+        "product",
+        "features",
+        "pricing",
+        "integration",
+        "capability",
+        "pixel",
     ]
     
     # Determine search strategy
@@ -748,25 +702,49 @@ def extract_products(
     context_text = ""
     
     global USE_RAW_TEXT
+    global FALLBACK_STRATEGY
+    global PINECONE_SEARCH_LIMIT
+    global PINECONE_MIN_SIMILARITY
     
     if USE_RAW_TEXT:
         logger.info(f"⚙️  Using raw text mode for products")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Pinecone search with primary queries
+        logger.debug(f"Trying primary search queries for products...")
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_pinecone_for_context(
+                query, company_id, pinecone_index, embeddings,
+                limit=PINECONE_SEARCH_LIMIT,
+                min_similarity=PINECONE_MIN_SIMILARITY
+            )
             context_docs.extend(docs)
         
+        # If no results, try fallback queries
+        if not context_docs:
+            logger.info(f"No results with primary queries, trying fallback queries...")
+            for query in fallback_queries:
+                docs = search_pinecone_for_context(
+                    query, company_id, pinecone_index, embeddings,
+                    limit=PINECONE_SEARCH_LIMIT,
+                    min_similarity=PINECONE_MIN_SIMILARITY
+                )
+                context_docs.extend(docs)
+        
         if context_docs:
-            logger.info("📊 Using Pinecone context for products extraction")
+            logger.info(f"📊 Using {len(context_docs)} Pinecone results for products extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
-                for doc in context_docs[:12]
+                for doc in context_docs[:20]
             ])
         else:
-            logger.error("❌ No Pinecone results for products - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            # No Pinecone results - check fallback strategy
+            if FALLBACK_STRATEGY == 'pinecone_only':
+                logger.error("❌ No Pinecone results for products - ABORTING (pinecone_only strategy)")
+                raise ValueError("No Pinecone context available for products")
+            else:
+                logger.warning(f"⚠️  No Pinecone results for products - Falling back to raw text ({FALLBACK_STRATEGY})")
+                context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract product information for company ID "{company_id}" from web content:
 
@@ -819,13 +797,24 @@ def extract_leadership(
     
     logger.info(f"Extracting leadership for {company_id}...")
     
-    # Search queries for leadership data
+    # Search queries for leadership data - using content from pages
     search_queries = [
-        f"founder co-founder CEO CTO CPO founder",
-        f"executive team leadership management",
-        f"CEO founder name role",
-        f"LinkedIn profile background education",
-        f"previous company employment history",
+        f"{company_id} founder CEO co-founder",
+        f"{company_id} team leadership executive",
+        f"{company_id} management leadership roles",
+        f"{company_id} LinkedIn profile education background",
+        f"{company_id} advisors investors board members",
+        f"founding team members leaders executives",
+    ]
+    
+    # Fallback queries if primary queries return no results
+    fallback_queries = [
+        "founder",
+        "CEO",
+        "executive",
+        "team",
+        "LinkedIn",
+        "leader",
     ]
     
     # Determine search strategy
@@ -833,25 +822,49 @@ def extract_leadership(
     context_text = ""
     
     global USE_RAW_TEXT
+    global FALLBACK_STRATEGY
+    global PINECONE_SEARCH_LIMIT
+    global PINECONE_MIN_SIMILARITY
     
     if USE_RAW_TEXT:
         logger.info(f"⚙️  Using raw text mode for leadership")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Pinecone search with primary queries
+        logger.debug(f"Trying primary search queries for leadership...")
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_pinecone_for_context(
+                query, company_id, pinecone_index, embeddings,
+                limit=PINECONE_SEARCH_LIMIT,
+                min_similarity=PINECONE_MIN_SIMILARITY
+            )
             context_docs.extend(docs)
         
+        # If no results, try fallback queries
+        if not context_docs:
+            logger.info(f"No results with primary queries, trying fallback queries...")
+            for query in fallback_queries:
+                docs = search_pinecone_for_context(
+                    query, company_id, pinecone_index, embeddings,
+                    limit=PINECONE_SEARCH_LIMIT,
+                    min_similarity=PINECONE_MIN_SIMILARITY
+                )
+                context_docs.extend(docs)
+        
         if context_docs:
-            logger.info("📊 Using Pinecone context for leadership extraction")
+            logger.info(f"� Using {len(context_docs)} Pinecone results for leadership extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
-                for doc in context_docs[:15]
+                for doc in context_docs[:20]
             ])
         else:
-            logger.error("❌ No Pinecone results for leadership - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            # No Pinecone results - check fallback strategy
+            if FALLBACK_STRATEGY == 'pinecone_only':
+                logger.error("❌ No Pinecone results for leadership - ABORTING (pinecone_only strategy)")
+                raise ValueError("No Pinecone context available for leadership")
+            else:
+                logger.warning(f"⚠️  No Pinecone results for leadership - Falling back to raw text ({FALLBACK_STRATEGY})")
+                context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract leadership and key team members for company ID "{company_id}" from web content:
 
@@ -905,13 +918,24 @@ def extract_visibility(
     
     logger.info(f"Extracting visibility for {company_id}...")
     
-    # Search queries for visibility data
+    # Search queries for visibility data - using content from pages
     search_queries = [
-        f"news mentions press coverage media articles",
-        f"GitHub stars repository rating metrics",
-        f"Glassdoor rating employee reviews",
-        f"awards recognition industry recognition",
-        f"social media followers engagement",
+        f"{company_id} news mentions press coverage",
+        f"{company_id} GitHub repository stars",
+        f"{company_id} awards recognition industry",
+        f"{company_id} media coverage publicity",
+        f"{company_id} social media followers engagement",
+        f"industry recognition metrics impact",
+    ]
+    
+    # Fallback queries if primary queries return no results
+    fallback_queries = [
+        "news",
+        "award",
+        "GitHub",
+        "rating",
+        "recognition",
+        "mention",
     ]
     
     # Determine search strategy
@@ -919,25 +943,49 @@ def extract_visibility(
     context_text = ""
     
     global USE_RAW_TEXT
+    global FALLBACK_STRATEGY
+    global PINECONE_SEARCH_LIMIT
+    global PINECONE_MIN_SIMILARITY
     
     if USE_RAW_TEXT:
         logger.info(f"⚙️  Using raw text mode for visibility")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Pinecone search with primary queries
+        logger.debug(f"Trying primary search queries for visibility...")
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_pinecone_for_context(
+                query, company_id, pinecone_index, embeddings,
+                limit=PINECONE_SEARCH_LIMIT,
+                min_similarity=PINECONE_MIN_SIMILARITY
+            )
             context_docs.extend(docs)
         
+        # If no results, try fallback queries
+        if not context_docs:
+            logger.info(f"No results with primary queries, trying fallback queries...")
+            for query in fallback_queries:
+                docs = search_pinecone_for_context(
+                    query, company_id, pinecone_index, embeddings,
+                    limit=PINECONE_SEARCH_LIMIT,
+                    min_similarity=PINECONE_MIN_SIMILARITY
+                )
+                context_docs.extend(docs)
+        
         if context_docs:
-            logger.info("📊 Using Pinecone context for visibility extraction")
+            logger.info(f"📊 Using {len(context_docs)} Pinecone results for visibility extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
-                for doc in context_docs[:10]
+                for doc in context_docs[:20]
             ])
         else:
-            logger.error("❌ No Pinecone results for visibility - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            # No Pinecone results - check fallback strategy
+            if FALLBACK_STRATEGY == 'pinecone_only':
+                logger.error("❌ No Pinecone results for visibility - ABORTING (pinecone_only strategy)")
+                raise ValueError("No Pinecone context available for visibility")
+            else:
+                logger.warning(f"⚠️  No Pinecone results for visibility - Falling back to raw text ({FALLBACK_STRATEGY})")
+                context_text = json.dumps(pages_text, indent=2)[:3000]
     
     prompt = f"""Extract visibility and public metrics for company ID "{company_id}" from web content:
 
@@ -973,12 +1021,12 @@ Return a Visibility object with as_of set to today. Use only explicitly stated m
         return None
 
 
-def process_company(company_slug: str, company_name: str, verbose: bool = False):
+def process_company(company_slug: str, verbose: bool = False):
     """Process a single company: extract structured data using Pinecone vector search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"\n{'='*60}")
-    logger.info(f"Processing Company: {company_name} ({company_slug})")
+    logger.info(f"Processing Company: {company_slug}")
     logger.info(f"{'='*60}")
     
     pinecone_index = None
@@ -995,21 +1043,16 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
         # Initialize LLM client
         client = get_llm_client()
         
-        # Initialize Pinecone and embeddings
-        logger.info("Initializing Pinecone vector database...")
-        pinecone_index = get_pinecone_client()
-        embeddings = get_embeddings_model()
-        
-        # Index company pages to Pinecone
-        if pinecone_index and embeddings:
-            namespace = index_company_pages_to_pinecone(
-                company_slug, 
-                pages_text,
-                pinecone_index,
-                embeddings
-            )
-            if namespace:
-                logger.info(f"✓ Indexed to Pinecone namespace: {namespace}")
+        # Initialize Pinecone and embeddings (for searching, not indexing)
+        logger.info("Initializing Pinecone for semantic search...")
+        try:
+            pinecone_index = get_pinecone_client()
+            embeddings = get_embeddings_model()
+        except Exception as e:
+            logger.warning(f"Could not initialize Pinecone: {e}")
+            logger.warning("Will use raw text mode instead")
+            global USE_RAW_TEXT
+            USE_RAW_TEXT = True
         
         # Extract structured data
         logger.info("Starting structured extraction with semantic search...")
@@ -1017,14 +1060,14 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
         # 1. Extract company info
         company = extract_company_info(
             client, 
-            company_name, 
+            company_slug, 
             pages_text,
             pinecone_index,
             embeddings,
             namespace
         )
         if not company:
-            logger.error(f"Failed to extract company info for {company_name}")
+            logger.error(f"Failed to extract company info for {company_slug}")
             return None
         
         company_id = company.company_id
@@ -1094,25 +1137,15 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             notes=f"Extracted with semantic search via Pinecone on {datetime.now().isoformat()}"
         )
         
-        # Save results to data/structured/
-        structured_dir = Path("data/structured")
-        structured_dir.mkdir(parents=True, exist_ok=True)
-        
-        structured_file = structured_dir / f"{company_id}.json"
-        with open(structured_file, 'w', encoding='utf-8') as f:
-            json.dump(payload.model_dump(mode='json'), f, indent=2, ensure_ascii=False, default=str)
-        
-        logger.info(f"\n✓ Saved structured data to: {structured_file}")
-        
-        # Also save to data/payloads/ for payload access
-        payloads_dir = Path("data/payloads")
+        # Save results to data/payloads/
+        payloads_dir = Path("data/payloads") 
         payloads_dir.mkdir(parents=True, exist_ok=True)
         
         payload_file = payloads_dir / f"{company_id}.json"
         with open(payload_file, 'w', encoding='utf-8') as f:
             json.dump(payload.model_dump(mode='json'), f, indent=2, ensure_ascii=False, default=str)
         
-        logger.info(f"✓ Saved payload data to: {payload_file}")
+        logger.info(f"\n✓ Saved extraction results to: {payload_file}")
         
         logger.info(f"  Company: {company.legal_name}")
         logger.info(f"  Events: {len(events)}")
@@ -1124,11 +1157,11 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
         return payload
         
     except Exception as e:
-        logger.error(f"Error processing company {company_name}: {e}", exc_info=True)
+        logger.error(f"Error processing company {company_slug}: {e}", exc_info=True)
         return None
 
 
-def discover_companies_from_raw_data() -> List[tuple]:
+def discover_companies_from_raw_data() -> List[str]:
     """Discover companies from raw data directory structure."""
     logger = logging.getLogger('structured_extraction')
     
@@ -1142,27 +1175,27 @@ def discover_companies_from_raw_data() -> List[tuple]:
     for company_dir in raw_dir.iterdir():
         if company_dir.is_dir():
             company_slug = company_dir.name
-            # Convert slug back to title case as company name
-            company_name = company_slug.replace('_', ' ').title()
-            companies.append((company_slug, company_name))
+            companies.append(company_slug)
     
     logger.info(f"Discovered {len(companies)} companies from raw data")
     return companies
 
 
 def main():
-    logger = setup_logging()
+    logger = setup_logging('structured_extraction')
     logger.info("=== Starting Structured Extraction (RAG with Pinecone) ===")
     
     # Parse command line arguments
     import argparse
-    parser = argparse.ArgumentParser(description="Extract structured data from web scrapes")
+    parser = argparse.ArgumentParser(description="Extract structured data from web scrapes using semantic search")
+    parser.add_argument('--company-slug', type=str, help='Specific company slug to process')
     parser.add_argument('--verbose', action='store_true', help='Enable verbose logging')
+    parser.add_argument('--all', action='store_true', help='Process all companies')
     parser.add_argument(
         '--fallback-strategy',
         type=str,
         choices=['pinecone_only', 'raw_only', 'pinecone_first'],
-        default='pinecone_first',
+        default='pinecone_only',
         help='Strategy for handling Pinecone failures: pinecone_only (fail if no Pinecone), raw_only (always use raw text), pinecone_first (prefer Pinecone, fallback to raw)'
     )
     
@@ -1174,58 +1207,70 @@ def main():
     logger.info(f"Fallback strategy: {args.fallback_strategy}")
     
     try:
-        # Discover all companies to process
-        companies = discover_companies_from_raw_data()
-        
-        if not companies:
-            logger.warning("No companies found in data/raw directory")
-            return
-        
-        logger.info(f"\n{'='*60}")
-        logger.info(f"Processing {len(companies)} companies")
-        logger.info(f"{'='*60}\n")
-        
-        results = []
-        for idx, (company_slug, company_name) in enumerate(companies, 1):
-            logger.info(f"[{idx}/{len(companies)}] {company_name}")
-            result = process_company(company_slug, company_name, args.verbose)
+        if args.company_slug:
+            # Process specific company
+            logger.info(f"Processing specific company: {args.company_slug}")
+            result = process_company(args.company_slug, args.verbose)
             if result:
-                results.append({
-                    'company_slug': company_slug,
-                    'company_name': company_name,
-                    'success': True,
-                    'company_id': result.company_record.company_id
-                })
+                logger.info(f"✓ Successfully processed {args.company_slug}")
             else:
-                results.append({
-                    'company_slug': company_slug,
-                    'company_name': company_name,
-                    'success': False
-                })
-        
-        # Summary
-        logger.info(f"\n{'='*60}")
-        logger.info("=== EXTRACTION COMPLETE ===")
-        logger.info(f"{'='*60}")
-        
-        successful = sum(1 for r in results if r['success'])
-        logger.info(f"Successfully processed: {successful}/{len(results)}")
-        
-        if successful > 0:
-            logger.info("\nSuccessful companies:")
-            for r in results:
-                if r['success']:
-                    logger.info(f"  ✓ {r['company_name']} → {r['company_id']}")
-        
-        failed = [r for r in results if not r['success']]
-        if failed:
-            logger.info("\nFailed companies:")
-            for r in failed:
-                logger.info(f"  ✗ {r['company_name']}")
+                logger.error(f"✗ Failed to process {args.company_slug}")
+                sys.exit(1)
+        elif args.all:
+            # Process all companies
+            companies = discover_companies_from_raw_data()
+            
+            if not companies:
+                logger.warning("No companies found in data/raw directory")
+                return
+            
+            logger.info(f"\n{'='*60}")
+            logger.info(f"Processing {len(companies)} companies")
+            logger.info(f"{'='*60}\n")
+            
+            results = []
+            for idx, company_slug in enumerate(companies, 1):
+                logger.info(f"[{idx}/{len(companies)}] {company_slug}")
+                result = process_company(company_slug, args.verbose)
+                if result:
+                    results.append({
+                        'company_slug': company_slug,
+                        'success': True,
+                        'company_id': result.company_record.company_id
+                    })
+                else:
+                    results.append({
+                        'company_slug': company_slug,
+                        'success': False
+                    })
+            
+            # Summary
+            logger.info(f"\n{'='*60}")
+            logger.info("=== EXTRACTION COMPLETE ===")
+            logger.info(f"{'='*60}")
+            
+            successful = sum(1 for r in results if r['success'])
+            logger.info(f"Successfully processed: {successful}/{len(results)}")
+            
+            if successful > 0:
+                logger.info("\nSuccessful companies:")
+                for r in results:
+                    if r['success']:
+                        logger.info(f"  ✓ {r['company_slug']} → {r['company_id']}")
+            
+            failed = [r for r in results if not r['success']]
+            if failed:
+                logger.info("\nFailed companies:")
+                for r in failed:
+                    logger.info(f"  ✗ {r['company_slug']}")
+        else:
+            parser.print_help()
+            logger.error("Please specify --company-slug <slug>, --all, or use --help")
+            sys.exit(1)
     
     except Exception as e:
         logger.error(f"Fatal error: {e}", exc_info=True)
-        raise
+        sys.exit(1)
 
 
 if __name__ == "__main__":

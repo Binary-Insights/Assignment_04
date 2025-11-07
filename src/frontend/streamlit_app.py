@@ -7,7 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get API URL from environment variable or use default
+# Support both Docker (fastapi:8000) and local (localhost:8000) configurations
 API_BASE = os.getenv("FASTAPI_URL", "http://localhost:8000")
+
+# Fallback to localhost if running locally and fastapi hostname doesn't resolve
+if "fastapi" in API_BASE and os.getenv("ENVIRONMENT") != "docker":
+    API_BASE = "http://localhost:8000"
 
 st.set_page_config(page_title="PE Dashboard (AI 50)", layout="wide")
 st.title("Project ORBIT – PE Dashboard for Forbes AI 50")
@@ -37,11 +42,13 @@ with col1:
         # Use company name directly
         try:
             # Call the new /dashboard/structured endpoint (POST)
-            resp = requests.post(
-                f"{API_BASE}/dashboard/structured",
-                params={"company_name": choice},
-                timeout=30  # Longer timeout for LLM generation
-            )
+            # Auto-extraction is enabled by default
+            with st.spinner("🔄 Generating dashboard... (this may take a few minutes if extraction is needed)"):
+                resp = requests.post(
+                    f"{API_BASE}/dashboard/structured",
+                    params={"company_name": choice},
+                    timeout=1200  # 20 minute timeout for ingest + extraction + generation
+                )
             
             if resp.status_code == 200:
                 data = resp.json()
@@ -49,8 +56,33 @@ with col1:
                 st.success(f"✅ Dashboard generated for {choice}")
             
             elif resp.status_code == 404:
-                st.warning(f"⚠️ Structured payload not available for **{choice}**")
-                st.info("The payload for this company hasn't been extracted yet. Please run the extraction pipeline first.")
+                error_detail = resp.json().get("detail", "Payload not found")
+                st.warning(f"⚠️ {error_detail}")
+                
+                # Parse the error to provide helpful guidance
+                if "discovery pipeline" in error_detail.lower():
+                    st.info(
+                        "**Next Steps:**\n"
+                        "1. Run: `python src/discover/process_discovered_pages.py`\n"
+                        "2. Then click 'Generate (Structured)' again"
+                    )
+                elif "run manually" in error_detail.lower():
+                    st.info(
+                        "**Extraction might be too complex.** Try running manually:\n"
+                        f"```bash\n"
+                        f"python src/rag/ingest_to_pinecone.py --company-slug {choice.lower().replace(' ', '_').replace('-', '_')}\n"
+                        f"python src/rag/structured_extraction_search.py --company-slug {choice.lower().replace(' ', '_').replace('-', '_')}\n"
+                        f"```\n"
+                        "Then click 'Generate (Structured)' again"
+                    )
+            
+            elif resp.status_code == 202:
+                st.info(
+                    "⏳ **Extraction in progress...**\n\n"
+                    "The extraction pipeline is running in the background. "
+                    "This can take 5-15 minutes. "
+                    "Check the server logs for progress."
+                )
             
             else:
                 st.error(f"❌ Error: {resp.status_code}")
@@ -60,7 +92,14 @@ with col1:
                     st.error(resp.text)
         
         except requests.exceptions.Timeout:
-            st.error("⏱️ Request timeout - LLM generation may be slow or API not responding")
+            st.error(
+                "⏱️ **Request timeout** - The pipeline took longer than 20 minutes.\n\n"
+                "This can happen if:\n"
+                "- OpenAI API is slow\n"
+                "- Pinecone is overloaded\n"
+                "- Network issues\n\n"
+                "Check the server logs for progress or try again."
+            )
         except Exception as e:
             st.error(f"❌ Error generating dashboard: {e}")
     
