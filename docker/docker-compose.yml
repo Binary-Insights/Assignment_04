@@ -33,6 +33,7 @@ services:
       - ../.env
     environment:
       - PYTHONUNBUFFERED=1
+      - ENVIRONMENT=docker
     command: streamlit run src/frontend/streamlit_app.py
     depends_on:
       - fastapi

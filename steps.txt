@@ -166,14 +166,22 @@ Step 2:
 python src/discover/debug_html.py 2>&1 | grep -v "InsecureRequestWarning" | head -80
 
 
+docker-compose exec fastapi python src/backend/rag_search_api.py
 
 
 
+# Get into FastAPI container
+docker exec -it pe-dashboard-api /bin/bash
+
+# Get into Streamlit container
+docker exec -it pe-dashboard-ui /bin/bash
+
+# Or use sh if bash is not available
+docker exec -it pe-dashboard-api /bin/sh
+docker exec -it pe-dashboard-ui /bin/sh
 
 
-
-
-
+python src/evals/eval_runner.py --company world-labs --pipeline rag
 
 
 ------------------

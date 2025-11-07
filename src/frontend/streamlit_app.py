@@ -6,13 +6,16 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# Get API URL from environment variable or use default
-# Support both Docker (fastapi:8000) and local (localhost:8000) configurations
-API_BASE = os.getenv("FASTAPI_URL", "http://localhost:8000")
+# Get API URL with Docker/local awareness
+# When in Docker container, use service name; otherwise use localhost
+ENVIRONMENT = os.getenv("ENVIRONMENT", "local").lower()
 
-# Fallback to localhost if running locally and fastapi hostname doesn't resolve
-if "fastapi" in API_BASE and os.getenv("ENVIRONMENT") != "docker":
-    API_BASE = "http://localhost:8000"
+if ENVIRONMENT == "docker":
+    # Running in Docker - use Docker service name
+    API_BASE = os.getenv("FASTAPI_URL", "http://fastapi:8000")
+else:
+    # Running locally - use localhost
+    API_BASE = os.getenv("FASTAPI_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="PE Dashboard (AI 50)", layout="wide")
 st.title("Project ORBIT – PE Dashboard for Forbes AI 50")

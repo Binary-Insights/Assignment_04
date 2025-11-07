@@ -282,6 +282,51 @@ class DashboardStructuredResponse(BaseModel):
     message: Optional[str] = None
 
 
+class MetricScore(BaseModel):
+    """Individual metric score."""
+    
+    value: Optional[int] = None
+    max_value: int
+    percentage: Optional[float] = None
+
+
+class EvaluationMetricsResponse(BaseModel):
+    """Response model for evaluation metrics."""
+    
+    company_name: str
+    company_slug: str
+    pipeline_type: str  # "structured" or "rag"
+    timestamp: str
+    
+    # Metric scores
+    factual_accuracy: Optional[int] = Field(None, ge=0, le=3)
+    schema_compliance: Optional[int] = Field(None, ge=0, le=2)
+    provenance_quality: Optional[int] = Field(None, ge=0, le=2)
+    hallucination_detection: Optional[int] = Field(None, ge=0, le=2)
+    readability: Optional[int] = Field(None, ge=0, le=1)
+    mrr_score: Optional[float] = Field(None, ge=0.0, le=1.0)
+    
+    # Total score
+    total_score: Optional[float] = Field(None, description="Total score out of 14")
+    
+    # Additional info
+    notes: str = ""
+    status: str = "success"
+
+
+class ComparisonResponse(BaseModel):
+    """Response model for pipeline comparison."""
+    
+    company_name: str
+    company_slug: str
+    structured: EvaluationMetricsResponse
+    rag: EvaluationMetricsResponse
+    winners: Dict[str, Optional[str]] = Field(
+        description="Which pipeline wins for each metric ('structured', 'rag', or 'tie')"
+    )
+    status: str = "success"
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 #  Pinecone Search Functions
 # ─────────────────────────────────────────────────────────────────────────────
@@ -994,6 +1039,262 @@ async def generate_rag_dashboard(
         raise HTTPException(
             status_code=500,
             detail=f"Dashboard generation failed: {str(e)}"
+        )
+
+
+@app.get("/evals/{company_slug}", response_model=ComparisonResponse)
+async def get_evaluation_metrics(
+    company_slug: str = Query(
+        ...,
+        description="Company slug (e.g., 'world-labs')"
+    )
+) -> ComparisonResponse:
+    """
+    Get cached evaluation metrics for a company.
+    
+    Returns comparison of Structured vs RAG pipeline metrics.
+    
+    Args:
+        company_slug: Company slug (e.g., 'world-labs')
+    
+    Returns:
+        ComparisonResponse with metrics for both pipelines
+    
+    Raises:
+        HTTPException: 404 if no evaluation results cached
+    
+    Example:
+        GET /evals/world-labs
+        
+        Response:
+        {
+            "company_name": "World Labs",
+            "company_slug": "world-labs",
+            "structured": {
+                "pipeline_type": "structured",
+                "factual_accuracy": 3,
+                "schema_compliance": 2,
+                "provenance_quality": 2,
+                "hallucination_detection": 2,
+                "readability": 1,
+                "mrr_score": 0.95,
+                "total_score": 13.9
+            },
+            "rag": {
+                "pipeline_type": "rag",
+                "factual_accuracy": 2,
+                "schema_compliance": 2,
+                "provenance_quality": 1,
+                "hallucination_detection": 1,
+                "readability": 1,
+                "mrr_score": 0.75,
+                "total_score": 10.5
+            },
+            "winners": {
+                "factual_accuracy": "structured",
+                "schema_compliance": "tie",
+                "provenance_quality": "structured",
+                "hallucination_detection": "structured",
+                "readability": "tie",
+                "mrr_score": "structured"
+            }
+        }
+    """
+    logger.info(f"Evaluation metrics request for: {company_slug}")
+    
+    eval_dir = Path("data/eval")
+    results_path = eval_dir / "results.json"
+    
+    # Check if results cache exists
+    if not results_path.exists():
+        logger.warning(f"Evaluation results not found at {results_path}")
+        raise HTTPException(
+            status_code=404,
+            detail=f"No evaluation results cached. Run 'python src/evals/eval_runner.py --company {company_slug}' to generate."
+        )
+    
+    try:
+        # Load cached results
+        with open(results_path) as f:
+            all_results = json.load(f)
+        
+        if company_slug not in all_results:
+            logger.warning(f"No results for company: {company_slug}")
+            raise HTTPException(
+                status_code=404,
+                detail=f"No evaluation results for {company_slug}. Run evaluation to generate."
+            )
+        
+        company_results = all_results[company_slug]
+        
+        # Load ground truth for company name
+        ground_truth_path = eval_dir / "ground_truth.json"
+        company_name = company_slug
+        
+        if ground_truth_path.exists():
+            with open(ground_truth_path) as f:
+                ground_truth = json.load(f)
+                if company_slug in ground_truth:
+                    company_name = ground_truth[company_slug].get("company_name", company_slug)
+        
+        # Construct metrics responses
+        structured_data = company_results.get("structured", {})
+        rag_data = company_results.get("rag", {})
+        
+        structured_metrics = EvaluationMetricsResponse(
+            company_name=company_name,
+            company_slug=company_slug,
+            pipeline_type="structured",
+            timestamp=structured_data.get("timestamp", ""),
+            factual_accuracy=structured_data.get("factual_accuracy"),
+            schema_compliance=structured_data.get("schema_compliance"),
+            provenance_quality=structured_data.get("provenance_quality"),
+            hallucination_detection=structured_data.get("hallucination_detection"),
+            readability=structured_data.get("readability"),
+            mrr_score=structured_data.get("mrr_score"),
+            total_score=structured_data.get("total_score"),
+            notes=structured_data.get("notes", "")
+        )
+        
+        rag_metrics = EvaluationMetricsResponse(
+            company_name=company_name,
+            company_slug=company_slug,
+            pipeline_type="rag",
+            timestamp=rag_data.get("timestamp", ""),
+            factual_accuracy=rag_data.get("factual_accuracy"),
+            schema_compliance=rag_data.get("schema_compliance"),
+            provenance_quality=rag_data.get("provenance_quality"),
+            hallucination_detection=rag_data.get("hallucination_detection"),
+            readability=rag_data.get("readability"),
+            mrr_score=rag_data.get("mrr_score"),
+            total_score=rag_data.get("total_score"),
+            notes=rag_data.get("notes", "")
+        )
+        
+        # Calculate winners
+        winners = {}
+        for metric in ["factual_accuracy", "schema_compliance", "provenance_quality",
+                      "hallucination_detection", "readability", "mrr_score"]:
+            struct_val = getattr(structured_metrics, metric, None)
+            rag_val = getattr(rag_metrics, metric, None)
+            
+            if struct_val is not None and rag_val is not None:
+                if struct_val > rag_val:
+                    winners[metric] = "structured"
+                elif rag_val > struct_val:
+                    winners[metric] = "rag"
+                else:
+                    winners[metric] = "tie"
+        
+        logger.info(f"✓ Returning evaluation metrics for {company_slug}")
+        
+        return ComparisonResponse(
+            company_name=company_name,
+            company_slug=company_slug,
+            structured=structured_metrics,
+            rag=rag_metrics,
+            winners=winners,
+            status="success"
+        )
+        
+    except FileNotFoundError as e:
+        logger.error(f"Results file not found: {e}")
+        raise HTTPException(
+            status_code=404,
+            detail="Evaluation results not available"
+        )
+    except json.JSONDecodeError as e:
+        logger.error(f"Invalid JSON in results file: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail="Invalid evaluation results format"
+        )
+    except Exception as e:
+        logger.error(f"Error retrieving evaluation metrics: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error retrieving evaluation metrics: {str(e)}"
+        )
+
+
+@app.get("/evals", response_model=Dict[str, Any])
+async def list_evaluations() -> Dict[str, Any]:
+    """
+    List all available evaluation results.
+    
+    Returns summary of cached evaluations.
+    
+    Returns:
+        Dictionary with company slugs and available pipelines
+    
+    Example:
+        GET /evals
+        
+        Response:
+        {
+            "total_companies": 3,
+            "companies": [
+                {
+                    "slug": "world-labs",
+                    "name": "World Labs",
+                    "pipelines": ["structured", "rag"]
+                },
+                ...
+            ]
+        }
+    """
+    logger.info("Listing evaluation results")
+    
+    eval_dir = Path("data/eval")
+    results_path = eval_dir / "results.json"
+    ground_truth_path = eval_dir / "ground_truth.json"
+    
+    if not results_path.exists():
+        logger.warning("No evaluation results cached")
+        raise HTTPException(
+            status_code=404,
+            detail="No evaluation results cached yet"
+        )
+    
+    try:
+        # Load results
+        with open(results_path) as f:
+            results = json.load(f)
+        
+        # Load ground truth for company names
+        ground_truth = {}
+        if ground_truth_path.exists():
+            with open(ground_truth_path) as f:
+                ground_truth = json.load(f)
+        
+        # Build response
+        companies = []
+        for company_slug in sorted(results.keys()):
+            company_name = company_slug
+            if company_slug in ground_truth:
+                company_name = ground_truth[company_slug].get("company_name", company_slug)
+            
+            pipelines = list(results[company_slug].keys())
+            
+            companies.append({
+                "slug": company_slug,
+                "name": company_name,
+                "pipelines": pipelines
+            })
+        
+        logger.info(f"✓ Found {len(companies)} evaluated companies")
+        
+        return {
+            "total_companies": len(companies),
+            "companies": companies,
+            "status": "success"
+        }
+        
+    except Exception as e:
+        logger.error(f"Error listing evaluations: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error listing evaluations: {str(e)}"
         )
 
 
