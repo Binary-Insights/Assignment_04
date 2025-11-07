@@ -434,10 +434,8 @@ typer==0.20.0
     # via instructor
 typing-extensions==4.15.0
     # via
-    #   aiosignal
     #   altair
     #   anthropic
-    #   anyio
     #   fastapi
     #   grpcio
     #   huggingface-hub
@@ -446,7 +444,6 @@ typing-extensions==4.15.0
     #   pinecone
     #   pydantic
     #   pydantic-core
-    #   referencing
     #   selenium
     #   sentence-transformers
     #   streamlit

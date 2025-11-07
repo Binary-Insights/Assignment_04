@@ -1,39 +1,314 @@
+# ===============================================================
+# Forbes AI50 Dashboard + Airflow with Qdrant Vector Database
+# Combined docker-compose configuration
+# ===============================================================
+---
 name: assignment-04
 
+x-airflow-common:
+  &airflow-common
+  build:
+    context: ..
+    dockerfile: docker/Dockerfile
+  image: assignment04-airflow-qdrant:latest
+  environment:
+    &airflow-common-env
+    # Airflow Core Configuration
+    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    
+    # Logging Configuration
+    AIRFLOW__LOGGING__LOGGING_LEVEL: INFO
+    AIRFLOW__WEBSERVER__LOG_FETCH_TIMEOUT_SEC: 5
+    AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+    AIRFLOW__LOGGING__REMOTE_LOGGING: 'false'
+    
+    # Scheduler Configuration
+    AIRFLOW__SCHEDULER__CATCHUP_BY_DEFAULT: 'false'
+    AIRFLOW__SCHEDULER__MAX_DAGRUNS_PER_LOOP_ITERATION: 20
+    AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC: 5
+    AIRFLOW__CELERY__WORKER_CONCURRENCY: 4
+    AIRFLOW__CELERY__WORKER_PREFETCH_MULTIPLIER: 1
+    AIRFLOW__CORE__ALLOW_ZERO_DAGRUN_DATETIMES: 'true'
+    
+    # Qdrant Vector Database Configuration
+    QDRANT_URL: http://qdrant:6333
+    QDRANT_API_KEY: ''
+    QDRANT_COLLECTION_NAME: rag_chunks
+    
+    # AWS Configuration
+    AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+    AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+    S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+    
+    # LLM Configuration
+    OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+    
+    # Python Configuration
+    PYTHONUNBUFFERED: '1'
+    PYTHONPATH: /opt/airflow/workspace
+
+  volumes:
+    - ../src/dags:/opt/airflow/dags
+    - ../src:/opt/airflow/src
+    - ../scripts:/opt/airflow/scripts
+    - ../data:/opt/airflow/data
+    - ../data:/app/data
+    - ../.env:/opt/airflow/workspace/.env
+    - ../data/logs:/opt/airflow/data/logs
+    - ../data/airflow/logs:/opt/airflow/logs
+    - ../data/airflow/plugins:/opt/airflow/plugins
+    - ..:/opt/airflow/workspace
+  
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on:
+    &airflow-common-depends-on
+    redis:
+      condition: service_healthy
+    postgres:
+      condition: service_healthy
+    qdrant:
+      condition: service_started
+
 services:
+  # ===============================================================
+  # Core Infrastructure Services
+  # ===============================================================
+  
+  postgres:
+    image: postgres:13
+    container_name: airflow-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    restart: on-failure
+
+  redis:
+    image: redis:latest
+    container_name: airflow-redis
+    expose:
+      - 6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 50
+      start_period: 30s
+    restart: on-failure
+
+  qdrant:
+    image: qdrant/qdrant:v1.12.0
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - ../qdrant_storage:/qdrant/storage
+    environment:
+      QDRANT_API_KEY: ""
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ===============================================================
+  # Dashboard Services (FastAPI + Streamlit)
+  # ===============================================================
+
   fastapi:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-      target: base
+    <<: *airflow-common
     container_name: pe-dashboard-api
+    command: bash -c "cd /opt/airflow/workspace && uvicorn src.backend.rag_search_api:app --host 0.0.0.0 --port 8000 --reload"
     ports:
       - "8000:8000"
-    volumes:
-      - ../data:/app/data
-      - ../.env:/app/.env
-    env_file:
-      - ../.env
-    environment:
-      - PYTHONUNBUFFERED=1
-    command: uvicorn src.backend.rag_search_api:app --host 0.0.0.0 --port 8000 --reload
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: on-failure
+    depends_on:
+      qdrant:
+        condition: service_started
 
   streamlit:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-      target: base
+    <<: *airflow-common
     container_name: pe-dashboard-ui
+    command: bash -c "cd /opt/airflow/workspace && streamlit run src/frontend/streamlit_app.py --server.port=8501 --server.address=0.0.0.0"
     ports:
       - "8501:8501"
+    environment:
+      <<: *airflow-common-env
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREAMLIT_SERVER_PORT: "8501"
+      STREAMLIT_SERVER_ADDRESS: "0.0.0.0"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: on-failure
+    depends_on:
+      qdrant:
+        condition: service_started
+      fastapi:
+        condition: service_healthy
+
+  # ===============================================================
+  # Airflow Services
+  # ===============================================================
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: on-failure
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8974/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: on-failure
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-worker:
+    <<: *airflow-common
+    container_name: airflow-worker
+    command: celery worker
+    healthcheck:
+      test:
+        - "CMD-SHELL"
+        - 'celery --app airflow.providers.celery.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}" || celery --app airflow.executors.celery_executor.app inspect ping -d "celery@$${HOSTNAME}"'
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    environment:
+      <<: *airflow-common-env
+      DUMB_INIT_SETSID: "0"
+    restart: on-failure
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-triggerer:
+    <<: *airflow-common
+    container_name: airflow-triggerer
+    command: triggerer
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type TriggererJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: on-failure
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow-init
+    entrypoint: /bin/bash
+    user: "0:0"
+    command:
+      - -c
+      - |
+        set -e
+        echo "1. Checking Airflow version..."
+        function ver() { printf "%04d%04d%04d%04d" $${1//./ } ; }
+        airflow_version=$$(AIRFLOW__LOGGING__LOGGING_LEVEL=INFO airflow version)
+        airflow_version_comparable=$$(ver $${airflow_version})
+        min_airflow_version=2.2.0
+        min_airflow_version_comparable=$$(ver $${min_airflow_version})
+        if (( airflow_version_comparable < min_airflow_version_comparable )); then
+          echo -e "\033[1;31mERROR!!!: Too old Airflow version $${airflow_version}\e[0m"
+          exit 1
+        fi
+        echo "✓ Airflow version OK"
+        
+        echo "2. Creating Airflow directories..."
+        mkdir -p /sources/data/airflow/{logs,plugins} /sources/src/dags
+        chown -R "$${AIRFLOW_UID:-50000}:0" /sources/data/airflow/{logs,plugins}
+        chown -R "$${AIRFLOW_UID:-50000}:0" /sources/src/dags
+        echo "✓ Directories created"
+        
+        echo "3. Running Airflow DB migrations..."
+        exec /entrypoint airflow db migrate
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: "true"
+      _AIRFLOW_WWW_USER_CREATE: "true"
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _PIP_ADDITIONAL_REQUIREMENTS: ""
     volumes:
-      - ../data:/app/data
-      - ../.env:/app/.env
-    env_file:
-      - ../.env
+      - ..:/sources
+
+  airflow-cli:
+    <<: *airflow-common
+    container_name: airflow-cli
+    profiles:
+      - debug
     environment:
       - PYTHONUNBUFFERED=1
       - ENVIRONMENT=docker
     command: streamlit run src/frontend/streamlit_app.py
     depends_on:
-      - fastapi
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+# ===============================================================
+# Volumes
+# ===============================================================
+
+volumes:
+  postgres-db-volume:
