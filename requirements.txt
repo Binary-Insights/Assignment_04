@@ -35,6 +35,7 @@ certifi==2025.10.5
     # via
     #   httpcore
     #   httpx
+    #   pinecone
     #   requests
     #   selenium
 cfgv==3.4.0
@@ -259,6 +260,7 @@ packaging==24.2
     #   huggingface-hub
     #   langchain-core
     #   langsmith
+    #   pinecone-plugin-assistant
     #   streamlit
     #   transformers
 pandas==2.3.3
@@ -267,6 +269,12 @@ pillow==10.4.0
     # via
     #   sentence-transformers
     #   streamlit
+pinecone==7.3.0
+    # via pe-dashboard-ai50 (pyproject.toml)
+pinecone-plugin-assistant==1.8.0
+    # via pinecone
+pinecone-plugin-interface==0.0.7
+    # via pinecone
 platformdirs==4.5.0
     # via virtualenv
 portalocker==3.2.0
@@ -307,7 +315,9 @@ pygments==2.19.2
 pysocks==1.7.1
     # via urllib3
 python-dateutil==2.9.0.post0
-    # via pandas
+    # via
+    #   pandas
+    #   pinecone
 python-dotenv==1.2.1
     # via pe-dashboard-ai50 (pyproject.toml)
 pytz==2025.2
@@ -334,6 +344,7 @@ requests==2.32.3
     #   huggingface-hub
     #   instructor
     #   langsmith
+    #   pinecone-plugin-assistant
     #   requests-toolbelt
     #   streamlit
     #   tiktoken
@@ -361,8 +372,6 @@ selenium==4.38.0
     # via pe-dashboard-ai50 (pyproject.toml)
 sentence-transformers==5.1.2
     # via pe-dashboard-ai50 (pyproject.toml)
-setuptools==80.9.0
-    # via torch
 shellingham==1.5.4
     # via typer
 six==1.17.0
@@ -432,6 +441,7 @@ typing-extensions==4.15.0
     #   huggingface-hub
     #   langchain-core
     #   openai
+    #   pinecone
     #   pydantic
     #   pydantic-core
     #   selenium
@@ -443,6 +453,7 @@ tzdata==2025.2
     # via pandas
 urllib3==2.5.0
     # via
+    #   pinecone
     #   qdrant-client
     #   requests
     #   selenium

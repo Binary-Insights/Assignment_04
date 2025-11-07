@@ -156,7 +156,26 @@ Added 7 emoji indicators for clarity:
 # creates a json based on the pydantic model and stores in data/structured/{company_slug}.json
 python src/rag/structured_extraction.py --company-slug world_labs
 
+🔄 Workflow
+# Run ingestion first:
+python src/rag/ingest_to_pinecone.py --all
 
+# Then run extraction:
+python src/rag/structured_extraction_search.py --all
+
+-----------------------------------------------------------
+# Extract specific company
+python src/rag/structured_extraction_search.py --company-slug world_labs
+
+# Extract all companies
+python src/rag/structured_extraction_search.py --all --verbose
+
+# With fallback strategy
+python src/rag/structured_extraction_search.py --all --fallback-strategy raw_only
+
+
+# Frontend
+streamlit run src/frontend/streamlit_app.py
 
 -------
 Debug 

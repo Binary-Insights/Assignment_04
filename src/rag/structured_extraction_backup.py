@@ -152,6 +152,14 @@ def get_pinecone_client():
         return None
 
 
+def get_qdrant_client():
+    """Initialize Qdrant client for vector search - DEPRECATED: Using Pinecone instead."""
+    logger = logging.getLogger('structured_extraction')
+    logger.warning("⚠️  get_qdrant_client called but using Pinecone instead. Call get_pinecone_client().")
+    return None
+
+
+
 def get_embeddings_model():
     """Get OpenAI embeddings model."""
     logger = logging.getLogger('structured_extraction')
@@ -173,30 +181,69 @@ def get_embeddings_model():
         raise
 
 
-def index_company_pages_to_pinecone(
+def index_company_pages_to_qdrant(
     company_slug: str, 
     pages_text: Dict[str, str],
-    pinecone_index,
+    qdrant_client: Optional[QdrantClient],
     embeddings: Optional[OpenAIEmbeddings]
 ) -> Optional[str]:
-    """Index company pages to Pinecone vector database."""
+    """Index company pages to Qdrant vector database and return collection name."""
     logger = logging.getLogger('structured_extraction')
     
-    if not pinecone_index or not embeddings:
-        logger.debug("Pinecone index or embeddings not available, skipping indexing")
+    if not qdrant_client or not embeddings:
+        logger.debug("Qdrant client or embeddings not available, skipping indexing")
         return None
     
     try:
-        namespace = os.getenv('PINECONE_NAMESPACE', 'default')
-        logger.info(f"Using Pinecone namespace: '{namespace}'")
+        # Get collection name from environment variable
+        collection_name = os.getenv('QDRANT_COLLECTION_NAME')
+        if not collection_name:
+            collection_name = 'rag_chunks'
+            logger.warning(f"⚠️  QDRANT_COLLECTION_NAME not set in .env. Please add 'QDRANT_COLLECTION_NAME=rag_chunks' to your .env file")
+        else:
+            logger.info(f"�️ Using Qdrant collection from .env: '{collection_name}'")
         
-        # Split and embed text from all pages using same chunking strategy
+        # Check if collection already exists
+        try:
+            collections = qdrant_client.get_collections()
+            logger.info(f"📚 Available collections: {[c.name for c in collections.collections]}")
+            
+            collection_exists = False
+            for collection in collections.collections:
+                if collection.name == collection_name:
+                    collection_exists = True
+                    logger.info(f"✨ Collection '{collection_name}' already exists")
+                    break
+            
+            if not collection_exists:
+                # Collection doesn't exist, create it
+                logger.info(f"Creating Qdrant collection: {collection_name}")
+                
+                # Get embedding dimension
+                sample_embedding = embeddings.embed_query("test")
+                embedding_dim = len(sample_embedding)
+                
+                try:
+                    qdrant_client.create_collection(
+                        collection_name=collection_name,
+                        vectors_config=VectorParams(size=embedding_dim, distance=Distance.COSINE),
+                    )
+                    logger.info(f"🎉 Successfully created collection '{collection_name}' with {embedding_dim}-dim vectors")
+                except Exception as create_error:
+                    logger.error(f"❌ Failed to create collection: {create_error}")
+                    raise
+        except Exception as e:
+            logger.error(f"Error checking/creating collection: {e}")
+            raise
+        
+        # Split and embed text from all pages
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=500,
             chunk_overlap=100,
         )
         
-        vectors_to_upsert = []
+        points = []
+        point_id = 1
         chunks_per_source = {}  # Track chunks per source file
         
         logger.info(f"\nIndexing source files for {company_slug}:")
@@ -221,104 +268,123 @@ def index_company_pages_to_pinecone(
                     # Generate embedding
                     embedding = embeddings.embed_query(chunk)
                     
-                    # Create unique ID for the vector
-                    vector_id = f"{company_slug}_{page_type}_{chunk_idx}_{str(uuid4())[:8]}"
-                    
-                    # Create vector tuple (id, embedding, metadata)
-                    vector = (
-                        vector_id,
-                        embedding,
-                        {
+                    # Create point
+                    point = PointStruct(
+                        id=point_id,
+                        vector=embedding,
+                        payload={
                             "text": chunk,
                             "page_type": page_type,
                             "company_slug": company_slug,
                             "source_file": source_file,
                             "chunk_index": chunk_idx,
-                            "indexed_at": datetime.now().isoformat()
                         }
                     )
-                    vectors_to_upsert.append(vector)
+                    points.append(point)
+                    point_id += 1
                 except Exception as e:
                     logger.warning(f"Failed to embed chunk {chunk_idx} from {page_type}: {e}")
                     continue
             
             logger.info(f"     ✓ Processed {page_type}\n")
         
-        if vectors_to_upsert:
-            # Upsert vectors to Pinecone
-            logger.info(f"Upserting {len(vectors_to_upsert)} vectors to Pinecone...")
-            upsert_response = pinecone_index.upsert(
-                vectors=vectors_to_upsert,
-                namespace=namespace
+        if points:
+            # First delete any existing points for this company
+            try:
+                if company_slug:
+                    # Delete points matching the company slug
+                    filter_condition = {
+                        "must": [{
+                            "key": "company_slug",
+                            "match": {"value": company_slug}
+                        }]
+                    }
+                    qdrant_client.delete(
+                        collection_name=collection_name,
+                        points_selector=None,  # Delete all points matching the filter
+                        filters=filter_condition
+                    )
+                    logger.debug(f"Deleted existing points for company {company_slug}")
+            except Exception as e:
+                logger.warning(f"Failed to delete existing points: {e}")
+
+            # Upsert new points to Qdrant
+            qdrant_client.upsert(
+                collection_name=collection_name,
+                points=points,
             )
-            logger.info(f"✅ Upserted {len(vectors_to_upsert)} vectors")
             
             # Summary logging
             logger.info(f"{'─' * 60}")
-            logger.info(f"✓ Indexed {len(vectors_to_upsert)} total chunks to Pinecone (namespace: '{namespace}')")
+            logger.info(f"✓ Indexed {len(points)} total chunks to Qdrant collection '🗃️ {collection_name}'")
             logger.info(f"\nBreakdown by source:")
             for source, count in sorted(chunks_per_source.items()):
                 logger.info(f"  • {source:15} → {count:3} chunks")
             logger.info(f"{'─' * 60}\n")
         
-        return namespace
+        return collection_name
         
     except Exception as e:
-        logger.warning(f"Error indexing to Pinecone: {e}")
+        logger.warning(f"Error indexing to Qdrant: {e}")
         return None
 
 
-def search_pinecone_for_context(
+def search_qdrant_for_context(
     query: str,
     company_slug: str,
-    pinecone_index,
+    qdrant_client: Optional[QdrantClient],
     embeddings: Optional[OpenAIEmbeddings],
     limit: int = 5
 ) -> List[Dict[str, Any]]:
-    """Search Pinecone for relevant context using semantic search."""
+    """Search Qdrant for relevant context using semantic search."""
     logger = logging.getLogger('structured_extraction')
     
-    if not pinecone_index or not embeddings:
-        logger.debug("Cannot search Pinecone - index/embeddings missing")
+    if not qdrant_client or not embeddings:
+        logger.debug("Cannot search Qdrant - client/embeddings missing")
         return []
-    
-    namespace = os.getenv('PINECONE_NAMESPACE', 'default')
+        
+    # Get collection name from environment variable
+    collection_name = os.getenv('QDRANT_COLLECTION_NAME', 'rag_chunks')
     
     try:
         # Generate embedding for query
         query_embedding = embeddings.embed_query(query)
         
-        # Search Pinecone with company-specific filter
-        logger.debug(f"🔍 Searching Pinecone (namespace '{namespace}'): '{query}' for company {company_slug}")
-        results = pinecone_index.query(
-            vector=query_embedding,
-            top_k=limit,
-            namespace=namespace,
-            filter={
-                "company_slug": {"$eq": company_slug}
+        # Search Qdrant with company-specific filter
+        logger.debug(f"🔍 Searching in collection '{collection_name}': '{query}' for company {company_slug}")
+        results = qdrant_client.search(
+            collection_name=collection_name,
+            query_vector=query_embedding,
+            query_filter={
+                "must": [{
+                    "key": "company_slug",
+                    "match": {
+                        "text": company_slug
+                    }
+                }]
             } if company_slug else None,
-            include_metadata=True
+            limit=limit
         )
         
         # Extract context from results with full source tracking
         context_docs = []
-        for idx, match in enumerate(results.matches, 1):
+        for idx, result in enumerate(results, 1):
             doc = {
-                "text": match.metadata.get("text", ""),
-                "page_type": match.metadata.get("page_type", ""),
-                "score": match.score,
-                "source_file": match.metadata.get("source_file", ""),
-                "chunk_index": match.metadata.get("chunk_index", ""),
-                "vector_id": match.id,
+                "text": result.payload.get("text", ""),
+                "page_type": result.payload.get("page_type", ""),
+                "score": result.score,
+                "source_file": result.payload.get("source_file", ""),
+                "chunk_index": result.payload.get("chunk_index", ""),
+                "point_id": result.id,
             }
             context_docs.append(doc)
-            logger.debug(f"  🎯 Rank {idx}: {doc['source_file']} (chunk {doc['chunk_index']}, similarity: {match.score:.3f})")
+            logger.debug(f"  🎯 Rank {idx}: {doc['source_file']} (chunk {doc['chunk_index']}, similarity: {result.score:.3f})")
         
-        logger.debug(f"✅ Pinecone search returned {len(context_docs)} documents")
+        logger.debug(f"✅ Qdrant search returned {len(context_docs)} documents")
         return context_docs
         
     except Exception as e:
-        logger.warning(f"❌ Error searching Pinecone: {e}")
+        logger.warning(f"❌ Error searching Qdrant: {e}")
         return []
 
 
@@ -332,7 +398,7 @@ def log_extraction_sources(
     logger = logging.getLogger('structured_extraction')
     
     if not context_docs:
-        logger.warning(f"  ⚠️  No Pinecone sources found for {extraction_type}")
+        logger.warning(f"  ⚠️  No Qdrant sources found for {extraction_type}")
         return
     
     logger.info(f"\n  📊 {extraction_type.upper()} - Source Validation:")
@@ -352,7 +418,7 @@ def log_extraction_sources(
         logger.info(f"  Source: {source_file}")
         logger.info(f"    Chunks used: {len(docs)}")
         for doc in docs:
-            logger.info(f"      • Vector ID {doc['vector_id']}: chunk {doc['chunk_index']} (similarity: {doc['score']:.3f})")
+            logger.info(f"      • Point ID {doc['point_id']}: chunk {doc['chunk_index']} (similarity: {doc['score']:.3f})")
         logger.info(f"    Content preview: {docs[0]['text'][:100]}...")
     
     logger.info(f"  {'─' * 70}\n")
@@ -369,14 +435,14 @@ def should_use_fallback(context_docs: List[Dict[str, Any]], extraction_type: str
         return False
     
     # No context available, check strategy
-    if FALLBACK_STRATEGY == 'pinecone_only':
-        logger.error(f"❌ Strategy 'pinecone_only': No Pinecone results for {extraction_type}, FAILING")
+    if FALLBACK_STRATEGY == 'qdrant_only':
+        logger.error(f"❌ Strategy 'qdrant_only': No Qdrant results for {extraction_type}, FAILING")
         return False
     elif FALLBACK_STRATEGY == 'raw_only':
-        logger.warning(f"⚠️  Strategy 'raw_only': Ignoring Pinecone, using raw text for {extraction_type}")
+        logger.warning(f"⚠️  Strategy 'raw_only': Ignoring Qdrant, using raw text for {extraction_type}")
         return True
-    elif FALLBACK_STRATEGY == 'pinecone_first':
-        logger.warning(f"⚠️  Strategy 'pinecone_first': Fallback to raw text for {extraction_type}")
+    elif FALLBACK_STRATEGY == 'qdrant_first':
+        logger.warning(f"⚠️  Strategy 'qdrant_first': Fallback to raw text for {extraction_type}")
         return True
     
     return False
@@ -464,11 +530,11 @@ def extract_company_info(
     client, 
     company_name: str, 
     pages_text: Dict[str, str],
-    pinecone_index = None,
+    qdrant_client: Optional[QdrantClient] = None,
     embeddings: Optional[OpenAIEmbeddings] = None,
-    namespace: Optional[str] = None
+    collection_name: Optional[str] = None
 ) -> Optional[Company]:
-    """Extract company information using LLM with instructor and Pinecone search."""
+    """Extract company information using LLM with instructor and Qdrant search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"Extracting company info for {company_name}...")
@@ -491,20 +557,20 @@ def extract_company_info(
         logger.info(f"⚙️  Using raw text mode for company info")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Qdrant search
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_name, pinecone_index, embeddings, limit=3)
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
             context_docs.extend(docs)
         
         if context_docs:
-            logger.info("📊 Using Pinecone context for company extraction")
+            logger.info("📊 Using Qdrant context for company extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:300]}"
                 for doc in context_docs[:10]  # Limit to top 10 results
             ])
         else:
-            logger.error("❌ No Pinecone results for company info - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            logger.error("❌ No Qdrant results for company info - ABORTING")
+            raise ValueError("No Qdrant context available and raw text mode is disabled")
     
     # Log extraction sources for validation
     log_extraction_sources("Company Info", company_name, search_queries, context_docs)
@@ -547,11 +613,11 @@ def extract_events(
     client, 
     company_id: str, 
     pages_text: Dict[str, str],
-    pinecone_index = None,
+    qdrant_client: Optional[QdrantClient] = None,
     embeddings: Optional[OpenAIEmbeddings] = None,
-    namespace: Optional[str] = None
+    collection_name: Optional[str] = None
 ) -> List[Event]:
-    """Extract events (funding, M&A, partnerships, etc.) using LLM and Pinecone search."""
+    """Extract events (funding, M&A, partnerships, etc.) using LLM and Qdrant search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"Extracting events for {company_id}...")
@@ -576,20 +642,20 @@ def extract_events(
         logger.info(f"⚙️  Using raw text mode for events")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Qdrant search
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=2)
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=2)
             context_docs.extend(docs)
         
         if context_docs:
-            logger.info("📊 Using Pinecone context for events extraction")
+            logger.info("📊 Using Qdrant context for events extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
                 for doc in context_docs[:15]  # Limit to top 15 results
             ])
         else:
-            logger.error("❌ No Pinecone results for events - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            logger.error("❌ No Qdrant results for events - ABORTING")
+            raise ValueError("No Qdrant context available and raw text mode is disabled")
     
     prompt = f"""Extract all significant events for company ID "{company_id}" from the web content:
 
@@ -640,11 +706,11 @@ def extract_snapshots(
     client, 
     company_id: str, 
     pages_text: Dict[str, str],
-    pinecone_index = None,
+    qdrant_client: Optional[QdrantClient] = None,
     embeddings: Optional[OpenAIEmbeddings] = None,
-    namespace: Optional[str] = None
+    collection_name: Optional[str] = None
 ) -> List[Snapshot]:
-    """Extract business snapshots (headcount, products, pricing, etc.) using Pinecone search."""
+    """Extract business snapshots (headcount, products, pricing, etc.) using Qdrant search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"Extracting snapshots for {company_id}...")
@@ -668,20 +734,20 @@ def extract_snapshots(
         logger.info(f"⚙️  Using raw text mode for snapshots")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Qdrant search
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
             context_docs.extend(docs)
         
         if context_docs:
-            logger.info("📊 Using Pinecone context for snapshots extraction")
+            logger.info("📊 Using Qdrant context for snapshots extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
                 for doc in context_docs[:15]
             ])
         else:
-            logger.error("❌ No Pinecone results for snapshots - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            logger.error("❌ No Qdrant results for snapshots - ABORTING")
+            raise ValueError("No Qdrant context available and raw text mode is disabled")
     
     prompt = f"""Extract business snapshot information for company ID "{company_id}" from web content:
 
@@ -725,11 +791,11 @@ def extract_products(
     client, 
     company_id: str, 
     pages_text: Dict[str, str],
-    pinecone_index = None,
+    qdrant_client: Optional[QdrantClient] = None,
     embeddings: Optional[OpenAIEmbeddings] = None,
-    namespace: Optional[str] = None
+    collection_name: Optional[str] = None
 ) -> List[Product]:
-    """Extract product information using Pinecone search."""
+    """Extract product information using Qdrant search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"Extracting products for {company_id}...")
@@ -753,20 +819,20 @@ def extract_products(
         logger.info(f"⚙️  Using raw text mode for products")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Qdrant search
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
             context_docs.extend(docs)
         
         if context_docs:
-            logger.info("📊 Using Pinecone context for products extraction")
+            logger.info("📊 Using Qdrant context for products extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
                 for doc in context_docs[:12]
             ])
         else:
-            logger.error("❌ No Pinecone results for products - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            logger.error("❌ No Qdrant results for products - ABORTING")
+            raise ValueError("No Qdrant context available and raw text mode is disabled")
     
     prompt = f"""Extract product information for company ID "{company_id}" from web content:
 
@@ -810,11 +876,11 @@ def extract_leadership(
     client, 
     company_id: str, 
     pages_text: Dict[str, str],
-    pinecone_index = None,
+    qdrant_client: Optional[QdrantClient] = None,
     embeddings: Optional[OpenAIEmbeddings] = None,
-    namespace: Optional[str] = None
+    collection_name: Optional[str] = None
 ) -> List[Leadership]:
-    """Extract leadership and team information using Pinecone search."""
+    """Extract leadership and team information using Qdrant search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"Extracting leadership for {company_id}...")
@@ -838,20 +904,20 @@ def extract_leadership(
         logger.info(f"⚙️  Using raw text mode for leadership")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Qdrant search
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
             context_docs.extend(docs)
         
         if context_docs:
-            logger.info("📊 Using Pinecone context for leadership extraction")
+            logger.info("📊 Using Qdrant context for leadership extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
                 for doc in context_docs[:15]
             ])
         else:
-            logger.error("❌ No Pinecone results for leadership - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            logger.error("❌ No Qdrant results for leadership - ABORTING")
+            raise ValueError("No Qdrant context available and raw text mode is disabled")
     
     prompt = f"""Extract leadership and key team members for company ID "{company_id}" from web content:
 
@@ -896,11 +962,11 @@ def extract_visibility(
     client, 
     company_id: str, 
     pages_text: Dict[str, str],
-    pinecone_index = None,
+    qdrant_client: Optional[QdrantClient] = None,
     embeddings: Optional[OpenAIEmbeddings] = None,
-    namespace: Optional[str] = None
+    collection_name: Optional[str] = None
 ) -> Optional[Visibility]:
-    """Extract visibility and public metrics using Pinecone search."""
+    """Extract visibility and public metrics using Qdrant search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"Extracting visibility for {company_id}...")
@@ -924,20 +990,20 @@ def extract_visibility(
         logger.info(f"⚙️  Using raw text mode for visibility")
         context_text = json.dumps(pages_text, indent=2)[:3000]
     else:
-        # Try Pinecone search
+        # Try Qdrant search
         for query in search_queries:
-            docs = search_pinecone_for_context(query, company_id, pinecone_index, embeddings, limit=3)
+            docs = search_qdrant_for_context(query, collection_name, qdrant_client, embeddings, limit=3)
             context_docs.extend(docs)
         
         if context_docs:
-            logger.info("📊 Using Pinecone context for visibility extraction")
+            logger.info("📊 Using Qdrant context for visibility extraction")
             context_text = "\n\n".join([
                 f"[{doc['page_type']}] {doc['text'][:250]}"
                 for doc in context_docs[:10]
             ])
         else:
-            logger.error("❌ No Pinecone results for visibility - ABORTING")
-            raise ValueError("No Pinecone context available and raw text mode is disabled")
+            logger.error("❌ No Qdrant results for visibility - ABORTING")
+            raise ValueError("No Qdrant context available and raw text mode is disabled")
     
     prompt = f"""Extract visibility and public metrics for company ID "{company_id}" from web content:
 
@@ -974,16 +1040,16 @@ Return a Visibility object with as_of set to today. Use only explicitly stated m
 
 
 def process_company(company_slug: str, company_name: str, verbose: bool = False):
-    """Process a single company: extract structured data using Pinecone vector search."""
+    """Process a single company: extract structured data using Qdrant vector search."""
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"\n{'='*60}")
     logger.info(f"Processing Company: {company_name} ({company_slug})")
     logger.info(f"{'='*60}")
     
-    pinecone_index = None
+    qdrant_client = None
     embeddings = None
-    namespace = None
+    collection_name = None
     
     try:
         # Load all page texts
@@ -995,21 +1061,21 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
         # Initialize LLM client
         client = get_llm_client()
         
-        # Initialize Pinecone and embeddings
-        logger.info("Initializing Pinecone vector database...")
-        pinecone_index = get_pinecone_client()
+        # Initialize Qdrant and embeddings
+        logger.info("Initializing Qdrant vector database...")
+        qdrant_client = get_qdrant_client()
         embeddings = get_embeddings_model()
         
-        # Index company pages to Pinecone
-        if pinecone_index and embeddings:
-            namespace = index_company_pages_to_pinecone(
+        # Index company pages to Qdrant
+        if qdrant_client and embeddings:
+            collection_name = index_company_pages_to_qdrant(
                 company_slug, 
                 pages_text,
-                pinecone_index,
+                qdrant_client,
                 embeddings
             )
-            if namespace:
-                logger.info(f"✓ Indexed to Pinecone namespace: {namespace}")
+            if collection_name:
+                logger.info(f"✓ Indexed to Qdrant collection: {collection_name}")
         
         # Extract structured data
         logger.info("Starting structured extraction with semantic search...")
@@ -1019,9 +1085,9 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             client, 
             company_name, 
             pages_text,
-            pinecone_index,
+            qdrant_client,
             embeddings,
-            namespace
+            collection_name
         )
         if not company:
             logger.error(f"Failed to extract company info for {company_name}")
@@ -1035,9 +1101,9 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             client, 
             company_id, 
             pages_text,
-            pinecone_index,
+            qdrant_client,
             embeddings,
-            namespace
+            collection_name
         )
         
         # 3. Extract snapshots
@@ -1045,9 +1111,9 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             client, 
             company_id, 
             pages_text,
-            pinecone_index,
+            qdrant_client,
             embeddings,
-            namespace
+            collection_name
         )
         
         # 4. Extract products
@@ -1055,9 +1121,9 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             client, 
             company_id, 
             pages_text,
-            pinecone_index,
+            qdrant_client,
             embeddings,
-            namespace
+            collection_name
         )
         
         # 5. Extract leadership
@@ -1065,9 +1131,9 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             client, 
             company_id, 
             pages_text,
-            pinecone_index,
+            qdrant_client,
             embeddings,
-            namespace
+            collection_name
         )
         
         # 6. Extract visibility
@@ -1076,9 +1142,9 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             client, 
             company_id, 
             pages_text,
-            pinecone_index,
+            qdrant_client,
             embeddings,
-            namespace
+            collection_name
         )
         if visibility:
             visibility_list = [visibility]
@@ -1091,7 +1157,7 @@ def process_company(company_slug: str, company_name: str, verbose: bool = False)
             products=products,
             leadership=leadership,
             visibility=visibility_list,
-            notes=f"Extracted with semantic search via Pinecone on {datetime.now().isoformat()}"
+            notes=f"Extracted with semantic search via Qdrant on {datetime.now().isoformat()}"
         )
         
         # Save results to data/structured/
@@ -1152,7 +1218,7 @@ def discover_companies_from_raw_data() -> List[tuple]:
 
 def main():
     logger = setup_logging()
-    logger.info("=== Starting Structured Extraction (RAG with Pinecone) ===")
+    logger.info("=== Starting Structured Extraction (RAG) ===")
     
     # Parse command line arguments
     import argparse
@@ -1161,9 +1227,9 @@ def main():
     parser.add_argument(
         '--fallback-strategy',
         type=str,
-        choices=['pinecone_only', 'raw_only', 'pinecone_first'],
-        default='pinecone_first',
-        help='Strategy for handling Pinecone failures: pinecone_only (fail if no Pinecone), raw_only (always use raw text), pinecone_first (prefer Pinecone, fallback to raw)'
+        choices=['qdrant_only', 'raw_only', 'qdrant_first'],
+        default='qdrant_first',
+        help='Strategy for handling Qdrant failures: qdrant_only (fail if no Qdrant), raw_only (always use raw text), qdrant_first (prefer Qdrant, fallback to raw)'
     )
     
     args = parser.parse_args()
