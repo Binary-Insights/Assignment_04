@@ -7,19 +7,6 @@ Powered by **Apache Airflow**, **OpenAI GPT-4o**, **Selenium + ChromeDriver**, *
 
 ## Setup Instructions
 
-The pipeline integrates:
-- **Web Scraping & JavaScript Rendering (Selenium + ChromeDriver)**
-- **Intelligent Page Discovery (LLM-based with Instructor)**
-- **Semantic Embedding (OpenAI text-embedding-3-small)**
-- **Vector Search (Pinecone)**
-- **Structured Extraction (Pydantic + Instructor + GPT-4o)**
-- **Parallel RAG & Structured Pipelines**
-- **Dashboard Generation (8-section investor reports)**
-- **Pipeline Comparison & Evaluation**
-- **Orchestration (Apache Airflow – Full Load + Daily Refresh)**
-- **Backend API (FastAPI)**
-- **Interactive Frontend (Streamlit)**
-
 ---
 
 ## 1. Prerequisites
@@ -251,3 +238,4 @@ MIT
 **Last Updated:** November 7, 2025 | **Course:** DAMG 7245 – Fall 2025 | **Team:** Binary Insights
 
 WE ATTEST THAT WE HAVEN'T USED ANY OTHER STUDENTS' WORK IN OUR ASSIGNMENT AND ABIDE BY THE POLICIES LISTED IN THE STUDENT HANDBOOK.
+
