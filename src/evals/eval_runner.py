@@ -3,15 +3,19 @@ Evaluation Runner for LLM-generated dashboards.
 
 Runs evaluations on dashboard outputs and caches results.
 
+Supports two scoring modes:
+- PROGRAMMATIC: Auto-calculate metrics from content and ground truth
+- MANUAL: Use hardcoded/pre-defined scores
+
 Usage:
-    # Evaluate single company
-    python src/evals/eval_runner.py --company world-labs --pipeline structured
+    # Evaluate single company (programmatic)
+    python src/evals/eval_runner.py --company world-labs --pipeline structured --mode programmatic
     
-    # Batch evaluate all companies
-    python src/evals/eval_runner.py --batch
+    # Batch evaluate all companies (manual)
+    python src/evals/eval_runner.py --batch --mode manual
     
     # Generate comparison report
-    python src/evals/eval_runner.py --batch --report
+    python src/evals/eval_runner.py --batch --report --mode programmatic
     
     # Load cached results
     python src/evals/eval_runner.py --view world-labs
@@ -19,6 +23,7 @@ Usage:
 
 import json
 import logging
+import logging.handlers
 import sys
 from pathlib import Path
 from typing import Dict, Any, List, Optional
@@ -29,14 +34,64 @@ from datetime import datetime
 # Add parent directories to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from evals.eval_metrics import EvaluationMetrics, ComparisonResult, calculate_mrr
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(name)s: %(message)s"
+from evals.eval_metrics import (
+    EvaluationMetrics, ComparisonResult, calculate_mrr,
+    calculate_factual_accuracy, calculate_schema_compliance,
+    calculate_provenance_quality, calculate_hallucination_detection,
+    calculate_readability
 )
-logger = logging.getLogger(__name__)
+
+# Configure logging with both console and file output
+def setup_logging():
+    """Configure logging to output to both console and file."""
+    # Get project root and logs directory
+    project_root = Path(__file__).resolve().parents[2]
+    logs_dir = project_root / "data" / "logs"
+    logs_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Use single log file that gets updated
+    log_file = logs_dir / "eval_runner.log"
+    
+    # Configure root logger
+    logger = logging.getLogger("eval_runner")
+    logger.setLevel(logging.DEBUG)
+    
+    # File handler (DEBUG level - captures everything, append mode)
+    file_handler = logging.FileHandler(log_file, mode='a')
+    file_handler.setLevel(logging.DEBUG)
+    file_formatter = logging.Formatter(
+        "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    )
+    file_handler.setFormatter(file_formatter)
+    
+    # Console handler (INFO level - user-friendly output)
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_formatter = logging.Formatter(
+        "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    )
+    console_handler.setFormatter(console_formatter)
+    
+    # Add handlers to root logger
+    if not logger.handlers:
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
+    
+    # Also configure eval_metrics logger
+    metrics_logger = logging.getLogger("eval_metrics")
+    metrics_logger.setLevel(logging.DEBUG)
+    if not metrics_logger.handlers:
+        metrics_logger.addHandler(file_handler)
+        metrics_logger.addHandler(console_handler)
+    
+    return logger, log_file
+
+# Initialize logging
+logger, log_file = setup_logging()
+logger.info(f"Logs stored at: {log_file}")
+
+# Scoring mode: "programmatic" or "manual"
+SCORING_MODE = "programmatic"  # ← CONTROL VARIABLE: Change to "manual" for hardcoded scores
 
 
 class EvaluationRunner:
@@ -138,7 +193,8 @@ class EvaluationRunner:
         self,
         company_slug: str,
         pipeline: str = "structured",
-        force: bool = False
+        force: bool = False,
+        scoring_mode: str = None
     ) -> Optional[EvaluationMetrics]:
         """
         Evaluate a specific company/pipeline combination.
@@ -147,11 +203,16 @@ class EvaluationRunner:
             company_slug: Company slug (e.g., "world-labs")
             pipeline: Pipeline type ("structured" or "rag")
             force: Force re-evaluation even if cached
+            scoring_mode: "programmatic" (auto-calculate) or "manual" (hardcoded)
+                         If None, uses module-level SCORING_MODE
         
         Returns:
             EvaluationMetrics or None if evaluation failed
         """
-        logger.info(f"Evaluating {company_slug}/{pipeline}")
+        if scoring_mode is None:
+            scoring_mode = SCORING_MODE
+        
+        logger.info(f"Evaluating {company_slug}/{pipeline} (mode: {scoring_mode})")
         
         # Check cache
         if not force and company_slug in self.results:
@@ -180,19 +241,37 @@ class EvaluationRunner:
         facts = self._extract_facts_from_markdown(dashboard_markdown)
         mrr = calculate_mrr(facts, relevant_threshold=0.7)
         
-        # Create evaluation metrics (template - customize based on your needs)
+        # Calculate metrics based on scoring mode
+        if scoring_mode.lower() == "programmatic":
+            logger.info(f"Using PROGRAMMATIC scoring for {company_slug}/{pipeline}")
+            factual_accuracy = calculate_factual_accuracy(dashboard_markdown, gt)
+            schema_compliance = calculate_schema_compliance(dashboard_markdown, gt)
+            provenance_quality = calculate_provenance_quality(dashboard_markdown, gt)
+            hallucination_detection = calculate_hallucination_detection(dashboard_markdown, gt)
+            readability = calculate_readability(dashboard_markdown, gt)
+            notes = f"Auto-calculated metrics using {pipeline} pipeline (programmatic)"
+        else:
+            logger.info(f"Using MANUAL scoring for {company_slug}/{pipeline}")
+            # Hardcoded placeholder scores
+            factual_accuracy = 2
+            schema_compliance = 2
+            provenance_quality = 1
+            hallucination_detection = 1
+            readability = 1
+            notes = f"Manual evaluation for {pipeline} pipeline (placeholder)"
+        
+        # Create evaluation metrics
         metrics = EvaluationMetrics(
             company_name=gt["company_name"],
             company_slug=company_slug,
             pipeline_type=pipeline,
-            # These would be set based on actual evaluation of the output
-            factual_accuracy=2,  # Placeholder
-            schema_compliance=2,  # Placeholder
-            provenance_quality=1,  # Placeholder
-            hallucination_detection=1,  # Placeholder
-            readability=1,  # Placeholder
-            mrr_score=mrr,  # Calculated from fact extraction
-            notes=f"Auto-generated evaluation for {pipeline} pipeline"
+            factual_accuracy=factual_accuracy,
+            schema_compliance=schema_compliance,
+            provenance_quality=provenance_quality,
+            hallucination_detection=hallucination_detection,
+            readability=readability,
+            mrr_score=mrr,
+            notes=notes
         )
         
         # Cache result
@@ -206,17 +285,21 @@ class EvaluationRunner:
         
         return metrics
     
-    def batch_evaluate(self, force: bool = False) -> Dict[str, Dict[str, EvaluationMetrics]]:
+    def batch_evaluate(self, force: bool = False, scoring_mode: str = None) -> Dict[str, Dict[str, EvaluationMetrics]]:
         """
         Evaluate all companies for both pipelines.
         
         Args:
             force: Force re-evaluation of all
+            scoring_mode: "programmatic" or "manual" (uses SCORING_MODE if None)
         
         Returns:
             Dictionary mapping company_slug -> {pipeline -> EvaluationMetrics}
         """
-        logger.info("Starting batch evaluation...")
+        if scoring_mode is None:
+            scoring_mode = SCORING_MODE
+        
+        logger.info(f"Starting batch evaluation (mode: {scoring_mode})...")
         
         results = {}
         
@@ -229,7 +312,8 @@ class EvaluationRunner:
                 metrics = self.evaluate_company_pipeline(
                     company_slug,
                     pipeline,
-                    force=force
+                    force=force,
+                    scoring_mode=scoring_mode
                 )
                 if metrics:
                     results[company_slug][pipeline] = metrics
@@ -400,6 +484,12 @@ def main():
         action="store_true",
         help="Force re-evaluation (ignore cache)"
     )
+    parser.add_argument(
+        "--mode",
+        choices=["programmatic", "manual"],
+        default=None,
+        help="Scoring mode: 'programmatic' (auto-calculate) or 'manual' (hardcoded)"
+    )
     
     args = parser.parse_args()
     
@@ -409,7 +499,7 @@ def main():
         runner.view_results(args.view)
     
     elif args.batch:
-        runner.batch_evaluate(force=args.force)
+        runner.batch_evaluate(force=args.force, scoring_mode=args.mode)
         
         if args.report:
             report = runner.generate_report()
@@ -419,15 +509,22 @@ def main():
         metrics = runner.evaluate_company_pipeline(
             args.company,
             args.pipeline,
-            force=args.force
+            force=args.force,
+            scoring_mode=args.mode
         )
         
         if metrics:
             print(f"\n✓ Evaluation successful")
             print(f"  Company: {metrics.company_name}")
             print(f"  Pipeline: {metrics.pipeline_type}")
-            print(f"  Total Score: {metrics.get_total_score():.1f}/14")
+            print(f"  Scoring Mode: {args.mode or SCORING_MODE}")
+            print(f"  Factual Accuracy: {metrics.factual_accuracy}/3")
+            print(f"  Schema Compliance: {metrics.schema_compliance}/2")
+            print(f"  Provenance Quality: {metrics.provenance_quality}/2")
+            print(f"  Hallucination Detection: {metrics.hallucination_detection}/2")
+            print(f"  Readability: {metrics.readability}/1")
             print(f"  MRR: {metrics.mrr_score:.3f}")
+            print(f"  Total Score: {metrics.get_total_score():.1f}/14")
     
     else:
         parser.print_help()

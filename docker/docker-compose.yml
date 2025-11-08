@@ -62,7 +62,9 @@ x-airflow-common:
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     # For backward compatibility, with Airflow <2.3
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-    AIRFLOW__CORE__FERNET_KEY: ''
+    # Generate deterministic secret key for all components (required for multi-component sync)
+    AIRFLOW__CORE__FERNET_KEY: 'gAAAAABlZzk0MWE4ODc2ZWVmZjkyYTk1ZDhkODNhOWM5NTk0MjExZjJhNmQ0ZjA4OTA1M2I3MzYxNzM0MWM4YWE4MWJmNThhODUxMQ=='
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'ThisIsASecretKeyForAirflow2025'
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__MAXIMUM_PAGE_LIMIT: '1000'
@@ -70,6 +72,9 @@ x-airflow-common:
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
+    # Fix remote logging access (use local logging)
+    AIRFLOW__LOGGING__REMOTE_LOGGING: 'false'
+    AIRFLOW__LOGGING__LOG_LEVEL: 'INFO'
     # Hugging Face cache directory
     HF_HOME: /app/.cache/huggingface
     TRANSFORMERS_CACHE: /app/.cache/huggingface/transformers
@@ -79,9 +84,6 @@ x-airflow-common:
     AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
     S3_BUCKET_NAME: ${S3_BUCKET_NAME}
-    # Disable remote task logging
-    AIRFLOW__LOGGING__REMOTE_LOGGING: "false"
-    AIRFLOW__LOGGING__LOG_FORMAT: "[%%(asctime)s] {%%(filename)s:%%(lineno)d} %%(levelname)s - %%(message)s"
   volumes:
     - ../src/dags:/app/src/dags
     - ../data:/app/data

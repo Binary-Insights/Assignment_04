@@ -282,3 +282,36 @@ in order to track the files in both dvc and .gitignore
 !/data/*.dvc
 !/data/**/.dvc
 !/data/.dvc
+
+
+# World Labs example from the code:
+
+Structured Pipeline:
+  - Factual Accuracy:      3
+  - Schema Compliance:     2
+  - Provenance Quality:    2
+  - Hallucination Detect:  2
+  - Readability:           1
+  - MRR Score:             0.95
+
+RAG Pipeline:
+  - Factual Accuracy:      2     ❌ loses to 3
+  - Schema Compliance:     2     🟡 tie with 2
+  - Provenance Quality:    1     ❌ loses to 2
+  - Hallucination Detect:  1     ❌ loses to 2
+  - Readability:           1     🟡 tie with 1
+  - MRR Score:             0.75  ❌ loses to 0.95
+
+Result:
+  Winners: {
+    "factual_accuracy": "structured",
+    "schema_compliance": "tie",
+    "provenance_quality": "structured",
+    "hallucination_detection": "structured",
+    "readability": "tie",
+    "mrr_score": "structured"
+  }
+
+Overall Score:
+  - Structured Total: (3+2+2+2+1+0.95*2) = 13.9/14
+  - RAG Total: (2+2+1+1+1+0.75*2) = 8.5/14
