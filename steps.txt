@@ -177,6 +177,8 @@ python src/rag/structured_extraction_search.py --all --fallback-strategy raw_onl
 # Frontend
 streamlit run src/frontend/streamlit_app.py
 
+ENVIRONMENT=local streamlit run src/frontend/streamlit_app.py
+
 -------
 Debug 
 
@@ -217,7 +219,31 @@ docker exec -it pe-dashboard-ui /bin/sh
 
 python src/evals/eval_runner.py --company world-labs --pipeline rag
 
+1. Check the running container:
+docker-compose exec airflow-webserver airflow version
 
+2. Check the logs:
+docker-compose logs airflow-init | grep "Airflow version"
+
+
+# To run evals 
+# python src/evals/eval_runner.py --company abridge --pipeline structured --force 
+# python src/evals/eval_runner.py --batch
+
+
+
+
+(base) PS C:\Users\enigm\OneDrive\Documents\NortheasternAssignments\09_BigDataIntelAnlytics\Assignments\Assignment_04\docker> docker-compose logs airflow-webserver 2>&1 | grep -i "password for user"
+
+docker-compose logs airflow-webserver 2>&1 | grep -i "password for user"
+
+assignment04-airflow-webserver  | Simple auth manager | Password for user 'admin': 4hNFwKSbTFqxnV5v
+
+docker-compose exec airflow-webserver python /app/src/dags/eval_runner_dag.py
+
+docker-compose logs airflow-scheduler 2>&1 | tail -50
+
+docker-compose exec airflow-webserver airflow dags list
 ------------------
 
 uv commands 
@@ -225,45 +251,7 @@ uv commands
 # After editing pyproject.toml, regenerate requirements.txt:
 uv pip compile pyproject.toml -o requirements.txt
 
-# ========================================================
-# DOCKER & DEPLOYMENT
-# ========================================================
-
-# NOTE: Use --env-file flag to load .env variables for docker-compose substitution
-# The .env file is also mounted as volume inside containers at /opt/airflow/workspace/.env
-# This enables:
-#   1. Variable substitution in docker-compose.yml (${AWS_ACCESS_KEY_ID}, etc.)
-#   2. Python code access to .env file via load_dotenv()
-
-# Build Docker image (fresh build, no cache):
-docker-compose --env-file .env -f docker/docker-compose.yml build --no-cache
-
-# Stop all running services:
-docker-compose --env-file .env -f docker/docker-compose.yml down
-
-# Start all services in background (after building):
-docker-compose --env-file .env -f docker/docker-compose.yml up -d
-
-# View logs in real-time:
-docker-compose --env-file .env -f docker/docker-compose.yml logs -f
-
-# View logs for specific service:
-docker-compose --env-file .env -f docker/docker-compose.yml logs -f fastapi
-docker-compose --env-file .env -f docker/docker-compose.yml logs -f streamlit
-docker-compose --env-file .env -f docker/docker-compose.yml logs -f airflow-scheduler
-
-# Stop and remove volumes (clean slate):
-docker-compose --env-file .env -f docker/docker-compose.yml down -v
-
-# Access services:
-# - Airflow Webserver: http://localhost:8080 (username: airflow, password: airflow)
-# - FastAPI Docs: http://localhost:8000/docs
-# - Streamlit App: http://localhost:8501
-# - Qdrant Console: http://localhost:6333/health
-
-# Note: All services use same Docker image built from docker/Dockerfile
-# Services inherit common configuration from x-airflow-common anchor in docker-compose.yml
-# Environment variables loaded from .env file (not committed to git)
+docker system prune -f
 
 ---------
 dvc initialization:

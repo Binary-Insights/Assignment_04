@@ -21,7 +21,8 @@ ENVIRONMENT = os.getenv("ENVIRONMENT", "local").lower()
 if ENVIRONMENT == "docker":
     API_BASE = os.getenv("FASTAPI_URL", "http://fastapi:8000")
 else:
-    API_BASE = os.getenv("FASTAPI_URL", "http://localhost:8000")
+    # Running locally - use localhost
+    API_BASE = os.getenv("LOCALHOST_URL", "http://localhost:8000")
 
 # Page configuration
 st.set_page_config(
@@ -289,7 +290,9 @@ if evals_list and "companies" in evals_list:
             st.write(f"- Provenance Quality: {structured.get('provenance_quality', '-')}/2")
             st.write(f"- Hallucination Detection: {structured.get('hallucination_detection', '-')}/2")
             st.write(f"- Readability: {structured.get('readability', '-')}/1")
-            st.write(f"- **Total: {structured.get('total_score', '-'):.1f}/14**")
+            struct_score = structured.get('total_score')
+            struct_total = f"{struct_score:.1f}/14" if struct_score is not None else "-/14"
+            st.write(f"- **Total: {struct_total}**")
             
             if structured.get('notes'):
                 st.info(f"Notes: {structured.get('notes')}")
@@ -301,7 +304,9 @@ if evals_list and "companies" in evals_list:
             st.write(f"- Provenance Quality: {rag.get('provenance_quality', '-')}/2")
             st.write(f"- Hallucination Detection: {rag.get('hallucination_detection', '-')}/2")
             st.write(f"- Readability: {rag.get('readability', '-')}/1")
-            st.write(f"- **Total: {rag.get('total_score', '-'):.1f}/14**")
+            rag_score = rag.get('total_score')
+            rag_total = f"{rag_score:.1f}/14" if rag_score is not None else "-/14"
+            st.write(f"- **Total: {rag_total}**")
             
             if rag.get('notes'):
                 st.info(f"Notes: {rag.get('notes')}")

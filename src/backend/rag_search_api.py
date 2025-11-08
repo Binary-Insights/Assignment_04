@@ -1044,10 +1044,7 @@ async def generate_rag_dashboard(
 
 @app.get("/evals/{company_slug}", response_model=ComparisonResponse)
 async def get_evaluation_metrics(
-    company_slug: str = Query(
-        ...,
-        description="Company slug (e.g., 'world-labs')"
-    )
+    company_slug: str
 ) -> ComparisonResponse:
     """
     Get cached evaluation metrics for a company.
