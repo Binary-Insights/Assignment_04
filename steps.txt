@@ -205,6 +205,8 @@ docker-compose logs airflow-webserver 2>&1 | grep -i "password for user"
 
 assignment04-airflow-webserver  | Simple auth manager | Password for user 'admin': 4hNFwKSbTFqxnV5v
 
+docker-compose exec airflow-webserver python /app/src/dags/eval_runner_dag.py
+
 docker-compose logs airflow-scheduler 2>&1 | tail -50
 
 docker-compose exec airflow-webserver airflow dags list

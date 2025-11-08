@@ -29,12 +29,14 @@ EVAL_SCRIPT = PROJECT_ROOT / "src" / "evals" / "eval_runner.py"
 PIPELINES = ["structured", "rag"]
 
 
-def load_companies_from_ground_truth(**context):
+def load_companies_from_ground_truth():
     """
     Load company slugs from ground_truth.json.
     Returns list of company slugs for downstream tasks.
     """
     try:
+        logger.info("✓ Loading companies from ground truth...")
+        
         if not GROUND_TRUTH_FILE.exists():
             logger.error(f"Ground truth file not found: {GROUND_TRUTH_FILE}")
             return []
@@ -46,20 +48,14 @@ def load_companies_from_ground_truth(**context):
         logger.info(f"✓ Loaded {len(companies)} companies from ground truth")
         logger.info(f"  Companies: {', '.join(companies)}")
         
-        # Store in XCom for downstream tasks
-        context["task_instance"].xcom_push(
-            key="companies",
-            value=companies
-        )
-        
         return companies
     
     except Exception as e:
-        logger.error(f"Error loading ground truth: {e}")
+        logger.error(f"❌ Error loading ground truth: {e}", exc_info=True)
         raise
 
 
-def evaluate_company_pipeline(company_slug: str, pipeline: str, **context):
+def evaluate_company_pipeline(company_slug: str, pipeline: str):
     """
     Run evaluation for a specific company/pipeline combination.
     
@@ -73,13 +69,16 @@ def evaluate_company_pipeline(company_slug: str, pipeline: str, **context):
         # Build command
         cmd = [
             sys.executable,
-            str(PROJECT_ROOT / EVAL_SCRIPT),
+            str(EVAL_SCRIPT),
             "--company", company_slug,
             "--pipeline", pipeline,
             "--force"
         ]
         
         logger.info(f"Running: {' '.join(cmd)}")
+        logger.info(f"Working directory: {PROJECT_ROOT}")
+        logger.info(f"EVAL_SCRIPT path: {EVAL_SCRIPT}")
+        logger.info(f"EVAL_SCRIPT exists: {EVAL_SCRIPT.exists()}")
         
         # Execute evaluation
         result = subprocess.run(
@@ -107,14 +106,14 @@ def evaluate_company_pipeline(company_slug: str, pipeline: str, **context):
         }
     
     except subprocess.TimeoutExpired:
-        logger.error(f"Evaluation timeout for {company_slug}/{pipeline}")
+        logger.error(f"❌ Evaluation timeout for {company_slug}/{pipeline}")
         raise
     except Exception as e:
-        logger.error(f"Error evaluating {company_slug}/{pipeline}: {e}")
+        logger.error(f"❌ Error evaluating {company_slug}/{pipeline}: {e}", exc_info=True)
         raise
 
 
-def generate_comparison_report(**context):
+def generate_comparison_report():
     """
     Generate comparison report after all evaluations complete.
     """
@@ -162,14 +161,12 @@ with DAG(
     catchup=False,
     tags=["evaluation", "ml_pipeline", "quality_assurance"],
     max_active_runs=1,  # Only allow one active run
-    default_view="graph",
 ) as dag:
     
     # Task 1: Load companies from ground truth
     load_companies = PythonOperator(
         task_id="load_companies",
         python_callable=load_companies_from_ground_truth,
-        provide_context=True,
     )
     
     # Task 2: Dynamic task generation for each company/pipeline combination
@@ -177,13 +174,22 @@ with DAG(
     evaluation_tasks = []
     
     # Load ground truth for dynamic task generation
+    companies = []
     try:
-        with open(GROUND_TRUTH_FILE, "r") as f:
-            ground_truth = json.load(f)
-        companies = list(ground_truth.keys())
+        if GROUND_TRUTH_FILE.exists():
+            with open(GROUND_TRUTH_FILE, "r") as f:
+                ground_truth = json.load(f)
+            companies = list(ground_truth.keys())
+            logger.info(f"Loaded {len(companies)} companies from ground_truth.json for DAG creation")
     except Exception as e:
         logger.error(f"Failed to load ground truth for DAG creation: {e}")
-        companies = []
+        # Use default companies for testing if file can't be loaded
+        companies = ["world-labs", "company-b"]
+    
+    # If still empty (file doesn't exist), use defaults
+    if not companies:
+        logger.warning("No companies found; using default test companies")
+        companies = ["world-labs", "company-b"]
     
     # Create evaluation tasks for each company and pipeline
     for company_slug in companies:
@@ -197,7 +203,6 @@ with DAG(
                     "company_slug": company_slug,
                     "pipeline": pipeline,
                 },
-                provide_context=True,
                 retries=2,  # Retry up to 2 times on failure
                 retry_delay=60,  # Wait 60 seconds between retries
             )
@@ -208,7 +213,6 @@ with DAG(
     generate_report = PythonOperator(
         task_id="generate_comparison_report",
         python_callable=generate_comparison_report,
-        provide_context=True,
         trigger_rule="all_done",  # Run even if some evaluations failed
     )
     
