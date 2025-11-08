@@ -157,7 +157,9 @@ multidict==6.7.0
     #   aiohttp
     #   yarl
 narwhals==2.10.2
-    # via altair
+    # via
+    #   altair
+    #   plotly
 nodeenv==1.9.1
     # via pre-commit
 numpy==2.3.4
@@ -186,6 +188,7 @@ packaging==24.2
     #   langchain-core
     #   langsmith
     #   pinecone-plugin-assistant
+    #   plotly
     #   streamlit
 pandas==2.3.3
     # via streamlit
@@ -199,6 +202,8 @@ pinecone-plugin-interface==0.0.7
     # via pinecone
 platformdirs==4.5.0
     # via virtualenv
+plotly==6.4.0
+    # via pe-dashboard-ai50 (pyproject.toml)
 pre-commit==4.3.0
     # via instructor
 propcache==0.4.1

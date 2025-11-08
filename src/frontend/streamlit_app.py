@@ -17,8 +17,27 @@ else:
     # Running locally - use localhost
     API_BASE = os.getenv("LOCALHOST_URL", "http://localhost:8000")
 
-st.set_page_config(page_title="PE Dashboard (AI 50)", layout="wide")
-st.title("Project ORBIT – PE Dashboard for Forbes AI 50")
+st.set_page_config(
+    page_title="PE Dashboard (AI 50)",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+st.title("🚀 Project ORBIT – PE Dashboard for Forbes AI 50")
+st.markdown("---")
+
+# Introduction
+st.markdown("""
+Welcome to the **Project ORBIT Dashboard** for comprehensive analysis of Forbes AI 50 companies.
+
+This multi-page application provides:
+- **Generator** (this page): Generate dashboards using Structured and RAG pipelines
+- **Evaluation Dashboard**: Compare pipeline performance across metrics
+
+Use the sidebar to navigate between pages.
+""")
+
+st.divider()
 
 # Debug: Display API configuration
 with st.expander("🔧 Debug - API Configuration"):
@@ -31,6 +50,9 @@ if "structured_data" not in st.session_state:
     st.session_state.structured_data = None
 if "rag_data" not in st.session_state:
     st.session_state.rag_data = None
+
+st.header("📋 Dashboard Generator")
+st.markdown("Select a company and generate dashboards using either pipeline.")
 
 try:
     response = requests.get(f"{API_BASE}/companies", timeout=5).json()
