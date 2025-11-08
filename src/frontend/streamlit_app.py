@@ -15,10 +15,16 @@ if ENVIRONMENT == "docker":
     API_BASE = os.getenv("FASTAPI_URL", "http://fastapi:8000")
 else:
     # Running locally - use localhost
-    API_BASE = os.getenv("FASTAPI_URL", "http://localhost:8000")
+    API_BASE = os.getenv("LOCALHOST_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="PE Dashboard (AI 50)", layout="wide")
 st.title("Project ORBIT – PE Dashboard for Forbes AI 50")
+
+# Debug: Display API configuration
+with st.expander("🔧 Debug - API Configuration"):
+    st.write(f"**ENVIRONMENT:** `{ENVIRONMENT}`")
+    st.write(f"**API_BASE:** `{API_BASE}`")
+    st.write(f"**FASTAPI_URL (from .env):** `{os.getenv('FASTAPI_URL', 'Not set')}`")
 
 # Initialize session state for persisting outputs
 if "structured_data" not in st.session_state:

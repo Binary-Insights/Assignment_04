@@ -143,6 +143,8 @@ python src/rag/structured_extraction_search.py --all --fallback-strategy raw_onl
 # Frontend
 streamlit run src/frontend/streamlit_app.py
 
+ENVIRONMENT=local streamlit run src/frontend/streamlit_app.py
+
 -------
 Debug 
 
@@ -183,13 +185,36 @@ docker exec -it pe-dashboard-ui /bin/sh
 
 python src/evals/eval_runner.py --company world-labs --pipeline rag
 
+1. Check the running container:
+docker-compose exec airflow-webserver airflow version
 
+2. Check the logs:
+docker-compose logs airflow-init | grep "Airflow version"
+
+
+# To run evals 
+# python src/evals/eval_runner.py --company abridge --pipeline structured --force 
+# python src/evals/eval_runner.py --batch
+
+
+
+
+(base) PS C:\Users\enigm\OneDrive\Documents\NortheasternAssignments\09_BigDataIntelAnlytics\Assignments\Assignment_04\docker> docker-compose logs airflow-webserver 2>&1 | grep -i "password for user"
+
+docker-compose logs airflow-webserver 2>&1 | grep -i "password for user"
+
+assignment04-airflow-webserver  | Simple auth manager | Password for user 'admin': 4hNFwKSbTFqxnV5v
+
+docker-compose logs airflow-scheduler 2>&1 | tail -50
+
+docker-compose exec airflow-webserver airflow dags list
 ------------------
 
 uv commands 
 
 uv pip compile pyproject.toml -o requirements.txt
 
+docker system prune -f
 
 ---------
 dvc initialization:
