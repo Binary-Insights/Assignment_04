@@ -5,6 +5,7 @@ import os
 import subprocess
 import logging
 import sys
+from pathlib import Path
 
 def run_process_discovered_pages():
     """
@@ -14,31 +15,31 @@ def run_process_discovered_pages():
     Script expects:
     - data/company_pages_discovered.json (input)
     - Selenium WebDriver setup in container
-    - Working directory: /opt/airflow
+    - Working directory: /app
     """
     logger = logging.getLogger(__name__)
     
-    # Set working directory to /opt/airflow (where data/ and src/ are mounted)
-    work_dir = '/opt/airflow'
-    script_path = os.path.join(work_dir, 'src', 'discover', 'process_discovered_pages.py')
+    # Base directory for Docker container
+    BASE_DIR = Path("/app")
+    script_path = BASE_DIR / 'src' / 'discover' / 'process_discovered_pages.py'
     
     try:
         logger.info("="*70)
         logger.info("Starting process_discovered_pages")
         logger.info("="*70)
-        logger.info(f"Working directory: {work_dir}")
+        logger.info(f"Base directory: {BASE_DIR}")
         logger.info(f"Script path: {script_path}")
         logger.info(f"Current working dir: {os.getcwd()}")
         
         # Verify script exists
-        if not os.path.exists(script_path):
+        if not script_path.exists():
             error_msg = f"❌ Script not found at {script_path}"
             logger.error(error_msg)
             raise FileNotFoundError(error_msg)
         
         # Verify input file exists
-        input_file = os.path.join(work_dir, 'data', 'company_pages_discovered.json')
-        if not os.path.exists(input_file):
+        input_file = BASE_DIR / 'data' / 'company_pages_discovered.json'
+        if not input_file.exists():
             error_msg = f"❌ Input file not found at {input_file}"
             logger.error(error_msg)
             raise FileNotFoundError(error_msg)
@@ -46,14 +47,14 @@ def run_process_discovered_pages():
         logger.info(f"✓ Script found: {script_path}")
         logger.info(f"✓ Input file found: {input_file}")
         
-        # Run the script from work_dir so relative paths work
+        # Run the script from BASE_DIR so relative paths work
         logger.info(f"Executing: python {script_path}")
         result = subprocess.run(
-            [sys.executable, script_path],
+            [sys.executable, str(script_path)],
             capture_output=True,
             text=True,
             timeout=3600,  # 60 minutes (increased from 30 for 50 companies × 4 pages)
-            cwd=work_dir,  # Set working directory
+            cwd=str(BASE_DIR),  # Set working directory
             env={**os.environ, 'PYTHONUNBUFFERED': '1'}  # Enable unbuffered output
         )
         

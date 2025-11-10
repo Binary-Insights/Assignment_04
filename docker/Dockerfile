@@ -6,7 +6,22 @@ WORKDIR /app
 USER root
 RUN apt-get update && apt-get install -y \
     git \
+    chromium \
+    chromium-driver \
+    libglib2.0-0 \
+    libx11-6 \
+    libxss1 \
+    libappindicator1 \
+    xdg-utils \
+    fonts-liberation \
+    libnss3 \
+    libxext6 \
+    libxrender-dev \
     && rm -rf /var/lib/apt/lists/*
+
+# Create symlinks for chromedriver compatibility
+RUN ln -s /usr/bin/chromium-driver /usr/bin/chromedriver || true
+
 USER airflow
 
 # Install additional Python requirements
@@ -23,6 +38,8 @@ ENV AIRFLOW__CORE__LOAD_EXAMPLES=false
 ENV AIRFLOW__CORE__UNIT_TEST_MODE=false
 ENV AIRFLOW__CORE__DAGS_FOLDER=/app/src/dags
 ENV AIRFLOW__CORE__EXECUTOR=LocalExecutor
+ENV CHROMEDRIVER_PATH=/usr/bin/chromedriver
+ENV CHROME_BIN=/usr/bin/chromium
 
 # Default command - will be overridden by docker-compose
 CMD ["airflow", "version"]

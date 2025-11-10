@@ -232,6 +232,7 @@ def evaluate_response(
     evaluation = client.messages.create(
         model="gpt-4o",
         max_tokens=1500,
+        temperature=0.2,  # Low temperature for deterministic, consistent responses
         messages=[
             {
                 "role": "user",
@@ -395,28 +396,43 @@ def evaluate_batch(
     
     # Save results if output path provided
     if output_path and results:
-        output_dict = {}
-        for slug, evaluation in results.items():
-            output_dict[slug] = {
-                "structured": json.loads(evaluation.structured.model_dump_json()),
-                "rag": json.loads(evaluation.rag.model_dump_json())
-            }
-        
         # Create output directory if it doesn't exist
         output_file = Path(output_path)
         output_file.parent.mkdir(parents=True, exist_ok=True)
         
+        # Load existing data or start with empty dict
+        if os.path.exists(output_path):
+            try:
+                with open(output_path, 'r') as f:
+                    existing_data = json.load(f)
+                logger.info(f"Loaded existing results from {output_path}")
+            except (json.JSONDecodeError, IOError) as e:
+                logger.warning(f"Could not load existing results: {e}. Starting with empty dict.")
+                existing_data = {}
+        else:
+            existing_data = {}
+        
+        # Merge new results with existing data
+        for slug, evaluation in results.items():
+            existing_data[slug] = {
+                "structured": json.loads(evaluation.structured.model_dump_json()),
+                "rag": json.loads(evaluation.rag.model_dump_json())
+            }
+        
+        # Save merged data
         with open(output_path, 'w') as f:
-            json.dump(output_dict, f, indent=2, default=str)
+            json.dump(existing_data, f, indent=2, default=str)
         
         # Verify file was saved
         if os.path.exists(output_path):
             file_size = os.path.getsize(output_path)
             logger.info(f"✅ Results file saved successfully: {output_path}")
             logger.info(f"   File size: {file_size} bytes")
-            logger.info(f"   Companies saved: {len(output_dict)}")
+            logger.info(f"   Total companies in file: {len(existing_data)}")
+            logger.info(f"   Companies added/updated: {len(results)}")
             print(f"\n✅ Results saved to {output_path}")
             print(f"   File size: {file_size} bytes")
+            print(f"   Total companies in file: {len(existing_data)}")
         else:
             logger.error(f"❌ Failed to save results file: {output_path}")
             print(f"❌ Failed to save results file: {output_path}")
@@ -520,29 +536,42 @@ if __name__ == "__main__":
             print(f"   Structured: {evaluation.structured.total_score:.1f}/11")
             print(f"   RAG: {evaluation.rag.total_score:.1f}/11")
             
-            # Save single company result
-            output_dict = {
-                args.company: {
-                    "structured": json.loads(evaluation.structured.model_dump_json()),
-                    "rag": json.loads(evaluation.rag.model_dump_json())
-                }
-            }
-            
             # Create output directory if it doesn't exist
             output_file = Path(args.output)
             output_file.parent.mkdir(parents=True, exist_ok=True)
             
+            # Load existing data or start with empty dict
+            if os.path.exists(args.output):
+                try:
+                    with open(args.output, 'r') as f:
+                        existing_data = json.load(f)
+                    logger.info(f"Loaded existing results from {args.output}")
+                except (json.JSONDecodeError, IOError) as e:
+                    logger.warning(f"Could not load existing results: {e}. Starting with empty dict.")
+                    existing_data = {}
+            else:
+                existing_data = {}
+            
+            # Add/update the evaluated company
+            existing_data[args.company] = {
+                "structured": json.loads(evaluation.structured.model_dump_json()),
+                "rag": json.loads(evaluation.rag.model_dump_json())
+            }
+            
+            # Save merged data
             with open(args.output, 'w') as f:
-                json.dump(output_dict, f, indent=2, default=str)
+                json.dump(existing_data, f, indent=2, default=str)
             
             # Verify file was saved
             if os.path.exists(args.output):
                 file_size = os.path.getsize(args.output)
                 logger.info(f"✅ Results file saved successfully: {args.output}")
                 logger.info(f"   File size: {file_size} bytes")
-                logger.info(f"   Companies saved: 1 ({args.company})")
+                logger.info(f"   Total companies in file: {len(existing_data)}")
+                logger.info(f"   Companies added/updated: 1 ({args.company})")
                 print(f"\n✅ Results saved to {args.output}")
                 print(f"   File size: {file_size} bytes")
+                print(f"   Total companies in file: {len(existing_data)}")
             else:
                 logger.error(f"❌ Failed to save results file: {args.output}")
                 print(f"❌ Failed to save results file: {args.output}")

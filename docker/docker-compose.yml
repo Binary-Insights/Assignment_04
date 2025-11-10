@@ -80,6 +80,9 @@ x-airflow-common:
     TRANSFORMERS_CACHE: /app/.cache/huggingface/transformers
     # DeepSearch GLM model cache
     DEEPSEARCH_GLM_CACHE_DIR: /app/.cache/deepsearch_glm
+    # ChromeDriver configuration
+    CHROMEDRIVER_PATH: /usr/bin/chromedriver
+    CHROME_BIN: /usr/bin/chromium
     AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
     AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}

@@ -198,12 +198,16 @@ if evals_list and "companies" in evals_list:
         col_badge1, col_badge2 = st.columns(2)
         
         with col_badge1:
-            if winners.get("total_score") == "structured":
-                st.success(f"✅ Structured Pipeline Wins ({structured.get('total_score', 0):.1f} vs {rag.get('total_score', 0):.1f})")
-            elif winners.get("total_score") == "rag":
-                st.success(f"✅ RAG Pipeline Wins ({rag.get('total_score', 0):.1f} vs {structured.get('total_score', 0):.1f})")
+            total_score_winner = winners.get("total_score")
+            struct_score = structured.get('total_score', 0)
+            rag_score = rag.get('total_score', 0)
+            
+            if total_score_winner == "structured":
+                st.success(f"✅ Structured Pipeline Wins ({struct_score:.1f} vs {rag_score:.1f})")
+            elif total_score_winner == "rag":
+                st.success(f"✅ RAG Pipeline Wins ({rag_score:.1f} vs {struct_score:.1f})")
             else:
-                st.info(f"🤝 Tie: Both pipelines scored {structured.get('total_score', 0):.1f}")
+                st.info(f"🤝 Tie: Both pipelines scored {struct_score:.1f}")
         
         with col_badge2:
             mrr_diff = abs((structured.get('mrr_score', 0) or 0) - (rag.get('mrr_score', 0) or 0))

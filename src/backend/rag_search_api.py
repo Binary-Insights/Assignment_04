@@ -1172,7 +1172,7 @@ async def get_evaluation_metrics(
             notes=rag_data.get("notes", "")
         )
         
-        # Calculate winners
+        # Calculate winners for individual metrics
         winners = {}
         for metric in ["factual_accuracy", "schema_compliance", "provenance_quality",
                       "hallucination_detection", "readability", "mrr_score"]:
@@ -1187,7 +1187,20 @@ async def get_evaluation_metrics(
                 else:
                     winners[metric] = "tie"
         
+        # Calculate winner for total_score
+        struct_total = structured_metrics.total_score
+        rag_total = rag_metrics.total_score
+        
+        if struct_total is not None and rag_total is not None:
+            if struct_total > rag_total:
+                winners["total_score"] = "structured"
+            elif rag_total > struct_total:
+                winners["total_score"] = "rag"
+            else:
+                winners["total_score"] = "tie"
+        
         logger.info(f"✓ Returning evaluation metrics for {company_slug}")
+        logger.debug(f"  Winners: {winners}")
         
         return ComparisonResponse(
             company_name=company_name,

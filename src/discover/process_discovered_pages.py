@@ -109,6 +109,10 @@ def setup_selenium_driver():
     logger = logging.getLogger('process_discovered_pages')
     logger.info("Setting up Selenium Chrome driver")
     
+    # Disable Selenium's automatic chromedriver download
+    os.environ['WDM_LOG'] = '0'
+    os.environ['WDM_LOCAL'] = '1'
+    
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # Run in background
     chrome_options.add_argument("--no-sandbox")
@@ -117,13 +121,33 @@ def setup_selenium_driver():
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     
+    # Set Chrome binary path - use system installation
+    chrome_bin = os.getenv('CHROME_BIN', '/usr/bin/chromium')
+    logger.info(f"Using Chrome binary: {chrome_bin}")
+    chrome_options.binary_location = chrome_bin
+    
     try:
-        driver = webdriver.Chrome(options=chrome_options)
+        # Use explicit ChromeDriver path - must use system installation
+        chromedriver_path = os.getenv('CHROMEDRIVER_PATH', '/usr/bin/chromedriver')
+        
+        logger.info(f"Attempting to use ChromeDriver from: {chromedriver_path}")
+        logger.info(f"ChromeDriver exists: {os.path.exists(chromedriver_path)}")
+        
+        # Create Service object with explicit path (disables automatic download)
+        service = webdriver.chrome.service.Service(chromedriver_path)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        
         driver.set_page_load_timeout(60)  # 60 second timeout
-        logger.info("Chrome driver initialized successfully")
+        logger.info("✓ Chrome driver initialized successfully")
         return driver
+    except FileNotFoundError as e:
+        logger.error(f"❌ ChromeDriver file not found: {chromedriver_path}")
+        logger.error(f"  Make sure chromium-driver is installed in the container")
+        raise
     except Exception as e:
-        logger.error(f"Failed to initialize Chrome driver: {e}")
+        logger.error(f"❌ Failed to initialize Chrome driver: {e}")
+        logger.error(f"  ChromeDriver path: {os.getenv('CHROMEDRIVER_PATH', '/usr/bin/chromedriver')}")
+        logger.error(f"  Chrome binary: {os.getenv('CHROME_BIN', '/usr/bin/chromium')}")
         raise
 
 
