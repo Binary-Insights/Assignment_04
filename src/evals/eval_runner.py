@@ -47,22 +47,34 @@ def setup_logging():
     # Get project root and logs directory
     project_root = Path(__file__).resolve().parents[2]
     logs_dir = project_root / "data" / "logs"
-    logs_dir.mkdir(parents=True, exist_ok=True)
     
-    # Use single log file that gets updated
-    log_file = logs_dir / "eval_runner.log"
+    # Try to create logs directory and file handler
+    file_handler = None
+    try:
+        logs_dir.mkdir(parents=True, exist_ok=True)
+        log_file = logs_dir / "eval_runner.log"
+        
+        # Verify we can write to the directory
+        # Try to write a test file first
+        test_file = logs_dir / ".write_test"
+        test_file.write_text("test")
+        test_file.unlink()  # Remove test file
+        
+        # File handler (DEBUG level - captures everything, append mode)
+        file_handler = logging.FileHandler(log_file, mode='a')
+        file_handler.setLevel(logging.DEBUG)
+        file_formatter = logging.Formatter(
+            "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+        )
+        file_handler.setFormatter(file_formatter)
+    except (PermissionError, OSError) as e:
+        print(f"⚠️  Warning: Cannot write to {logs_dir}: {e}")
+        print("   Logging to console only. Results will not be persisted to file.")
+        file_handler = None
     
     # Configure root logger
     logger = logging.getLogger("eval_runner")
     logger.setLevel(logging.DEBUG)
-    
-    # File handler (DEBUG level - captures everything, append mode)
-    file_handler = logging.FileHandler(log_file, mode='a')
-    file_handler.setLevel(logging.DEBUG)
-    file_formatter = logging.Formatter(
-        "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
-    )
-    file_handler.setFormatter(file_formatter)
     
     # Console handler (INFO level - user-friendly output)
     console_handler = logging.StreamHandler(sys.stdout)
@@ -74,21 +86,28 @@ def setup_logging():
     
     # Add handlers to root logger
     if not logger.handlers:
-        logger.addHandler(file_handler)
+        if file_handler:
+            logger.addHandler(file_handler)
         logger.addHandler(console_handler)
     
     # Also configure eval_metrics logger
     metrics_logger = logging.getLogger("eval_metrics")
     metrics_logger.setLevel(logging.DEBUG)
     if not metrics_logger.handlers:
-        metrics_logger.addHandler(file_handler)
+        if file_handler:
+            metrics_logger.addHandler(file_handler)
         metrics_logger.addHandler(console_handler)
     
+    # Return logger and log file path (or None if couldn't create file)
+    log_file = logs_dir / "eval_runner.log" if file_handler else None
     return logger, log_file
 
 # Initialize logging
 logger, log_file = setup_logging()
-logger.info(f"Logs stored at: {log_file}")
+if log_file:
+    logger.info(f"Logs stored at: {log_file}")
+else:
+    logger.info("Logs are being output to console only")
 
 # Scoring mode: "programmatic" or "manual"
 SCORING_MODE = "programmatic"  # ← CONTROL VARIABLE: Change to "manual" for hardcoded scores
@@ -154,11 +173,110 @@ class EvaluationRunner:
             logger.error(f"Error saving results: {e}")
     
     def _load_dashboard_markdown(self, company_slug: str, pipeline: str) -> Optional[str]:
-        """Load generated dashboard markdown."""
-        # Check if we can retrieve from cached API response or file
-        # This is a placeholder - in practice, you'd fetch from API or stored file
-        logger.info(f"Loading dashboard for {company_slug}/{pipeline}")
+        """
+        Load generated dashboard markdown from cached files.
+        
+        Tries multiple locations based on pipeline type:
+        - Structured: data/payloads/{company_slug}.json → extract markdown
+        - RAG: data/rag_results/{company_slug}_rag.md or similar
+        
+        Args:
+            company_slug: Company slug (e.g., "world-labs")
+            pipeline: "structured" or "rag"
+        
+        Returns:
+            Dashboard markdown string or None if not found
+        """
+        logger.info(f"Loading {pipeline} dashboard for {company_slug}")
+        
+        # Try structured pipeline dashboards
+        if pipeline == "structured":
+            # Check for structured payload JSON
+            payload_path = self.payloads_dir / f"{company_slug}.json"
+            if payload_path.exists():
+                try:
+                    with open(payload_path) as f:
+                        payload = json.load(f)
+                    
+                    # Extract dashboard markdown from payload if available
+                    if isinstance(payload, dict):
+                        # Try to extract markdown from the payload
+                        markdown = payload.get("dashboard_markdown")
+                        if markdown:
+                            logger.info(f"✓ Loaded structured dashboard from {payload_path}")
+                            return markdown
+                        
+                        # If no explicit markdown field, generate from available data
+                        logger.debug(f"No dashboard_markdown field in {payload_path}, creating summary")
+                        markdown = self._generate_dashboard_from_payload(payload, company_slug)
+                        return markdown
+                        
+                except Exception as e:
+                    logger.warning(f"Error loading structured payload: {e}")
+        
+        # Try RAG pipeline dashboards
+        elif pipeline == "rag":
+            # Check for RAG-specific result files
+            rag_results_dir = self.data_dir / "rag_results"
+            
+            possible_paths = [
+                rag_results_dir / f"{company_slug}_rag.md",
+                rag_results_dir / f"{company_slug}_rag_dashboard.md",
+                self.data_dir / "dashboards" / f"{company_slug}_rag.md",
+                self.eval_dir / f"{company_slug}_rag.md",
+            ]
+            
+            for path in possible_paths:
+                if path.exists():
+                    try:
+                        markdown = path.read_text()
+                        logger.info(f"✓ Loaded RAG dashboard from {path}")
+                        return markdown
+                    except Exception as e:
+                        logger.warning(f"Error loading RAG dashboard from {path}: {e}")
+        
+        # If no file found, log what we looked for
+        logger.warning(
+            f"Could not find {pipeline} dashboard for {company_slug}. "
+            f"Looked in: {self.payloads_dir}, {rag_results_dir if pipeline == 'rag' else 'N/A'}"
+        )
         return None
+    
+    def _generate_dashboard_from_payload(self, payload: Dict[str, Any], company_slug: str) -> str:
+        """
+        Generate a simple dashboard summary from structured payload.
+        
+        This creates a markdown representation of the payload data.
+        
+        Args:
+            payload: Structured payload dictionary
+            company_slug: Company slug
+        
+        Returns:
+            Markdown dashboard
+        """
+        lines = []
+        company_name = payload.get("company_name", company_slug)
+        
+        lines.append(f"# {company_name} - Structured Dashboard\n")
+        
+        # Add sections from payload
+        for key, value in payload.items():
+            if key == "company_name":
+                continue
+            if isinstance(value, (str, int, float, bool)):
+                lines.append(f"## {key.replace('_', ' ').title()}\n")
+                lines.append(f"{value}\n")
+            elif isinstance(value, list) and value:
+                lines.append(f"## {key.replace('_', ' ').title()}\n")
+                for item in value[:5]:  # Limit to 5 items
+                    lines.append(f"- {item}\n")
+            elif isinstance(value, dict) and value:
+                lines.append(f"## {key.replace('_', ' ').title()}\n")
+                for k, v in value.items():
+                    lines.append(f"- **{k}**: {v}\n")
+        
+        return "\n".join(lines)
     
     def _extract_facts_from_markdown(self, markdown: str) -> List[Dict[str, Any]]:
         """

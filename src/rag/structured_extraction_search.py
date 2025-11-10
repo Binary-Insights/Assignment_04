@@ -28,6 +28,7 @@ import json
 import logging
 import os
 import sys
+import hashlib
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, List, Dict, Any
@@ -82,6 +83,205 @@ def setup_logging(script_name: str = 'structured_extraction'):
     logger.addHandler(console_handler)
     
     return logger
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  Change Detection & Metadata Functions (for incremental extraction)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def calculate_file_hash(file_path: str) -> str:
+    """Calculate SHA256 hash of a file."""
+    try:
+        with open(file_path, 'rb') as f:
+            return hashlib.sha256(f.read()).hexdigest()[:16]
+    except Exception as e:
+        logger = logging.getLogger('structured_extraction')
+        logger.error(f"Error calculating file hash: {e}")
+        return ""
+
+
+def load_extraction_metadata(company_slug: str) -> Optional[Dict[str, Any]]:
+    """Load existing extraction metadata for a company."""
+    logger = logging.getLogger('structured_extraction')
+    
+    metadata_file = Path(f"data/metadata/{company_slug}/extraction_search_metadata.json")
+    
+    if not metadata_file.exists():
+        return None
+    
+    try:
+        with open(metadata_file, 'r') as f:
+            metadata = json.load(f)
+        logger.info(f"✓ Loaded existing extraction metadata for {company_slug}")
+        return metadata
+    except Exception as e:
+        logger.error(f"Error loading extraction metadata: {e}")
+        return None
+
+
+def save_extraction_metadata(company_slug: str, metadata: Dict[str, Any]) -> bool:
+    """Save extraction metadata for a company."""
+    logger = logging.getLogger('structured_extraction')
+    
+    try:
+        metadata_dir = Path(f"data/metadata/{company_slug}")
+        metadata_dir.mkdir(parents=True, exist_ok=True)
+        
+        metadata_file = metadata_dir / "extraction_search_metadata.json"
+        
+        with open(metadata_file, 'w') as f:
+            json.dump(metadata, f, indent=2, ensure_ascii=False, default=str)
+        
+        logger.info(f"✅ Saved extraction metadata to: {metadata_file}")
+        return True
+    except Exception as e:
+        logger.error(f"Error saving extraction metadata: {e}", exc_info=True)
+        return False
+
+
+def check_if_extraction_needed(company_slug: str, pages_text: Dict[str, str]) -> tuple:
+    """Check if extraction is needed based on file changes or missing payload.
+    
+    Returns Tuple of (needed: bool, reason: str):
+    - (True, "first_time") if no extraction metadata exists yet
+    - (True, "files_changed") if any file hash has changed
+    - (True, "payload_missing") if payload file doesn't exist
+    - (False, "unchanged") if all files unchanged and payload exists
+    
+    This ensures extraction runs when:
+    1. First time processing a company
+    2. Source files have changed (detected by hash mismatch)
+    3. Payload file is missing (incomplete previous run or manual deletion)
+    """
+    logger = logging.getLogger('structured_extraction')
+    
+    # Load existing metadata
+    metadata = load_extraction_metadata(company_slug)
+    
+    if metadata is None:
+        logger.info(f"No extraction metadata found - extraction needed (first time)")
+        return True, "first_time"
+    
+    old_file_hashes = metadata.get("file_hashes", {})
+    
+    # Check if any files have changed
+    logger.info(f"\nChecking file changes for extraction:")
+    logger.info(f"{'─' * 60}")
+    
+    any_changed = False
+    for page_type in pages_text.keys():
+        source_file = f"data/raw/{company_slug}/{page_type}/text.txt"
+        file_hash = calculate_file_hash(source_file)
+        old_hash = old_file_hashes.get(page_type)
+        
+        if old_hash != file_hash:
+            logger.info(f"  📄 {page_type}: CHANGED")
+            any_changed = True
+        else:
+            logger.info(f"  📄 {page_type}: UNCHANGED")
+    
+    logger.info(f"{'─' * 60}")
+    
+    if any_changed:
+        logger.info(f"✓ File changes detected - extraction needed")
+        return True, "files_changed"
+    
+    # Files haven't changed - now check if payload file actually exists on disk
+    logger.info(f"\nChecking if payload file exists:")
+    logger.info(f"{'─' * 60}")
+    
+    payloads_dir = Path("data/payloads")
+    payload_exists = False
+    
+    # Get company_id from metadata if available
+    company_id = metadata.get("company_id") if metadata else None
+    
+    if payloads_dir.exists():
+        # If we have company_id from metadata, check for that specific file
+        if company_id:
+            payload_file = payloads_dir / f"{company_id}.json"
+            if payload_file.exists():
+                logger.info(f"  ✓ Found payload file: {payload_file.name}")
+                payload_exists = True
+            else:
+                logger.info(f"  ✗ Payload file missing: {payload_file.name}")
+                payload_exists = False
+        else:
+            # No company_id in metadata yet
+            # This means we've never successfully extracted before
+            # So we should ALWAYS extract now (can't verify payload for unknown company_id)
+            logger.info(f"  ⚠️  No company_id in metadata - cannot verify specific payload file")
+            logger.info(f"  (Company ID is only known after first extraction)")
+            
+            extraction_history = metadata.get("extraction_history", []) if metadata else []
+            
+            if not extraction_history or len(extraction_history) == 0:
+                # No history at all - definitely needs extraction
+                logger.info(f"  No extraction history - needs extraction")
+                payload_exists = False
+            else:
+                # Has extraction history but no company_id
+                # This is inconsistent state - could be incomplete extraction
+                # Be safe and require re-extraction
+                logger.info(f"  ⚠️  Extraction history exists but company_id is missing!")
+                logger.info(f"  This could mean extraction was incomplete or metadata corrupted")
+                logger.info(f"  Requiring re-extraction to ensure consistency")
+                payload_exists = False
+    else:
+        logger.info(f"  Payloads directory doesn't exist - payload missing")
+        payload_exists = False
+    
+    logger.info(f"{'─' * 60}")
+    
+    if not payload_exists:
+        logger.info(f"✓ Payload file missing - extraction needed")
+        return True, "payload_missing"
+    
+    logger.info(f"✓ No file changes and payload exists - skipping extraction")
+    return False, "unchanged"
+
+
+def update_extraction_metadata(company_slug: str, pages_text: Dict[str, str]) -> Dict[str, Any]:
+    """Update extraction metadata with new file hashes."""
+    logger = logging.getLogger('structured_extraction')
+    
+    # Load existing metadata or create new
+    metadata = load_extraction_metadata(company_slug)
+    if metadata is None:
+        metadata = {
+            "company_slug": company_slug,
+            "created_at": datetime.now().isoformat(),
+            "last_extraction": None,
+            "extraction_count": 0,
+            "file_hashes": {},
+            "extraction_history": []
+        }
+    
+    # Update file hashes
+    new_file_hashes = {}
+    for page_type in pages_text.keys():
+        source_file = f"data/raw/{company_slug}/{page_type}/text.txt"
+        file_hash = calculate_file_hash(source_file)
+        new_file_hashes[page_type] = file_hash
+    
+    metadata["file_hashes"] = new_file_hashes
+    metadata["last_extraction"] = datetime.now().isoformat()
+    metadata["extraction_count"] = metadata.get("extraction_count", 0) + 1
+    
+    # Add to history
+    if "extraction_history" not in metadata:
+        metadata["extraction_history"] = []
+    
+    metadata["extraction_history"].append({
+        "timestamp": datetime.now().isoformat(),
+        "files_checked": len(pages_text),
+        "status": "completed"
+    })
+    
+    # Save updated metadata
+    save_extraction_metadata(company_slug, metadata)
+    
+    return metadata
 
 
 def get_llm_client():
@@ -1022,7 +1222,14 @@ Return a Visibility object with as_of set to today. Use only explicitly stated m
 
 
 def process_company(company_slug: str, verbose: bool = False):
-    """Process a single company: extract structured data using Pinecone vector search."""
+    """Process a single company: extract structured data using Pinecone vector search.
+    
+    This function:
+    1. Checks if source files have changed since last extraction
+    2. Skips extraction if no changes detected
+    3. Runs full extraction only if files changed or first-time extraction
+    4. Saves results and updates metadata
+    """
     logger = logging.getLogger('structured_extraction')
     
     logger.info(f"\n{'='*60}")
@@ -1039,6 +1246,30 @@ def process_company(company_slug: str, verbose: bool = False):
         if not pages_text:
             logger.warning(f"No page texts found for {company_slug}")
             return None
+        
+        # ─────────────────────────────────────────────────────────────────────
+        # CHECK IF EXTRACTION IS NEEDED (based on file changes or missing payload)
+        # ─────────────────────────────────────────────────────────────────────
+        extraction_needed, reason = check_if_extraction_needed(company_slug, pages_text)
+        
+        if not extraction_needed:
+            logger.info(f"\n✓ Skipping extraction for {company_slug} (no file changes and payload exists)")
+            # Return a success indicator instead of None (skipping is SUCCESS, not failure)
+            return {
+                "status": "skipped",
+                "reason": reason,
+                "company_slug": company_slug,
+                "message": "Extraction not needed - files unchanged and payload exists"
+            }
+        
+        # Log why extraction is needed
+        reason_text = {
+            "first_time": "first-time extraction",
+            "files_changed": "source files have changed",
+            "payload_missing": "payload file is missing"
+        }.get(reason, "unknown reason")
+        
+        logger.info(f"✓ Extraction needed - {reason_text}\n")
         
         # Initialize LLM client
         client = get_llm_client()
@@ -1154,6 +1385,19 @@ def process_company(company_slug: str, verbose: bool = False):
         logger.info(f"  Leadership: {len(leadership)}")
         logger.info(f"  Visibility: {len(visibility_list)}")
         
+        # ─────────────────────────────────────────────────────────────────────
+        # UPDATE EXTRACTION METADATA (mark as extracted, save file hashes)
+        # ─────────────────────────────────────────────────────────────────────
+        update_extraction_metadata(company_slug, pages_text)
+        
+        # ALSO SAVE the company_id to metadata so we can verify the payload exists later
+        metadata = load_extraction_metadata(company_slug)
+        if metadata:
+            metadata["company_id"] = company_id  # Store for later verification
+            save_extraction_metadata(company_slug, metadata)
+        
+        logger.info(f"✓ Updated extraction metadata for {company_slug}")
+        
         return payload
         
     except Exception as e:
@@ -1212,7 +1456,11 @@ def main():
             logger.info(f"Processing specific company: {args.company_slug}")
             result = process_company(args.company_slug, args.verbose)
             if result:
-                logger.info(f"✓ Successfully processed {args.company_slug}")
+                # Check if it was skipped or successfully processed
+                if isinstance(result, dict) and result.get("status") == "skipped":
+                    logger.info(f"✓ Skipped extraction for {args.company_slug} (no changes needed)")
+                else:
+                    logger.info(f"✓ Successfully processed {args.company_slug}")
             else:
                 logger.error(f"✗ Failed to process {args.company_slug}")
                 sys.exit(1)
@@ -1233,11 +1481,19 @@ def main():
                 logger.info(f"[{idx}/{len(companies)}] {company_slug}")
                 result = process_company(company_slug, args.verbose)
                 if result:
-                    results.append({
-                        'company_slug': company_slug,
-                        'success': True,
-                        'company_id': result.company_record.company_id
-                    })
+                    # Check if it was skipped or successfully processed
+                    if isinstance(result, dict) and result.get("status") == "skipped":
+                        results.append({
+                            'company_slug': company_slug,
+                            'success': True,
+                            'status': 'skipped'
+                        })
+                    else:
+                        results.append({
+                            'company_slug': company_slug,
+                            'success': True,
+                            'company_id': result.company_record.company_id if hasattr(result, 'company_record') else None
+                        })
                 else:
                     results.append({
                         'company_slug': company_slug,

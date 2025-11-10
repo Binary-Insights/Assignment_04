@@ -207,7 +207,7 @@ class SearchRequest(BaseModel):
 class ChunkResult(BaseModel):
     """A single search result chunk."""
     
-    id: int
+    id: str  # Pinecone IDs are strings like "abridge_blog_5_5794e918"
     similarity_score: float
     text: str
     metadata: Dict[str, Any] = Field(default_factory=dict)
@@ -1016,7 +1016,7 @@ async def generate_rag_dashboard(
         context_results = []
         for result in search_results:
             chunk_result = ChunkResult(
-                id=context_results.__len__(),
+                id=result.get("id", "unknown"),  # Use actual Pinecone ID
                 similarity_score=result.get("similarity_score", 0.0),
                 text=result.get("text", ""),
                 metadata=result.get("metadata", {})
@@ -1100,14 +1100,18 @@ async def get_evaluation_metrics(
     logger.info(f"Evaluation metrics request for: {company_slug}")
     
     eval_dir = Path("data/eval")
-    results_path = eval_dir / "results.json"
+    
+    # Try both possible result filenames
+    results_path = eval_dir / "results_llm_eval.json"
+    if not results_path.exists():
+        results_path = eval_dir / "results.json"
     
     # Check if results cache exists
     if not results_path.exists():
-        logger.warning(f"Evaluation results not found at {results_path}")
+        logger.warning(f"Evaluation results not found. Checked: results_llm_eval.json and results.json")
         raise HTTPException(
             status_code=404,
-            detail=f"No evaluation results cached. Run 'python src/evals/eval_runner.py --company {company_slug}' to generate."
+            detail=f"No evaluation results cached. Run 'python src/evals/result_evaluator.py --company {company_slug}' to generate."
         )
     
     try:
@@ -1243,7 +1247,12 @@ async def list_evaluations() -> Dict[str, Any]:
     logger.info("Listing evaluation results")
     
     eval_dir = Path("data/eval")
-    results_path = eval_dir / "results.json"
+    
+    # Try both possible result filenames
+    results_path = eval_dir / "results_llm_eval.json"
+    if not results_path.exists():
+        results_path = eval_dir / "results.json"
+    
     ground_truth_path = eval_dir / "ground_truth.json"
     
     if not results_path.exists():

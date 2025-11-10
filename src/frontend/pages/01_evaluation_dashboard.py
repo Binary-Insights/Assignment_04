@@ -11,6 +11,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from dotenv import load_dotenv
 from typing import Dict, Any, Optional, List
+import time
 
 # Load environment variables
 load_dotenv()
@@ -101,8 +102,81 @@ if evals_list and "companies" in evals_list:
     # Show total companies
     st.sidebar.metric("Total Companies Evaluated", len(companies))
     
+    # Evaluation button
+    st.sidebar.divider()
+    st.sidebar.subheader("💡 LLM Evaluation")
+    
+    if st.sidebar.button("🚀 Run LLM Evaluation", key="run_eval"):
+        st.session_state.run_evaluation = True
+        st.session_state.eval_company_slug = selected_company_slug
+    
+    # Show evaluation status
+    if hasattr(st.session_state, 'run_evaluation') and st.session_state.run_evaluation:
+        with st.sidebar:
+            st.info("⏳ Running LLM evaluation... This may take a minute.")
+    
+    # Batch evaluation button
+    if st.sidebar.button("📊 Batch Evaluate All Companies", key="batch_eval"):
+        st.session_state.run_batch_evaluation = True
+    
     # Fetch evaluation for selected company
     st.markdown("---")
+    
+    # Check if evaluation was requested
+    if hasattr(st.session_state, 'run_evaluation') and st.session_state.run_evaluation:
+        # Run evaluation via API
+        try:
+            with st.spinner(f"🔄 Running LLM evaluation for {selected_company_option.split('(')[0].strip()}..."):
+                response = requests.post(
+                    f"{API_BASE}/api/evals/evaluate",
+                    json={
+                        "company_slug": selected_company_slug,
+                        "company_name": selected_company_option.split("(")[0].strip()
+                    },
+                    timeout=120  # 2-minute timeout for LLM evaluation
+                )
+            
+            if response.status_code == 200:
+                evaluation_result = response.json()
+                st.session_state.evaluation_result = evaluation_result
+                st.session_state.run_evaluation = False
+                st.cache_data.clear()
+                st.rerun()
+            else:
+                st.error(f"Evaluation failed: {response.status_code} - {response.text}")
+                st.session_state.run_evaluation = False
+        except requests.exceptions.Timeout:
+            st.error("⏱️ Evaluation timed out. The LLM evaluation is taking longer than expected.")
+            st.session_state.run_evaluation = False
+        except Exception as e:
+            st.error(f"❌ Error running evaluation: {str(e)}")
+            st.session_state.run_evaluation = False
+    
+    # Check if batch evaluation was requested
+    if hasattr(st.session_state, 'run_batch_evaluation') and st.session_state.run_batch_evaluation:
+        try:
+            with st.spinner("🔄 Running batch evaluation for all companies..."):
+                response = requests.post(
+                    f"{API_BASE}/api/evals/evaluate/batch",
+                    json={},
+                    timeout=300  # 5-minute timeout for batch evaluation
+                )
+            
+            if response.status_code == 200:
+                batch_result = response.json()
+                st.session_state.batch_evaluation_result = batch_result
+                st.session_state.run_batch_evaluation = False
+                st.cache_data.clear()
+                st.rerun()
+            else:
+                st.error(f"Batch evaluation failed: {response.status_code}")
+                st.session_state.run_batch_evaluation = False
+        except requests.exceptions.Timeout:
+            st.error("⏱️ Batch evaluation timed out.")
+            st.session_state.run_batch_evaluation = False
+        except Exception as e:
+            st.error(f"❌ Error running batch evaluation: {str(e)}")
+            st.session_state.run_batch_evaluation = False
     
     evaluation = fetch_company_evaluation(selected_company_slug)
     
@@ -114,6 +188,28 @@ if evals_list and "companies" in evals_list:
         winners = evaluation.get("winners", {})
         
         st.header(f"📈 Evaluation: {company_name}")
+        
+        # Show evaluation metadata
+        eval_timestamp = evaluation.get("timestamp", "")
+        if eval_timestamp:
+            st.caption(f"Evaluated at: {eval_timestamp}")
+        
+        # Show evaluation badges
+        col_badge1, col_badge2 = st.columns(2)
+        
+        with col_badge1:
+            if winners.get("total_score") == "structured":
+                st.success(f"✅ Structured Pipeline Wins ({structured.get('total_score', 0):.1f} vs {rag.get('total_score', 0):.1f})")
+            elif winners.get("total_score") == "rag":
+                st.success(f"✅ RAG Pipeline Wins ({rag.get('total_score', 0):.1f} vs {structured.get('total_score', 0):.1f})")
+            else:
+                st.info(f"🤝 Tie: Both pipelines scored {structured.get('total_score', 0):.1f}")
+        
+        with col_badge2:
+            mrr_diff = abs((structured.get('mrr_score', 0) or 0) - (rag.get('mrr_score', 0) or 0))
+            st.metric("MRR Difference", f"{mrr_diff:.3f}")
+        
+        st.markdown("---")
         
         # Create comparison table
         st.subheader("Metric Comparison Table")

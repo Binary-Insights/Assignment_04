@@ -1,6 +1,9 @@
 import streamlit as st
 import requests
 import os
+import json
+from pathlib import Path
+from datetime import datetime
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -16,6 +19,157 @@ if ENVIRONMENT == "docker":
 else:
     # Running locally - use localhost
     API_BASE = os.getenv("LOCALHOST_URL", "http://localhost:8000")
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  Utility Functions for Saving LLM Responses
+# ─────────────────────────────────────────────────────────────────────────────
+
+def ensure_directories():
+    """Ensure all required directories exist."""
+    base_dir = Path("data/llm_response")
+    (base_dir / "markdown").mkdir(parents=True, exist_ok=True)
+    (base_dir / "json").mkdir(parents=True, exist_ok=True)
+    return base_dir
+
+
+def load_master_json(master_path: Path) -> dict:
+    """Load the master JSON file."""
+    if master_path.exists():
+        try:
+            with open(master_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            st.error(f"Error loading master JSON: {e}")
+            return {}
+    return {}
+
+
+def save_master_json(master_path: Path, data: dict):
+    """Save the master JSON file."""
+    try:
+        with open(master_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        st.error(f"Error saving master JSON: {e}")
+
+
+def load_company_json(company_json_path: Path) -> dict:
+    """Load company-specific JSON file."""
+    if company_json_path.exists():
+        try:
+            with open(company_json_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            st.warning(f"Error loading company JSON: {e}")
+            return {"company_slug": company_json_path.stem, "structured": None, "rag": None}
+    return {"company_slug": company_json_path.stem, "structured": None, "rag": None}
+
+
+def save_dashboard_response(company_slug: str, pipeline_type: str, response_data: dict):
+    """
+    Save dashboard response to both markdown and JSON files.
+    
+    Args:
+        company_slug: Company slug identifier
+        pipeline_type: 'structured' or 'rag'
+        response_data: Response data from API
+    """
+    try:
+        base_dir = ensure_directories()
+        
+        # Save markdown
+        markdown_dir = base_dir / "markdown" / company_slug
+        markdown_dir.mkdir(parents=True, exist_ok=True)
+        markdown_path = markdown_dir / f"{pipeline_type}.md"
+        
+        with open(markdown_path, 'w', encoding='utf-8') as f:
+            f.write(response_data.get("markdown", ""))
+        
+        # Prepare JSON data
+        json_data = {
+            "company_name": response_data.get("company_name", ""),
+            "company_slug": company_slug,
+            "pipeline_type": pipeline_type,
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "markdown_file": str(markdown_path.relative_to("data/llm_response")),
+            "content": response_data.get("markdown", ""),  # Store full markdown content
+        }
+        
+        # Include context results for RAG pipeline
+        if pipeline_type == "rag" and "context_results" in response_data:
+            json_data["context_results"] = response_data.get("context_results", [])
+        
+        # Save individual company JSON
+        json_dir = base_dir / "json" / company_slug
+        json_dir.mkdir(parents=True, exist_ok=True)
+        company_json_path = json_dir / "responses.json"
+        
+        company_json = load_company_json(company_json_path)
+        company_json[pipeline_type] = json_data
+        company_json["company_slug"] = company_slug
+        
+        with open(company_json_path, 'w', encoding='utf-8') as f:
+            json.dump(company_json, f, indent=2, ensure_ascii=False)
+        
+        # Update master JSON
+        master_path = base_dir / "master.json"
+        master_json = load_master_json(master_path)
+        
+        if company_slug not in master_json:
+            master_json[company_slug] = {
+                "company_name": response_data.get("company_name", ""),
+                "company_slug": company_slug,
+                "structured": None,
+                "rag": None,
+            }
+        
+        master_json[company_slug][pipeline_type] = json_data
+        save_master_json(master_path, master_json)
+        
+        st.success(f"✅ Saved {pipeline_type} dashboard for {company_slug}")
+        
+        # Display save details
+        with st.expander("📁 Save Details"):
+            st.write(f"**Markdown:** `{markdown_path}`")
+            st.write(f"**Company JSON:** `{company_json_path}`")
+            st.write(f"**Master JSON:** `{master_path}`")
+        
+    except Exception as e:
+        st.error(f"❌ Error saving dashboard: {e}")
+
+
+def view_saved_responses(company_slug: str):
+    """Display saved responses for a company."""
+    try:
+        base_dir = Path("data/llm_response")
+        company_json_path = base_dir / "json" / company_slug / "responses.json"
+        
+        if company_json_path.exists():
+            with open(company_json_path, 'r', encoding='utf-8') as f:
+                company_data = json.load(f)
+            
+            st.write("**Saved Responses:**")
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                if company_data.get("structured"):
+                    st.write("✅ **Structured** - Saved")
+                    st.caption(company_data["structured"].get("timestamp", ""))
+                else:
+                    st.write("⚪ **Structured** - Not yet generated")
+            
+            with col2:
+                if company_data.get("rag"):
+                    st.write("✅ **RAG** - Saved")
+                    st.caption(company_data["rag"].get("timestamp", ""))
+                else:
+                    st.write("⚪ **RAG** - Not yet generated")
+        else:
+            st.info("No saved responses yet for this company")
+    
+    except Exception as e:
+        st.warning(f"Could not display saved responses: {e}")
 
 st.set_page_config(
     page_title="PE Dashboard (AI 50)",
@@ -84,6 +238,11 @@ with col1:
             if resp.status_code == 200:
                 data = resp.json()
                 st.session_state.structured_data = data  # Store in session state
+                
+                # Save the response
+                company_slug = data.get("company_slug", choice.lower().replace(" ", "-"))
+                save_dashboard_response(company_slug, "structured", data)
+                
                 st.success(f"✅ Dashboard generated for {choice}")
             
             elif resp.status_code == 404:
@@ -133,6 +292,12 @@ with col1:
             )
         except Exception as e:
             st.error(f"❌ Error generating dashboard: {e}")
+    
+    # Display saved responses status
+    company_slug = choice.lower().replace(" ", "-")
+    view_saved_responses(company_slug)
+    
+    st.divider()
     
     # Display stored structured data if available
     if st.session_state.structured_data:
@@ -193,6 +358,11 @@ with col2:
             if resp.status_code == 200:
                 data = resp.json()
                 st.session_state.rag_data = data  # Store in session state
+                
+                # Save the response
+                company_slug = data.get("company_slug", choice.lower().replace(" ", "-"))
+                save_dashboard_response(company_slug, "rag", data)
+                
                 st.success(f"✅ Dashboard generated for {choice}")
             
             elif resp.status_code == 404:
@@ -234,12 +404,31 @@ with col2:
                 
                 for idx, result in enumerate(context_results, 1):
                     similarity_score = result.get('similarity_score', 0)
-                    with st.expander(f"Context {idx} (Score: {similarity_score:.4f})", expanded=idx == 1):
-                        st.write("**Text:**")
-                        st.write(result.get("text", ""))
+                    result_id = result.get('id', 'N/A')
+                    
+                    with st.expander(f"Context {idx} (ID: {result_id}, Score: {similarity_score:.4f})", expanded=idx == 1):
+                        # Create columns for better layout
+                        col1, col2 = st.columns(2)
                         
-                        if result.get("metadata"):
+                        with col1:
+                            st.write("**ID:**")
+                            st.code(str(result_id), language="text")
+                            
+                            st.write("**Similarity Score:**")
+                            st.metric("Score", f"{similarity_score:.4f}")
+                        
+                        with col2:
                             st.write("**Metadata:**")
-                            st.json(result.get("metadata", {}))
+                            if result.get("metadata"):
+                                # Display metadata fields in a formatted way
+                                metadata = result.get("metadata", {})
+                                for key, value in metadata.items():
+                                    st.write(f"- **{key}:** `{value}`")
+                            else:
+                                st.info("No metadata available")
+                        
+                        # Display text content below metadata
+                        st.write("**Text Content:**")
+                        st.info(result.get("text", ""))
             else:
                 st.info("No context results available")

@@ -160,6 +160,18 @@ python src/rag/structured_extraction.py --company-slug world_labs
 # Run ingestion first:
 python src/rag/ingest_to_pinecone.py --all
 
+New implementation with deduplication 
+
+# Standard run with deduplication
+python src/rag/ingest_to_pinecone.py --company-slug world_labs
+
+# Force fresh ingestion
+python src/rag/ingest_to_pinecone.py --company-slug world_labs --clear
+
+# Batch with optional clear
+python src/rag/ingest_to_pinecone.py --all --clear
+
+
 # Then run extraction:
 python src/rag/structured_extraction_search.py --all
 
@@ -227,8 +239,8 @@ docker-compose logs airflow-init | grep "Airflow version"
 
 
 # To run evals 
-# python src/evals/eval_runner.py --company abridge --pipeline structured --force 
-# python src/evals/eval_runner.py --batch
+python src/evals/eval_runner.py --company abridge --pipeline structured --force 
+python src/evals/eval_runner.py --batch
 
 
 
@@ -315,3 +327,181 @@ Result:
 Overall Score:
   - Structured Total: (3+2+2+2+1+0.95*2) = 13.9/14
   - RAG Total: (2+2+1+1+1+0.75*2) = 8.5/14
+
+
+
+
+
+
+# RAG pipeline approach 
+
+  Attempt 1: Fetch top_k * 2 results
+  ↓ Filter by company_slug
+  ↓ Got < top_k? 
+    ├─ Yes + fetched fewer items than requested → STOP (company has limited data)
+    └─ Yes + fetched full batch → Try next attempt
+
+Attempt 2: Fetch top_k * 3 results
+  ↓ Same filtering & checks
+  
+... up to 5 attempts maximum
+
+
+# llm based evaluation 
+
+python src/evals/result_evaluator.py --company world-labs
+output
+results_llm_eval.json
+
+python src/evals/result_evaluator.py --batch
+output
+results_llm_eval.json
+
+
+
+# Show statistics without deleting
+python src/rag/delete_pinecone_records.py --stats
+
+# List all namespaces
+python src/rag/delete_pinecone_records.py --list-namespaces
+
+# Delete all records in default namespace (with confirmation prompt)
+python src/rag/delete_pinecone_records.py --namespace default
+
+# Delete all records from ALL namespaces
+python src/rag/delete_pinecone_records.py --all-namespaces
+
+# Skip confirmation prompt (use with caution!)
+python src/rag/delete_pinecone_records.py --namespace default --skip-confirmation
+
+
+
+--------------------------------------------------------------------------------------------------
+Great question! This is a common problem in vector database ingestion. Let me explain the issue and the solutions:
+
+The Problem
+When you run ingest_to_pinecone.py --company-slug world_labs multiple times:
+
+First run: 100 chunks created → Inserted into Pinecone with IDs like world_labs_blog_1_abc123, world_labs_blog_2_def456, etc.
+Second run: The same 100 chunks are created again → Duplicate vectors inserted with potentially different IDs or the same IDs overwriting the previous ones
+This leads to:
+
+Data duplication (same content indexed twice)
+Vector database bloat (wasted storage and compute)
+Skewed search results (same chunks appearing multiple times in results)
+Inconsistent metadata (if anything changed between runs)
+Solutions
+Solution 1: Delete-Before-Reingest (Simple)
+How it works:
+
+Before ingesting a company, delete all existing vectors for that company from Pinecone
+Then insert the new chunks fresh
+Pros:
+
+Simple to implement
+Guarantees no duplicates
+Good for small datasets
+Cons:
+
+Temporary downtime (brief period with no vectors for that company)
+Loses any manual edits or metadata updates
+Less efficient for large datasets
+Implementation approach:
+
+Solution 2: Idempotent Ingestion (Better)
+How it works:
+
+Use deterministic vector IDs based on content hash
+Check if vector already exists before upserting
+Only insert new or modified chunks
+Pros:
+
+No duplicates even on multiple runs
+Safe to run multiple times
+Supports incremental updates
+No downtime
+Cons:
+
+More complex implementation
+Requires tracking of what's already indexed
+Implementation approach:
+
+Solution 3: Namespace + Versioning (Best for Production)
+How it works:
+
+Use Pinecone namespaces to separate versions
+Keep namespace_v1, namespace_v2, etc.
+Switch to new namespace when ingestion completes successfully
+Delete old namespace after verification
+Pros:
+
+Zero downtime during ingestion
+Easy rollback if something goes wrong
+Can verify before switching
+No duplicates
+Cons:
+
+More complex orchestration
+Requires more storage temporarily
+Implementation approach:
+
+Solution 4: Deduplication During Ingestion (Smart)
+How it works:
+
+Before inserting, check if vector already exists in Pinecone
+Query by metadata (company_slug + page_type + chunk_index)
+Only upsert vectors that don't already exist
+Pros:
+
+Handles partial reruns well
+Good for incremental updates
+No data loss
+Cons:
+
+Slower (requires queries for each chunk)
+More API calls to Pinecone
+Implementation approach:
+
+
+
+My Recommendation for Your Use Case
+Use Solution 2 + Solution 1 combined:
+
+Primary approach (Idempotent): Use content-hash-based deterministic IDs
+
+If you run ingestion again, same chunks get same IDs
+Pinecone's upsert operation will replace the old vector with the same ID
+No duplicates! You get deterministic behavior
+Safety net (Delete-Before): Add optional --clear flag
+
+python [ingest_to_pinecone.py](http://_vscodecontentref_/0) --company-slug world_labs --clear
+Explicitly deletes all vectors for that company first
+Use this when you want a fresh start
+
+
+
+Current Issue:
+Every run generates a random UUID in the vector ID: world_labs_blog_1_abc123
+This means even identical chunks get different IDs on re-runs
+Pinecone treats them as new vectors → duplicates
+Proposed Solution with Content Hash:
+Yes, the implementation would work like this:
+
+Run 1:
+  Chunk: "World Labs is an AI company..."
+  Hash: sha256(chunk) = "f7a2b1c9..."
+  Vector ID: "world_labs_blog_f7a2b1c9"  ← Deterministic (always same for same content)
+  → Inserted to Pinecone
+
+Run 2 (same file):
+  Chunk: "World Labs is an AI company..."  (identical)
+  Hash: sha256(chunk) = "f7a2b1c9..."  ← Same hash!
+  Vector ID: "world_labs_blog_f7a2b1c9"  ← Same ID!
+  → Pinecone's upsert replaces the old one (no duplicate)
+
+Run 3 (file updated):
+  Chunk: "World Labs is an AI company focused on spatial intelligence..."  (changed)
+  Hash: sha256(chunk) = "a3d5e8f2..."  ← Different hash!
+  Vector ID: "world_labs_blog_a3d5e8f2"  ← Different ID!
+  → Inserted as new vector (change tracked)
+

@@ -141,7 +141,7 @@ class llm_page_finder:
         
         # Try OpenAI first
         if ChatOpenAI is not None and os.getenv("OPENAI_API_KEY"):
-            self.llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
+            self.llm = ChatOpenAI(model="gpt-4o", temperature=0.3)
             return self.llm
         
         # Fall back to Anthropic
@@ -567,7 +567,7 @@ Be precise and specific with your answer."""
                     
                     # Call LLM with Instructor using messages API
                     response = client.chat.completions.create(
-                        model="gpt-4o-mini",
+                        model="gpt-4o",
                         response_model=DiscoveredPage,
                         messages=[
                             {
