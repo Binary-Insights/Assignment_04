@@ -288,8 +288,16 @@ def save_vectors_to_json(
     logger = logging.getLogger('ingest_to_pinecone')
     
     try:
+        # Use absolute path when possible, relative as fallback
         vectors_dir = Path("data/vectors")
-        vectors_dir.mkdir(parents=True, exist_ok=True)
+        vectors_dir.mkdir(parents=True, exist_ok=True, mode=0o777)
+        
+        # Try to ensure directory is writable, but don't fail if we can't
+        # (this can happen in Docker with mounted volumes owned by other users)
+        try:
+            os.chmod(vectors_dir, 0o777)
+        except (PermissionError, OSError) as e:
+            logger.debug(f"Could not change directory permissions (OK in Docker): {e}")
         
         # Convert to JSON-serializable format (no embeddings)
         vectors_json = []
@@ -303,6 +311,12 @@ def save_vectors_to_json(
         vectors_file = vectors_dir / f"{company_slug}.json"
         with open(vectors_file, 'w') as f:
             json.dump(vectors_json, f, indent=2, ensure_ascii=False, default=str)
+        
+        # Try to make file readable/writable, but don't fail if we can't
+        try:
+            os.chmod(vectors_file, 0o666)
+        except (PermissionError, OSError) as e:
+            logger.debug(f"Could not change file permissions (OK in Docker): {e}")
         
         logger.info(f"✅ Saved {len(vectors_json)} vector metadata to: {vectors_file}")
         logger.info(f"   (Embeddings will be regenerated during upsert)")

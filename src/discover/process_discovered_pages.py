@@ -19,6 +19,7 @@ import logging
 import os
 import re
 import time
+import glob
 from datetime import datetime
 from urllib.parse import urlparse, urljoin
 from pathlib import Path
@@ -104,10 +105,148 @@ def create_directory_structure(company_slug, page_types=None):
     return directories
 
 
+def get_chrome_binary_path():
+    """Find Chrome/Chromium binary path across different platforms."""
+    import sys
+    
+    # Try environment variable first
+    if os.getenv('CHROME_BIN'):
+        path = os.getenv('CHROME_BIN')
+        if os.path.exists(path):
+            return path
+    
+    # Platform-specific Chrome binary locations
+    if sys.platform == 'win32':
+        # Windows
+        candidates = [
+            os.path.expandvars(r'C:\Program Files\Google\Chrome\Application\chrome.exe'),
+            os.path.expandvars(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'),
+            os.path.expandvars(r'C:\Program Files\Chromium\Application\chrome.exe'),
+            os.path.expandvars(r'C:\Program Files (x86)\Chromium\Application\chrome.exe'),
+        ]
+    elif sys.platform == 'darwin':
+        # macOS
+        candidates = [
+            '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+            '/Applications/Chromium.app/Contents/MacOS/Chromium',
+        ]
+    else:
+        # Linux
+        candidates = [
+            '/usr/bin/chromium',
+            '/usr/bin/chromium-browser',
+            '/usr/bin/google-chrome',
+            '/usr/bin/google-chrome-stable',
+            '/snap/bin/chromium',
+        ]
+    
+    for candidate in candidates:
+        if os.path.exists(candidate):
+            return candidate
+    
+    # Return default if none found (will fail later with clear error)
+    return candidates[0]
+
+
+def get_chromedriver_path():
+    """Find ChromeDriver binary across different platforms and locations."""
+    import sys
+    
+    # Determine executable extension based on platform
+    exe_ext = '.exe' if sys.platform == 'win32' else ''
+    
+    # Try environment variable first
+    if os.getenv('CHROMEDRIVER_PATH'):
+        path = os.getenv('CHROMEDRIVER_PATH')
+        if os.path.exists(path):
+            return path
+    
+    # Platform and location-specific paths
+    search_paths = []
+    
+    if sys.platform == 'win32':
+        # Windows: Check various locations
+        search_paths = [
+            # Project bundled chromedriver (Windows)
+            f'chromedriver/win64/141.0.7390.65/chromedriver{exe_ext}',
+            'chromedriver/win64/*/chromedriver' + exe_ext,
+            # Conda/Python virtual env
+            os.path.join(os.path.dirname(sys.executable), 'chromedriver' + exe_ext),
+            # System paths
+            f'C:\\tools\\chromedriver\\chromedriver{exe_ext}',
+            f'chromedriver{exe_ext}',  # Current directory
+        ]
+    elif sys.platform == 'darwin':
+        # macOS: Check various locations
+        search_paths = [
+            # Project bundled chromedriver (macOS)
+            'chromedriver/mac64/141.0.7390.65/chromedriver',
+            'chromedriver/mac64/*/chromedriver',
+            'chromedriver/macos/141.0.7390.65/chromedriver',
+            'chromedriver/macos/*/chromedriver',
+            # Conda/Python virtual env
+            os.path.join(os.path.dirname(sys.executable), 'chromedriver'),
+            # Homebrew
+            '/usr/local/bin/chromedriver',
+            '/opt/homebrew/bin/chromedriver',  # Apple Silicon
+            # Current directory
+            'chromedriver',
+        ]
+    else:
+        # Linux: Check various locations
+        search_paths = [
+            # Project bundled chromedriver (Linux)
+            'chromedriver/linux64/141.0.7390.65/chromedriver',
+            'chromedriver/linux64/*/chromedriver',
+            'chromedriver/linux/141.0.7390.65/chromedriver',
+            'chromedriver/linux/*/chromedriver',
+            # Conda/Python virtual env
+            os.path.join(os.path.dirname(sys.executable), 'chromedriver'),
+            # System paths
+            '/usr/bin/chromedriver',
+            '/usr/local/bin/chromedriver',
+            '/snap/bin/chromium',
+            # Current directory
+            'chromedriver',
+        ]
+    
+    # Search for chromedriver
+    for path_pattern in search_paths:
+        if not path_pattern:
+            continue
+        
+        # Handle glob patterns
+        if '*' in path_pattern:
+            matches = glob.glob(path_pattern)
+            if matches:
+                driver_path = matches[0]
+                if os.path.exists(driver_path):
+                    return driver_path
+        # Direct path check
+        elif os.path.exists(path_pattern):
+            return path_pattern
+    
+    # If nothing found, raise with helpful error
+    raise FileNotFoundError(
+        f"ChromeDriver not found in any of these locations:\n  " +
+        "\n  ".join(search_paths) +
+        f"\n\nFor your platform ({sys.platform}):\n" +
+        f"  - Set CHROMEDRIVER_PATH environment variable to explicit path\n" +
+        f"  - Install chromedriver via: pip install chromedriver-binary\n" +
+        f"  - Or place chromedriver in project root or virtual env bin/"
+    )
+
+
 def setup_selenium_driver():
-    """Setup Chrome driver with options for webpage saving."""
+    """Setup Chrome driver with options for webpage saving (cross-platform).
+    
+    Automatically detects and uses:
+    - Platform-specific Chrome/Chromium binary (Windows/macOS/Linux)
+    - Platform-specific ChromeDriver (bundled or system installation)
+    - Environment variables for custom paths (CHROME_BIN, CHROMEDRIVER_PATH)
+    """
     logger = logging.getLogger('process_discovered_pages')
-    logger.info("Setting up Selenium Chrome driver")
+    logger.info("Setting up Selenium Chrome driver (cross-platform)")
     
     # Disable Selenium's automatic chromedriver download
     os.environ['WDM_LOG'] = '0'
@@ -121,17 +260,26 @@ def setup_selenium_driver():
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     
-    # Set Chrome binary path - use system installation
-    chrome_bin = os.getenv('CHROME_BIN', '/usr/bin/chromium')
-    logger.info(f"Using Chrome binary: {chrome_bin}")
-    chrome_options.binary_location = chrome_bin
-    
     try:
-        # Use explicit ChromeDriver path - must use system installation
-        chromedriver_path = os.getenv('CHROMEDRIVER_PATH', '/usr/bin/chromedriver')
+        # Get platform-specific Chrome binary
+        chrome_bin = get_chrome_binary_path()
+        logger.info(f"Using Chrome binary: {chrome_bin}")
+        chrome_options.binary_location = chrome_bin
         
-        logger.info(f"Attempting to use ChromeDriver from: {chromedriver_path}")
-        logger.info(f"ChromeDriver exists: {os.path.exists(chromedriver_path)}")
+        if not os.path.exists(chrome_bin):
+            logger.warning(f"⚠️  Chrome binary not found at {chrome_bin}")
+            logger.warning("   ChromeDriver might still work, but page rendering may fail")
+        
+        # Get platform-specific ChromeDriver
+        chromedriver_path = get_chromedriver_path()
+        logger.info(f"Using ChromeDriver from: {chromedriver_path}")
+        
+        # Make it executable if needed (Unix-like systems)
+        if os.path.exists(chromedriver_path) and os.name != 'nt':
+            try:
+                os.chmod(chromedriver_path, 0o755)
+            except OSError as e:
+                logger.warning(f"Could not set executable permissions: {e}")
         
         # Create Service object with explicit path (disables automatic download)
         service = webdriver.chrome.service.Service(chromedriver_path)
@@ -139,15 +287,18 @@ def setup_selenium_driver():
         
         driver.set_page_load_timeout(60)  # 60 second timeout
         logger.info("✓ Chrome driver initialized successfully")
+        logger.info(f"  Platform: {os.name}")
+        logger.info(f"  Chrome: {chrome_bin}")
+        logger.info(f"  ChromeDriver: {chromedriver_path}")
         return driver
+        
     except FileNotFoundError as e:
-        logger.error(f"❌ ChromeDriver file not found: {chromedriver_path}")
-        logger.error(f"  Make sure chromium-driver is installed in the container")
+        logger.error(f"❌ Required binary not found: {e}")
         raise
     except Exception as e:
         logger.error(f"❌ Failed to initialize Chrome driver: {e}")
-        logger.error(f"  ChromeDriver path: {os.getenv('CHROMEDRIVER_PATH', '/usr/bin/chromedriver')}")
-        logger.error(f"  Chrome binary: {os.getenv('CHROME_BIN', '/usr/bin/chromium')}")
+        import sys
+        logger.error(f"  Platform detected: {sys.platform}")
         raise
 
 

@@ -716,6 +716,45 @@ async def list_companies() -> CompaniesListResponse:
         )
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+#  Helper Functions for Flexible Filename Matching
+# ─────────────────────────────────────────────────────────────────────────────
+def find_payload_file(company_name: str) -> Optional[Path]:
+    """
+    Find payload file with flexible naming conventions.
+    
+    Tries multiple variations:
+    1. Original slug (with hyphens): "coactive-ai.json"
+    2. Slug with underscores: "coactive_ai.json"
+    3. Slug with no separators: "coactiveai.json"
+    4. Lowercase no spaces: matching patterns
+    
+    Args:
+        company_name: Company display name (e.g., "Coactive AI")
+    
+    Returns:
+        Path to found payload file or None
+    """
+    payloads_dir = Path("data/payloads")
+    
+    # Generate various slug formats
+    base_slug = company_name.lower().replace(" ", "").replace("_", "").replace("-", "")
+    
+    # Try different variations
+    variants = [
+        company_name.lower().replace(" ", "-").replace("_", "-"),  # coactive-ai
+        company_name.lower().replace(" ", "_").replace("-", "_"),  # coactive_ai
+        company_name.lower().replace(" ", "").replace("_", "").replace("-", ""),  # coactiveai
+    ]
+    
+    for variant in variants:
+        payload_file = payloads_dir / f"{variant}.json"
+        if payload_file.exists():
+            logger.debug(f"Found payload file: {payload_file}")
+            return payload_file
+    
+    logger.debug(f"No payload file found for {company_name} (tried: {variants})")
+    return None
 
 
 @app.post("/dashboard/structured", response_model=DashboardStructuredResponse)
@@ -772,18 +811,16 @@ async def generate_structured_dashboard(
     
     # Convert company name to slug format
     company_slug = company_name.lower().replace(" ", "-").replace("_", "-")
-    payload_path = Path(f"data/payloads/{company_slug}.json")
-    raw_data_path = Path(f"data/raw/{company_slug}")
     
-    try:
-        # Check if payload already exists
-        if payload_path.exists():
-            logger.info(f"✓ Payload already exists for {company_name}")
-        else:
-            logger.info(f"Payload missing for {company_name}, checking for raw data...")
-            
-            # Check if raw data exists
-            if not raw_data_path.exists():
+    # Try to find the payload file with flexible naming
+    payload_path = find_payload_file(company_name)
+    
+    if payload_path is None:
+        # Try alternate directory structures
+        raw_data_path = Path(f"data/raw/{company_slug}")
+        if not raw_data_path.exists():
+            raw_data_path_alt = Path(f"data/raw/{company_slug.replace('-', '_')}")
+            if not raw_data_path_alt.exists():
                 logger.error(f"Raw data not found for {company_name}")
                 raise HTTPException(
                     status_code=404,
@@ -793,97 +830,104 @@ async def generate_structured_dashboard(
                         f"`python src/discover/process_discovered_pages.py`"
                     )
                 )
-            
-            logger.info(f"Raw data found, starting extraction pipeline...")
-            
-            # STEP 1: Run ingestion script
-            logger.info(f"STEP 1: Ingesting to Pinecone for {company_slug}...")
-            ingest_cmd = [
-                sys.executable,
-                "src/rag/ingest_to_pinecone.py",
-                "--company-slug", company_slug.replace("-", "_")
-            ]
-            
-            try:
-                result = subprocess.run(
-                    ingest_cmd,
-                    capture_output=True,
-                    text=True,
-                    timeout=300  # 5 minute timeout
-                )
-                
-                if result.returncode != 0:
-                    logger.error(f"Ingestion failed: {result.stderr}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Ingestion to Pinecone failed: {result.stderr[-500:]}"
-                    )
-                
-                logger.info(f"✓ Ingestion completed successfully")
-            
-            except subprocess.TimeoutExpired:
-                logger.error(f"Ingestion timeout for {company_slug}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Ingestion timeout (exceeded 5 minutes)"
-                )
-            
-            except Exception as e:
-                logger.error(f"Ingestion error: {str(e)}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Ingestion failed: {str(e)}"
-                )
-            
-            # STEP 2: Run extraction script
-            logger.info(f"STEP 2: Extracting structured data for {company_slug}...")
-            extraction_cmd = [
-                sys.executable,
-                "src/rag/structured_extraction_search.py",
-                "--company-slug", company_slug.replace("-", "_")
-            ]
-            
-            try:
-                result = subprocess.run(
-                    extraction_cmd,
-                    capture_output=True,
-                    text=True,
-                    timeout=600  # 10 minute timeout
-                )
-                
-                if result.returncode != 0:
-                    logger.error(f"Extraction failed: {result.stderr}")
-                    raise HTTPException(
-                        status_code=500,
-                        detail=f"Structured extraction failed: {result.stderr[-500:]}"
-                    )
-                
-                logger.info(f"✓ Extraction completed successfully")
-            
-            except subprocess.TimeoutExpired:
-                logger.error(f"Extraction timeout for {company_slug}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Extraction timeout (exceeded 10 minutes)"
-                )
-            
-            except Exception as e:
-                logger.error(f"Extraction error: {str(e)}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Extraction failed: {str(e)}"
-                )
-            
-            # Verify payload was created
-            if not payload_path.exists():
-                logger.error(f"Extraction completed but payload not found at {payload_path}")
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Extraction completed but payload file was not created"
-                )
-            
-            logger.info(f"✓ Payload successfully created at {payload_path}")
+            raw_data_path = raw_data_path_alt
         
+        logger.info(f"Payload missing for {company_name}, checking for raw data...")
+        logger.info(f"Raw data found, starting extraction pipeline...")
+        
+        # STEP 1: Run ingestion script
+        logger.info(f"STEP 1: Ingesting to Pinecone for {company_slug}...")
+        ingest_cmd = [
+            sys.executable,
+            "src/rag/ingest_to_pinecone.py",
+            "--company-slug", company_slug.replace("-", "_")
+        ]
+        
+        try:
+            result = subprocess.run(
+                ingest_cmd,
+                capture_output=True,
+                text=True,
+                timeout=300  # 5 minute timeout
+            )
+            
+            if result.returncode != 0:
+                logger.error(f"Ingestion failed: {result.stderr}")
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Ingestion to Pinecone failed: {result.stderr[-500:]}"
+                )
+            
+            logger.info(f"✓ Ingestion completed successfully")
+        
+        except subprocess.TimeoutExpired:
+            logger.error(f"Ingestion timeout for {company_slug}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Ingestion timeout (exceeded 5 minutes)"
+            )
+        
+        except Exception as e:
+            logger.error(f"Ingestion error: {str(e)}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Ingestion failed: {str(e)}"
+            )
+        
+        # STEP 2: Run extraction script
+        logger.info(f"STEP 2: Extracting structured data for {company_slug}...")
+        extraction_cmd = [
+            sys.executable,
+            "src/rag/structured_extraction_search.py",
+            "--company-slug", company_slug.replace("-", "_")
+        ]
+        
+        try:
+            result = subprocess.run(
+                extraction_cmd,
+                capture_output=True,
+                text=True,
+                timeout=600  # 10 minute timeout
+            )
+            
+            if result.returncode != 0:
+                logger.error(f"Extraction failed: {result.stderr}")
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Structured extraction failed: {result.stderr[-500:]}"
+                )
+            
+            logger.info(f"✓ Extraction completed successfully")
+        
+        except subprocess.TimeoutExpired:
+            logger.error(f"Extraction timeout for {company_slug}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Extraction timeout (exceeded 10 minutes)"
+            )
+        
+        except Exception as e:
+            logger.error(f"Extraction error: {str(e)}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Extraction failed: {str(e)}"
+            )
+        
+        # Try to find the newly created payload file
+        payload_path = find_payload_file(company_name)
+        
+        if payload_path is None:
+            logger.error(f"Extraction completed but payload not found for {company_name}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"Extraction completed but payload file was not created"
+            )
+        
+        logger.info(f"✓ Payload successfully created at {payload_path}")
+    else:
+        logger.info(f"✓ Payload already exists for {company_name} at {payload_path}")
+    
+    try:
         # STEP 3: Generate dashboard from payload
         logger.info(f"STEP 3: Generating dashboard for {company_name}...")
         
@@ -898,12 +942,14 @@ async def generate_structured_dashboard(
             logger.warning(f"Could not initialize LLM client: {e}")
         
         # Generate dashboard from payload
+        # Pass the actual found payload path to handle flexible naming
         dashboard_markdown = generate_dashboard_from_payload(
             company_name=company_name,
             company_slug=company_slug,
             llm_client=llm_client,
             llm_model="gpt-4o",
-            temperature=0.1  # Low temperature for deterministic output
+            temperature=0.1,  # Low temperature for deterministic output
+            payload_file_path=payload_path  # Pass the found path
         )
         
         logger.info(f"✓ Successfully generated dashboard for {company_name}")

@@ -260,12 +260,51 @@ For full dashboard generation, ensure OPENAI_API_KEY is set and the LLM is avail
     return dashboard
 
 
+def find_payload_file(company_name: str) -> Optional[Path]:
+    """
+    Find payload file with flexible naming conventions.
+    
+    Tries multiple variations:
+    1. Slug with hyphens: "coactive-ai.json"
+    2. Slug with underscores: "coactive_ai.json"
+    3. Slug with no separators: "coactiveai.json"
+    
+    Args:
+        company_name: Company display name (e.g., "Coactive AI")
+    
+    Returns:
+        Path to found payload file or None
+    """
+    payloads_dir = Path("data/payloads")
+    
+    if not payloads_dir.exists():
+        logger.debug(f"Payloads directory not found: {payloads_dir}")
+        return None
+    
+    # Try different variations
+    variants = [
+        company_name.lower().replace(" ", "-").replace("_", "-"),  # coactive-ai
+        company_name.lower().replace(" ", "_").replace("-", "_"),  # coactive_ai
+        company_name.lower().replace(" ", "").replace("_", "").replace("-", ""),  # coactiveai
+    ]
+    
+    for variant in variants:
+        payload_file = payloads_dir / f"{variant}.json"
+        if payload_file.exists():
+            logger.debug(f"Found payload file: {payload_file}")
+            return payload_file
+    
+    logger.debug(f"No payload file found for {company_name} (tried: {variants})")
+    return None
+
+
 def generate_dashboard_from_payload(
     company_name: str,
     company_slug: str,
     llm_client: Any = None,
     llm_model: str = "gpt-4o",
-    temperature: float = 0.1
+    temperature: float = 0.1,
+    payload_file_path: Optional[Path] = None
 ) -> str:
     """
     Load structured payload and generate dashboard.
@@ -276,6 +315,7 @@ def generate_dashboard_from_payload(
         llm_client: OpenAI client (optional)
         llm_model: LLM model to use
         temperature: Temperature for LLM generation (0.0-2.0, default 0.1 for deterministic output)
+        payload_file_path: Optional explicit path to payload file. If not provided, uses flexible matching.
     
     Returns:
         Dashboard markdown string
@@ -286,11 +326,21 @@ def generate_dashboard_from_payload(
     """
     logger.info(f"Generating dashboard from structured payload for {company_name}")
     
-    # Normalize slug (spaces/underscores to hyphens)
-    normalized_slug = company_slug.lower().replace(" ", "-").replace("_", "-")
-    
-    # Load payload from file
-    payload_path = Path("data/payloads") / f"{normalized_slug}.json"
+    # Determine payload path
+    if payload_file_path:
+        payload_path = Path(payload_file_path)
+        logger.debug(f"Using explicit payload path: {payload_path}")
+    else:
+        # Try flexible matching first
+        found_path = find_payload_file(company_name)
+        if found_path:
+            payload_path = found_path
+            logger.debug(f"Found payload via flexible matching: {payload_path}")
+        else:
+            # Fallback to normalized slug
+            normalized_slug = company_slug.lower().replace(" ", "-").replace("_", "-")
+            payload_path = Path("data/payloads") / f"{normalized_slug}.json"
+            logger.debug(f"Using normalized slug path: {payload_path}")
     
     if not payload_path.exists():
         logger.error(f"Payload file not found: {payload_path}")
