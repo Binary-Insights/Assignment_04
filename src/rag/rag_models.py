@@ -3,7 +3,7 @@ from typing import List, Optional, Literal
 from datetime import date
 
 class Provenance(BaseModel):
-    source_url: HttpUrl
+    source_url: str  # Changed from HttpUrl to str to accept page type identifiers like "about", "product", etc.
     crawled_at: str
     snippet: Optional[str] = None
 

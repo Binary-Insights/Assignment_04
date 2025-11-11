@@ -108,17 +108,17 @@ def create_evaluation_prompt(
     
     ground_truth_facts = ground_truth.get('reference_material', {}).get('key_facts', [])
     facts_text = "\n".join([
-        f"- {fact['claim']} (Category: {fact['category']}, Confidence: {fact['confidence']})"
+        f"- {fact['claim']}"
         for fact in ground_truth_facts
     ])
     
     hallucination_examples = ground_truth.get('reference_material', {}).get('hallucination_examples', [])
-    hallucinations_text = "\n".join([f"- {ex}" for ex in hallucination_examples])
+    hallucinations_text = "\n".join([f"- {ex}" for ex in hallucination_examples]) if hallucination_examples else "None provided"
     
     evaluation_notes = ground_truth.get('evaluation_notes', {})
-    pipeline_notes = evaluation_notes.get(f"{pipeline_type}_pipeline_notes", "")
-    common_issues = evaluation_notes.get("common_issues", [])
-    issues_text = "\n".join([f"- {issue}" for issue in common_issues])
+    pipeline_notes = evaluation_notes.get(f"{pipeline_type}_pipeline_notes", "") if evaluation_notes else ""
+    common_issues = evaluation_notes.get("common_issues", []) if evaluation_notes else []
+    issues_text = "\n".join([f"- {issue}" for issue in common_issues]) if common_issues else "No specific issues noted"
     
     response_text = json.dumps(response, indent=2) if isinstance(response, dict) else str(response)
     

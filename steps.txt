@@ -505,3 +505,52 @@ Run 3 (file updated):
   Vector ID: "world_labs_blog_a3d5e8f2"  ← Different ID!
   → Inserted as new vector (change tracked)
 
+
+
+
+
+
+
+--------------------------
+Summary of Changes to process_pages_dag.py
+I've successfully rewritten process_pages_dag.py to follow the same orchestration pattern as eval_runner_dag.py. Here are the key improvements:
+
+Architecture Changes
+
+1. Three-Task Pattern (matching eval_runner_dag.py)
+Task 1: load_companies - Loads companies from discovered pages file
+Task 2: Dynamic company processing tasks - One task per company
+Task 3: verify_processing_complete - Post-processing validation
+
+2. Dynamic Task Generation
+Previously: Single monolithic task processing all companies
+Now: Individual task per company from company_pages_discovered.json
+Each company gets its own task ID: process_{company_slug}
+
+3. Configuration Structure
+Added DISCOVERED_PAGES_FILE configuration
+Added PROCESS_SCRIPT configuration
+Clean separation of concerns with path management
+
+4. New Functions
+load_companies_from_discovered_pages() - Dynamically loads company list
+process_company_pages(company_slug) - Processes a single company with:
+Per-company command execution with --company flag
+10-minute timeout per company
+Proper error handling and logging
+verify_processing_complete() - Post-processing verification task
+
+5. Improved Error Handling
+Graceful handling of missing files
+Per-task retry logic (2 retries with 5-minute delay)
+Per-task execution timeout (20 minutes)
+trigger_rule="all_done" allows verification even if tasks fail
+6. Task Dependencies
+Benefits
+✅ Scalability: Automatically scales to number of companies in discovered pages
+✅ Parallelization: Companies process in parallel (Airflow's default behavior)
+✅ Consistency: Matches eval_runner_dag.py pattern for maintainability
+✅ Resilience: Per-task retries and error handling
+✅ Observability: Detailed logging at each stage
+✅ Flexibility: Easy to modify company selection or processing logic
+The DAG now follows Airflow best practices with dynamic task generation and proper orchestration!

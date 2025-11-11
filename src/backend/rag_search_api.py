@@ -723,11 +723,12 @@ def find_payload_file(company_name: str) -> Optional[Path]:
     """
     Find payload file with flexible naming conventions.
     
-    Tries multiple variations:
-    1. Original slug (with hyphens): "coactive-ai.json"
-    2. Slug with underscores: "coactive_ai.json"
-    3. Slug with no separators: "coactiveai.json"
-    4. Lowercase no spaces: matching patterns
+    Tries multiple variations to handle different naming patterns:
+    1. Full slug with hyphens: "coactive-ai.json"
+    2. Full slug with underscores: "coactive_ai.json"
+    3. Full slug no separators: "coactiveai.json"
+    4. First word only: "coactive.json"
+    5. Any file in payloads directory matching the first word
     
     Args:
         company_name: Company display name (e.g., "Coactive AI")
@@ -737,23 +738,42 @@ def find_payload_file(company_name: str) -> Optional[Path]:
     """
     payloads_dir = Path("data/payloads")
     
-    # Generate various slug formats
-    base_slug = company_name.lower().replace(" ", "").replace("_", "").replace("-", "")
+    if not payloads_dir.exists():
+        logger.debug(f"Payloads directory not found: {payloads_dir}")
+        return None
     
-    # Try different variations
+    # Generate various slug formats from company name
+    base_slug = company_name.lower().replace(" ", "").replace("_", "").replace("-", "")
+    first_word = company_name.lower().split()[0]  # Extract first word
+    
+    # Try different variations in priority order
     variants = [
         company_name.lower().replace(" ", "-").replace("_", "-"),  # coactive-ai
         company_name.lower().replace(" ", "_").replace("-", "_"),  # coactive_ai
         company_name.lower().replace(" ", "").replace("_", "").replace("-", ""),  # coactiveai
+        first_word,  # coactive (first word only)
     ]
+    
+    logger.debug(f"Looking for payload file for '{company_name}'")
+    logger.debug(f"  Trying variants: {variants}")
     
     for variant in variants:
         payload_file = payloads_dir / f"{variant}.json"
         if payload_file.exists():
-            logger.debug(f"Found payload file: {payload_file}")
+            logger.info(f"✓ Found payload file: {payload_file}")
             return payload_file
     
-    logger.debug(f"No payload file found for {company_name} (tried: {variants})")
+    # Fallback: scan directory for files that start with the first word
+    logger.debug(f"Direct lookup failed, scanning payloads directory for files starting with '{first_word}'...")
+    
+    try:
+        for file in payloads_dir.glob(f"{first_word}*.json"):
+            logger.info(f"✓ Found payload file by glob pattern: {file}")
+            return file
+    except Exception as e:
+        logger.debug(f"Error scanning payloads directory: {e}")
+    
+    logger.debug(f"No payload file found for '{company_name}' after trying: {variants}")
     return None
 
 

@@ -94,30 +94,21 @@ def slugify(text):
     return text.lower().replace(' ', '_').replace('-', '_')
 
 
-def is_linkedin_blocked_page(url, page_title, html_content, final_url):
+def is_linkedin_blocked_page(url, page_title, html_content):
     """Detect if LinkedIn has blocked us with login/signup redirect.
     
     Returns (is_blocked, block_reason)
     """
     logger = logging.getLogger('process_discovered_pages')
     
-    # Most reliable: Check if final URL contains authwall or login redirects
-    final_url_lower = final_url.lower()
-    if 'authwall' in final_url_lower or 'auth' in final_url_lower:
-        return True, 'authwall'
-    
-    if '/login' in final_url_lower or 'login' in final_url_lower:
-        return True, 'login'
-    
-    # Secondary checks for page content
     blocked_indicators = {
-        'login': ['linkedin.com/login', 'sign in to linkedin'],
-        'signup': ['sign up for linkedin', 'join linkedin'],
-        'verify': ['verify your identity', 'unusual activity'],
-        'rate_limit': ['too many requests', '429', '503'],
+        'login': ['login', 'sign in', 'linkedin.com/login'],
+        'signup': ['sign up', 'signup', 'join linkedin'],
+        'verify': ['verify', 'unusual activity', 'verify your identity'],
+        'rate_limit': ['try again', 'too many requests', '429', '503'],
     }
     
-    page_lower = f"{page_title}".lower()
+    page_lower = f"{page_title} {url}".lower()
     html_lower = html_content.lower()
     
     for block_type, keywords in blocked_indicators.items():
@@ -143,17 +134,16 @@ def apply_linkedin_rate_limit_delay(request_count):
     logger = logging.getLogger('process_discovered_pages')
     
     # More aggressive delays to avoid LinkedIn blocking
-    # LinkedIn specifically blocks rapid automated requests
     if request_count == 1:
-        delay = 5  # First request: 5s (more defensive)
+        delay = 3  # First request: 3s
     elif request_count == 2:
-        delay = 10  # Second: 10s
+        delay = 8  # Second: 8s
     elif request_count == 3:
-        delay = 20  # Third: 20s
+        delay = 15  # Third: 15s
     elif request_count == 4:
-        delay = 35  # Fourth: 35s
+        delay = 25  # Fourth: 25s
     else:
-        delay = 45 + (request_count - 5) * 15  # Subsequent: 45s, 60s, 75s, ...
+        delay = 30 + (request_count - 5) * 10  # Subsequent: 30s, 40s, 50s, ...
     
     logger.info(f"⏳ Rate limit delay: waiting {delay}s (attempt #{request_count})")
     time.sleep(delay)
@@ -342,12 +332,6 @@ def setup_selenium_driver():
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option('useAutomationExtension', False)
-    # Add legitimate browser headers and avoid detection
-    chrome_options.add_argument("--disable-plugins-power-saver")
-    chrome_options.add_argument("--disable-client-side-phishing-detection")
-    chrome_options.add_argument("--disable-sync")
-    chrome_options.add_argument("--disable-default-apps")
-    chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--user-agent=" + get_rotating_user_agent())
     
     try:
@@ -374,18 +358,6 @@ def setup_selenium_driver():
         # Create Service object with explicit path (disables automatic download)
         service = webdriver.chrome.service.Service(chromedriver_path)
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        
-        # Execute script to hide webdriver flag
-        try:
-            driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
-                'source': '''
-                Object.defineProperty(navigator, 'webdriver', {
-                  get: () => false,
-                });
-                '''
-            })
-        except Exception as e:
-            logger.debug(f"Warning: Could not execute CDP command to hide webdriver: {e}")
         
         driver.set_page_load_timeout(60)  # 60 second timeout
         logger.info("✓ Chrome driver initialized successfully")
@@ -448,13 +420,12 @@ def download_webpage_with_selenium(driver, url, company_slug, page_type, retry_c
         
         # Wait for page to load
         logger.info("Waiting for page to load completely...")
-        wait_timeout = 45 if is_linkedin else 30  # Longer timeout for LinkedIn
-        WebDriverWait(driver, wait_timeout).until(
+        WebDriverWait(driver, 30).until(
             lambda d: d.execute_script("return document.readyState") == "complete"
         )
         
         # Additional wait for dynamic content
-        time.sleep(3 if is_linkedin else 2)
+        time.sleep(2)
         
         # Get final URL after redirects
         final_url = driver.current_url
@@ -465,7 +436,7 @@ def download_webpage_with_selenium(driver, url, company_slug, page_type, retry_c
         
         # Check for LinkedIn blocking/rate limiting
         if is_linkedin:
-            is_blocked, block_reason = is_linkedin_blocked_page(url, page_title, page_source, final_url)
+            is_blocked, block_reason = is_linkedin_blocked_page(final_url, page_title, page_source)
             if is_blocked:
                 logger.warning(f"🚫 LinkedIn blocking detected: {block_reason}")
                 logger.warning(f"   Final URL: {final_url}")
@@ -1250,7 +1221,7 @@ def create_provenance_record(company_name, company_slug, pages_results):
     return provenance_file
 
 
-def process_company_pages(company_data, driver, skip_linkedin=False):
+def process_company_pages(company_data, driver):
     """Process all company pages for a single company: both discovered and explicitly defined pages (about, product, careers, blog, homepage, linkedin)."""
     logger = logging.getLogger('process_discovered_pages')
     
@@ -1358,50 +1329,43 @@ def process_company_pages(company_data, driver, skip_linkedin=False):
         
         # Process LinkedIn page if available
         if linkedin_url:
-            if skip_linkedin:
-                logger.info(f"  ⏭️  Skipping LinkedIn page (--skip-linkedin flag)")
-                pages_results.append({
-                    'page_type': 'linkedin',
-                    'url': linkedin_url,
-                    'success': False,
-                    'reason': 'Skipped due to --skip-linkedin flag'
-                })
+            logger.info(f"  Processing LinkedIn page...")
+            page_type = 'linkedin'
+            
+            logger.info(f"  Step 1: Downloading LinkedIn page from {linkedin_url}")
+            download_result = download_webpage_with_selenium(driver, linkedin_url, company_slug, page_type)
+            
+            page_result = {
+                'page_type': page_type,
+                'url': linkedin_url,
+                'download_success': download_result.get('success', False),
+                'download_timestamp': download_result.get('download_timestamp')
+            }
+            
+            # Extract links from LinkedIn page
+            extraction_result = {'success': False}
+            if download_result.get('success'):
+                logger.info(f"  Step 2: Extracting links from LinkedIn page")
+                html_file = download_result.get('main_html_file')
+                extraction_result = extract_links_from_html(html_file, company_slug, page_type)
+                page_result['extraction_success'] = extraction_result.get('success', False)
+                page_result['links_count'] = extraction_result.get('links_count', 0)
+                page_result['links_file'] = extraction_result.get('links_file')
             else:
-                logger.info(f"  Processing LinkedIn page...")
-                page_type = 'linkedin'
-                
-                logger.info(f"  Step 1: Downloading LinkedIn page from {linkedin_url}")
-                download_result = download_webpage_with_selenium(driver, linkedin_url, company_slug, page_type)
-                
-                page_result = {
-                    'page_type': page_type,
-                    'url': linkedin_url,
-                    'download_success': download_result.get('success', False),
-                    'download_timestamp': download_result.get('download_timestamp')
-                }
-                
-                # Extract links from LinkedIn page
-                extraction_result = {'success': False}
-                if download_result.get('success'):
-                    logger.info(f"  Step 2: Extracting links from LinkedIn page")
-                    html_file = download_result.get('main_html_file')
-                    extraction_result = extract_links_from_html(html_file, company_slug, page_type)
-                    page_result['extraction_success'] = extraction_result.get('success', False)
-                    page_result['links_count'] = extraction_result.get('links_count', 0)
-                    page_result['links_file'] = extraction_result.get('links_file')
-                else:
-                    logger.warning(f"  Skipping link extraction for LinkedIn due to download failure")
-                    page_result['extraction_success'] = False
-                    page_result['links_count'] = 0
-                
-                page_result['success'] = page_result['download_success'] and page_result['extraction_success']
-                
-                if page_result.get('success'):
-                    logger.info(f"  ✓ LINKEDIN: SUCCESS ({page_result.get('links_count')} links)")
-                else:
-                    logger.info(f"  ✗ LINKEDIN: FAILED")
-                
-                pages_results.append(page_result)        # Create provenance record
+                logger.warning(f"  Skipping link extraction for LinkedIn due to download failure")
+                page_result['extraction_success'] = False
+                page_result['links_count'] = 0
+            
+            page_result['success'] = page_result['download_success'] and page_result['extraction_success']
+            
+            if page_result.get('success'):
+                logger.info(f"  ✓ LINKEDIN: SUCCESS ({page_result.get('links_count')} links)")
+            else:
+                logger.info(f"  ✗ LINKEDIN: FAILED")
+            
+            pages_results.append(page_result)
+    
+        # Create provenance record
         logger.info(f"Step 3: Creating provenance record for {company_name}")
         provenance_file = create_provenance_record(company_name, company_slug, pages_results)
         
@@ -1494,12 +1458,6 @@ Examples:
         help='Enable verbose logging'
     )
     
-    parser.add_argument(
-        '--skip-linkedin',
-        action='store_true',
-        help='Skip LinkedIn company pages (due to anti-bot blocking)'
-    )
-    
     args = parser.parse_args()
     
     # Configuration from command-line arguments
@@ -1507,9 +1465,8 @@ Examples:
     companies_to_process = args.companies  # List of company names or None for all
     limit = args.limit  # Numeric limit or None
     extract_text = not args.no_extract_text  # True by default, False if --no-extract-text
-    skip_linkedin = args.skip_linkedin  # Skip LinkedIn pages if flag set
     
-    logger.info(f"Configuration: input={input_file}, companies={companies_to_process}, limit={limit}, extract_text={extract_text}, skip_linkedin={skip_linkedin}")
+    logger.info(f"Configuration: input={input_file}, companies={companies_to_process}, limit={limit}, extract_text={extract_text}")
     if args.verbose:
         logger.setLevel(logging.DEBUG)
         for handler in logger.handlers:
@@ -1549,8 +1506,7 @@ Examples:
                 results.append(result)
                 
                 # If text extraction is enabled, process text immediately after downloading pages
-                # Extract text if ANY pages were successfully processed (not just when ALL succeed)
-                if extract_text and result.get('pages_processed', 0) > 0:
+                if extract_text and result.get('success'):
                     company_slug = result.get('company_slug')
                     logger.info(f"Extracting text from: {company_slug}")
                     text_result = process_all_html_files_in_company(company_slug)

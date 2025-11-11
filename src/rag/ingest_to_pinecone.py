@@ -284,13 +284,20 @@ def save_vectors_to_json(
     """Save vector metadata (without embeddings) to JSON file for persistence and auditing.
     
     Note: Embeddings are NOT stored (too large). They will be regenerated during upsert.
+    Handles permission errors gracefully (common in Docker with mounted volumes).
     """
     logger = logging.getLogger('ingest_to_pinecone')
     
     try:
         # Use absolute path when possible, relative as fallback
         vectors_dir = Path("data/vectors")
-        vectors_dir.mkdir(parents=True, exist_ok=True, mode=0o777)
+        
+        # Try to create directory with permissive permissions
+        try:
+            vectors_dir.mkdir(parents=True, exist_ok=True, mode=0o777)
+        except (PermissionError, OSError) as e:
+            logger.debug(f"Could not create vectors directory: {e}")
+            # Continue anyway - directory might already exist
         
         # Try to ensure directory is writable, but don't fail if we can't
         # (this can happen in Docker with mounted volumes owned by other users)
@@ -309,22 +316,33 @@ def save_vectors_to_json(
             })
         
         vectors_file = vectors_dir / f"{company_slug}.json"
-        with open(vectors_file, 'w') as f:
-            json.dump(vectors_json, f, indent=2, ensure_ascii=False, default=str)
         
-        # Try to make file readable/writable, but don't fail if we can't
         try:
-            os.chmod(vectors_file, 0o666)
+            with open(vectors_file, 'w') as f:
+                json.dump(vectors_json, f, indent=2, ensure_ascii=False, default=str)
+            
+            # Try to make file readable/writable, but don't fail if we can't
+            try:
+                os.chmod(vectors_file, 0o666)
+            except (PermissionError, OSError) as e:
+                logger.debug(f"Could not change file permissions (OK in Docker): {e}")
+            
+            logger.info(f"✅ Saved {len(vectors_json)} vector metadata to: {vectors_file}")
+            logger.info(f"   (Embeddings will be regenerated during upsert)")
+            return str(vectors_file)
+            
         except (PermissionError, OSError) as e:
-            logger.debug(f"Could not change file permissions (OK in Docker): {e}")
-        
-        logger.info(f"✅ Saved {len(vectors_json)} vector metadata to: {vectors_file}")
-        logger.info(f"   (Embeddings will be regenerated during upsert)")
-        return str(vectors_file)
+            # Permission denied - log warning but continue with ingestion
+            logger.warning(f"⚠️  Could not save vector metadata to {vectors_file}: {e}")
+            logger.warning(f"   Proceeding with ingestion anyway (metadata not persisted)")
+            logger.warning(f"   This is OK in ephemeral/Docker environments")
+            return str(vectors_file)  # Return path anyway for consistency
         
     except Exception as e:
-        logger.error(f"Error saving vectors to JSON: {e}", exc_info=True)
-        raise
+        logger.error(f"Unexpected error in save_vectors_to_json: {e}", exc_info=True)
+        # Don't raise - let ingestion continue without persisting metadata
+        logger.warning(f"Proceeding with ingestion despite metadata save error")
+        return f"data/vectors/{company_slug}.json"
 
 
 def load_vectors_from_json(company_slug: str) -> List[Dict[str, Any]]:
@@ -555,14 +573,32 @@ def index_company_pages_to_pinecone(
                 continue
         
         logger.info(f"✅ Generated {len(vectors_with_embeddings)} embeddings")
-        logger.info(f"Upserting {len(vectors_with_embeddings)} vectors to Pinecone...")
+        logger.info(f"Upserting {len(vectors_with_embeddings)} vectors to Pinecone (in batches)...")
+        
+        # Batch upsert to avoid exceeding Pinecone's 4MB request size limit
+        batch_size = 25  # Conservative batch size to stay well under 4MB limit
+        total_upserted = 0
         
         try:
-            upsert_response = pinecone_index.upsert(
-                vectors=vectors_with_embeddings,
-                namespace=namespace
-            )
-            logger.info(f"✅ Upserted {len(vectors_with_embeddings)} vectors to Pinecone")
+            for batch_idx in range(0, len(vectors_with_embeddings), batch_size):
+                batch = vectors_with_embeddings[batch_idx:batch_idx + batch_size]
+                batch_num = (batch_idx // batch_size) + 1
+                total_batches = (len(vectors_with_embeddings) + batch_size - 1) // batch_size
+                
+                logger.info(f"  Batch {batch_num}/{total_batches}: Upserting {len(batch)} vectors...")
+                
+                try:
+                    upsert_response = pinecone_index.upsert(
+                        vectors=batch,
+                        namespace=namespace
+                    )
+                    total_upserted += len(batch)
+                    logger.debug(f"    ✓ Batch {batch_num} upserted successfully")
+                except Exception as batch_error:
+                    logger.error(f"Failed to upsert batch {batch_num}: {batch_error}")
+                    raise
+            
+            logger.info(f"✅ Successfully upserted all {total_upserted} vectors to Pinecone")
         except Exception as e:
             logger.error(f"Failed to upsert vectors to Pinecone: {e}", exc_info=True)
             raise

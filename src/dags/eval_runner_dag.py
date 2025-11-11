@@ -9,7 +9,7 @@ Schedule: Manual trigger (no automatic schedule)
 
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -25,8 +25,9 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 # Evaluation configuration
 GROUND_TRUTH_FILE = PROJECT_ROOT / "data" / "eval" / "ground_truth.json"
-EVAL_SCRIPT = PROJECT_ROOT / "src" / "evals" / "eval_runner.py"
-PIPELINES = ["structured", "rag"]
+EVAL_SCRIPT = PROJECT_ROOT / "src" / "evals" / "result_evaluator.py"
+RESPONSE_DIR = PROJECT_ROOT / "data" / "llm_response" / "json"
+OUTPUT_FILE = PROJECT_ROOT / "data" / "eval" / "results_llm_eval.json"
 
 
 def load_companies_from_ground_truth():
@@ -55,24 +56,26 @@ def load_companies_from_ground_truth():
         raise
 
 
-def evaluate_company_pipeline(company_slug: str, pipeline: str):
+def evaluate_company_pipeline(company_slug: str):
     """
-    Run evaluation for a specific company/pipeline combination.
+    Run evaluation for a specific company (evaluates both pipelines).
     
     Args:
         company_slug: Company slug (e.g., "world-labs")
-        pipeline: Pipeline type ("structured" or "rag")
     """
+    logger = logging.getLogger(__name__)
+    
     try:
-        logger.info(f"Starting evaluation: {company_slug} / {pipeline}")
+        logger.info(f"Starting evaluation for company: {company_slug}")
         
-        # Build command
+        # Build command using result_evaluator.py flags
         cmd = [
             sys.executable,
             str(EVAL_SCRIPT),
             "--company", company_slug,
-            "--pipeline", pipeline,
-            "--force"
+            "--ground-truth", str(GROUND_TRUTH_FILE),
+            "--response-dir", str(RESPONSE_DIR),
+            "--output", str(OUTPUT_FILE)
         ]
         
         logger.info(f"Running: {' '.join(cmd)}")
@@ -80,75 +83,106 @@ def evaluate_company_pipeline(company_slug: str, pipeline: str):
         logger.info(f"EVAL_SCRIPT path: {EVAL_SCRIPT}")
         logger.info(f"EVAL_SCRIPT exists: {EVAL_SCRIPT.exists()}")
         
-        # Execute evaluation
+        # Execute evaluation - capture output AND stream to logs
+        logger.info("=" * 80)
+        logger.info(f"SUBPROCESS OUTPUT START FOR {company_slug}")
+        logger.info("=" * 80)
+        
         result = subprocess.run(
             cmd,
             cwd=str(PROJECT_ROOT),
-            capture_output=True,
+            timeout=600,  # 10 minute timeout
             text=True,
-            timeout=600  # 10 minute timeout
+            capture_output=True,  # Capture to get error messages
         )
         
-        logger.info(f"STDOUT:\n{result.stdout}")
+        # Log captured output
+        if result.stdout:
+            logger.info(f"STDOUT:\n{result.stdout}")
+        
+        if result.stderr:
+            logger.error(f"STDERR:\n{result.stderr}")
+        
+        logger.info("=" * 80)
+        logger.info(f"SUBPROCESS OUTPUT END FOR {company_slug}")
+        logger.info(f"Return code: {result.returncode}")
+        logger.info("=" * 80)
         
         if result.returncode != 0:
-            logger.error(f"STDERR:\n{result.stderr}")
-            raise RuntimeError(
-                f"Evaluation failed for {company_slug}/{pipeline}: {result.stderr}"
-            )
+            error_msg = f"Evaluation failed for {company_slug} with return code {result.returncode}"
+            logger.error(error_msg)
+            if result.stderr:
+                logger.error(f"Error details: {result.stderr}")
+            raise RuntimeError(error_msg)
         
-        logger.info(f"✓ Evaluation complete: {company_slug} / {pipeline}")
+        logger.info(f"✓ Evaluation complete for: {company_slug}")
         
         return {
             "company": company_slug,
-            "pipeline": pipeline,
             "status": "success"
         }
     
-    except subprocess.TimeoutExpired:
-        logger.error(f"❌ Evaluation timeout for {company_slug}/{pipeline}")
-        raise
+    except subprocess.TimeoutExpired as e:
+        error_msg = f"Evaluation timeout for {company_slug} (600s exceeded)"
+        logger.error(error_msg, exc_info=True)
+        raise Exception(error_msg)
     except Exception as e:
-        logger.error(f"❌ Error evaluating {company_slug}/{pipeline}: {e}", exc_info=True)
+        logger.error(f"Error evaluating {company_slug}: {str(e)}", exc_info=True)
         raise
 
 
 def generate_comparison_report():
     """
-    Generate comparison report after all evaluations complete.
+    Generate batch evaluation report for all companies.
     """
+    logger = logging.getLogger(__name__)
+    
     try:
-        logger.info("Generating comparison report...")
+        logger.info("Generating batch evaluation report...")
         
         cmd = [
             sys.executable,
-            str(PROJECT_ROOT / EVAL_SCRIPT),
+            str(EVAL_SCRIPT),
             "--batch",
-            "--report"
+            "--ground-truth", str(GROUND_TRUTH_FILE),
+            "--response-dir", str(RESPONSE_DIR),
+            "--output", str(OUTPUT_FILE)
         ]
         
         logger.info(f"Running: {' '.join(cmd)}")
         
+        # Execute - stream output instead of capturing
+        logger.info("=" * 80)
+        logger.info("BATCH EVALUATION OUTPUT START")
+        logger.info("=" * 80)
+        
         result = subprocess.run(
             cmd,
             cwd=str(PROJECT_ROOT),
-            capture_output=True,
+            timeout=3600,  # 60 minute timeout for batch evaluation
             text=True,
-            timeout=300
+            # Don't capture - let output stream to Airflow logs directly
         )
         
-        logger.info(f"Report output:\n{result.stdout}")
+        logger.info("=" * 80)
+        logger.info("BATCH EVALUATION OUTPUT END")
+        logger.info(f"Return code: {result.returncode}")
+        logger.info("=" * 80)
         
         if result.returncode != 0:
-            logger.error(f"Report generation failed: {result.stderr}")
-            raise RuntimeError(f"Report generation failed: {result.stderr}")
+            error_msg = f"Batch evaluation failed with return code {result.returncode}"
+            logger.error(error_msg)
+            raise RuntimeError(error_msg)
         
-        logger.info("✓ Comparison report generated")
+        logger.info("✓ Batch evaluation and report generated")
         
-        return {"status": "success", "message": "Report generated"}
+        return {"status": "success", "message": "Batch evaluation complete"}
     
+    except subprocess.TimeoutExpired as e:
+        logger.error(f"❌ Batch evaluation timeout (3600s exceeded)", exc_info=True)
+        raise Exception(f"Batch evaluation timeout: {str(e)}")
     except Exception as e:
-        logger.error(f"Error generating report: {e}")
+        logger.error(f"Error generating batch report: {str(e)}", exc_info=True)
         raise
 
 
@@ -169,8 +203,8 @@ with DAG(
         python_callable=load_companies_from_ground_truth,
     )
     
-    # Task 2: Dynamic task generation for each company/pipeline combination
-    # We'll create these tasks dynamically
+    # Task 2: Dynamic task generation for each company
+    # result_evaluator.py evaluates both pipelines for each company
     evaluation_tasks = []
     
     # Load ground truth for dynamic task generation
@@ -184,30 +218,37 @@ with DAG(
     except Exception as e:
         logger.error(f"Failed to load ground truth for DAG creation: {e}")
         # Use default companies for testing if file can't be loaded
-        companies = ["world-labs", "company-b"]
+        companies = ["world-labs"]
     
     # If still empty (file doesn't exist), use defaults
     if not companies:
         logger.warning("No companies found; using default test companies")
-        companies = ["world-labs", "company-b"]
+        companies = ["world-labs"]
     
-    # Create evaluation tasks for each company and pipeline
-    for company_slug in companies:
-        for pipeline in PIPELINES:
-            task_id = f"evaluate_{company_slug}_{pipeline}"
-            
-            task = PythonOperator(
-                task_id=task_id,
-                python_callable=evaluate_company_pipeline,
-                op_kwargs={
-                    "company_slug": company_slug,
-                    "pipeline": pipeline,
-                },
-                retries=2,  # Retry up to 2 times on failure
-                retry_delay=60,  # Wait 60 seconds between retries
-            )
-            
-            evaluation_tasks.append(task)
+    # Create evaluation tasks for each company (evaluates both pipelines per company)
+    for i, company_slug in enumerate(companies):
+        task_id = f"evaluate_{company_slug}"
+        
+        task = PythonOperator(
+            task_id=task_id,
+            python_callable=evaluate_company_pipeline,
+            op_kwargs={
+                "company_slug": company_slug,
+            },
+            retries=2,  # Retry up to 2 times on failure
+            retry_delay=timedelta(minutes=5),  # Wait 5 minutes between retries
+            execution_timeout=timedelta(minutes=15),  # 15 minutes per evaluation
+            pool="sequential_pool",  # Use sequential pool
+            pool_slots=1,  # Only 1 concurrent execution
+            queue="default",  # Use default queue
+        )
+        
+        evaluation_tasks.append(task)
+        
+        # Create explicit dependencies to make tasks run sequentially
+        if i > 0:
+            # Each task depends on the previous one
+            evaluation_tasks[i - 1] >> task
     
     # Task 3: Generate comparison report
     generate_report = PythonOperator(
@@ -217,5 +258,11 @@ with DAG(
     )
     
     # Define task dependencies
-    load_companies >> evaluation_tasks >> generate_report
+    if evaluation_tasks:
+        # If we have evaluation tasks, chain them sequentially and then generate report
+        load_companies >> evaluation_tasks[0]
+        evaluation_tasks[-1] >> generate_report
+    else:
+        # If no tasks, go directly to report
+        load_companies >> generate_report
 

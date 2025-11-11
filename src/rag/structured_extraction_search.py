@@ -86,6 +86,74 @@ def setup_logging(script_name: str = 'structured_extraction'):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+#  Flexible Payload File Lookup
+# ─────────────────────────────────────────────────────────────────────────────
+def find_payload_file(company_id_or_name: str) -> Optional[Path]:
+    """
+    Find payload file with flexible naming conventions.
+    
+    Tries multiple variations to handle different naming patterns:
+    1. Exact match: "{company_id}.json"
+    2. Full slug with hyphens: "company-name.json"
+    3. Full slug with underscores: "company_name.json"
+    4. Full slug no separators: "companyname.json"
+    5. First word only: "company.json"
+    6. Any file matching the first word with glob
+    
+    Args:
+        company_id_or_name: Company ID or display name (e.g., "coactive" or "Coactive AI")
+    
+    Returns:
+        Path to found payload file or None
+    """
+    logger = logging.getLogger('structured_extraction_search')
+    
+    payloads_dir = Path("data/payloads")
+    
+    if not payloads_dir.exists():
+        logger.debug(f"Payloads directory not found: {payloads_dir}")
+        return None
+    
+    # Generate variants from input
+    first_word = company_id_or_name.lower().split()[0]
+    
+    # Build list of variants to try
+    variants = [
+        company_id_or_name.lower(),  # Exact as provided
+        company_id_or_name.lower().replace(" ", "-").replace("_", "-"),  # With hyphens
+        company_id_or_name.lower().replace(" ", "_").replace("-", "_"),  # With underscores
+        company_id_or_name.lower().replace(" ", "").replace("_", "").replace("-", ""),  # No separators
+        first_word,  # First word only
+    ]
+    
+    # Remove duplicates while preserving order
+    variants = list(dict.fromkeys(variants))
+    
+    logger.debug(f"Looking for payload file for '{company_id_or_name}'")
+    logger.debug(f"  Trying variants: {variants}")
+    
+    # Try each variant directly
+    for variant in variants:
+        payload_file = payloads_dir / f"{variant}.json"
+        if payload_file.exists():
+            logger.info(f"✓ Found payload file: {payload_file}")
+            return payload_file
+    
+    # Fallback: scan directory for files that start with the first word
+    logger.debug(f"Direct lookup failed, scanning for files starting with '{first_word}'...")
+    
+    try:
+        for file in payloads_dir.glob(f"{first_word}*.json"):
+            logger.info(f"✓ Found payload file by glob pattern: {file}")
+            return file
+    except Exception as e:
+        logger.debug(f"Error scanning payloads directory: {e}")
+    
+    logger.debug(f"No payload file found for '{company_id_or_name}'")
+    return None
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 #  Change Detection & Metadata Functions (for incremental extraction)
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -584,16 +652,30 @@ def extract_company_info(
     # Log extraction sources for validation
     log_extraction_sources("Company Info", company_name, search_queries, context_docs)
     
+    # Build list of available page types for provenance guidance
+    available_pages = list(pages_text.keys()) if pages_text else ["about", "product", "blog", "careers"]
+    page_list_str = ", ".join(available_pages)
+    
     prompt = f"""Extract company information for "{company_name}" from the following web content and context:
 
 {context_text}
 
 Return a structured Company record with all available information.
+
+IMPORTANT INSTRUCTIONS:
 - Use ONLY explicitly stated information
 - Generate company_id from the website domain (e.g., "world-labs" from "worldlabs.ai")
 - Use null for missing fields
 - Do NOT infer or guess
-- Standardize dates to YYYY-MM-DD format"""
+- Standardize dates to YYYY-MM-DD format
+
+PROVENANCE FIELD:
+- For each field extracted, create a Provenance entry with:
+  - source_url: Use ONLY these page type values: {page_list_str}
+  - crawled_at: Set to today's date in YYYY-MM-DD format
+  - snippet: A brief quote from the source supporting this field (optional)
+- Do NOT create URLs or use page names not in the list above
+- If you extract from multiple pages for one field, create multiple provenance entries"""
     
     try:
         # Use instructor's patched client with response_model
