@@ -1,0 +1,233 @@
+{
+  "company_record": {
+    "company_id": "x-ai",
+    "legal_name": "x.ai",
+    "brand_name": null,
+    "website": "https://x.ai/",
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-11",
+        "snippet": null
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-11",
+        "snippet": null
+      },
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-11",
+        "snippet": null
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "xai",
+      "occurred_on": "2025-07-09",
+      "event_type": "product_release",
+      "title": "Grok 4 Release",
+      "description": "We released Grok 4, the world's best model.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://x.ai/news",
+          "crawled_at": "2023-10-05",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "xai",
+      "occurred_on": "2025-08-28",
+      "event_type": "product_release",
+      "title": "Grok Code Fast 1",
+      "description": "Introducing grok-code-fast-1, a speedy and economical reasoning model that excels at agentic coding.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://x.ai/news",
+          "crawled_at": "2023-10-05",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "3",
+      "company_id": "xai",
+      "occurred_on": "2025-09-19",
+      "event_type": "product_release",
+      "title": "Grok 4 Fast",
+      "description": "Pushing the Frontier of Cost-Efficient Intelligence.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://x.ai/news",
+          "crawled_at": "2023-10-05",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "xai",
+      "as_of": "2023-10-25",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": [
+        "SuperGrok",
+        "Premium+",
+        "SuperGrok Heavy"
+      ],
+      "active_products": [
+        "Grok",
+        "API",
+        "Grok Enterprise"
+      ],
+      "geo_presence": [
+        "Palo Alto",
+        "Seattle",
+        "San Francisco",
+        "Tennessee",
+        "London UK"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-25",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "grok-4",
+      "company_id": "xai",
+      "name": "Grok 4",
+      "description": "Grok 4 is the most intelligent model in the world. It includes native tool use and real-time search integration.",
+      "pricing_model": null,
+      "pricing_tiers_public": [
+        "SuperGrok",
+        "Premium+",
+        "SuperGrok Heavy"
+      ],
+      "ga_date": "2025-07-09",
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "grok-code-fast-1",
+      "company_id": "xai",
+      "name": "Grok Code Fast 1",
+      "description": "A speedy and economical reasoning model that excels at agentic coding.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": "2025-08-28",
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "elon-musk",
+      "company_id": "xai",
+      "name": "Elon Musk",
+      "role": "Founder",
+      "is_founder": true,
+      "start_date": "2023-07-01",
+      "end_date": null,
+      "previous_affiliation": "Tesla, SpaceX",
+      "education": "University of Pennsylvania",
+      "linkedin": "https://www.linkedin.com/in/elonmusk",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.xai.com/about",
+          "crawled_at": "2023-10-05",
+          "snippet": "Elon Musk is the founder of xAI, starting in July 2023. He previously worked at Tesla and SpaceX. He studied at the University of Pennsylvania."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "xai",
+      "as_of": "2023-10-25",
+      "news_mentions_30d": 3,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://x.ai/news",
+          "crawled_at": "2023-10-25",
+          "snippet": "Latest news\nView all\nGrok 4 Fast\nGrok 4 Fast\nPushing the Frontier of Cost-Efficient Intelligence\nSeptember 19, 2025\nREAD\nGrok Code Fast 1\nGrok Code Fast 1\nWe're thrilled to introduce grok-code-fast-1, a speedy and economical reasoning model that excels at agentic coding.\nAugust 28, 2025\nREAD\nGrok 4\nGrok 4\nGrok 4 is the most intelligent model in the world. It includes native tool use and real-time search integration, and is available now to SuperGrok and Premium+ subscribers, as well as through the xAI API. We are also introducing a new SuperGrok Heavy tier with access to Grok 4 Heavy - the most powerful version of Grok 4.\nJuly 09, 2025\nREAD"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:42:25.782144",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

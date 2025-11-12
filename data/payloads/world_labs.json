@@ -1,0 +1,229 @@
+{
+  "company_record": {
+    "company_id": "world-labs",
+    "legal_name": "WORLD LABS TECHNOLOGIES",
+    "brand_name": null,
+    "website": null,
+    "hq_city": "San Francisco",
+    "hq_state": "CA",
+    "hq_country": "USA",
+    "founded_year": null,
+    "categories": [
+      "Artificial Intelligence"
+    ],
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-10",
+        "snippet": "© 2024 WORLD LABS TECHNOLOGIES San Francisco, CA"
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-10",
+        "snippet": "World Labs HQ • San Francisco Office (HQ) • Full time"
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-10",
+        "snippet": "At World Labs, our mission is to revolutionize artificial intelligence by developing Large World Models"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "world_labs",
+      "occurred_on": "2024-12-02",
+      "event_type": "product_release",
+      "title": "Generating Worlds",
+      "description": "Sharing our first step towards spatial intelligence: an AI system that generates 3D worlds from a single image.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "2",
+      "company_id": "world_labs",
+      "occurred_on": "2025-10-16",
+      "event_type": "product_release",
+      "title": "RTFM: A Real-Time Frame Model",
+      "description": "A research preview of RTFM, a new generative world model that generates video in real-time as you interact with it.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "3",
+      "company_id": "world_labs",
+      "occurred_on": "2024-01-01",
+      "event_type": "funding",
+      "title": "World Labs Funding",
+      "description": "Raised more than $230M in total funding led by Martin Casado and Sarah Wang of Andreessen Horowitz.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": 230000000.0,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "world_labs",
+      "as_of": "2023-10-06",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": 6,
+      "engineering_openings": 6,
+      "sales_openings": null,
+      "hiring_focus": [
+        "Research Scientist – 3D",
+        "Research Scientist – Generative Modeling",
+        "Senior Product Engineer",
+        "Research Engineer – 3D Reconstruction and Rendering",
+        "Research Engineer – Machine Learning & Systems",
+        "Infrastructure / Backend Engineer"
+      ],
+      "pricing_tiers": null,
+      "active_products": [
+        "Large World Models"
+      ],
+      "geo_presence": [
+        "San Francisco, CA"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers] World Labs Jobs",
+          "crawled_at": "2023-10-06",
+          "snippet": "At World Labs, our mission is to revolutionize artificial intelligence by developing Large World Models, taking AI beyond language and 2D visuals into the realm of complex 3D environments, both virtual and real."
+        },
+        {
+          "source_url": "[product] World Labs",
+          "crawled_at": "2023-10-06",
+          "snippet": "We are a spatial intelligence company building Large World Models to perceive, generate, and interact with the 3D world."
+        },
+        {
+          "source_url": "[about] World Labs",
+          "crawled_at": "2023-10-06",
+          "snippet": "World Labs was founded by visionary AI pioneer Fei-Fei Li along with Justin Johnson, Christoph Lassner, and Ben Mildenhall; each a world-renowned technologist in computer vision and graphics."
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "world_labs",
+      "name": "Large World Models",
+      "description": "Spatial intelligence AI models to perceive, generate, and interact with the 3D world.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://worldlabs.com/about",
+          "crawled_at": "2024-12-02",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "fei-fei-li",
+      "company_id": "world_labs",
+      "name": "Fei-Fei Li",
+      "role": "Co-Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "person_id": "justin-johnson",
+      "company_id": "world_labs",
+      "name": "Justin Johnson",
+      "role": "Co-Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "person_id": "christoph-lassner",
+      "company_id": "world_labs",
+      "name": "Christoph Lassner",
+      "role": "Co-Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "person_id": "ben-mildenhall",
+      "company_id": "world_labs",
+      "name": "Ben Mildenhall",
+      "role": "Co-Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "world_labs",
+      "as_of": "2023-10-21",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:41:46.978476",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}
