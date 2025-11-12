@@ -19,17 +19,17 @@
     "provenance": [
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-25",
+        "crawled_at": "2023-10-06",
         "snippet": "Fireworks AI | Careers"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-25",
+        "crawled_at": "2023-10-06",
         "snippet": "Fireworks AI - Fastest Inference for Generative AI"
       },
       {
         "source_url": "product",
-        "crawled_at": "2023-10-25",
+        "crawled_at": "2023-10-06",
         "snippet": "Fireworks AI - Fastest Inference for Generative AI"
       }
     ]
@@ -82,12 +82,76 @@
       "tags": null,
       "schema_version": "2.0.0",
       "provenance": []
+    },
+    {
+      "event_id": "4",
+      "company_id": "fireworks_ai",
+      "occurred_on": "2024-12-08",
+      "event_type": "product_release",
+      "title": "Fireworks f1: A breakthrough in complex reasoning with Compound AI",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "5",
+      "company_id": "fireworks_ai",
+      "occurred_on": "2024-03-08",
+      "event_type": "product_release",
+      "title": "Fireworks Platform Spring 2024 Updates",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "6",
+      "company_id": "fireworks_ai",
+      "occurred_on": "2024-03-01",
+      "event_type": "product_release",
+      "title": "FireFunction V1 - Fireworks’ GPT-4-level function calling model - 4x faster than GPT-4 and open weights",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "7",
+      "company_id": "fireworks_ai",
+      "occurred_on": "2024-05-06",
+      "event_type": "partnership",
+      "title": "Partnering with Meta to bring Llama 3 to Firework’s inference and fine-tuning",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
     }
   ],
   "snapshots": [
     {
       "company_id": "fireworks_ai",
-      "as_of": "2023-10-17",
+      "as_of": "2023-11-03",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -97,36 +161,18 @@
       "pricing_tiers": null,
       "active_products": [
         "Fireworks RFT",
-        "Generative AI",
-        "AI Cloud",
-        "DeepSeek",
-        "Qwen3",
-        "gptOSS",
-        "Kimi K2"
+        "Platform",
+        "Models",
+        "Developers"
       ],
       "geo_presence": null,
       "confidence": 0.9,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers] Fireworks AI | Careers",
-          "crawled_at": "2023-10-17",
-          "snippet": null
-        },
-        {
-          "source_url": "[product] Fireworks AI - Fastest Inference for Generative AI",
-          "crawled_at": "2023-10-17",
-          "snippet": null
-        },
-        {
-          "source_url": "[about] Fireworks AI - Fastest Inference for Generative AI",
-          "crawled_at": "2023-10-17",
-          "snippet": null
-        },
-        {
-          "source_url": "[product] Get started",
-          "crawled_at": "2023-10-17",
-          "snippet": null
+          "source_url": "https://fireworks.ai",
+          "crawled_at": "2023-11-03",
+          "snippet": "Fireworks AI - Fastest Inference for Generative AI. Fireworks RFT now available! Fine-tune open models that outperform frontier models. Try today."
         }
       ]
     }
@@ -148,7 +194,7 @@
       "provenance": [
         {
           "source_url": "[product] Fireworks AI - Fastest Inference for Generative AI",
-          "crawled_at": "2023-10-09",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -169,28 +215,7 @@
       "provenance": [
         {
           "source_url": "[about] Get started",
-          "crawled_at": "2023-10-09",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "ai_native",
-      "company_id": "fireworks_ai",
-      "name": "AI Native",
-      "description": "Day-0 support for the latest open models, including DeepSeek, Qwen3, gptOSS, and Kimi K2.",
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[product] Get started",
-          "crawled_at": "2023-10-09",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -261,7 +286,7 @@
   "visibility": [
     {
       "company_id": "fireworks_ai",
-      "as_of": "2023-11-02",
+      "as_of": "2023-10-25",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -269,28 +294,23 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/blog",
-          "crawled_at": "2023-11-02",
-          "snippet": "How Cresta drives millions of real-time, AI-powered contact center interactions with Fireworks"
-        },
-        {
-          "source_url": "https://example.com/blog",
-          "crawled_at": "2023-11-02",
+          "source_url": "https://example.com/blog1",
+          "crawled_at": "2023-10-25",
           "snippet": "Fireworks and AMD partner to power the next gen of AI infrastructure on AMD Instinct™ GPUs"
         },
         {
-          "source_url": "https://example.com/blog",
-          "crawled_at": "2023-11-02",
+          "source_url": "https://example.com/blog2",
+          "crawled_at": "2023-10-25",
           "snippet": "Fireworks Raises the Quality Bar with Function Calling Model and API Release"
         },
         {
-          "source_url": "https://example.com/blog",
-          "crawled_at": "2023-11-02",
+          "source_url": "https://example.com/blog3",
+          "crawled_at": "2023-10-25",
           "snippet": "Fireworks Real-World Benchmarks: Find the Best OSS Model for the Job"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:25:29.485187",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:24:42.743439",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

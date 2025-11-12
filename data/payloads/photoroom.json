@@ -2,7 +2,7 @@
   "company_record": {
     "company_id": "photoroom",
     "legal_name": "Photoroom, Inc.",
-    "brand_name": null,
+    "brand_name": "Photoroom",
     "website": null,
     "hq_city": null,
     "hq_state": null,
@@ -17,11 +17,16 @@
     "last_round_name": null,
     "last_round_date": null,
     "schema_version": "2.0.0",
-    "as_of": null,
+    "as_of": "2023-10-05",
     "provenance": [
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-09",
+        "crawled_at": "2023-10-05",
+        "snippet": "Photoroom was part of the 2020 YC cohort, and has since become the world's most popular AI photo editor."
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-05",
         "snippet": "Photoroom was part of the 2020 YC cohort, and has since become the world's most popular AI photo editor."
       }
     ]
@@ -30,10 +35,10 @@
     {
       "event_id": "1",
       "company_id": "photoroom",
-      "occurred_on": "2024-01-01",
-      "event_type": "benchmark",
-      "title": "Photoroom reached 300M users",
-      "description": "Photoroom featured on This Week in Startups: Our journey to 300M users",
+      "occurred_on": "2020-01-01",
+      "event_type": "other",
+      "title": "Photoroom part of 2020 YC cohort",
+      "description": "Photoroom was part of the 2020 YC cohort, and has since become the world's most popular AI photo editor.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -43,8 +48,30 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://photoroom.com/updates",
-          "crawled_at": "2024-01-01",
+          "source_url": "https://www.photoroom.com/about",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "photoroom",
+      "occurred_on": "2023-01-01",
+      "event_type": "benchmark",
+      "title": "Photoroom featured on This Week in Startups",
+      "description": "Photoroom's journey to 300M users was featured on This Week in Startups.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com/about",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -53,7 +80,7 @@
   "snapshots": [
     {
       "company_id": "photoroom",
-      "as_of": "2023-11-01",
+      "as_of": "2023-10-06",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -73,23 +100,18 @@
         "AI product photography"
       ],
       "geo_presence": null,
-      "confidence": null,
+      "confidence": 0.9,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers] Photoroom Jobs",
-          "crawled_at": "2023-11-01",
-          "snippet": "Photoroom was part of the 2020 YC cohort, and has since become the world's most popular AI photo editor."
-        },
-        {
           "source_url": "[product] What is the price of Photoroom?",
-          "crawled_at": "2023-11-01",
-          "snippet": "Photoroom offers a free version with basic features. However, for access to advanced functionalities such as HD quality, resizing, batch mode, and AI image generation, consider upgrading to our Pro plan."
+          "crawled_at": "2023-10-06",
+          "snippet": null
         },
         {
-          "source_url": "[about] About Photoroom | Photoroom",
-          "crawled_at": "2023-11-01",
-          "snippet": "Product\nSolutions\nResources\nEnterprise\nPricing\nContact sales\nLog in\nStart creating\nCreate\nBackground remover\nImage generator\nVirtual model\nProduct staging\nBackground generator\nAI product photography\nSee all"
+          "source_url": "[product] AI Photo Editor - Free Photo Editing Tools | Photoroom",
+          "crawled_at": "2023-10-06",
+          "snippet": null
         }
       ]
     }
@@ -99,11 +121,11 @@
       "product_id": "1",
       "company_id": "photoroom",
       "name": "Photoroom Pro",
-      "description": "Photoroom offers a Pro plan with advanced functionalities such as HD quality, resizing, batch mode, and AI image generation.",
+      "description": "Photoroom Pro offers advanced functionalities such as HD quality, resizing, batch mode, and AI image generation.",
       "pricing_model": "tiered",
       "pricing_tiers_public": [
-        "Free version with basic features",
-        "Pro plan with advanced features"
+        "Free",
+        "Pro"
       ],
       "ga_date": null,
       "integration_partners": [
@@ -115,55 +137,161 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://photoroom.com",
-          "crawled_at": "2023-10-05",
-          "snippet": null
-        }
-      ]
-    }
-  ],
-  "leadership": [
-    {
-      "person_id": "matt",
-      "company_id": "photoroom",
-      "name": "Matt",
-      "role": "Cofounder",
-      "is_founder": true,
-      "start_date": null,
-      "end_date": null,
-      "previous_affiliation": null,
-      "education": null,
-      "linkedin": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "person_id": "eliot",
+      "product_id": "2",
       "company_id": "photoroom",
-      "name": "Eliot",
-      "role": "Cofounder",
-      "is_founder": true,
-      "start_date": null,
-      "end_date": null,
-      "previous_affiliation": null,
-      "education": null,
-      "linkedin": null,
+      "name": "Magic Retouch",
+      "description": "Remove unwanted people or objects in your image with one swipe.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "3",
+      "company_id": "photoroom",
+      "name": "Instant Shadows",
+      "description": "Use the power of AI to generate realistic, studio-quality shadows instantly.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "4",
+      "company_id": "photoroom",
+      "name": "AI Expand",
+      "description": "Repurpose your photo material or recover objects outside the frame.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "5",
+      "company_id": "photoroom",
+      "name": "Curved Text",
+      "description": "Add curved text to your visuals in minutes.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "6",
+      "company_id": "photoroom",
+      "name": "Signature Maker",
+      "description": "Snap a picture of your signature and remove the background.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "7",
+      "company_id": "photoroom",
+      "name": "Outline Your Image",
+      "description": "Add a cool outline to your picture to create printable stickers.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "8",
+      "company_id": "photoroom",
+      "name": "Black and White Filter",
+      "description": "Convert your pictures to black and white.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     }
   ],
+  "leadership": [],
   "visibility": [
     {
       "company_id": "photoroom",
@@ -173,15 +301,9 @@
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://www.photoroom.com/about",
-          "crawled_at": "2023-10-06",
-          "snippet": "Photoroom featured on This Week in Startups: Our journey to 300M users"
-        }
-      ]
+      "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:34:08.021720",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:34:39.652671",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

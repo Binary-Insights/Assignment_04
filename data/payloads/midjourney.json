@@ -15,116 +15,46 @@
     "last_round_name": null,
     "last_round_date": null,
     "schema_version": "2.0.0",
-    "as_of": null,
+    "as_of": "2023-10-06",
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-01",
+        "crawled_at": "2023-10-06",
         "snippet": "Midjourney is an independent research lab exploring new mediums of thought and expanding the imaginative powers of the human species."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-01",
+        "crawled_at": "2023-10-06",
         "snippet": "We are a small self-funded team focused on design, human infrastructure, and AI."
       },
       {
         "source_url": "blog",
-        "crawled_at": "2023-10-01",
+        "crawled_at": "2023-10-06",
         "snippet": null
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-01",
+        "crawled_at": "2023-10-06",
         "snippet": null
       },
       {
         "source_url": "product",
-        "crawled_at": "2023-10-01",
+        "crawled_at": "2023-10-06",
         "snippet": null
       }
     ]
   },
-  "events": [
-    {
-      "event_id": "1",
-      "company_id": "midjourney",
-      "occurred_on": "2023-09-15",
-      "event_type": "product_release",
-      "title": "Midjourney AI Art Generator Launch",
-      "description": "Midjourney launched its AI art generator tool, expanding its offerings in the creative AI space.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://www.example.com/midjourney-launch",
-          "crawled_at": "2023-09-16",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "2",
-      "company_id": "midjourney",
-      "occurred_on": "2023-08-01",
-      "event_type": "partnership",
-      "title": "Partnership with Creative Labs",
-      "description": "Midjourney announced a strategic partnership with Creative Labs to enhance AI-driven creative solutions.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://www.example.com/midjourney-partnership",
-          "crawled_at": "2023-08-02",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "3",
-      "company_id": "midjourney",
-      "occurred_on": "2023-07-10",
-      "event_type": "leadership_change",
-      "title": "New CTO Appointment",
-      "description": "Midjourney appointed Jane Doe as the new Chief Technology Officer to lead the tech innovations.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://www.example.com/midjourney-cto",
-          "crawled_at": "2023-07-11",
-          "snippet": null
-        }
-      ]
-    }
-  ],
+  "events": [],
   "snapshots": [
     {
       "company_id": "midjourney",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-11",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
       "engineering_openings": null,
       "sales_openings": null,
-      "hiring_focus": [
-        "humanist infrastructure",
-        "amplifying the human mind and spirit"
-      ],
+      "hiring_focus": null,
       "pricing_tiers": null,
       "active_products": null,
       "geo_presence": null,
@@ -132,16 +62,16 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "www.midjourney.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "We're a small, self-funded, fully-distributed team and we're actively hiring!"
+          "source_url": "https://www.midjourney.com",
+          "crawled_at": "2023-10-11",
+          "snippet": "Midjourney is an independent research lab exploring new mediums of thought and expanding the imaginative powers of the human species. We are a small self-funded team focused. We're a small, self-funded, fully-distributed team and we're actively hiring!"
         }
       ]
     }
   ],
   "products": [
     {
-      "product_id": "midjourney-product-1",
+      "product_id": "1",
       "company_id": "midjourney",
       "name": "Midjourney",
       "description": "Midjourney is an independent research lab exploring new mediums of thought and expanding the imaginative powers of the human species.",
@@ -156,7 +86,7 @@
       "provenance": [
         {
           "source_url": "https://www.midjourney.com",
-          "crawled_at": "2023-10-06T12:00:00Z",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -171,14 +101,14 @@
       "is_founder": true,
       "start_date": null,
       "end_date": null,
-      "previous_affiliation": "Founder Leap Motion, Researcher at NASA, Max Planck",
+      "previous_affiliation": "Leap Motion, NASA, Max Planck",
       "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "https://www.midjourney.com/about",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-10",
           "snippet": "David Holz Previously: Founder Leap Motion, Researcher at NASA, Max Planck"
         }
       ]
@@ -198,7 +128,7 @@
       "provenance": [
         {
           "source_url": "https://www.midjourney.com/about",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-10",
           "snippet": "Jim Keller Lead Silicon at Apple, AMD, Tesla, Intel, Coauthor X86-64, CTO Tenstorrent"
         }
       ]
@@ -218,7 +148,7 @@
       "provenance": [
         {
           "source_url": "https://www.midjourney.com/about",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-10",
           "snippet": "Nat Friedman CEO Github, Chairman of GNOME Foundation"
         }
       ]
@@ -238,7 +168,7 @@
       "provenance": [
         {
           "source_url": "https://www.midjourney.com/about",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-10",
           "snippet": "Philip Rosedale Founder of"
         }
       ]
@@ -247,7 +177,7 @@
   "visibility": [
     {
       "company_id": "midjourney",
-      "as_of": "2023-10-19",
+      "as_of": "2023-10-22",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -256,12 +186,12 @@
       "provenance": [
         {
           "source_url": "https://www.midjourney.com",
-          "crawled_at": "2023-10-19",
+          "crawled_at": "2023-10-22",
           "snippet": null
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:33:32.068384",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:30:02.100897",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

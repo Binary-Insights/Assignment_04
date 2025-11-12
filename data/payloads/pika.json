@@ -40,15 +40,24 @@
       "company_id": "pika",
       "occurred_on": "2024-06-05",
       "event_type": "funding",
-      "title": "Pika raises $80M, so anyone can make video on command.",
-      "description": "Pika raised an $80M series B, bringing total funding to $135M. Investors include Greycroft, Lightspeed, Neo, Makers Fund, and Jared Leto.",
+      "title": "Pika raises $80M Series B",
+      "description": "Pika raised an $80M Series B round, bringing total funding to $135M. Investors include Greycroft, Lightspeed, Neo, Makers Fund, Jared Leto, Karim Atiyeh, Aaron Levie, Andrej Karpathy, Aravind Srinivas, Clem Delangue, Alex Chung, Mateusz Staniszewski, Conviction, and SV Angel.",
       "round_name": "Series B",
       "investors": [
         "Greycroft",
         "Lightspeed",
         "Neo",
         "Makers Fund",
-        "Jared Leto"
+        "Jared Leto",
+        "Karim Atiyeh",
+        "Aaron Levie",
+        "Andrej Karpathy",
+        "Aravind Srinivas",
+        "Clem Delangue",
+        "Alex Chung",
+        "Mateusz Staniszewski",
+        "Conviction",
+        "SV Angel"
       ],
       "amount_usd": 80000000.0,
       "valuation_usd": null,
@@ -67,7 +76,7 @@
   "snapshots": [
     {
       "company_id": "pika",
-      "as_of": "2023-11-03",
+      "as_of": "2023-10-11",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -86,13 +95,13 @@
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2023-11-03",
-          "snippet": "Our headquarters are located in Palo Alto, CA. Apply for open roles At Pika, we champion an inclusive culture where every individual is embraced, irrespective of gender identity, orientation, or expression. Our dedication is to dismantle exclusivity"
+          "crawled_at": "2023-10-11",
+          "snippet": "Our headquarters are located in Palo Alto, CA."
         },
         {
-          "source_url": "[about]",
-          "crawled_at": "2023-11-03",
-          "snippet": "Reality sucks. So we’re giving you the option to change it. Hate it? Deflate it. Wanna stop it? Just swap it. Try new Pikapocaylpse Pikaffects, available now. We’re hiring across different roles!"
+          "source_url": "[product]",
+          "crawled_at": "2023-10-11",
+          "snippet": "Try new Pikapocaylpse Pikaffects, available now."
         }
       ]
     }
@@ -101,7 +110,7 @@
     {
       "product_id": "pika_pikapocalypse",
       "company_id": "pika",
-      "name": "Pikapocalypse",
+      "name": "Pikapocalypse Pikaffects",
       "description": "Reality sucks. So we’re giving you the option to change it. Hate it? Deflate it. Wanna stop it? Just swap it. Try new Pikapocaylpse Pikaffects, available now.",
       "pricing_model": null,
       "pricing_tiers_public": null,
@@ -114,7 +123,7 @@
       "provenance": [
         {
           "source_url": "[product] Pika",
-          "crawled_at": "2023-10-05",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -125,7 +134,7 @@
       "person_id": "demi",
       "company_id": "pika",
       "name": "Demi",
-      "role": "Founder",
+      "role": "Co-Founder",
       "is_founder": true,
       "start_date": null,
       "end_date": null,
@@ -135,8 +144,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[blog] And we’d be remiss if we didn’t close this post with love and appreciation for our community of creators, of all kinds. Your ideas are what fuel Pika, and what drive us to make it better. - Demi & Chenlin Photo credit: Lauren Segal Be the first to he",
-          "crawled_at": "2023-10-10",
+          "source_url": "[blog]",
+          "crawled_at": "2024-06-05",
           "snippet": null
         }
       ]
@@ -145,7 +154,7 @@
       "person_id": "chenlin",
       "company_id": "pika",
       "name": "Chenlin",
-      "role": "Founder",
+      "role": "Co-Founder",
       "is_founder": true,
       "start_date": null,
       "end_date": null,
@@ -155,8 +164,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[blog] And we’d be remiss if we didn’t close this post with love and appreciation for our community of creators, of all kinds. Your ideas are what fuel Pika, and what drive us to make it better. - Demi & Chenlin Photo credit: Lauren Segal Be the first to he",
-          "crawled_at": "2023-10-10",
+          "source_url": "[blog]",
+          "crawled_at": "2024-06-05",
           "snippet": null
         }
       ]
@@ -165,8 +174,8 @@
   "visibility": [
     {
       "company_id": "pika",
-      "as_of": "2023-10-06",
-      "news_mentions_30d": null,
+      "as_of": "2023-10-07",
+      "news_mentions_30d": 1,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
@@ -174,22 +183,12 @@
       "provenance": [
         {
           "source_url": "https://example.com/blog",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-07",
           "snippet": "Pika raises $80M, so anyone can make video on command."
-        },
-        {
-          "source_url": "https://example.com/careers",
-          "crawled_at": "2023-10-06",
-          "snippet": "Our headquarters are located in Palo Alto, CA."
-        },
-        {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-06",
-          "snippet": "Reality sucks. So we’re giving you the option to change it."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:34:39.319479",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:35:09.554635",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

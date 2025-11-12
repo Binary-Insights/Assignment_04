@@ -1,18 +1,24 @@
 ## Company Overview
 
-Decagon is a private company operating in the sectors of Media, Telecommunication, and Health & Wellness. The company is known for its enterprise-grade solutions, which are trusted by industry leaders, including those in highly regulated industries.
+Decagon is a private company operating in the sectors of Media, Telecommunication, and Resources. The company is involved in developing AI-driven solutions, particularly focusing on enhancing customer support and service experiences.
 
 ## Business Model and GTM
 
-Decagon offers products such as "Agent Assist" and an "AI agent engine." "Agent Assist" is designed to enhance human agents' efficiency by automating routine tasks and learning from expert interactions. The "AI agent engine" serves as a comprehensive platform for delivering intelligent and context-rich customer experiences. The company states that its solutions are secure by design and aim to provide high-performance, automated customer support.
+Decagon offers two main products: 
+- **Agent Assist**: An AI copilot designed to automate routine tasks, draft customer responses, and learn from real-world interactions.
+- **AI Agent Engine**: A platform that provides intelligent, context-rich customer experiences through a self-improving data flywheel.
+
+The company states that its products are secure by design and aim to supercharge human agents by automating mundane tasks and improving customer service efficiency.
 
 ## Funding & Investor Profile
 
-Decagon has raised a total of $100 million in funding. This includes a $65 million Series B round led by Bain Capital Ventures and a $35 million Series A round from Accel and a16z. These investments are aimed at expanding the company's AI capabilities for enterprise applications.
+Decagon has raised a total of $100 million in funding. The funding rounds include:
+- A $65 million Series B led by Bain Capital Ventures.
+- A $35 million Series A from Accel and a16z.
 
 ## Growth Momentum
 
-Decagon has expanded its geographical presence by opening new offices in London and New York. The company has also formed strategic partnerships with OpenAI and Claude to enhance its customer support offerings.
+Decagon is expanding its geographical presence with new offices in London and New York. The company has also formed strategic partnerships with OpenAI and Claude to enhance its customer support capabilities.
 
 ## Visibility & Market Sentiment
 
@@ -24,11 +30,11 @@ Not disclosed.
 
 ## Outlook
 
-The company is positioned to leverage its AI-driven solutions to cater to enterprise needs across multiple sectors. With significant funding and strategic partnerships, Decagon is likely to continue its growth trajectory and expand its market presence.
+The company is poised for growth with its recent funding and strategic partnerships. The expansion into new markets and the development of AI-driven customer support solutions position Decagon as a competitive player in the Media, Telecommunication, and Resources sectors.
 
 ## Disclosure Gaps
 
 - Specific dates for funding rounds and office openings are not disclosed.
-- Detailed information on leadership, beyond the mention of "Cynthia," is not provided.
+- Detailed information on leadership beyond the mention of "Cynthia" is not provided.
 - Visibility and market sentiment data are not available.
-- Risks and challenges facing the company are not disclosed.
+- Risks and challenges faced by the company are not disclosed.

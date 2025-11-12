@@ -15,34 +15,79 @@
     "last_round_name": null,
     "last_round_date": null,
     "schema_version": "2.0.0",
-    "as_of": "2023-10-11",
+    "as_of": "2023-10-06",
     "provenance": [
       {
         "source_url": "blog",
-        "crawled_at": "2023-10-11",
+        "crawled_at": "2023-10-06",
         "snippet": "© 2025 Anysphere, Inc."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-11",
+        "crawled_at": "2023-10-06",
         "snippet": "© 2025 Anysphere, Inc."
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-11",
+        "crawled_at": "2023-10-06",
         "snippet": "© 2025 Anysphere, Inc."
       }
     ]
   },
-  "events": [],
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "anysphere",
+      "occurred_on": "2025-11-06",
+      "event_type": "product_release",
+      "title": "Introducing Cursor for Enterprise",
+      "description": "Cursor is used by tens of thousands of enterprises, including Salesforce, NVIDIA, and PwC, to accelerate product velocity and build durable software.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.anysphere.com/blog",
+          "crawled_at": "2025-11-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "anysphere",
+      "occurred_on": "2025-10-31",
+      "event_type": "product_release",
+      "title": "Cloud Agents",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.anysphere.com/blog",
+          "crawled_at": "2025-10-31",
+          "snippet": null
+        }
+      ]
+    }
+  ],
   "snapshots": [
     {
       "company_id": "anysphere",
-      "as_of": "2023-11-01",
+      "as_of": "2023-10-11",
       "headcount_total": null,
       "headcount_growth_pct": null,
-      "job_openings_count": 3,
-      "engineering_openings": 1,
+      "job_openings_count": 9,
+      "engineering_openings": 5,
       "sales_openings": null,
       "hiring_focus": [
         "Engineering",
@@ -51,7 +96,6 @@
       ],
       "pricing_tiers": null,
       "active_products": [
-        "Features",
         "Enterprise",
         "Bugbot",
         "CLI",
@@ -60,19 +104,30 @@
       "geo_presence": [
         "SF",
         "NY",
-        "Remote"
+        "Remote",
+        "San Francisco"
       ],
       "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2023-11-01",
+          "crawled_at": "2023-10-11",
+          "snippet": null
+        },
+        {
+          "source_url": "[product]",
+          "crawled_at": "2023-10-11",
           "snippet": null
         },
         {
           "source_url": "[about]",
-          "crawled_at": "2023-11-01",
+          "crawled_at": "2023-10-11",
+          "snippet": null
+        },
+        {
+          "source_url": "[blog]",
+          "crawled_at": "2023-10-11",
           "snippet": null
         }
       ]
@@ -83,19 +138,21 @@
       "product_id": "cursor",
       "company_id": "anysphere",
       "name": "Cursor",
-      "description": "Cursor is a product by Anysphere that can be downloaded for Windows and macOS.",
+      "description": "The best way to build software. Powerful, yet customizable. Standardize your engineering team on the same tools and best practices. Use Cursor to catch real bugs and security issues before they make it into production.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": null,
+      "reference_customers": [
+        "Optiver"
+      ],
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided content",
-          "crawled_at": "2023-10-01",
+          "source_url": "https://cursor.com",
+          "crawled_at": "2025-08-29",
           "snippet": null
         }
       ]
@@ -103,42 +160,102 @@
   ],
   "leadership": [
     {
-      "person_id": "michael-zhong",
+      "person_id": "cody-de-arkland",
       "company_id": "anysphere",
-      "name": "Michael Zhong",
-      "role": "Co-Founder",
-      "is_founder": true,
-      "start_date": "2022-01-01",
+      "name": "Cody De Arkland",
+      "role": "Senior Director",
+      "is_founder": false,
+      "start_date": null,
       "end_date": null,
-      "previous_affiliation": "Software Engineer at Google",
-      "education": "Bachelor's in Computer Science, MIT",
-      "linkedin": "https://www.linkedin.com/in/michaelzhong",
+      "previous_affiliation": "Sentry",
+      "education": null,
+      "linkedin": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.anysphere.com/about",
-          "crawled_at": "2023-10-15",
-          "snippet": "Michael Zhong, Co-Founder of Anysphere, previously a Software Engineer at Google. Holds a Bachelor's in Computer Science from MIT."
+          "source_url": "[about]",
+          "crawled_at": "2025-10-01",
+          "snippet": null
         }
       ]
     },
     {
-      "person_id": "emily-tan",
+      "person_id": "patrick-collison",
       "company_id": "anysphere",
-      "name": "Emily Tan",
-      "role": "CTO",
-      "is_founder": false,
-      "start_date": "2023-03-01",
+      "name": "Patrick Collison",
+      "role": "Co-Founder & CEO",
+      "is_founder": true,
+      "start_date": null,
       "end_date": null,
-      "previous_affiliation": "CTO at Tech Innovators",
-      "education": "Master's in Electrical Engineering, Stanford University",
-      "linkedin": "https://www.linkedin.com/in/emilytan",
+      "previous_affiliation": "Stripe",
+      "education": null,
+      "linkedin": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.anysphere.com/about",
-          "crawled_at": "2023-10-15",
-          "snippet": "Emily Tan, CTO of Anysphere, joined in March 2023. Previously CTO at Tech Innovators. Holds a Master's in Electrical Engineering from Stanford University."
+          "source_url": "[about]",
+          "crawled_at": "2025-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "jensen-huang",
+      "company_id": "anysphere",
+      "name": "Jensen Huang",
+      "role": "President & CEO",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": "NVIDIA",
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about]",
+          "crawled_at": "2025-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "brian-armstrong",
+      "company_id": "anysphere",
+      "name": "Brian Armstrong",
+      "role": "CEO",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": "Coinbase",
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about]",
+          "crawled_at": "2025-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "albert-strasheim",
+      "company_id": "anysphere",
+      "name": "Albert Strasheim",
+      "role": "CTO",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": "Rippling",
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about]",
+          "crawled_at": "2025-10-01",
+          "snippet": null
         }
       ]
     }
@@ -155,6 +272,6 @@
       "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:26:28.503383",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:16:50.908720",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

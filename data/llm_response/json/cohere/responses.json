@@ -4,21 +4,21 @@
     "company_name": "Cohere",
     "company_slug": "cohere",
     "pipeline_type": "structured",
-    "timestamp": "2025-11-12T02:55:27.468747Z",
+    "timestamp": "2025-11-12T22:59:18.342891Z",
     "markdown_file": "markdown/cohere/structured.md",
-    "content": "## Company Overview\n\nCohere, legally known as Cohere, was founded in 2019 and is headquartered in Toronto, Canada. The company was established with the vision to scale intelligence to serve humanity. Cohere has a strong Canadian identity and has expanded its operations internationally.\n\n## Business Model and GTM\n\nCohere offers a suite of AI products aimed at enhancing enterprise productivity and business insights. Their product lineup includes:\n\n- **Workplace Systems**: An enterprise-ready AI platform for modern workplace productivity.\n- **North**: Similar to Workplace Systems, designed for enterprise productivity.\n- **Compass**: An intelligent search and discovery system for surfacing business insights.\n- **Command**: A family of generative models.\n- **Command A Vision**: A multimodal AI built for business.\n\nThe company states that it is focused on boosting enterprise AI through partnerships and product innovations.\n\n## Funding & Investor Profile\n\nCohere has raised a total of $1 billion USD through four major funding rounds (Series A through D) between 2021 and 2024. A notable funding event includes raising $500 million at a $6.8 billion valuation to accelerate enterprise efficiency with agentic AI.\n\n## Growth Momentum\n\nCohere has demonstrated growth through strategic funding and international expansion. The opening of a Paris office as an EMEA hub signifies its commitment to expanding its market presence. Additionally, the company has deepened its partnership with the Government of Canada and launched the Cohere Partner Program to enhance enterprise AI capabilities.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nCohere is positioned to continue its growth trajectory with a strong funding background and strategic partnerships. The company's focus on enterprise AI and international expansion suggests a positive outlook for future developments.\n\n## Disclosure Gaps\n\n- Specific dates for funding events, office openings, partnerships, and product releases are not disclosed.\n- Details on market sentiment and specific risks and challenges are not provided.\n- Information on the roles of leadership members Geoffrey Hinton and Kosta Starostin is not disclosed.\n- Visibility and market presence details are not available."
+    "content": "## Company Overview\n\nCohere, legally known as Cohere, is a private AI startup headquartered in Toronto, Canada. The company was founded in 2019 with a vision to scale intelligence to serve humanity. Cohere has established itself as a significant player in the AI industry, particularly in developing enterprise-ready AI platforms and generative models.\n\n## Business Model and GTM\n\nCohere's business model focuses on providing AI solutions that enhance workplace productivity and business insights. Their product lineup includes:\n\n- **Workplace Systems**: An enterprise-ready AI platform for modern workplace productivity.\n- **North**: Another enterprise-ready AI platform for workplace productivity.\n- **Compass**: An intelligent search and discovery system for business insights.\n- **Generative Models**: Command A Reasoning, offering enterprise-grade control for AI agents.\n- **Command**: A family of generative models.\n\nThe company states that it aims to accelerate enterprise efficiency with agentic AI, indicating a focus on enterprise clients and partnerships, such as their collaboration with the Government of Canada to reshape financial services.\n\n## Funding & Investor Profile\n\nCohere has raised a total of $1 billion USD through four major funding rounds (Series A through D) between 2021 and 2024. A notable funding event includes raising $500 million at a $6.8 billion valuation, underscoring strong investor confidence and significant financial backing.\n\n## Growth Momentum\n\nCohere is expanding its global presence, as evidenced by the opening of a new office in Paris, which will serve as their EMEA hub. This expansion aligns with their strategy to deepen partnerships and enhance their market reach.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nCohere appears to be on a growth trajectory, with substantial funding and strategic partnerships that position it well in the AI industry. The company's focus on enterprise solutions and international expansion suggests a positive outlook for continued growth and market penetration.\n\n## Disclosure Gaps\n\n- Specific dates for events such as funding rounds, partnerships, and office openings are not disclosed.\n- Detailed information on market presence and sentiment is not available.\n- Risks and challenges facing the company are not disclosed.\n- Leadership roles and responsibilities are not specified."
   },
   "rag": {
     "company_name": "Cohere",
     "company_slug": "cohere",
     "pipeline_type": "rag",
-    "timestamp": "2025-11-12T02:55:44.680173Z",
+    "timestamp": "2025-11-12T23:02:14.087335Z",
     "markdown_file": "markdown/cohere/rag.md",
-    "content": "## Company Overview\n\nCohere is a private AI startup founded in 2019 in Toronto, Canada. The company focuses on creating cutting-edge foundation models and secure AI solutions for enterprises worldwide. Cohere's mission is to enhance human judgment and accelerate execution through AI, aiming to solve real-world business problems. The company operates with over 450 employees across 25 countries and maintains 7 global offices.\n\n## Business Model and GTM\n\nCohere offers a range of AI products and solutions, including high-performance language models, multilingual models, and advanced retrieval tools. Their product suite includes platforms like North, Compass, and Command, which are designed to enhance workplace productivity and provide intelligent search and discovery systems. The company targets various industries, including financial services, healthcare, manufacturing, and the public sector, emphasizing secure and scalable AI solutions that integrate seamlessly with existing systems.\n\n## Funding & Investor Profile\n\nBetween 2021 and 2024, Cohere secured four major funding rounds (Series A through D), raising nearly $1 billion. This financial backing has facilitated the company's global expansion and the development of advanced AI models. Specific investor details are not disclosed.\n\n## Growth Momentum\n\nCohere has demonstrated significant growth since its inception, expanding its workforce to over 450 employees and establishing a presence in 25 countries. The company has also launched initiatives like Cohere Labs to focus on solving complex machine learning problems, indicating a strong commitment to research and development.\n\n## Visibility & Market Sentiment\n\nCohere is recognized for its innovative AI solutions and has established partnerships with leading enterprises such as Draftwise, Fujitsu, BambooHR, Notion, Oracle, and others. The company actively engages with the AI community through initiatives like the Open Science Community and the Scholars Program, enhancing its visibility and reputation in the market.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is committed to scaling intelligence to serve humanity, with a focus on enhancing human wellbeing through AI. Cohere's continued investment in research and development, along with its strategic partnerships, positions it well for future growth and innovation in the AI industry.\n\n## Disclosure Gaps\n\n- Specific details about the company's revenue and profitability are not disclosed.\n- Information on specific investors and their profiles is not provided.\n- Risks and challenges facing the company are not detailed.",
+    "content": "## Company Overview\n\nCohere is a private AI startup founded in 2019 in Toronto, Canada. The company focuses on creating cutting-edge foundation models and secure AI solutions for enterprises. Cohere's mission is to enhance human judgment and productivity through AI, aiming to solve real-world business problems. The company operates globally with over 450 employees across 7 offices in more than 25 countries.\n\n## Business Model and GTM\n\nCohere offers a range of AI products and solutions, including the North platform, Compass, and Command, which are designed to enhance workplace productivity and provide intelligent search and discovery capabilities. The company also provides advanced retrieval models like Embed and Rerank. Cohere's solutions are tailored for various industries, including financial services, healthcare, manufacturing, and the public sector. The company emphasizes secure and scalable AI deployments that integrate seamlessly with existing systems and workflows.\n\n## Funding & Investor Profile\n\nBetween 2021 and 2024, Cohere secured four major funding rounds (Series A through D), raising nearly $1 billion. This financial backing has supported the company's global expansion and the development of its AI models. Specific investor details are not disclosed.\n\n## Growth Momentum\n\nCohere has demonstrated significant growth since its inception, expanding its team to over 450 employees and establishing a presence in more than 25 countries. The company has launched initiatives like Cohere Labs to focus on solving complex machine learning problems and continues to develop multilingual models that excel across 23 languages.\n\n## Visibility & Market Sentiment\n\nThe company states that it is trusted by industry leaders and developers worldwide, indicating a positive market sentiment. Cohere's products are positioned as enterprise-ready solutions that enhance productivity and drive innovation.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nCohere is poised for continued growth, supported by substantial funding and a strong focus on developing AI solutions that address enterprise needs. The company's commitment to open science and solving complex machine learning challenges positions it well for future advancements in AI technology.\n\n## Disclosure Gaps\n\n- Specific details about investors and funding terms are not disclosed.\n- Risks and challenges facing the company are not detailed.\n- Market sentiment and competitive positioning are not explicitly covered.",
     "context_results": [
       {
         "id": "cohere_careers_978ba085",
-        "similarity_score": 0.434417725,
+        "similarity_score": 0.434333801,
         "text": "Model\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW",
         "metadata": {
           "chunk_index": 3.0,
@@ -31,7 +31,7 @@
       },
       {
         "id": "cohere_about_978ba085",
-        "similarity_score": 0.434375703,
+        "similarity_score": 0.434287965,
         "text": "Model\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW",
         "metadata": {
           "chunk_index": 3.0,
@@ -44,7 +44,7 @@
       },
       {
         "id": "cohere_careers_5f6ed0d4",
-        "similarity_score": 0.431121826,
+        "similarity_score": 0.430961609,
         "text": "Partners\nRequest a demo\nSign in\ncareers\nJoin the mission to scale intelligence\nSee open roles\nWe create cutting-edge foundation models and secure AI solutions for the world’s leading enterprises. Our ambitious team is united by one goal: making AI that solves real-world problems for businesses. Come build with us.\n449\n+\ncurrent employees\n25\n+\ncountries represented\n7\nglobal offices\nOUR VALUES\nDo work that matters with people who care\nMomentum",
         "metadata": {
           "chunk_index": 8.0,
@@ -57,7 +57,7 @@
       },
       {
         "id": "cohere_careers_256d74d8",
-        "similarity_score": 0.428691864,
+        "similarity_score": 0.428588867,
         "text": "Partners\nRequest a demo\nSign in\ncareers\nJoin the mission to scale intelligence\nSee open roles\nWe create cutting-edge foundation models and secure AI solutions for the world’s leading enterprises. Our ambitious team is united by one goal: making AI that solves real-world problems for businesses. Come build with us.\n450\n+\ncurrent employees\n25\n+\ncountries represented\n7\nglobal offices\nOUR VALUES\nDo work that matters with people who care\nMomentum",
         "metadata": {
           "chunk_index": 7.0,
@@ -70,7 +70,7 @@
       },
       {
         "id": "cohere_careers_2f0b22d4",
-        "similarity_score": 0.428504944,
+        "similarity_score": 0.428268433,
         "text": "Model\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nRequest a demo\nSign in\ncareers\nJoin the mission to scale intelligence\nSee open roles",
         "metadata": {
           "chunk_index": 6.0,
@@ -83,7 +83,7 @@
       },
       {
         "id": "cohere_product_8810c577",
-        "similarity_score": 0.421634674,
+        "similarity_score": 0.421440125,
         "text": "Papers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nRequest a demo\nSign in\nProducts\nTurn possibility into production",
         "metadata": {
           "chunk_index": 7.0,
@@ -96,7 +96,7 @@
       },
       {
         "id": "cohere_about_649ba840",
-        "similarity_score": 0.420730591,
+        "similarity_score": 0.4205513,
         "text": "Model\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nRequest a demo\nSign in\nAbout\nWhere enterprise AI meets real-world purpose",
         "metadata": {
           "chunk_index": 6.0,
@@ -109,7 +109,7 @@
       },
       {
         "id": "cohere_about_06206334",
-        "similarity_score": 0.417686462,
+        "similarity_score": 0.417392731,
         "text": "Papers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nRequest a demo\nSign in\nAbout\nWhere enterprise AI meets real-world purpose",
         "metadata": {
           "chunk_index": 7.0,
@@ -122,7 +122,7 @@
       },
       {
         "id": "cohere_careers_67970aa0",
-        "similarity_score": 0.412494659,
+        "similarity_score": 0.412044525,
         "text": "The Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nRequest a demo\nSign in\ncareers\nJoin the mission to scale intelligence\nSee open roles",
         "metadata": {
           "chunk_index": 7.0,
@@ -135,7 +135,7 @@
       },
       {
         "id": "cohere_blog_4e945ba3",
-        "similarity_score": 0.411441803,
+        "similarity_score": 0.411056519,
         "text": "Papers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nRequest a demo\nSign in\nThe Cohere Blog\nAll\nproduct\nfor business\ndevelopers\nresearch\ncompany\nAll\nproduct\nfor business",
         "metadata": {
           "chunk_index": 7.0,
@@ -148,7 +148,7 @@
       },
       {
         "id": "cohere_product_de0e96e3",
-        "similarity_score": 0.406181335,
+        "similarity_score": 0.405925751,
         "text": "The Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass",
         "metadata": {
           "chunk_index": 4.0,
@@ -161,7 +161,7 @@
       },
       {
         "id": "cohere_blog_de0e96e3",
-        "similarity_score": 0.406173736,
+        "similarity_score": 0.405910522,
         "text": "The Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass",
         "metadata": {
           "chunk_index": 4.0,
@@ -174,7 +174,7 @@
       },
       {
         "id": "cohere_about_de0e96e3",
-        "similarity_score": 0.406024933,
+        "similarity_score": 0.405769348,
         "text": "The Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass",
         "metadata": {
           "chunk_index": 4.0,
@@ -187,7 +187,7 @@
       },
       {
         "id": "cohere_about_bae9bed6",
-        "similarity_score": 0.405382156,
+        "similarity_score": 0.405298233,
         "text": "2021 – 2024\nEarly growth\nBetween 2021 and 2024, we secured four major funding rounds (Series A through D), raising nearly $1 billion.\nThis support has enabled us to scale our teams, expand globally, and continually develop cutting-edge models that power practical AI applications for the world’s leading enterprises.\n2022\nResearch focus\nIn 2022, we launched Cohere Labs, our open science initiative for solving complex machine learning problems.",
         "metadata": {
           "chunk_index": 10.0,
@@ -200,7 +200,7 @@
       },
       {
         "id": "cohere_careers_fcf57367",
-        "similarity_score": 0.398643523,
+        "similarity_score": 0.398536712,
         "text": "Blog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion\nOracle\nJohnson Lambert\nAtomicwork\nBorderless AI\nCommunity\nDiscord\nEvents\nOn-Demand Events\nCompany\nCompany\nAbout\nCareers\nNewsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand",
         "metadata": {
           "chunk_index": 4.0,
@@ -213,7 +213,7 @@
       },
       {
         "id": "cohere_about_45f51d22",
-        "similarity_score": 0.394294769,
+        "similarity_score": 0.394283324,
         "text": "About Our Company | Cohere\nProducts\nProducts\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank",
         "metadata": {
           "chunk_index": 1.0,
@@ -226,7 +226,7 @@
       },
       {
         "id": "cohere_careers_1ea12b86",
-        "similarity_score": 0.394126892,
+        "similarity_score": 0.394088745,
         "text": "Healthcare and Life Sciences\nManufacturing\nEnergy and Utilities\nPublic Sector\nSecurity\nBest-in-class AI security and data protection\nPrivate Deployments\nResearch\nCohere Labs\nCohere's research lab that seeks to solve complex ML problems\nModel\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University\nCookbooks\nCustomer Stories\nDraftwise\nFujitsu\nBambooHR\nNotion",
         "metadata": {
           "chunk_index": 3.0,
@@ -239,7 +239,7 @@
       },
       {
         "id": "cohere_careers_5cba7d20",
-        "similarity_score": 0.3931427,
+        "similarity_score": 0.393371582,
         "text": "7\nglobal offices\nOUR VALUES\nDo work that matters with people who care\nMomentum\nWe move quickly, trust each other, and push forward with purpose\nOpenness\nWe embrace inclusivity and welcome diverse perspectives across our teams.\nAutonomy\nWe support every team member with the flexibility and ownership they need to thrive.\nOUR BENEFITS\nWhat we offer\nFinancial wellbeing\nSix weeks’ paid vacation\nEquity / stock options\nRRSP, 401(k), and Pension Scheme contributions\nHealthcare",
         "metadata": {
           "chunk_index": 9.0,
@@ -252,7 +252,7 @@
       },
       {
         "id": "cohere_careers_b82eab56",
-        "similarity_score": 0.387329102,
+        "similarity_score": 0.387401581,
         "text": "Newsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank",
         "metadata": {
           "chunk_index": 4.0,
@@ -265,7 +265,7 @@
       },
       {
         "id": "cohere_about_b82eab56",
-        "similarity_score": 0.387199402,
+        "similarity_score": 0.387271881,
         "text": "Newsroom\nPartners\nSign in\nRequest a demo\nProducts\nProducts\noverview\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank",
         "metadata": {
           "chunk_index": 4.0,
@@ -278,7 +278,7 @@
       },
       {
         "id": "cohere_about_009810ea",
-        "similarity_score": 0.382984161,
+        "similarity_score": 0.382904053,
         "text": "Pricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nEnergy and Utilities\nPublic Sector\nSecurity\nBest-in-class AI security and data protection\nPrivate Deployments\nResearch\nCohere Labs\nCohere's research lab that seeks to solve complex ML problems\nModel\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University",
         "metadata": {
           "chunk_index": 3.0,
@@ -291,7 +291,7 @@
       },
       {
         "id": "cohere_product_009810ea",
-        "similarity_score": 0.382801056,
+        "similarity_score": 0.382724762,
         "text": "Pricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nEnergy and Utilities\nPublic Sector\nSecurity\nBest-in-class AI security and data protection\nPrivate Deployments\nResearch\nCohere Labs\nCohere's research lab that seeks to solve complex ML problems\nModel\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University",
         "metadata": {
           "chunk_index": 3.0,
@@ -304,7 +304,7 @@
       },
       {
         "id": "cohere_careers_009810ea",
-        "similarity_score": 0.382644653,
+        "similarity_score": 0.382564545,
         "text": "Pricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nEnergy and Utilities\nPublic Sector\nSecurity\nBest-in-class AI security and data protection\nPrivate Deployments\nResearch\nCohere Labs\nCohere's research lab that seeks to solve complex ML problems\nModel\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University",
         "metadata": {
           "chunk_index": 6.0,
@@ -317,7 +317,7 @@
       },
       {
         "id": "cohere_blog_009810ea",
-        "similarity_score": 0.382411957,
+        "similarity_score": 0.382339478,
         "text": "Pricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nEnergy and Utilities\nPublic Sector\nSecurity\nBest-in-class AI security and data protection\nPrivate Deployments\nResearch\nCohere Labs\nCohere's research lab that seeks to solve complex ML problems\nModel\nAya\nRESOURCES\nPapers\nVideos\nBlog\nInitiatives\nOpen Science Community\nScholars Program\nCatalyst Grant Program\nThe Leaderboard Illusion\nEvents\nResources\nResources\nBlog\nDevelopers\nDocs\nLLM University",
         "metadata": {
           "chunk_index": 3.0,
@@ -330,7 +330,7 @@
       },
       {
         "id": "cohere_product_ae314b81",
-        "similarity_score": 0.382106721,
+        "similarity_score": 0.381813,
         "text": "About\nCareers\nNewsroom\nPartners\nRequest a demo\nSign in\nProducts\nTurn possibility into production\nFrom frontier models to out-of-the-box tools, discover everything you need to build and deploy secure, scalable AI that accelerates growth and results.\nRequest a demo\nTrusted by industry leaders and developers worldwide\nSmarter work starts here\nGet to value faster with secure, scalable AI solutions that integrate with your systems, data, and workflows from day one of deployment.",
         "metadata": {
           "chunk_index": 8.0,
@@ -343,7 +343,7 @@
       },
       {
         "id": "cohere_about_67e5b799",
-        "similarity_score": 0.380195618,
+        "similarity_score": 0.380119324,
         "text": "About Our Company | Cohere\nWe value your privacy\nWe and our partners use \nTo opt-out of optional functional, analytical, and advertising . Repeat this process from each browser you use. Your opt-out status will be stored in a \nProducts\nProducts\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand",
         "metadata": {
           "chunk_index": 1.0,
@@ -356,7 +356,7 @@
       },
       {
         "id": "cohere_product_eeda493e",
-        "similarity_score": 0.377620697,
+        "similarity_score": 0.377685547,
         "text": "An intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences",
         "metadata": {
           "chunk_index": 2.0,
@@ -368,21 +368,8 @@
         }
       },
       {
-        "id": "cohere_careers_eeda493e",
-        "similarity_score": 0.377595901,
-        "text": "An intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences",
-        "metadata": {
-          "chunk_index": 5.0,
-          "company_slug": "cohere",
-          "content_hash": "eeda493e",
-          "indexed_at": "2025-11-11T23:01:23.070438",
-          "page_type": "careers",
-          "source_file": "data/raw/cohere/careers/text.txt"
-        }
-      },
-      {
         "id": "cohere_blog_eeda493e",
-        "similarity_score": 0.377595901,
+        "similarity_score": 0.377656937,
         "text": "An intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences",
         "metadata": {
           "chunk_index": 2.0,
@@ -394,8 +381,21 @@
         }
       },
       {
+        "id": "cohere_careers_eeda493e",
+        "similarity_score": 0.377656937,
+        "text": "An intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences",
+        "metadata": {
+          "chunk_index": 5.0,
+          "company_slug": "cohere",
+          "content_hash": "eeda493e",
+          "indexed_at": "2025-11-11T23:01:23.070438",
+          "page_type": "careers",
+          "source_file": "data/raw/cohere/careers/text.txt"
+        }
+      },
+      {
         "id": "cohere_about_eeda493e",
-        "similarity_score": 0.377376556,
+        "similarity_score": 0.377441406,
         "text": "An intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing\nSolutions\nIndustries\nTechnology\nFinancial Services\nHealthcare and Life Sciences",
         "metadata": {
           "chunk_index": 2.0,
@@ -408,7 +408,7 @@
       },
       {
         "id": "cohere_product_e58e4b9e",
-        "similarity_score": 0.373989105,
+        "similarity_score": 0.374095917,
         "text": "Trust Center\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options\nPrivate Deployments\nSolutions\nTechnology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector\nResources\nBlog\nDevelopers\nEvents\nOn-Demand Events\nLLM University\nDocumentation\nRelease Notes\nCompany\nAbout\nCareers\nResearch\nNewsroom\nPartners\nSecurity\nTrust Center\nCohere ©\n2025\nPrivacy\nTerms of Use\nManage Cookies\nEnglish",
         "metadata": {
           "chunk_index": 16.0,
@@ -421,7 +421,7 @@
       },
       {
         "id": "cohere_about_e58e4b9e",
-        "similarity_score": 0.373970062,
+        "similarity_score": 0.374080688,
         "text": "Trust Center\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options\nPrivate Deployments\nSolutions\nTechnology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector\nResources\nBlog\nDevelopers\nEvents\nOn-Demand Events\nLLM University\nDocumentation\nRelease Notes\nCompany\nAbout\nCareers\nResearch\nNewsroom\nPartners\nSecurity\nTrust Center\nCohere ©\n2025\nPrivacy\nTerms of Use\nManage Cookies\nEnglish",
         "metadata": {
           "chunk_index": 17.0,
@@ -434,7 +434,7 @@
       },
       {
         "id": "cohere_blog_e58e4b9e",
-        "similarity_score": 0.373909,
+        "similarity_score": 0.374027252,
         "text": "Trust Center\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options\nPrivate Deployments\nSolutions\nTechnology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector\nResources\nBlog\nDevelopers\nEvents\nOn-Demand Events\nLLM University\nDocumentation\nRelease Notes\nCompany\nAbout\nCareers\nResearch\nNewsroom\nPartners\nSecurity\nTrust Center\nCohere ©\n2025\nPrivacy\nTerms of Use\nManage Cookies\nEnglish",
         "metadata": {
           "chunk_index": 18.0,
@@ -447,7 +447,7 @@
       },
       {
         "id": "cohere_product_46b17677",
-        "similarity_score": 0.373485565,
+        "similarity_score": 0.373260498,
         "text": "Products | Frontier Models and AI Solutions | Cohere\nWe value your privacy\nWe and our partners use \nTo opt-out of optional functional, analytical, and advertising . Repeat this process from each browser you use. Your opt-out status will be stored in a \nProducts\nProducts\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand",
         "metadata": {
           "chunk_index": 1.0,
@@ -459,21 +459,8 @@
         }
       },
       {
-        "id": "cohere_about_80922cb0",
-        "similarity_score": 0.369493484,
-        "text": "Our story\nFrom Toronto startup to enterprise AI\n2019\nFoundations\nCohere was founded in 2019 in Toronto with a bold vision: to do whatever it takes to scale intelligence to serve humanity.\nSince then, we’ve remained focused on building enterprise AI that enhances human judgment, accelerates execution, and extends what individuals and teams can achieve on their own.\n2021 – 2024\nEarly growth",
-        "metadata": {
-          "chunk_index": 9.0,
-          "company_slug": "cohere",
-          "content_hash": "80922cb0",
-          "indexed_at": "2025-11-11T23:01:23.069615",
-          "page_type": "about",
-          "source_file": "data/raw/cohere/about/text.txt"
-        }
-      },
-      {
         "id": "cohere_product_2b8726ae",
-        "similarity_score": 0.369403839,
+        "similarity_score": 0.369400024,
         "text": "*\nSubmit\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options\nPrivate Deployments\nSolutions\nTechnology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector\nResources\nBlog\nDevelopers\nEvents\nOn-Demand Events\nLLM University\nDocumentation\nRelease Notes\nCompany\nAbout\nCareers\nResearch\nNewsroom\nPartners\nSecurity\nTrust Center\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options",
         "metadata": {
           "chunk_index": 15.0,
@@ -482,6 +469,19 @@
           "indexed_at": "2025-11-11T20:39:04.533965",
           "page_type": "product",
           "source_file": "data/raw/cohere/product/text.txt"
+        }
+      },
+      {
+        "id": "cohere_about_80922cb0",
+        "similarity_score": 0.369342804,
+        "text": "Our story\nFrom Toronto startup to enterprise AI\n2019\nFoundations\nCohere was founded in 2019 in Toronto with a bold vision: to do whatever it takes to scale intelligence to serve humanity.\nSince then, we’ve remained focused on building enterprise AI that enhances human judgment, accelerates execution, and extends what individuals and teams can achieve on their own.\n2021 – 2024\nEarly growth",
+        "metadata": {
+          "chunk_index": 9.0,
+          "company_slug": "cohere",
+          "content_hash": "80922cb0",
+          "indexed_at": "2025-11-11T23:01:23.069615",
+          "page_type": "about",
+          "source_file": "data/raw/cohere/about/text.txt"
         }
       },
       {
@@ -499,7 +499,7 @@
       },
       {
         "id": "cohere_blog_2b8726ae",
-        "similarity_score": 0.368686706,
+        "similarity_score": 0.368682891,
         "text": "*\nSubmit\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options\nPrivate Deployments\nSolutions\nTechnology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector\nResources\nBlog\nDevelopers\nEvents\nOn-Demand Events\nLLM University\nDocumentation\nRelease Notes\nCompany\nAbout\nCareers\nResearch\nNewsroom\nPartners\nSecurity\nTrust Center\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options",
         "metadata": {
           "chunk_index": 17.0,
@@ -512,7 +512,7 @@
       },
       {
         "id": "cohere_about_7f45f578",
-        "similarity_score": 0.367389679,
+        "similarity_score": 0.3671875,
         "text": "Careers\nNewsroom\nPartners\nRequest a demo\nSign in\nAbout\nWhere enterprise AI meets real-world purpose\nCohere builds foundational models and AI solutions that help teams turn everyday effort into extraordinary impact.\nOur Mission\nWe believe AI’s highest purpose is to enhance human wellbeing. We’re committed to realizing that potential by empowering businesses to scale innovation, boost productivity, and drive progress that reaches everyone.\nOur story\nFrom Toronto startup to enterprise AI\n2019",
         "metadata": {
           "chunk_index": 8.0,
@@ -525,7 +525,7 @@
       },
       {
         "id": "cohere_careers_b0201377",
-        "similarity_score": 0.365905762,
+        "similarity_score": 0.36605835,
         "text": "Technology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector\nResources\nBlog\nDevelopers\nEvents\nOn-Demand Events\nLLM University\nDocumentation\nRelease Notes\nCompany\nAbout\nCareers\nResearch\nNewsroom\nPartners\nSecurity\nTrust Center\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options\nPrivate Deployments\nSolutions\nTechnology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector",
         "metadata": {
           "chunk_index": 17.0,
@@ -537,21 +537,8 @@
         }
       },
       {
-        "id": "cohere_about_8cad6f6c",
-        "similarity_score": 0.365345,
-        "text": "North\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing",
-        "metadata": {
-          "chunk_index": 5.0,
-          "company_slug": "cohere",
-          "content_hash": "8cad6f6c",
-          "indexed_at": "2025-11-11T23:01:23.069568",
-          "page_type": "about",
-          "source_file": "data/raw/cohere/about/text.txt"
-        }
-      },
-      {
         "id": "cohere_blog_8cad6f6c",
-        "similarity_score": 0.365345,
+        "similarity_score": 0.365446091,
         "text": "North\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing",
         "metadata": {
           "chunk_index": 5.0,
@@ -563,21 +550,21 @@
         }
       },
       {
-        "id": "cohere_blog_995d1573",
-        "similarity_score": 0.365203857,
-        "text": "Research\nResearch\nRead full article\nCohere Team — Aug 14, 2025\nCohere raises $500M at $6.8B valuation to accelerate enterprise efficiency with agentic AI\nCompany\nNewsroom\nCompany\nNewsroom\nRead full article\nDavid Ferris, Rohit Kurhekar — Aug 08, 2025\nModernizing FOI systems with AI\nFor Business\nPublic Sector\nFor Business\nPublic Sector\nRead full article\nCohere Team — Aug 06, 2025\nIntroducing North: The next era of enterprise AI\nCompany\nNewsroom\nProduct\nCompany\nNewsroom\nProduct\nRead full article",
+        "id": "cohere_about_8cad6f6c",
+        "similarity_score": 0.365446091,
+        "text": "North\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing",
         "metadata": {
-          "chunk_index": 14.0,
+          "chunk_index": 5.0,
           "company_slug": "cohere",
-          "content_hash": "995d1573",
-          "indexed_at": "2025-11-11T20:39:04.531808",
-          "page_type": "blog",
-          "source_file": "data/raw/cohere/blog/text.txt"
+          "content_hash": "8cad6f6c",
+          "indexed_at": "2025-11-11T23:01:23.069568",
+          "page_type": "about",
+          "source_file": "data/raw/cohere/about/text.txt"
         }
       },
       {
         "id": "cohere_product_8cad6f6c",
-        "similarity_score": 0.365133286,
+        "similarity_score": 0.365221024,
         "text": "North\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank\nA powerful model that provides a semantic boost to search quality\nCustomization\nPricing",
         "metadata": {
           "chunk_index": 5.0,
@@ -589,8 +576,21 @@
         }
       },
       {
+        "id": "cohere_blog_995d1573",
+        "similarity_score": 0.364776611,
+        "text": "Research\nResearch\nRead full article\nCohere Team — Aug 14, 2025\nCohere raises $500M at $6.8B valuation to accelerate enterprise efficiency with agentic AI\nCompany\nNewsroom\nCompany\nNewsroom\nRead full article\nDavid Ferris, Rohit Kurhekar — Aug 08, 2025\nModernizing FOI systems with AI\nFor Business\nPublic Sector\nFor Business\nPublic Sector\nRead full article\nCohere Team — Aug 06, 2025\nIntroducing North: The next era of enterprise AI\nCompany\nNewsroom\nProduct\nCompany\nNewsroom\nProduct\nRead full article",
+        "metadata": {
+          "chunk_index": 14.0,
+          "company_slug": "cohere",
+          "content_hash": "995d1573",
+          "indexed_at": "2025-11-11T20:39:04.531808",
+          "page_type": "blog",
+          "source_file": "data/raw/cohere/blog/text.txt"
+        }
+      },
+      {
         "id": "cohere_careers_f5947ce4",
-        "similarity_score": 0.36306,
+        "similarity_score": 0.362869263,
         "text": "Careers | Cohere\nProducts\nProducts\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models\nAya Expanse\nLeading multilingual models that excel across 23 different languages\nAdvanced Retrieval Models\nEmbed\nA leading multimodal search and retrieval tool\nRerank",
         "metadata": {
           "chunk_index": 1.0,
@@ -603,7 +603,7 @@
       },
       {
         "id": "cohere_about_25a1cdfa",
-        "similarity_score": 0.362716675,
+        "similarity_score": 0.362863541,
         "text": "Co-founder and CEO\nNick Frosst\nCo-founder\nIvan Zhang\nCo-founder\nExecutive team\nJoelle Pineau\nChief AI Officer\nFrançois Chadwick\nChief Financial Officer\nPhil Blunsom\nChief Technology Officer\nLaura Moss\nSVP, Finance\nNora Beatty\nSVP, People Operations\nAndrew Chang\nVP, APAC\nEric Hu\nVP, Design\nNils Reimers\nVP, Embeddings & Search\nAutumn Moulder\nVP, Engineering\nMelika Carroll\nVP, Government Affairs & Public Policy\nKosta Starostin\nVP, Legal\nBorn in Canada 🇨🇦\nBuilding worldwide\nToronto\nNew York\nLondon",
         "metadata": {
           "chunk_index": 13.0,
@@ -616,7 +616,7 @@
       },
       {
         "id": "cohere_blog_719ac990",
-        "similarity_score": 0.352790833,
+        "similarity_score": 0.352701187,
         "text": "Company\nNewsroom\nProduct\nCompany\nNewsroom\nProduct\nRead full article\nCohere Team — Jul 31, 2025\nIntroducing Command A Vision: Multimodal AI built for business\nProduct\nProduct\nRead full article\nCohere Team — Jul 30, 2025\nNavigating the global push for sovereign AI\nFor Business\nFor Business\nRead full article\nCohere Team — Jul 28, 2025\nCohere and Bell partner to deliver sovereign AI\nNewsroom\nCompany\nNewsroom\nCompany\nRead full article\nCohere GAPP — Jul 24, 2025\nSecure and responsible AI for Europe",
         "metadata": {
           "chunk_index": 15.0,
@@ -629,7 +629,7 @@
       },
       {
         "id": "cohere_careers_77771094",
-        "similarity_score": 0.35238266,
+        "similarity_score": 0.352685928,
         "text": "Equity / stock options\nRRSP, 401(k), and Pension Scheme contributions\nHealthcare\nCoverage for 100% of your insurance premiums across health, dental, vision, and travel\nAdditional coverage for accessing mental health providers/services\nSix months of fully paid parental leave, including adoption and surrogacy\nFinancial support for egg freezing and IVF in Canada and the UK\nA monthly fitness and wellness allowance\nCulture and development",
         "metadata": {
           "chunk_index": 10.0,
@@ -642,7 +642,7 @@
       },
       {
         "id": "cohere_careers_03a661ba",
-        "similarity_score": 0.351856232,
+        "similarity_score": 0.351799,
         "text": "Join the company putting AI to work\nSee open roles\nAI moves fast\nWe’ll keep you up to date with the latest.\nEnter your business email below to receive updates from Cohere. Please refer to our\nprivacy policy\nfor details or to contact us. You can unsubscribe at any time.\n*\nSubmit\nProducts\nNorth\nCompass\nCommand\nEmbed\nRerank\nCustomization\nPricing\nDeployment Options\nPrivate Deployments\nSolutions\nTechnology\nEnergy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing",
         "metadata": {
           "chunk_index": 16.0,
@@ -655,7 +655,7 @@
       },
       {
         "id": "cohere_careers_147d3c10",
-        "similarity_score": 0.351512909,
+        "similarity_score": 0.351642609,
         "text": "Energy and Utilities\nFinancial Services\nHealthcare and Life Sciences\nManufacturing\nPublic Sector\nResources\nBlog\nDevelopers\nEvents\nOn-Demand Events\nLLM University\nDocumentation\nRelease Notes\nCompany\nAbout\nCareers\nResearch\nNewsroom\nPartners\nSecurity\nTrust Center\nCohere ©\n2025\nPrivacy\nTerms of Use\nManage Cookies\nEnglish",
         "metadata": {
           "chunk_index": 18.0,
@@ -668,7 +668,7 @@
       },
       {
         "id": "cohere_careers_497a7c9d",
-        "similarity_score": 0.343856812,
+        "similarity_score": 0.343566895,
         "text": "Careers | Cohere\nWe value your privacy\nWe and our partners use \nTo opt-out of optional functional, analytical, and advertising . Repeat this process from each browser you use. Your opt-out status will be stored in a \nProducts\nProducts\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand\nA family of high-performance, scalable language models",
         "metadata": {
           "chunk_index": 1.0,
@@ -681,26 +681,13 @@
       },
       {
         "id": "cohere_blog_ba637337",
-        "similarity_score": 0.343402863,
+        "similarity_score": 0.343261719,
         "text": "Newsroom\nCompany\nRead full article\nCohere GAPP — Jul 24, 2025\nSecure and responsible AI for Europe\nCompany\nNewsroom\nCompany\nNewsroom\nRead full article\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\nReady to put AI to work?\nRequest a demo\nAI moves fast\nWe’ll keep you up to date with the latest.\nEnter your business email below to receive updates from Cohere. Please refer to our\nprivacy policy\nfor details or to contact us. You can unsubscribe at any time.\n*\nSubmit\nProducts\nNorth\nCompass\nCommand",
         "metadata": {
           "chunk_index": 16.0,
           "company_slug": "cohere",
           "content_hash": "ba637337",
           "indexed_at": "2025-11-11T20:39:04.531827",
-          "page_type": "blog",
-          "source_file": "data/raw/cohere/blog/text.txt"
-        }
-      },
-      {
-        "id": "cohere_blog_0ed67323",
-        "similarity_score": 0.34128955,
-        "text": "Newsroom\nCompany\nProduct\nNewsroom\nCompany\nProduct\nRead full article\nCohere Team — Aug 21, 2025\nCommand A Reasoning: Enterprise-grade control for AI agents\nNewsroom\nCompany\nProduct\nNewsroom\nCompany\nProduct\nRead full article\nCohere Team — Aug 19, 2025\nCohere deepens partnership with Government of Canada\nNewsroom\nCompany\nPublic Sector\nNewsroom\nCompany\nPublic Sector\nRead full article\nCohere Team — Aug 19, 2025\nCohere deepens partnership with Government of Canada\nNewsroom\nCompany\nPublic Sector",
-        "metadata": {
-          "chunk_index": 12.0,
-          "company_slug": "cohere",
-          "content_hash": "0ed67323",
-          "indexed_at": "2025-11-11T20:39:04.531794",
           "page_type": "blog",
           "source_file": "data/raw/cohere/blog/text.txt"
         }

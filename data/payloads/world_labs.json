@@ -21,17 +21,22 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-10",
+        "crawled_at": "2023-10-06",
+        "snippet": "© 2024 WORLD LABS TECHNOLOGIES San Francisco, CA"
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-06",
         "snippet": "© 2024 WORLD LABS TECHNOLOGIES San Francisco, CA"
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-10",
+        "crawled_at": "2023-10-06",
         "snippet": "World Labs HQ • San Francisco Office (HQ) • Full time"
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-10",
+        "crawled_at": "2023-10-06",
         "snippet": "At World Labs, our mission is to revolutionize artificial intelligence by developing Large World Models"
       }
     ]
@@ -51,7 +56,13 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://worldlabs.com/blog/dec-2-2024-generating-worlds",
+          "crawled_at": "2024-12-02",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "2",
@@ -67,7 +78,13 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://worldlabs.com/blog/oct-16-2025-rtfm",
+          "crawled_at": "2025-10-16",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "3",
@@ -75,7 +92,7 @@
       "occurred_on": "2024-01-01",
       "event_type": "funding",
       "title": "World Labs Funding",
-      "description": "Raised more than $230M in total funding led by Martin Casado and Sarah Wang of Andreessen Horowitz.",
+      "description": "World Labs raised more than $230M in total funding led by Martin Casado and Sarah Wang of Andreessen Horowitz.",
       "round_name": null,
       "investors": null,
       "amount_usd": 230000000.0,
@@ -83,25 +100,29 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://worldlabs.com/about",
+          "crawled_at": "2024-01-01",
+          "snippet": null
+        }
+      ]
     }
   ],
   "snapshots": [
     {
       "company_id": "world_labs",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-07",
       "headcount_total": null,
       "headcount_growth_pct": null,
-      "job_openings_count": 6,
-      "engineering_openings": 6,
-      "sales_openings": null,
+      "job_openings_count": 7,
+      "engineering_openings": 7,
+      "sales_openings": 0,
       "hiring_focus": [
-        "Research Scientist – 3D",
-        "Research Scientist – Generative Modeling",
-        "Senior Product Engineer",
-        "Research Engineer – 3D Reconstruction and Rendering",
-        "Research Engineer – Machine Learning & Systems",
-        "Infrastructure / Backend Engineer"
+        "3D Reconstruction and Rendering",
+        "Machine Learning & Systems",
+        "Generative Modeling",
+        "3D"
       ],
       "pricing_tiers": null,
       "active_products": [
@@ -110,23 +131,23 @@
       "geo_presence": [
         "San Francisco, CA"
       ],
-      "confidence": null,
+      "confidence": 0.9,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "[careers] World Labs Jobs",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-07",
           "snippet": "At World Labs, our mission is to revolutionize artificial intelligence by developing Large World Models, taking AI beyond language and 2D visuals into the realm of complex 3D environments, both virtual and real."
         },
         {
-          "source_url": "[product] World Labs",
-          "crawled_at": "2023-10-06",
-          "snippet": "We are a spatial intelligence company building Large World Models to perceive, generate, and interact with the 3D world."
+          "source_url": "[careers] World Labs HQ • San Francisco Office (HQ) • Full time",
+          "crawled_at": "2023-10-07",
+          "snippet": "Research Scientist – 3D\nWorld Labs HQ • San Francisco Office (HQ) • Full time\nResearch Scientist – Generative Modeling\nWorld Labs HQ • San Francisco Office (HQ) • Full time\nSenior Product Engineer"
         },
         {
-          "source_url": "[about] World Labs",
-          "crawled_at": "2023-10-06",
-          "snippet": "World Labs was founded by visionary AI pioneer Fei-Fei Li along with Justin Johnson, Christoph Lassner, and Ben Mildenhall; each a world-renowned technologist in computer vision and graphics."
+          "source_url": "[about] World Labs was founded by visionary AI pioneer",
+          "crawled_at": "2023-10-07",
+          "snippet": "We are a spatial intelligence company building Large World Models to perceive, generate, and interact with the 3D world."
         }
       ]
     }
@@ -152,6 +173,27 @@
           "snippet": null
         }
       ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "world_labs",
+      "name": "RTFM: A Real-Time Frame Model",
+      "description": "A new generative world model that generates video in real-time as you interact.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://worldlabs.com/blog",
+          "crawled_at": "2025-10-16",
+          "snippet": null
+        }
+      ]
     }
   ],
   "leadership": [
@@ -167,7 +209,13 @@
       "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2024-01-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "person_id": "justin-johnson",
@@ -181,7 +229,13 @@
       "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2024-01-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "person_id": "christoph-lassner",
@@ -195,7 +249,13 @@
       "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2024-01-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "person_id": "ben-mildenhall",
@@ -209,13 +269,19 @@
       "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2024-01-01",
+          "snippet": null
+        }
+      ]
     }
   ],
   "visibility": [
     {
       "company_id": "world_labs",
-      "as_of": "2023-10-21",
+      "as_of": "2023-10-06",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -224,6 +290,6 @@
       "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:41:46.978476",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:46:55.098819",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

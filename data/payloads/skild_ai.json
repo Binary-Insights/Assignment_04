@@ -1,15 +1,16 @@
 {
   "company_record": {
-    "company_id": "skild_ai",
+    "company_id": "skild",
     "legal_name": "Skild AI",
     "brand_name": null,
-    "website": "http://skild.ai/",
+    "website": "https://skild.ai/",
     "hq_city": null,
     "hq_state": null,
     "hq_country": null,
     "founded_year": null,
     "categories": [
-      "Robotics"
+      "Robotics",
+      "AI"
     ],
     "related_companies": null,
     "total_raised_usd": null,
@@ -17,7 +18,7 @@
     "last_round_name": null,
     "last_round_date": null,
     "schema_version": "2.0.0",
-    "as_of": null,
+    "as_of": "2023-10-06",
     "provenance": [
       {
         "source_url": "careers",
@@ -27,7 +28,7 @@
       {
         "source_url": "about",
         "crawled_at": "2023-10-06",
-        "snippet": "Bringing AI into the physical world"
+        "snippet": "Bringing AI into the physical world Most AI today exists solely in cyberspace."
       }
     ]
   },
@@ -48,7 +49,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://skild.ai/blog",
+          "source_url": "[blog] Skild.ai",
           "crawled_at": "2025-09-24",
           "snippet": null
         }
@@ -60,7 +61,7 @@
       "occurred_on": "2025-08-06",
       "event_type": "product_release",
       "title": "One Model, Any Scenario: End-to-end Locomotion from Vision",
-      "description": "Skild AI Team presents a model for end-to-end locomotion from vision.",
+      "description": "Skild AI Team introduces a model for end-to-end locomotion from vision.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -70,7 +71,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://skild.ai/blog",
+          "source_url": "[blog] Skild.ai",
           "crawled_at": "2025-08-06",
           "snippet": null
         }
@@ -80,7 +81,7 @@
   "snapshots": [
     {
       "company_id": "skild_ai",
-      "as_of": "2023-10-26",
+      "as_of": "2023-10-11",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": 38,
@@ -103,17 +104,17 @@
       "provenance": [
         {
           "source_url": "[careers] Skild.ai",
-          "crawled_at": "2023-10-26",
+          "crawled_at": "2023-10-11",
           "snippet": "Current Openings • 38 Robotics Machine Learning Infrastructure & Systems Hardware, Electrical & Embed"
         },
         {
           "source_url": "[product] Autonomous Packing",
-          "crawled_at": "2023-10-26",
+          "crawled_at": "2023-10-11",
           "snippet": "Our AI can learn highly precise and dexterous skills. We are using these to automate repetitive tasks."
         },
         {
           "source_url": "[product] Security/Inspection Robot Platform",
-          "crawled_at": "2023-10-26",
+          "crawled_at": "2023-10-11",
           "snippet": "The Skild Brain enables robots to navigate unstructured, dangerous environments, freeing humans from the burden of constant, manual inspections."
         }
       ]
@@ -121,7 +122,7 @@
   ],
   "products": [
     {
-      "product_id": "1",
+      "product_id": "security_inspection_robot_platform",
       "company_id": "skild_ai",
       "name": "Security/Inspection Robot Platform",
       "description": "The Skild Brain enables robots to navigate unstructured, dangerous environments, freeing humans from the burden of constant, manual inspections.",
@@ -142,7 +143,7 @@
       ]
     },
     {
-      "product_id": "2",
+      "product_id": "autonomous_packing",
       "company_id": "skild_ai",
       "name": "Autonomous Packing",
       "description": "Our AI can learn highly precise and dexterous skills. We are using these to automate repetitive tasks.",
@@ -163,48 +164,7 @@
       ]
     }
   ],
-  "leadership": [
-    {
-      "person_id": "john-doe",
-      "company_id": "skild_ai",
-      "name": "John Doe",
-      "role": "CEO",
-      "is_founder": true,
-      "start_date": "2020-01-01",
-      "end_date": null,
-      "previous_affiliation": "Former CTO at Robotics Inc.",
-      "education": "PhD in Robotics from MIT",
-      "linkedin": "https://www.linkedin.com/in/johndoe",
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://skild.ai/about",
-          "crawled_at": "2023-10-01",
-          "snippet": "John Doe, CEO and Founder of Skild.ai, has a PhD in Robotics from MIT. Previously, he was the CTO at Robotics Inc."
-        }
-      ]
-    },
-    {
-      "person_id": "jane-smith",
-      "company_id": "skild_ai",
-      "name": "Jane Smith",
-      "role": "CTO",
-      "is_founder": false,
-      "start_date": "2021-06-15",
-      "end_date": null,
-      "previous_affiliation": "Former Lead Engineer at AI Solutions",
-      "education": "MSc in Computer Science from Stanford University",
-      "linkedin": "https://www.linkedin.com/in/janesmith",
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://skild.ai/about",
-          "crawled_at": "2023-10-01",
-          "snippet": "Jane Smith, CTO at Skild.ai, holds an MSc in Computer Science from Stanford University. She was previously the Lead Engineer at AI Solutions."
-        }
-      ]
-    }
-  ],
+  "leadership": [],
   "visibility": [
     {
       "company_id": "skild_ai",
@@ -223,6 +183,6 @@
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:37:32.124789",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:39:09.130432",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

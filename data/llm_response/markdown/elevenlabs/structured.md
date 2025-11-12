@@ -1,22 +1,22 @@
 ## Company Overview
 
-ElevenLabs is a private company headquartered in London, UK. It operates in the AI Audio and Voice Technology sectors. The company is focused on pioneering the future of Audio AI, as evidenced by its recent establishment of a European headquarters in London. ElevenLabs is committed to creating high-quality AI audio products.
+ElevenLabs is a private AI startup headquartered in London, United Kingdom. The company is focused on developing advanced voice and speech technologies. ElevenLabs has recently expanded its presence in both the UK and the US, establishing its European headquarters in London.
 
 ## Business Model and GTM
 
-The company states that it offers a range of AI audio products, including Text to Speech (TTS), Speech to Text, Realtime Speech to Text, Voice Changer, and Text to Sound Effects. These products are designed to deliver high-quality AI audio experiences. ElevenLabs has engaged in several partnerships to enhance its market presence, including collaborations with the Ministry of Digital Transformation and Audacy for voice augmentation in programming and production workflows.
+The company states that it is involved in partnerships and product releases that enhance customer engagement and storytelling through AI-driven voice technologies. ElevenLabs offers a range of products, including Text to Speech (TTS), Speech to Text, Realtime Speech to Text, Voice Changer, and Text to Sound Effects, among others. The company is actively partnering with various organizations, including the Ministry of Digital Transformation and Audacy, to integrate its voice capabilities into core services and production workflows.
 
 ## Funding & Investor Profile
 
-ElevenLabs has attracted investment from notable individuals, including Matthew McConaughey, who is also listed as part of the company's leadership. The specific details of the funding rounds, amounts, and other investors are not disclosed.
+Not disclosed.
 
 ## Growth Momentum
 
-The company has shown growth momentum through strategic partnerships and product releases. Notable events include the renaming of its Conversational AI platform to ElevenLabs Agents and the release of an expressive Text to Speech model. The company is also expanding its operations in the UK, indicating a focus on scaling its business.
+ElevenLabs has shown growth momentum through multiple product releases and partnerships. The company has launched several new products, including the most expressive Text to Speech model and the ElevenLabs Agents platform for conversational agents. Additionally, ElevenLabs has formed partnerships with notable figures such as Sir Michael Caine and Matthew McConaughey, the latter being announced as a new investor.
 
 ## Visibility & Market Sentiment
 
-ElevenLabs has a presence in the market through its partnerships and product offerings. However, specific details on market sentiment and visibility metrics are not disclosed.
+The company has been mentioned in various contexts, indicating a growing market presence. However, specific details about market sentiment are not disclosed.
 
 ## Risks and Challenges
 
@@ -24,12 +24,11 @@ Not disclosed.
 
 ## Outlook
 
-The company is positioned to leverage its AI audio technology in various applications, as demonstrated by its partnerships and product innovations. The establishment of a European headquarters in London suggests a strategic focus on expanding its operations and influence in the AI audio market.
+The company states that it is committed to scaling its operations and enhancing its product offerings. With a focus on expanding its presence in key markets like the UK and US, ElevenLabs is poised for further growth in the AI voice technology sector.
 
 ## Disclosure Gaps
 
-- Specific dates for events such as partnerships, product releases, and funding are not disclosed.
-- Detailed information on the company's business model, revenue streams, and go-to-market strategies is not provided.
-- Financial details, including funding amounts and investor profiles, are not disclosed.
-- Market sentiment and specific visibility metrics are not available.
-- Risks and challenges faced by the company are not disclosed.
+- Specific funding details and investor profiles are not disclosed.
+- Detailed market sentiment and visibility metrics are not provided.
+- Risks and challenges facing the company are not disclosed.
+- Dates for events and product releases are unspecified.

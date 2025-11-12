@@ -4,17 +4,17 @@
     "company_name": "Databricks",
     "company_slug": "databricks",
     "pipeline_type": "structured",
-    "timestamp": "2025-11-12T02:58:05.269299Z",
+    "timestamp": "2025-11-12T23:00:50.972867Z",
     "markdown_file": "markdown/databricks/structured.md",
-    "content": "## Company Overview\n\nDatabricks Inc. is a private company headquartered in San Francisco, California, USA. Founded in 2013, the company was established by the original creators of the lakehouse architecture and open source projects such as Apache Spark™, Delta Lake, MLflow, and Unity Catalog.\n\n## Business Model and GTM\n\nDatabricks offers a unified platform for data management, data warehousing, data engineering, data science, and application development. The company has expanded its AI capabilities by integrating Google’s Gemini Models and OpenAI models into its platform. Additionally, Databricks has introduced data and task parallelism with Ray to enhance AI model building. The company states that these integrations and enhancements are designed to bolster its platform's AI offerings.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nDatabricks has shown growth momentum through multiple product releases that enhance its AI capabilities. The integration of Google’s Gemini Models and OpenAI models, along with the introduction of data and task parallelism with Ray, indicates a strategic focus on expanding and strengthening its platform's AI functionalities.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that its continuous product enhancements and integrations position it well in the AI and data management sectors. The focus on expanding AI capabilities suggests a strategic direction towards maintaining competitiveness in the rapidly evolving tech landscape.\n\n## Disclosure Gaps\n\n- Specific details on the company's funding and investor profile are not disclosed.\n- Information regarding the company's visibility and market sentiment is not available.\n- Risks and challenges faced by the company are not disclosed.\n- Leadership details are incomplete, with only Ali Ghodsi mentioned without further context."
+    "content": "## Company Overview\n\nDatabricks Inc. is a private company headquartered in San Francisco, California, USA. It was founded in 2013 by the original creators of the lakehouse architecture and open source projects such as Apache Spark™, Delta Lake, MLflow, and Unity Catalog. The company is known for its unified data platform, the Databricks Platform, which integrates data warehousing and AI use cases.\n\n## Business Model and GTM\n\nThe company states that its business model revolves around providing a unified platform for data, which is designed to cater to both data warehousing and AI applications. This platform is aimed at enhancing data analytics capabilities and is likely marketed to enterprises seeking to leverage big data and AI technologies.\n\n## Funding & Investor Profile\n\nDatabricks has raised a significant amount of capital, with a notable Series H funding round that brought in $1.6 billion. This funding is intended to further the development of its data and AI platform. Specific investor profiles and additional funding details are not disclosed.\n\n## Growth Momentum\n\nDatabricks has demonstrated growth momentum through strategic initiatives such as the launch of its new Lakehouse Platform, which aims to unify data warehousing and AI use cases. Additionally, the company has formed a strategic partnership with Microsoft to enhance cloud analytics capabilities, indicating a focus on expanding its market reach and technological capabilities.\n\n## Visibility & Market Sentiment\n\nVisibility and market sentiment details are not disclosed. However, the company's strategic partnership with Microsoft suggests a positive market presence and potential for increased visibility in the cloud analytics space.\n\n## Risks and Challenges\n\nSpecific risks and challenges faced by Databricks are not disclosed. However, typical challenges for companies in the AI and data platform space may include competition from other tech giants, the need for continuous innovation, and the ability to scale operations effectively.\n\n## Outlook\n\nThe outlook for Databricks appears promising, given its substantial funding, strategic partnerships, and focus on unifying data and AI capabilities. The company's continued investment in its platform and collaboration with major industry players like Microsoft suggest potential for sustained growth and market expansion.\n\n## Disclosure Gaps\n\n- Specific dates for funding, product releases, and partnerships are not disclosed.\n- Detailed information on the business model, go-to-market strategy, and investor profiles is not provided.\n- Visibility and market sentiment data are not available.\n- Risks and challenges specific to Databricks are not disclosed."
   },
   "rag": {
     "company_name": "Databricks",
     "company_slug": "databricks",
     "pipeline_type": "rag",
-    "timestamp": "2025-11-12T02:57:48.525004Z",
+    "timestamp": "2025-11-12T23:04:25.328546Z",
     "markdown_file": "markdown/databricks/rag.md",
-    "content": "## Company Overview\n\nDatabricks is a data and AI company headquartered in San Francisco, with a mission to simplify and democratize data and AI. The company aims to help data and AI teams solve complex problems by providing a unified platform for data, analytics, and AI. Databricks has a global presence with offices around the world and collaborates with over 1,200 cloud, ISV, and consulting partners.\n\n## Business Model and GTM\n\nDatabricks operates a platform-based business model, offering a unified platform for data management, analytics, and AI. The platform includes features for data warehousing, data engineering, data science, and application development. The company leverages partnerships with cloud providers, technology partners, and consulting firms to enhance its offerings and reach. Databricks targets various industries, including financial services, healthcare, manufacturing, and retail, providing tailored solutions for each sector.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nThe company states that it is one of the fastest-growing enterprise software companies, attracting top talent globally. Databricks has been recognized with various awards and continues to expand its team across multiple departments, including engineering, sales, and marketing.\n\n## Visibility & Market Sentiment\n\nDatabricks has a strong market presence, supported by its extensive partner network and customer success stories. The company hosts events like the Data + AI Summit and engages with the community through blogs and podcasts, enhancing its visibility and thought leadership in the data and AI space.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is committed to maintaining its growth trajectory while preserving its unique culture. Databricks continues to innovate in AI and data management, aiming to empower organizations with advanced analytics capabilities.\n\n## Disclosure Gaps\n\n- Specific funding and investor details are not disclosed.\n- Detailed financial performance metrics are not provided.\n- Specific risks and challenges faced by the company are not disclosed.",
+    "content": "## Company Overview\n\nDatabricks is a data and AI company headquartered in San Francisco, with a mission to simplify and democratize data and AI. The company aims to help data and AI teams solve complex problems by providing a unified platform for data, analytics, and AI. Databricks has a global presence with offices worldwide and collaborates with over 1,200 cloud, ISV, and consulting partners.\n\n## Business Model and GTM\n\nDatabricks operates a platform-based business model, offering a unified platform for data management, analytics, and AI. The platform includes features for data warehousing, data engineering, data science, and application development. The company leverages partnerships with cloud providers, technology partners, and consulting integrators to expand its reach and enhance its offerings. Databricks also provides industry-specific solutions across sectors such as financial services, healthcare, manufacturing, and more.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nThe company states that it is one of the fastest-growing enterprise software companies, attracting top talent globally. Databricks has been recognized with various awards and continues to expand its team and capabilities.\n\n## Visibility & Market Sentiment\n\nDatabricks has a strong market presence, supported by its extensive partner network and customer success stories. The company hosts events like the Data + AI Summit and engages with the community through blogs and podcasts, enhancing its visibility and thought leadership in the data and AI space.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is committed to maintaining its growth trajectory while preserving its unique culture. Databricks continues to innovate in AI and data management, aiming to provide cutting-edge solutions to its customers.\n\n## Disclosure Gaps\n\n- Specific funding details and investor profiles are not disclosed.\n- Detailed risks and challenges faced by the company are not disclosed.",
     "context_results": [
       {
         "id": "databricks_about_e0495356",
@@ -83,13 +83,13 @@
       },
       {
         "id": "databricks_blog_c66985f8",
-        "similarity_score": 0.382310867,
+        "similarity_score": 0.38230896,
         "text": "Customer Stories\nPartners\nCloud Providers\nTechnology Partners\nData Partners\nBuilt on Databricks\nConsulting & System Integrators\nC&SI Partner Program\nPartner Solutions\nProduct\nDatabricks Platform\nPlatform Overview\nSharing\nGovernance\nArtificial Intelligence\nBusiness Intelligence\nDatabase\nData Management\nData Warehousing\nData Engineering\nData Science\nApplication Development\nPricing\nPricing Overview\nPricing Calculator\nOpen Source\nIntegrations and Data\nMarketplace\nIDE Integrations\nPartner Connect",
         "metadata": {
           "chunk_index": 25.0,
           "company_slug": "databricks",
           "content_hash": "c66985f8",
-          "indexed_at": "2025-11-11T20:40:14.484644",
+          "indexed_at": "2025-11-12T04:18:20.860268",
           "page_type": "blog",
           "source_file": "data/raw/databricks/blog/text.txt"
         }
@@ -148,26 +148,26 @@
       },
       {
         "id": "databricks_blog_6d72d311",
-        "similarity_score": 0.37405777,
+        "similarity_score": 0.373909,
         "text": "Data Brew Podcast\nChampions of Data & AI Podcast\nAbout\nCompany\nWho We Are\nOur Team\nDatabricks Ventures\nContact Us\nCareers\nOpen Jobs\nWorking at Databricks\nPress\nAwards and Recognition\nNewsroom\nSecurity and Trust\nAbout\nCompany\nWho We Are\nOur Team\nDatabricks Ventures\nContact Us\nCareers\nOpen Jobs\nWorking at Databricks\nPress\nAwards and Recognition\nNewsroom\nSecurity and Trust\nDatabricks Inc.\n160 Spear Street, 15th Floor\nSan Francisco, CA 94105\n1-866-330-0121\nSee Careers\nat Databricks\n© Databricks",
         "metadata": {
           "chunk_index": 30.0,
           "company_slug": "databricks",
           "content_hash": "6d72d311",
-          "indexed_at": "2025-11-11T20:40:14.484885",
+          "indexed_at": "2025-11-12T04:18:20.860298",
           "page_type": "blog",
           "source_file": "data/raw/databricks/blog/text.txt"
         }
       },
       {
         "id": "databricks_blog_acf9dcc7",
-        "similarity_score": 0.371110946,
+        "similarity_score": 0.37103653,
         "text": "Built on Databricks\nBuild, market and grow your business\nConsulting & System Integrators\nExperts to build, deploy and migrate to Databricks\nC&SI Partner Program\nBuild, deploy or migrate to the Lakehouse\nPartner Solutions\nFind custom industry and migration solutions\nProduct\nDatabricks Platform\nPlatform Overview\nA unified platform for data, analytics and AI\nSharing\nAn open, secure, zero-copy sharing for all data\nGovernance\nUnified governance for all data, analytics and AI assets",
         "metadata": {
           "chunk_index": 2.0,
           "company_slug": "databricks",
           "content_hash": "acf9dcc7",
-          "indexed_at": "2025-11-11T20:40:14.484493",
+          "indexed_at": "2025-11-12T04:18:20.859930",
           "page_type": "blog",
           "source_file": "data/raw/databricks/blog/text.txt"
         }
@@ -213,13 +213,13 @@
       },
       {
         "id": "databricks_blog_6b7c2d44",
-        "similarity_score": 0.367237091,
+        "similarity_score": 0.367641449,
         "text": "Media and Entertainment\nPublic Sector\nRetail\nView All\nCross Industry Solutions\nCybersecurity\nMarketing\nData Migration\nProfessional Services\nSolution Accelerators\nResources\nDocumentation\nCustomer Support\nCommunity\nLearning\nTraining\nCertification\nFree Edition\nUniversity Alliance\nDatabricks Academy Login\nEvents\nData + AI Summit\nData + AI World Tour\nData Intelligence Days\nEvent Calendar\nBlog and Podcasts\nDatabricks Blog\nDatabricks Mosaic Research Blog\nData Brew Podcast",
         "metadata": {
           "chunk_index": 28.0,
           "company_slug": "databricks",
           "content_hash": "6b7c2d44",
-          "indexed_at": "2025-11-11T20:40:14.484872",
+          "indexed_at": "2025-11-12T04:18:20.860285",
           "page_type": "blog",
           "source_file": "data/raw/databricks/blog/text.txt"
         }
@@ -407,6 +407,19 @@
         }
       },
       {
+        "id": "databricks_blog_713d4fba",
+        "similarity_score": 0.348938,
+        "text": "Pricing Calculator\nOpen Source\nIntegrations and Data\nMarketplace\nIDE Integrations\nPartner Connect\nProduct\nDatabricks Platform\nPlatform Overview\nSharing\nGovernance\nArtificial Intelligence\nBusiness Intelligence\nDatabase\nData Management\nData Warehousing\nData Engineering\nData Science\nApplication Development\nPricing\nPricing Overview\nPricing Calculator\nOpen Source\nIntegrations and Data\nMarketplace\nIDE Integrations\nPartner Connect\nSolutions\nDatabricks For Industries\nCommunications\nFinancial Services",
+        "metadata": {
+          "chunk_index": 26.0,
+          "company_slug": "databricks",
+          "content_hash": "713d4fba",
+          "indexed_at": "2025-11-12T04:18:20.860274",
+          "page_type": "blog",
+          "source_file": "data/raw/databricks/blog/text.txt"
+        }
+      },
+      {
         "id": "databricks_product_d5561be9",
         "similarity_score": 0.348644257,
         "text": "Built on Databricks\nConsulting & System Integrators\nC&SI Partner Program\nPartner Solutions\nProduct\nDatabricks Platform\nPlatform Overview\nSharing\nGovernance\nArtificial Intelligence\nBusiness Intelligence\nDatabase\nData Management\nData Warehousing\nData Engineering\nData Science\nApplication Development\nPricing\nPricing Overview\nPricing Calculator\nOpen Source\nIntegrations and Data\nMarketplace\nIDE Integrations\nPartner Connect\nProduct\nDatabricks Platform\nPlatform Overview\nSharing\nGovernance",
@@ -417,19 +430,6 @@
           "indexed_at": "2025-11-11T20:40:14.486907",
           "page_type": "product",
           "source_file": "data/raw/databricks/product/text.txt"
-        }
-      },
-      {
-        "id": "databricks_blog_713d4fba",
-        "similarity_score": 0.348447829,
-        "text": "Pricing Calculator\nOpen Source\nIntegrations and Data\nMarketplace\nIDE Integrations\nPartner Connect\nProduct\nDatabricks Platform\nPlatform Overview\nSharing\nGovernance\nArtificial Intelligence\nBusiness Intelligence\nDatabase\nData Management\nData Warehousing\nData Engineering\nData Science\nApplication Development\nPricing\nPricing Overview\nPricing Calculator\nOpen Source\nIntegrations and Data\nMarketplace\nIDE Integrations\nPartner Connect\nSolutions\nDatabricks For Industries\nCommunications\nFinancial Services",
-        "metadata": {
-          "chunk_index": 26.0,
-          "company_slug": "databricks",
-          "content_hash": "713d4fba",
-          "indexed_at": "2025-11-11T20:40:14.484849",
-          "page_type": "blog",
-          "source_file": "data/raw/databricks/blog/text.txt"
         }
       },
       {
@@ -482,32 +482,6 @@
           "indexed_at": "2025-11-11T20:40:14.483157",
           "page_type": "about",
           "source_file": "data/raw/databricks/about/text.txt"
-        }
-      },
-      {
-        "id": "databricks_blog_74681c61",
-        "similarity_score": 0.341018707,
-        "text": "What's new\nProduct\nOctober 27, 2025\n/\n11 min read\nWhat’s New in AI/BI - October 2025 Roundup\nNews\nOctober 30, 2025\n/\n3 min read\nBeyond the Partnership: How 100+ Customers Are Already Transforming Business with Databricks and Palantir\nAll\nPlatform\nEngineering\nGenerative AI\nIndustries\nData Strategy\nCompany\nRecent posts\nBlog Archive\nProduct\nNovember 11, 2025\n/\n6 min read\nBuilding an Agentic Food Label Reader for Greater Transparency\nManufacturing\nNovember 11, 2025\n/\n8 min read",
-        "metadata": {
-          "chunk_index": 9.0,
-          "company_slug": "databricks",
-          "content_hash": "74681c61",
-          "indexed_at": "2025-11-11T20:40:14.484540",
-          "page_type": "blog",
-          "source_file": "data/raw/databricks/blog/text.txt"
-        }
-      },
-      {
-        "id": "databricks_careers_7feeab3e",
-        "similarity_score": 0.340625763,
-        "text": "Check out our benefits\nDiversity, equity and inclusion\nWe believe different backgrounds, perspectives and skills fuel our success. That’s why we work hard at cultivating an inclusive and supportive environment. Find out how we’re closing the pay gap, removing unconscious bias from recruitment and more.\nSee inclusion in action\nLocations",
-        "metadata": {
-          "chunk_index": 14.0,
-          "company_slug": "databricks",
-          "content_hash": "7feeab3e",
-          "indexed_at": "2025-11-11T20:40:14.485845",
-          "page_type": "careers",
-          "source_file": "data/raw/databricks/careers/text.txt"
         }
       }
     ]

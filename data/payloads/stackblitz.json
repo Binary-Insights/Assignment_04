@@ -19,13 +19,18 @@
     "provenance": [
       {
         "source_url": "blog",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-22",
         "snippet": "© 2025 StackBlitz Inc."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-22",
         "snippet": "StackBlitz | Instant Dev Environments | Click. Code. Done."
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-22",
+        "snippet": "© 2025 StackBlitz - All rights reserved."
       }
     ]
   },
@@ -36,7 +41,7 @@
       "occurred_on": "2025-06-04",
       "event_type": "partnership",
       "title": "Cloudflare backing pkg.pr.new’s data infrastructure",
-      "description": "Cloudflare is now backing pkg.pr.new’s data infrastructure!",
+      "description": "Cloudflare is now backing pkg.pr.new’s data infrastructure, enabling StackBlitz to sustainably scale preview package releases.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -44,7 +49,13 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://stackblitz.com/blog",
+          "crawled_at": "2025-06-04",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "2",
@@ -52,27 +63,41 @@
       "occurred_on": "2025-02-13",
       "event_type": "open_source_release",
       "title": "Bolt 100K Open Source Fund",
-      "description": "We're doubling down on our support to Open Source in 2025 with a 100K fund targeted at web infrastructure and Bolt dependencies.",
+      "description": "StackBlitz is doubling down on support to Open Source in 2025 with a 100K fund targeted at web infrastructure and Bolt dependencies.",
       "round_name": null,
       "investors": null,
-      "amount_usd": 100000.0,
+      "amount_usd": null,
       "valuation_usd": null,
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://stackblitz.com/blog",
+          "crawled_at": "2025-02-13",
+          "snippet": null
+        }
+      ]
     }
   ],
   "snapshots": [
     {
       "company_id": "stackblitz",
-      "as_of": "2023-11-01",
+      "as_of": "2023-10-07",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
       "engineering_openings": null,
       "sales_openings": null,
-      "hiring_focus": null,
+      "hiring_focus": [
+        "Engineering",
+        "Customer Experience",
+        "Product",
+        "Sales",
+        "Marketing",
+        "Design",
+        "People"
+      ],
       "pricing_tiers": null,
       "active_products": [
         "Bolt.new",
@@ -83,24 +108,36 @@
         "WebContainer API",
         "Web Publisher"
       ],
-      "geo_presence": null,
+      "geo_presence": [
+        "US"
+      ],
       "confidence": 0.9,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://stackblitz.com",
-          "crawled_at": "2023-11-01",
-          "snippet": null
+          "source_url": "https://stackblitz.com/careers",
+          "crawled_at": "2023-10-07",
+          "snippet": "Build great things and grow your career with the support and flexibility you need to thrive at StackBlitz. US only"
+        },
+        {
+          "source_url": "https://stackblitz.com/about",
+          "crawled_at": "2023-10-07",
+          "snippet": "Loved by frontend and product teams at the world's largest and most innovative companies."
+        },
+        {
+          "source_url": "https://stackblitz.com/product",
+          "crawled_at": "2023-10-07",
+          "snippet": "Products: Bolt.new, WebContainers, Enterprise Server, Integrations, Design Systems, WebContainer API, Web Publisher."
         }
       ]
     }
   ],
   "products": [
     {
-      "product_id": "bolt.new",
+      "product_id": "bolt",
       "company_id": "stackblitz",
-      "name": "Bolt.new",
-      "description": "Turn text into working web apps. Bolt handles the code while you focus on your work.",
+      "name": "Bolt",
+      "description": "Bolt AI builder: Websites, apps & prototypes. Empowering product builders with the most powerful coding agents. Bolt does the heavy lifting for you, so you can focus on your vision instead of fighting errors.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -111,8 +148,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web content",
-          "crawled_at": "2023-10-06",
+          "source_url": "web_content",
+          "crawled_at": "2025-06-04",
           "snippet": null
         }
       ]
@@ -121,7 +158,7 @@
       "product_id": "webcontainers",
       "company_id": "stackblitz",
       "name": "WebContainers",
-      "description": "StackBlitz unlocks a true one-click startup experience with the full stack running in the browser.",
+      "description": "Introducing WebContainers: Run Node.js in your browser. Powered by WebContainers, the first WebAssembly-based micro operating system which boots entire development environments in milliseconds.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -132,71 +169,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "enterprise_server",
-      "company_id": "stackblitz",
-      "name": "Enterprise Server",
-      "description": null,
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "webcontainer_api",
-      "company_id": "stackblitz",
-      "name": "WebContainer API",
-      "description": null,
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "web_publisher",
-      "company_id": "stackblitz",
-      "name": "Web Publisher",
-      "description": null,
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web content",
-          "crawled_at": "2023-10-06",
+          "source_url": "web_content",
+          "crawled_at": "2025-06-04",
           "snippet": null
         }
       ]
@@ -204,11 +178,11 @@
   ],
   "leadership": [
     {
-      "person_id": "yael-g",
+      "person_id": "eric-s",
       "company_id": "stackblitz",
-      "name": "Yaël G.",
-      "role": "Customer Experience",
-      "is_founder": false,
+      "name": "Eric S.",
+      "role": "Co-Founder, CTO",
+      "is_founder": true,
       "start_date": null,
       "end_date": null,
       "previous_affiliation": null,
@@ -217,18 +191,18 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://stackblitz.com/careers",
-          "crawled_at": "2025-10-25",
+          "source_url": "https://example.com",
+          "crawled_at": "2025-06-04",
           "snippet": null
         }
       ]
     },
     {
-      "person_id": "franki-g",
+      "person_id": "alex-b",
       "company_id": "stackblitz",
-      "name": "Franki G.",
-      "role": "Engineering",
-      "is_founder": false,
+      "name": "Alex B.",
+      "role": "Co-Founder, CEO",
+      "is_founder": true,
       "start_date": null,
       "end_date": null,
       "previous_affiliation": null,
@@ -237,17 +211,17 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://stackblitz.com/careers",
-          "crawled_at": "2025-10-25",
+          "source_url": "https://example.com",
+          "crawled_at": "2025-06-04",
           "snippet": null
         }
       ]
     },
     {
-      "person_id": "conor-m",
+      "person_id": "alejandro-r",
       "company_id": "stackblitz",
-      "name": "Conor M.",
-      "role": "Customer Experience",
+      "name": "Alejandro R.",
+      "role": "Chief of Staff",
       "is_founder": false,
       "start_date": null,
       "end_date": null,
@@ -257,28 +231,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://stackblitz.com/careers",
-          "crawled_at": "2025-10-25",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "person_id": "will-s",
-      "company_id": "stackblitz",
-      "name": "Will S.",
-      "role": "Engineering",
-      "is_founder": false,
-      "start_date": null,
-      "end_date": null,
-      "previous_affiliation": null,
-      "education": null,
-      "linkedin": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://stackblitz.com/careers",
-          "crawled_at": "2025-10-25",
+          "source_url": "https://example.com",
+          "crawled_at": "2025-06-04",
           "snippet": null
         }
       ]
@@ -296,6 +250,6 @@
       "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:41:51.429374",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:41:43.861563",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

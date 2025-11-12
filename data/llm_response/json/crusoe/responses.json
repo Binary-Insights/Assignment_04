@@ -4,17 +4,17 @@
     "company_name": "Crusoe",
     "company_slug": "crusoe",
     "pipeline_type": "structured",
-    "timestamp": "2025-11-12T02:56:51.518917Z",
+    "timestamp": "2025-11-12T22:59:57.336126Z",
     "markdown_file": "markdown/crusoe/structured.md",
-    "content": "## Company Overview\n\nCrusoe, founded in 2018, operates at the intersection of AI infrastructure and clean energy. The company is pioneering technology to convert wasted natural gas into energy for high-performance computing. Crusoe's mission is to align the future of computing with the future of the climate, providing scalable, cost-effective, and environmentally friendly solutions for AI infrastructure.\n\n## Business Model and GTM\n\nCrusoe's business model focuses on leveraging clean energy to power AI-optimized data centers. The company offers products such as Crusoe Managed Inference, Crusoe Cloud, and Crusoe Autoclusters, which facilitate scalable AI model deployment and high-performance AI workloads. The company states that its solutions are reliable and environmentally friendly, targeting enterprise developers and organizations seeking sustainable AI infrastructure.\n\n## Funding & Investor Profile\n\nCrusoe has raised a total of $128 million, with the last disclosed funding round being a Series B closed on January 1, 2021. The company has also mentioned a Series C round and a significant $1 billion+ Series E round aimed at accelerating the development of large-scale AI factories and expanding Crusoe Cloud. Specific investor profiles and details of these rounds are not disclosed.\n\n## Growth Momentum\n\nCrusoe has demonstrated growth through strategic funding rounds and product expansions. The company has expanded its data center footprint to Europe with a sustainable geothermal and hydro-powered deployment in Iceland. Additionally, Crusoe has acquired a GPU memory optimization startup, Atero, and established an office in Tel Aviv, indicating a focus on enhancing its technological capabilities and global presence.\n\n## Visibility & Market Sentiment\n\nVisibility and market presence details are limited, with no specific mentions of market sentiment or media coverage provided. The company has formed partnerships with entities like Redwood Materials and Blue Energy, which may enhance its market visibility and credibility.\n\n## Risks and Challenges\n\nSpecific risks and challenges are not disclosed. However, potential challenges could include competition in the AI infrastructure space, technological advancements, and the ability to maintain and scale clean energy solutions effectively.\n\n## Outlook\n\nCrusoe's outlook appears positive, with significant funding rounds and strategic expansions indicating a strong growth trajectory. The company's focus on sustainable AI infrastructure aligns with increasing global emphasis on clean energy solutions, potentially positioning Crusoe favorably in the market.\n\n## Disclosure Gaps\n\n- Specific dates for funding rounds and product releases are not disclosed.\n- Details on investor profiles and participation in funding rounds are not provided.\n- Market sentiment and visibility metrics are not available.\n- Risks and challenges specific to Crusoe are not detailed."
+    "content": "## Company Overview\n\nCrusoe, founded in 2018, operates at the intersection of AI infrastructure, clean energy, and data centers. The company is pioneering technology to convert wasted natural gas into energy for high-performance computing. Crusoe's mission is to provide a reliable, scalable, cost-effective, and environmentally friendly solution for AI infrastructure by harnessing large-scale clean energy and building AI-optimized data centers.\n\n## Business Model and GTM\n\nCrusoe's business model focuses on leveraging its patented Digital Flare Mitigation® technology to convert wasted natural gas into energy, which is then used to power AI-optimized data centers. The company offers products such as Crusoe Managed Inference, Crusoe Cloud, and Crusoe AutoClusters, which cater to enterprise developers and AI workloads. These products are designed to simplify the deployment and management of machine learning models and AI infrastructure.\n\n## Funding & Investor Profile\n\nCrusoe has raised a total of $128 million in funding, with the last disclosed round being a Series B in January 2021. The company has also reportedly raised a $1 billion+ Series E round to accelerate the development of large-scale AI factories and expand Crusoe Cloud, as well as a $600 million Series D round. These funding rounds indicate strong investor confidence and support for Crusoe's growth and expansion plans.\n\n## Growth Momentum\n\nCrusoe has demonstrated significant growth momentum through various strategic initiatives. The company has expanded its data center footprint to Europe with a sustainable geothermal and hydro-powered deployment in Iceland. Additionally, Crusoe has acquired GPU memory optimization startup Atero and established an office in Tel Aviv. These moves highlight Crusoe's commitment to scaling its infrastructure and expanding its global presence.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that its patented Digital Flare Mitigation® technology has proven scalability, and with substantial funding from recent rounds, Crusoe is well-positioned to continue its expansion and innovation in AI infrastructure and clean energy solutions. The partnerships with companies like Redwood Materials and Blue Energy further bolster its strategic positioning in the market.\n\n## Disclosure Gaps\n\n- Specific details on market sentiment and visibility are not disclosed.\n- Risks and challenges faced by the company are not disclosed.\n- Detailed financial performance metrics beyond funding rounds are not disclosed.\n- Information on leadership roles and responsibilities is not provided."
   },
   "rag": {
     "company_name": "Crusoe",
     "company_slug": "crusoe",
     "pipeline_type": "rag",
-    "timestamp": "2025-11-12T02:56:28.584214Z",
+    "timestamp": "2025-11-12T23:03:09.082165Z",
     "markdown_file": "markdown/crusoe/rag.md",
-    "content": "## Company Overview\n\nCrusoe was founded in 2018 with an energy-first approach, pioneering technology to convert wasted natural gas into energy for high-performance computing. The company has since expanded its focus to include AI infrastructure, with a mission to build large-scale AI factories and expand its Crusoe Cloud offering.\n\n## Business Model and GTM\n\nCrusoe's business model revolves around leveraging its patented Digital Flare Mitigation® technology to provide sustainable energy solutions for high-performance computing. The company has expanded its data center footprint globally, including a geothermal and hydro-powered deployment in Iceland. Crusoe partners with companies like GE Vernova and Redwood Materials to enhance its AI data center capabilities, including the use of second-life EV battery systems.\n\n## Funding & Investor Profile\n\nCrusoe has successfully raised multiple funding rounds to support its growth:\n- **2019**: Series A funding to establish a financial foundation.\n- **2021**: $128M Series B to expand Digital Flare Mitigation® technology.\n- **2022**: $350M Series C to scale infrastructure for high-performance computing.\n- **2024**: $600M Series D to launch Crusoe Cloud with NVIDIA support.\n- **2025**: $1B+ Series E to accelerate AI factories and expand Crusoe Cloud.\n\n## Growth Momentum\n\nCrusoe has demonstrated significant growth momentum through strategic acquisitions and partnerships. The acquisition of Atero, a GPU memory optimization startup, and the establishment of a Tel Aviv office are key milestones. The company has also announced a 1.8 GW data center in Wyoming and a 1.2 GW data center campus in Abilene, Texas, marking significant expansions in its infrastructure capabilities.\n\n## Visibility & Market Sentiment\n\nThe company states that it is highly collaborative and responsive to customer feedback, which has contributed to positive market sentiment. Crusoe's partnerships with industry leaders like AMD and NVIDIA further enhance its visibility and credibility in the AI infrastructure space.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nCrusoe's outlook appears positive, with plans to continue expanding its AI infrastructure capabilities and data center footprint. The company's focus on sustainable energy solutions and strategic partnerships positions it well for future growth in the AI and high-performance computing markets.\n\n## Disclosure Gaps\n\n- Specific details on revenue and profitability are not disclosed.\n- Information on customer base and market share is not disclosed.\n- Risks and challenges facing the company are not disclosed.",
+    "content": "## Company Overview\nCrusoe was founded in 2018 with an energy-first approach, pioneering technology to convert wasted natural gas into energy for high-performance computing. The company has expanded its operations to include AI infrastructure, focusing on sustainable and innovative energy solutions.\n\n## Business Model and GTM\nCrusoe's business model revolves around leveraging wasted natural gas to power high-performance computing solutions. The company has expanded its offerings to include Crusoe Cloud, which provides scalable AI infrastructure. Crusoe has also partnered with companies like GE Vernova and Redwood Materials to enhance its energy solutions and AI data centers.\n\n## Funding & Investor Profile\nCrusoe has completed several funding rounds:\n- **2019**: Series A funding to build the financial foundation.\n- **2021**: Series B round of $128M to expand Digital Flare Mitigation® technology.\n- **2022**: Series C round of $350M to scale infrastructure for high-performance computing.\n- **2024**: Series D round of $600M, announcing the General Availability of Crusoe Cloud.\n- **2025**: Series E round raising over $1B to accelerate AI factories and expand Crusoe Cloud.\n\n## Growth Momentum\nCrusoe has shown significant growth through strategic expansions and partnerships:\n- Expanded data center footprint to Europe with a geothermal and hydro-powered deployment in Iceland.\n- Announced a 1.8 GW data center in Wyoming with Tallgrass.\n- Broke ground on a 1.2 GW data center campus in Abilene, Texas.\n- Acquired GPU memory optimization startup Atero and established a Tel Aviv office.\n\n## Visibility & Market Sentiment\nThe company states that it has pioneered a new category of energy-first computing and has been recognized for its innovative approach to sustainable energy solutions. Crusoe's partnerships with major companies like GE Vernova and AMD highlight its growing influence in the AI infrastructure market.\n\n## Risks and Challenges\nNot disclosed.\n\n## Outlook\nCrusoe is positioned to continue its growth trajectory by focusing on sustainable energy solutions and expanding its AI infrastructure capabilities. The company's strategic partnerships and recent funding rounds suggest a strong potential for future expansion and innovation.\n\n## Disclosure Gaps\n- Specific financial metrics and performance indicators are not disclosed.\n- Detailed information on customer base and market share is not provided.\n- Risks and challenges facing the company are not disclosed.",
     "context_results": [
       {
         "id": "crusoe_about_f1474094",
@@ -56,14 +56,14 @@
         }
       },
       {
-        "id": "crusoe_careers_ff49fb7d",
-        "similarity_score": 0.375183105,
-        "text": "Full Time\nNew York City, NY - US (Remote)\nSan Francisco, CA - US\nLearn more\nAssociate, Capital Markets and Formation\nStrategic Finance and Corporate Development\nFull Time\nSan Francisco, CA - US\nNew York City, NY - US (Remote)\nLearn more\nNo jobs match your criteria.\nPlease try changing your filters.\nOur values\nThink like a\nmountaineer\nYour goals are achievable, but require intense preparation, focus on safety, accurate forecasting, always thinking ahead, and mastery of your tools.\nMove fast and",
+        "id": "crusoe_careers_57d716d5",
+        "similarity_score": 0.376728058,
+        "text": "Marketing\nFull Time\nSan Francisco, CA - US\nBellevue, WA - US\nLearn more\nPeople\n22 Open Roles\nDirector, Human Resource Business Partner\nPeople\nFull Time\nSan Francisco, CA - US\nLearn more\nCorporate Recruiter, G&A\nPeople\nFull Time\nSan Francisco, CA - US\nLearn more\nExecutive Recruiting Coordinator\nPeople\nFull Time\nSan Francisco, CA - US\nLearn more\nDirector, Employee Success\nPeople\nFull Time\nSan Francisco, CA - US\nLearn more\nWorkplace Manager\nPeople\nFull Time\nTel Aviv - IL\nLearn more",
         "metadata": {
-          "chunk_index": 68.0,
+          "chunk_index": 54.0,
           "company_slug": "crusoe",
-          "content_hash": "ff49fb7d",
-          "indexed_at": "2025-11-11T20:39:33.414509",
+          "content_hash": "57d716d5",
+          "indexed_at": "2025-11-12T04:17:52.034385",
           "page_type": "careers",
           "source_file": "data/raw/crusoe/careers/text.txt"
         }
@@ -79,6 +79,19 @@
           "indexed_at": "2025-11-11T20:39:33.408642",
           "page_type": "about",
           "source_file": "data/raw/crusoe/about/text.txt"
+        }
+      },
+      {
+        "id": "crusoe_careers_ff49fb7d",
+        "similarity_score": 0.374046326,
+        "text": "Full Time\nNew York City, NY - US (Remote)\nSan Francisco, CA - US\nLearn more\nAssociate, Capital Markets and Formation\nStrategic Finance and Corporate Development\nFull Time\nSan Francisco, CA - US\nNew York City, NY - US (Remote)\nLearn more\nNo jobs match your criteria.\nPlease try changing your filters.\nOur values\nThink like a\nmountaineer\nYour goals are achievable, but require intense preparation, focus on safety, accurate forecasting, always thinking ahead, and mastery of your tools.\nMove fast and",
+        "metadata": {
+          "chunk_index": 68.0,
+          "company_slug": "crusoe",
+          "content_hash": "ff49fb7d",
+          "indexed_at": "2025-11-12T04:17:52.034465",
+          "page_type": "careers",
+          "source_file": "data/raw/crusoe/careers/text.txt"
         }
       },
       {
@@ -173,6 +186,19 @@
         }
       },
       {
+        "id": "crusoe_careers_0e6f2093",
+        "similarity_score": 0.350891113,
+        "text": "Manufacturing (MFG)\nFull Time\nPonchatoula, LA - US\nLearn more\nMarketing\n4 Open Roles\nPrincipal, Technical Product Marketing Manager\nMarketing\nFull Time\nBellevue, WA - US\nLearn more\nSenior Product Marketing Manager, Cloud\nMarketing\nFull Time\nBellevue, WA - US\nLearn more\nDirector, Global Programs & Events\nMarketing\nFull Time\nSan Francisco, CA - US\nBellevue, WA - US\nLearn more\nDirector, Field Marketing\nMarketing\nFull Time\nSan Francisco, CA - US\nBellevue, WA - US\nLearn more\nPeople\n22 Open Roles",
+        "metadata": {
+          "chunk_index": 53.0,
+          "company_slug": "crusoe",
+          "content_hash": "0e6f2093",
+          "indexed_at": "2025-11-12T04:17:52.034379",
+          "page_type": "careers",
+          "source_file": "data/raw/crusoe/careers/text.txt"
+        }
+      },
+      {
         "id": "crusoe_about_d5be337a",
         "similarity_score": 0.346790314,
         "text": "Live on the infinite growth loop\nWe work to free ourselves from perceived limits and adopt a mentality of continuous self improvement.\nAre you ready to build something amazing?\nExplore careers\nProducts\nCrusoe Cloud\nData Centers\nEnergy\nDevelopers\nDocumentation\nGithub\nCookbook\nAbout us\nOur Mission\nOur Impact\nLeadership\nCareers\nOther\nBlog\nNewsroom\nManufacturing\nSupport\nTrust Center\nLegal Center\nReport Abuse\nCloud Console Login\nContact Us\n2025 Crusoe Energy Systems LLC, All rights reserved.",
@@ -183,6 +209,19 @@
           "indexed_at": "2025-11-11T20:39:33.408681",
           "page_type": "about",
           "source_file": "data/raw/crusoe/about/text.txt"
+        }
+      },
+      {
+        "id": "crusoe_careers_df925820",
+        "similarity_score": 0.344295532,
+        "text": "People\nFull Time\nSan Francisco, CA - US\nLearn more\nSenior Compensation Partner\nPeople\nFull Time\nSan Francisco, CA - US\nLearn more\nDirector of Stock Administration\nPeople\nFull Time\nDenver, CO - US\nLearn more\nCorporate Recruiter, G&A - Contract\nPeople\nFull Time\nSan Francisco, CA - US\nSunnyvale, CA - US\nDenver, CO - US\nLearn more\nSenior Corporate Recruiter, G&A\nPeople\nFull Time\nSunnyvale, CA - US\nLearn more\nSite Operations Coordinator\nPeople\nFull Time\nAbilene, TX - US\nLearn more",
+        "metadata": {
+          "chunk_index": 57.0,
+          "company_slug": "crusoe",
+          "content_hash": "df925820",
+          "indexed_at": "2025-11-12T04:17:52.034402",
+          "page_type": "careers",
+          "source_file": "data/raw/crusoe/careers/text.txt"
         }
       },
       {
@@ -222,19 +261,6 @@
           "indexed_at": "2025-11-11T20:39:33.415312",
           "page_type": "product",
           "source_file": "data/raw/crusoe/product/text.txt"
-        }
-      },
-      {
-        "id": "crusoe_careers_54c7ed93",
-        "similarity_score": 0.340143204,
-        "text": "People\nFull Time\nTulsa, OK - US\nLearn more\nDirector of Stock Administration\nPeople\nFull Time\nSan Francisco, CA - US\nLearn more\nSenior Compensation Partner\nPeople\nFull Time\nSan Francisco, CA - US\nLearn more\nDirector of Stock Administration\nPeople\nFull Time\nDenver, CO - US\nLearn more\nCorporate Recruiter, G&A - Contract\nPeople\nFull Time\nSan Francisco, CA - US\nSunnyvale, CA - US\nDenver, CO - US\nLearn more\nSenior Corporate Recruiter, G&A\nPeople\nFull Time\nSunnyvale, CA - US\nLearn more",
-        "metadata": {
-          "chunk_index": 57.0,
-          "company_slug": "crusoe",
-          "content_hash": "54c7ed93",
-          "indexed_at": "2025-11-11T20:39:33.414443",
-          "page_type": "careers",
-          "source_file": "data/raw/crusoe/careers/text.txt"
         }
       }
     ]

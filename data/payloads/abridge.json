@@ -19,13 +19,23 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-11-01",
+        "crawled_at": "2023-10-07",
+        "snippet": "Copyright © 2025 Abridge Al, Inc."
+      },
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-07",
         "snippet": "Copyright © 2025 Abridge Al, Inc."
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-11-01",
+        "crawled_at": "2023-10-07",
         "snippet": "abridge.com"
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-07",
+        "snippet": "Copyright © 2025 Abridge Al, Inc."
       }
     ]
   },
@@ -44,21 +54,15 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[product] Abridge in the Press",
-          "crawled_at": "2025-08-12",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "2",
       "company_id": "abridge",
       "occurred_on": "2025-04-29",
       "event_type": "partnership",
-      "title": "AltaMed Health Services Corporation Partners with Abridge",
-      "description": "AltaMed Health Services Corporation partners with Abridge to bring leading AI technology to multilingual communication.",
+      "title": "AltaMed Health Services Corporation Partners with Abridge to Bring Leading AI Technology to Multilingual Communication",
+      "description": null,
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -66,21 +70,15 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[product] Abridge in the Press",
-          "crawled_at": "2025-04-29",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "3",
       "company_id": "abridge",
       "occurred_on": "2025-11-03",
       "event_type": "other",
-      "title": "Abridge on Stage at NVIDIA GTC",
-      "description": "Abridge on stage at NVIDIA GTC with Perpelxity, Cognition, and Crowdstrike.",
+      "title": "Abridge on Stage at NVIDIA GTC With Perpelxity, Cognition, and Crowdstrike",
+      "description": null,
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -88,22 +86,16 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Read more",
-          "crawled_at": "2025-11-03",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     }
   ],
   "snapshots": [
     {
       "company_id": "abridge",
-      "as_of": "2023-11-02",
+      "as_of": "2023-10-10",
       "headcount_total": null,
       "headcount_growth_pct": null,
-      "job_openings_count": 53,
+      "job_openings_count": 52,
       "engineering_openings": null,
       "sales_openings": null,
       "hiring_focus": [
@@ -121,31 +113,25 @@
         "Implement"
       ],
       "pricing_tiers": null,
-      "active_products": [
-        "Real Time Prior Authorization",
-        "Revenue Cycle",
-        "Nursing",
-        "AI",
-        "Contextual Reasoning Engine"
-      ],
+      "active_products": null,
       "geo_presence": null,
-      "confidence": null,
+      "confidence": 0.9,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "careers",
-          "crawled_at": "2023-11-02",
-          "snippet": "Abridge Jobs Open Positions (53)"
+          "source_url": "abridge.com",
+          "crawled_at": "2023-10-10",
+          "snippet": "[careers] Abridge Jobs Open Positions (52) Filters: Reset filters Department All Departments Builder Foundations Engineering Platform Engineering Security ML Engineering Product Product Design Product Engineering Science Commercial Partner Experience Implement"
         }
       ]
     }
   ],
   "products": [
     {
-      "product_id": "1",
+      "product_id": "abridge_1",
       "company_id": "abridge",
       "name": "Clinically Accurate Summaries",
-      "description": "Provides clinically accurate summaries and medical terms across specialties. Multilingual. Recognizes, understands, and takes accurate notes across a wide range of languages. Integrated Workflows. Adapts seamlessly to your existing implementations.",
+      "description": "Provides clinically accurate summaries and medical terms across specialties. Recognizes, understands, and takes accurate notes across a wide range of languages. Adapts seamlessly to existing implementations.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -157,13 +143,13 @@
       "provenance": [
         {
           "source_url": "abridge.com",
-          "crawled_at": "2023-10-10",
+          "crawled_at": "2025-11-04",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "2",
+      "product_id": "abridge_2",
       "company_id": "abridge",
       "name": "Real Time Prior Authorization",
       "description": "Announcing Real Time Prior Authorization at the Point of Conversation.",
@@ -173,14 +159,96 @@
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": [
-        "AltaMed Health Services Corporation"
-      ],
+      "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "abridge.com",
-          "crawled_at": "2023-10-10",
+          "crawled_at": "2025-11-04",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "abridge_3",
+      "company_id": "abridge",
+      "name": "Enterprise Security and Compliance",
+      "description": "With Abridge Enterprise, healthcare systems get all the tools they need to easily manage security, compliance, and deployments—for all clinicians, in one place. Single-Sign On (SSO) Control user access.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "abridge.com",
+          "crawled_at": "2025-11-04",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "abridge_4",
+      "company_id": "abridge",
+      "name": "Abridge Contextual Reasoning Engine",
+      "description": "Leading healthcare AI infrastructure, powering the most trusted billable, clinically useful, and compliant notes at the point of care. Powering Advanced CLINiCAL NOTES.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "abridge.com",
+          "crawled_at": "2025-11-04",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "abridge_5",
+      "company_id": "abridge",
+      "name": "Analytics and Reporting",
+      "description": "Track and monitor usage of Abridge across your health system in one place. HIPAA-Compliant with multiple layers of security and controls. Secure Cloud.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "abridge.com",
+          "crawled_at": "2025-11-04",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "abridge_6",
+      "company_id": "abridge",
+      "name": "Abridge Inside Epic",
+      "description": "Capture patient conversations in Haiku. Trust and verify AI note drafts in Hyperspace using Linked Evidence. Built to Scale with the Largest Enterprise Healthcare Systems.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "abridge.com",
+          "crawled_at": "2025-11-04",
           "snippet": null
         }
       ]
@@ -202,7 +270,7 @@
       "provenance": [
         {
           "source_url": "about",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-05",
           "snippet": null
         }
       ]
@@ -222,7 +290,7 @@
       "provenance": [
         {
           "source_url": "about",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-05",
           "snippet": null
         }
       ]
@@ -242,7 +310,7 @@
       "provenance": [
         {
           "source_url": "about",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-05",
           "snippet": null
         }
       ]
@@ -262,7 +330,7 @@
       "provenance": [
         {
           "source_url": "about",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-05",
           "snippet": null
         }
       ]
@@ -282,7 +350,7 @@
       "provenance": [
         {
           "source_url": "about",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-05",
           "snippet": null
         }
       ]
@@ -302,7 +370,7 @@
       "provenance": [
         {
           "source_url": "about",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-05",
           "snippet": null
         }
       ]
@@ -311,7 +379,7 @@
   "visibility": [
     {
       "company_id": "abridge",
-      "as_of": "2023-10-06",
+      "as_of": "2023-11-01",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -319,18 +387,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "abridge.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "Announcing Real Time Prior Authorization at the Point of Conversation"
-        },
-        {
-          "source_url": "abridge.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "AltaMed Health Services Corporation Partners with Abridge to Bring Leading AI Technology to Multilingual Com"
+          "source_url": "https://abridge.com",
+          "crawled_at": "2023-11-01",
+          "snippet": null
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:25:19.109398",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:15:41.504799",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

@@ -9,8 +9,7 @@
     "hq_country": null,
     "founded_year": 2017,
     "categories": [
-      "AI",
-      "Technology"
+      "AI Infrastructure"
     ],
     "related_companies": null,
     "total_raised_usd": null,
@@ -22,18 +21,8 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-05",
         "snippet": "SambaNova was founded in 2017 in Palo Alto, California, by a group of industry luminaries, business leaders, and world-class innovators who understand AI."
-      },
-      {
-        "source_url": "about",
-        "crawled_at": "2023-10-06",
-        "snippet": "SambaNova Powers 3 Sovereign AI Providers in Australia, Europe & the UK"
-      },
-      {
-        "source_url": "product",
-        "crawled_at": "2023-10-06",
-        "snippet": "Products\nSambaCloud\nSambaStack\nSambaManaged\nTechnology\nSambaRack\nRDU\nSolutions\nSovereign AI\nArgyll (UK)\nInfercom (EU)\nSouthernCrossAI (AU)"
       }
     ]
   },
@@ -44,7 +33,7 @@
       "occurred_on": "2025-02-13",
       "event_type": "product_release",
       "title": "SambaNova Cloud Launches the Fastest DeepSeek-R1 671B",
-      "description": "Sign Up for Early Access",
+      "description": "SambaNova Cloud launches a new product, the Fastest DeepSeek-R1 671B, with early access sign-up available.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -60,7 +49,7 @@
       "occurred_on": "2025-09-16",
       "event_type": "benchmark",
       "title": "SambaNova Named to FORTUNE Future 50 List for Second Consecutive Year",
-      "description": null,
+      "description": "SambaNova is recognized by FORTUNE as one of the Future 50 companies for the second year in a row.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -76,7 +65,7 @@
       "occurred_on": "2025-09-08",
       "event_type": "product_release",
       "title": "Start Building with Lightning-Fast GPT-OSS 120B on SambaCloud",
-      "description": null,
+      "description": "SambaNova launches the Lightning-Fast GPT-OSS 120B on SambaCloud.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -89,10 +78,10 @@
     {
       "event_id": "4",
       "company_id": "sambanova",
-      "occurred_on": "2025-10-19",
+      "occurred_on": "2025-10-09",
       "event_type": "product_release",
-      "title": "Redefining AI Infrastructure in a Power-Constrained World",
-      "description": null,
+      "title": "Start Building with The Fastest DeepSeek-V3.1-Terminus",
+      "description": "SambaNova releases the Fastest DeepSeek-V3.1-Terminus for building applications.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -105,10 +94,42 @@
     {
       "event_id": "5",
       "company_id": "sambanova",
+      "occurred_on": "2025-09-23",
+      "event_type": "product_release",
+      "title": "Unlock Enterprise-Grade Security with Open-Source AI on SambaNova",
+      "description": "SambaNova introduces enterprise-grade security features with open-source AI capabilities.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "6",
+      "company_id": "sambanova",
+      "occurred_on": "2025-10-19",
+      "event_type": "product_release",
+      "title": "Redefining AI Infrastructure in a Power-Constrained World",
+      "description": "SambaNova releases new AI infrastructure solutions designed for power-constrained environments.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "7",
+      "company_id": "sambanova",
       "occurred_on": "2025-10-16",
       "event_type": "partnership",
-      "title": "SambaNova and CrewAI Partner to Deliver Agentic AI at Scale on CrewA",
-      "description": null,
+      "title": "SambaNova and CrewAI Partner to Deliver Agentic AI at Scale on CrewAI",
+      "description": "SambaNova partners with CrewAI to deliver scalable Agentic AI solutions.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -122,7 +143,7 @@
   "snapshots": [
     {
       "company_id": "sambanova",
-      "as_of": "2023-10-11",
+      "as_of": "2023-10-06",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -146,13 +167,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[product] SambaNova Powers 3 Sovereign AI Providers in Australia, Europe & the UK",
-          "crawled_at": "2023-10-11",
-          "snippet": null
-        },
-        {
-          "source_url": "[product] Products SambaCloud SambaStack SambaManaged Technology SambaRack RDU",
-          "crawled_at": "2023-10-11",
+          "source_url": "[product]",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -170,15 +186,13 @@
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": [
-        "Sovereign AI Providers in Australia, Europe & the UK"
-      ],
+      "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "crawled_at": "2023-10-10",
+          "snippet": "[product] SambaStack | Full-Stack Enterprise AI Platform SambaNova Powers 3 Sovereign AI Providers in Australia, Europe & the UK SambaManaged: A Turnkey Path to AI for Data Centers Redefining AI Infrastructure in a Power-Constrained World SambaNova Powers 3 So"
         }
       ]
     },
@@ -193,15 +207,13 @@
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": [
-        "Sovereign AI Providers in Australia, Europe & the UK"
-      ],
+      "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "crawled_at": "2023-10-10",
+          "snippet": "[product] SambaNova Powers 3 Sovereign AI Providers in Australia, Europe & the UK Products SambaCloud SambaStack SambaManaged Technology SambaRack RDU Solutions Sovereign AI Argyll (UK) Infercom (EU) SouthernCrossAI (AU) Developers & Enterprises Government &"
         }
       ]
     },
@@ -216,15 +228,13 @@
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": [
-        "Sovereign AI Providers in Australia, Europe & the UK"
-      ],
+      "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "crawled_at": "2023-10-10",
+          "snippet": "[product] SambaNova Powers 3 Sovereign AI Providers in Australia, Europe & the UK Products SambaCloud SambaStack SambaManaged Technology SambaRack RDU Solutions Sovereign AI Argyll (UK) Infercom (EU) SouthernCrossAI (AU) Developers & Enterprises Government &"
         }
       ]
     }
@@ -244,9 +254,29 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://sambanova.ai/about",
-          "crawled_at": "2023-10-06",
-          "snippet": "Kunle Olukotun, Co-founder & Chief Technologist"
+          "source_url": "https://www.sambanova.ai/about",
+          "crawled_at": "2023-10-05",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "rodrigo-liang",
+      "company_id": "sambanova",
+      "name": "Rodrigo Liang",
+      "role": "Co-founder & CEO",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.sambanova.ai/about",
+          "crawled_at": "2023-10-05",
+          "snippet": null
         }
       ]
     }
@@ -254,7 +284,7 @@
   "visibility": [
     {
       "company_id": "sambanova",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-25",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -262,13 +292,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://fortune.com/future-50/2025/sambanova",
-          "crawled_at": "2023-10-06",
+          "source_url": "https://fortune.com/future-50/",
+          "crawled_at": "2023-10-25",
           "snippet": "SambaNova Named to FORTUNE Future 50 List for Second Consecutive Year"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:36:23.860176",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:37:29.805109",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

@@ -4,17 +4,17 @@
     "company_name": "Clay",
     "company_slug": "clay",
     "pipeline_type": "structured",
-    "timestamp": "2025-11-12T02:53:17.670771Z",
+    "timestamp": "2025-11-12T22:59:39.254540Z",
     "markdown_file": "markdown/clay/structured.md",
-    "content": "## Company Overview\n\nClay is a private AI startup headquartered in Brooklyn, operating in the fields of Growth Marketing, AI Research, and Sales Automation. The company is focused on leveraging AI to enhance growth strategies and sales processes for its clients.\n\n## Business Model and GTM\n\nClay's business model revolves around providing AI-driven solutions to optimize growth marketing and sales automation. The company offers products like Claygent, which uses AI to research target companies and individuals, and Sculptor, which allows users to build go-to-market (GTM) workflows using natural language. The company states that it integrates with platforms like Webflow to offer scalable website personalization for GTM teams. Additionally, Clay has launched a Partner Program to provide essential resources and support to its partners.\n\n## Funding & Investor Profile\n\nClay has raised a total of $62 million, with its last disclosed valuation at $500 million. The company completed a Series B funding round, raising $46 million from investors including Meritech Capital, Sequoia, First Round, Box Group, and Boldstart. Furthermore, Clay secured an additional $40 million in Series B expansion funding, reaching a valuation of $1.25 billion following significant growth in 2024.\n\n## Growth Momentum\n\nClay has demonstrated substantial growth, reportedly achieving 6x growth in 2024. The company has been active in expanding its capabilities through acquisitions, such as acquiring Avenue to enhance growth teams' ability to act on intelligence. Clay has also released new products and features, including a custom signals platform for sales teams and the integration of GPT-5 into its offerings.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is well-positioned to continue its growth trajectory by enhancing its AI-driven solutions and expanding its market presence. With strategic acquisitions and product innovations, Clay aims to solidify its role in the growth marketing and sales automation sectors.\n\n## Disclosure Gaps\n\n- Specific details on the company's revenue and profitability are not disclosed.\n- Information on market sentiment and competitive positioning is not available.\n- Risks and challenges faced by the company are not disclosed.\n- Detailed leadership roles and backgrounds are not provided.\n- Visibility and market presence details are limited."
+    "content": "## Company Overview\n\nClay is a private AI startup headquartered in Brooklyn. The company operates a website at [clay.com](https://clay.com/). Clay is focused on leveraging AI to enhance growth strategies and sales processes.\n\n## Business Model and GTM\n\nClay offers two main products:\n- **Claygent**: An AI tool designed to research target companies and individuals.\n- **Sculptor**: A platform that allows users to build go-to-market (GTM) workflows using natural language.\n\nThe company states that its new custom signals platform helps sales teams track unique data changes that indicate buying opportunities. Additionally, Clay has integrated GPT-5 as a model option across its platform to enhance GTM workflows.\n\n## Funding & Investor Profile\n\nClay has raised a total of $62 million in funding. The last disclosed valuation was $500 million. The company completed a Series B round, raising $46 million from investors including Meritech Capital, Sequoia, First Round, Box Group, and Boldstart. Additionally, Clay raised $40 million in a Series B expansion at a $1.25 billion valuation.\n\n## Growth Momentum\n\nClay has demonstrated significant growth, achieving a 6x increase in 2024. The company has also made strategic acquisitions, such as acquiring Avenue to enhance its capabilities in helping growth teams act on intelligence. Claygent, one of its products, has surpassed 1 billion runs, indicating strong user engagement and adoption.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is well-positioned to capitalize on its growth momentum and product advancements. With substantial funding and strategic acquisitions, Clay aims to continue expanding its market presence and enhancing its product offerings.\n\n## Disclosure Gaps\n\n- Specific dates for funding rounds, product releases, and acquisitions are not disclosed.\n- Detailed information on market sentiment and visibility is not available.\n- Risks and challenges faced by the company are not disclosed.\n- Leadership details are incomplete, with only a partial mention of \"Kunal.\"\n- Additional context on the company's strategic direction and competitive landscape is not provided."
   },
   "rag": {
     "company_name": "Clay",
     "company_slug": "clay",
     "pipeline_type": "rag",
-    "timestamp": "2025-11-12T02:53:50.294335Z",
+    "timestamp": "2025-11-12T23:02:45.658704Z",
     "markdown_file": "markdown/clay/rag.md",
-    "content": "## Company Overview\n\nClay is a private AI startup focused on building creative tools for growth teams. The company offers a suite of products designed to automate and enhance go-to-market (GTM) strategies, including tools like Claygent for AI-driven research, Sculptor for building GTM workflows, and Signals for tracking job changes and social mentions. Clay serves a diverse range of customers, including notable names like OpenAI, Vanta, Verkada, Sendoso, Anthropic, and Rippling.\n\n## Business Model and GTM\n\nClay's business model revolves around providing AI-powered tools that streamline sales and marketing processes. The company offers solutions for automating prospecting, research, and CRM enrichment, targeting both enterprise and startup clients. Clay's GTM strategy includes integrations with over 150 providers, enabling seamless connectivity with existing tools and systems. The company also emphasizes the importance of building a strong data foundation for GTM workflows, allowing businesses to launch targeted campaigns efficiently.\n\n## Funding & Investor Profile\n\nClay has successfully raised significant funding, including a Series C expansion at a $3.1 billion valuation in 2025. The company is backed by world-class investors, including Sequoia, Meritech Capital, First Round, Box Group, and Boldstart. Notable individual investors include Elena Verna (Head of Growth, Dropbox), Scott Belsky (CPO, Adobe), and Maggie Hott (GTM Leader, OpenAI).\n\n## Growth Momentum\n\nClay has demonstrated impressive growth, with a reported 10x revenue increase from 2022 to 2023. The company has expanded its customer base to over 8,000 clients, including high-profile organizations like OpenAI and Hubspot. In 2024, Clay experienced 6x growth, further solidifying its position in the market.\n\n## Visibility & Market Sentiment\n\nThe company has garnered positive attention in the media, being described as a \"secret weapon\" for companies like Anthropic and OpenAI by Forbes. Clay has also been recognized on the Enterprise Tech 30 list and was the only GTM company featured on Forbes' 2025 AI 50 List. These accolades reflect strong market sentiment and visibility.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is entering a new era of GTM engineering, with plans to continue expanding its product offerings and customer base. Clay's focus on AI-driven solutions positions it well for future growth in the evolving sales and marketing landscape.\n\n## Disclosure Gaps\n\n- Specific financial metrics such as revenue figures and profitability are not disclosed.\n- Detailed information on competitive positioning and market share is not available.\n- Risks and challenges facing the company are not disclosed.",
+    "content": "## Company Overview\n\nClay is a private AI startup focused on building creative tools for growth teams. The company offers a suite of products designed to automate and enhance go-to-market (GTM) strategies, including tools for sales prospecting, CRM enrichment, and data-driven marketing campaigns. Clay's platform integrates with over 150 providers, allowing users to connect with their favorite tools and streamline workflows.\n\n## Business Model and GTM\n\nClay's business model revolves around providing AI-powered solutions for sales and marketing teams. The company offers products such as Claygent for AI-driven research, Sculptor for building GTM workflows, and Sequencer for automating personalized email outreach. Clay targets both enterprise and startup clients, helping them build robust data foundations and launch growth campaigns efficiently. The company also supports a partner program to enhance its GTM efforts through collaborations with solution partners.\n\n## Funding & Investor Profile\n\nClay has successfully raised a Series C expansion fundraise at a $3.1 billion valuation in 2025. The company is backed by prominent investors, including Sequoia, Meritech Capital, First Round, and other top venture capital and angel investors. Notable individuals involved include Elena Verna, Head of Growth at Dropbox, and Scott Belsky, CPO at Adobe.\n\n## Growth Momentum\n\nClay has demonstrated significant growth, with a reported 10x revenue increase from 2022 to 2023. The company serves over 8,000 customers, including high-profile clients like OpenAI and Hubspot. Clay's growth is further supported by strategic acquisitions, such as the acquisition of Avenue to enhance its capabilities in acting on intent signals.\n\n## Visibility & Market Sentiment\n\nClay has garnered positive attention in the market, being named the only GTM company on Forbes' 2025 AI 50 List and recognized as a \"secret weapon\" for companies like Anthropic and OpenAI. The company has also been featured in various reputable publications, including Forbes, TechCrunch, and the NY Times.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is on a mission to grow and continues to innovate in the GTM space. With its strong investor backing and a robust product lineup, Clay is well-positioned to capitalize on the increasing demand for AI-driven sales and marketing solutions.\n\n## Disclosure Gaps\n\n- Specific financial metrics such as revenue figures and profitability are not disclosed.\n- Detailed information on competitive landscape and market positioning is not provided.\n- Risks and challenges faced by the company are not disclosed.",
     "context_results": [
       {
         "id": "clay_about_f0a53ad8",
@@ -1405,58 +1405,6 @@
           "indexed_at": "2025-11-11T20:36:54.427794",
           "page_type": "product",
           "source_file": "data/raw/clay/product/text.txt"
-        }
-      },
-      {
-        "id": "clay_blog_ae8d9f47",
-        "similarity_score": 0.3475914,
-        "text": "Introducing GPT-5 in Claygent: sharper research, stronger formulas, better outbound\nGPT-5 is now a model option across Clay, bringing the best research and conversational writing we've ever shipped to your GTM workflows.\nClay Series C announcement. The GTM engineering era begins now\nWe raised a $100M Series C at a $3.1B valuation to power GTM engineering!\nInside Clay’s GTM engineering lab\nAt Clay, the problems we solve internally become solutions we ship to customers.",
-        "metadata": {
-          "chunk_index": 20.0,
-          "company_slug": "clay",
-          "content_hash": "ae8d9f47",
-          "indexed_at": "2025-11-11T20:36:54.424283",
-          "page_type": "blog",
-          "source_file": "data/raw/clay/blog/text.txt"
-        }
-      },
-      {
-        "id": "clay_blog_fca853bd",
-        "similarity_score": 0.346530914,
-        "text": "Feb 19, 2025\nFeb 18, 2025\nRead post\nRead more\nThought Leadership\nWhy we're pivoting our Clay agency from outbound to CRM enrichment\nJan 29, 2025\nJan 30, 2025\nRead post\nRead more\nClay Announcements\nClay acquires Avenue to help growth teams act on intent signals\nJan 21, 2025\nJan 22, 2025\nRead post\nRead more\nClay Announcements\nClay raises $40M at a $1.25B valuation with GTM development environment that turns growth ideas into reality\nJan 22, 2025\nJan 21, 2025\nRead post\nRead more\nClay Announcements",
-        "metadata": {
-          "chunk_index": 83.0,
-          "company_slug": "clay",
-          "content_hash": "fca853bd",
-          "indexed_at": "2025-11-11T20:36:54.424715",
-          "page_type": "blog",
-          "source_file": "data/raw/clay/blog/text.txt"
-        }
-      },
-      {
-        "id": "clay_careers_f793eba7",
-        "similarity_score": 0.346382171,
-        "text": "AI for sales prospecting\nWhy good CRM data matters\nGoogle maps lead generation in 5 easy steps\nOutbound sales automation\nScraping data from Websites\nResources\nGet started lesson\nUniversity\nClaybooks\nTemplates\nPartner programs\nJoin Slack\nCommunity\nFAQ\nCompany\nWall of love\nAbout\nCareers\nJobs\nIntegrate with Clay\nStatus\nLegal\nPrivacy policy\nTerms of service\nDo not sell my data\nLegal\nPrivacy policy\nTerms of service\nDo not sell my data\n© Clay\n2025",
-        "metadata": {
-          "chunk_index": 58.0,
-          "company_slug": "clay",
-          "content_hash": "f793eba7",
-          "indexed_at": "2025-11-11T20:36:54.426930",
-          "page_type": "careers",
-          "source_file": "data/raw/clay/careers/text.txt"
-        }
-      },
-      {
-        "id": "clay_blog_f793eba7",
-        "similarity_score": 0.346374512,
-        "text": "AI for sales prospecting\nWhy good CRM data matters\nGoogle maps lead generation in 5 easy steps\nOutbound sales automation\nScraping data from Websites\nResources\nGet started lesson\nUniversity\nClaybooks\nTemplates\nPartner programs\nJoin Slack\nCommunity\nFAQ\nCompany\nWall of love\nAbout\nCareers\nJobs\nIntegrate with Clay\nStatus\nLegal\nPrivacy policy\nTerms of service\nDo not sell my data\nLegal\nPrivacy policy\nTerms of service\nDo not sell my data\n© Clay\n2025",
-        "metadata": {
-          "chunk_index": 136.0,
-          "company_slug": "clay",
-          "content_hash": "f793eba7",
-          "indexed_at": "2025-11-11T20:36:54.425094",
-          "page_type": "blog",
-          "source_file": "data/raw/clay/blog/text.txt"
         }
       }
     ]

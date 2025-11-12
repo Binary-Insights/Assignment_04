@@ -19,12 +19,12 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-04",
         "snippet": "In 2020, May and Waseem launched WRITER to bring the power of generative AI to the enterprise."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-04",
         "snippet": "San Francisco (HQ) 111 Maiden Ln, 4th Floor San Francisco, CA 94108"
       }
     ]
@@ -41,8 +41,14 @@
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
-      "actors": null,
-      "tags": null,
+      "actors": [
+        "May Habib",
+        "Waseem AlShikh"
+      ],
+      "tags": [
+        "AI",
+        "enterprise"
+      ],
       "schema_version": "2.0.0",
       "provenance": [
         {
@@ -56,7 +62,7 @@
   "snapshots": [
     {
       "company_id": "writer",
-      "as_of": "2023-10-11",
+      "as_of": "2023-10-12",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -79,14 +85,14 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers] Finance",
-          "crawled_at": "2023-10-11",
-          "snippet": "Company stock options, plus a 401k plan with employer contributions. Growth Learning and development stipend and generous PTO. SF/NY/London office space Three beautiful sunny offices in three incredibly exciting cities."
+          "source_url": "[careers]",
+          "crawled_at": "2023-10-12",
+          "snippet": "SF/NY/London office space\nThree beautiful sunny offices in three incredibly exciting cities."
         },
         {
-          "source_url": "[product] PLATFORM",
-          "crawled_at": "2023-10-11",
-          "snippet": "Product PLATFORM Action Agent AI Studio Palmyra LLMs Knowledge Graph Trust & security Capabilities Build Create agents with shared tools for IT and business Activate Find and use AI agents all in one"
+          "source_url": "[product]",
+          "crawled_at": "2023-10-12",
+          "snippet": "PLATFORM\nAction Agent\nAI Studio\nPalmyra LLMs\nKnowledge Graph"
         }
       ]
     }
@@ -94,48 +100,6 @@
   "products": [
     {
       "product_id": "1",
-      "company_id": "writer",
-      "name": "AI Platform",
-      "description": "WRITER is building AI that compresses the time between “dream it” and “build it.” This means the barriers to innovation have begun falling away. Now, it’s clear that teams across enterprises can quickly create solutions that generate high-quality insights.",
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "2",
-      "company_id": "writer",
-      "name": "AI Agent Library",
-      "description": "The world’s enterprise AI pioneer. WRITER is where the world’s leading enterprises orchestrate AI-powered work. Our vision is to expand human capacity through superintelligence.",
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "3",
       "company_id": "writer",
       "name": "Action Agent",
       "description": "Create agents with shared tools for IT and business.",
@@ -150,13 +114,13 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "4",
+      "product_id": "2",
       "company_id": "writer",
       "name": "AI Studio",
       "description": "Platform for building AI solutions.",
@@ -171,13 +135,13 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "5",
+      "product_id": "3",
       "company_id": "writer",
       "name": "Palmyra LLMs",
       "description": "Large Language Models for enterprise solutions.",
@@ -192,16 +156,16 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "6",
+      "product_id": "4",
       "company_id": "writer",
       "name": "Knowledge Graph",
-      "description": "Tool for organizing and utilizing enterprise knowledge.",
+      "description": "Tool for organizing and utilizing enterprise data.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -213,7 +177,28 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "5",
+      "company_id": "writer",
+      "name": "AI Agent Library",
+      "description": "Library of AI agents for enterprise use.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -235,7 +220,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -255,7 +240,127 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "brian-oreilly",
+      "company_id": "writer",
+      "name": "Brian O’Reilly",
+      "role": "General Counsel",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-02",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "dan-bikel",
+      "company_id": "writer",
+      "name": "Dan Bikel",
+      "role": "GM of International",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-02",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "melisa-russak",
+      "company_id": "writer",
+      "name": "Melisa Russak",
+      "role": "Head of AI",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-02",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "muayad-ali",
+      "company_id": "writer",
+      "name": "Muayad Ali",
+      "role": "Head of Machine Learning",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-02",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "james-lee",
+      "company_id": "writer",
+      "name": "James Lee",
+      "role": "Director of Engineering",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-02",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "matan-paul-shetrit",
+      "company_id": "writer",
+      "name": "Matan-Paul Shetrit",
+      "role": "Head of GTM Operations & Strategy",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -275,7 +380,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -295,7 +400,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -315,7 +420,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -335,7 +440,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -355,7 +460,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -375,7 +480,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -395,7 +500,7 @@
       "provenance": [
         {
           "source_url": "source",
-          "crawled_at": "2023-10-01",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -404,21 +509,15 @@
   "visibility": [
     {
       "company_id": "writer",
-      "as_of": "2023-10-10",
+      "as_of": "2023-10-06",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://writer.com/blog",
-          "crawled_at": "2023-10-10",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:47:11.227541",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:47:28.227526",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

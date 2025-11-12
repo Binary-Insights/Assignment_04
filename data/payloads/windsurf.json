@@ -40,13 +40,14 @@
       "company_id": "windsurf",
       "occurred_on": "2025-07-16",
       "event_type": "mna",
-      "title": "Acquisition by Cognition",
-      "description": "Windsurf was acquired by Cognition. What the acquisition means for you.",
+      "title": "Windsurf joins forces with Cognition",
+      "description": "Windsurf has been acquired by Cognition. The acquisition aims to enhance software development capabilities.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
       "actors": [
+        "Windsurf",
         "Cognition"
       ],
       "tags": [
@@ -55,7 +56,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/acquisition-news",
+          "source_url": "https://windsurf.com/about",
           "crawled_at": "2025-07-16",
           "snippet": null
         }
@@ -67,20 +68,19 @@
       "occurred_on": "2025-07-17",
       "event_type": "product_release",
       "title": "Wave 11: Just Keep Shipping",
-      "description": "More tools for the Browser, Voice Mode, Checkpoints, and more!",
+      "description": "Windsurf releases Wave 11, introducing more tools for the Browser, Voice Mode, Checkpoints, and more.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
       "actors": null,
       "tags": [
-        "product",
-        "release"
+        "product release"
       ],
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/product-release",
+          "source_url": "https://windsurf.com/product",
           "crawled_at": "2025-07-17",
           "snippet": null
         }
@@ -90,7 +90,7 @@
   "snapshots": [
     {
       "company_id": "windsurf",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-09",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -99,19 +99,27 @@
       "hiring_focus": null,
       "pricing_tiers": null,
       "active_products": [
-        "Windsurf Editor",
+        "Editor",
         "Plugins",
+        "Windsurf Reviews",
+        "Windsurf for Enterprise",
         "Cascade",
+        "Tab",
         "Cascade on JetBrains"
       ],
       "geo_presence": null,
-      "confidence": null,
+      "confidence": 0.8,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "extracted_content",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "source_url": "https://www.windsurf.com/about",
+          "crawled_at": "2023-10-09",
+          "snippet": "Windsurf has been developed by a team of researchers and engineers to build the future of software development."
+        },
+        {
+          "source_url": "https://www.windsurf.com/product",
+          "crawled_at": "2023-10-09",
+          "snippet": "Product Editor Plugins Windsurf Reviews Pricing Windsurf for Enterprise Capabilities Cascade Tab Cascade on JetBrains"
         }
       ]
     }
@@ -121,7 +129,7 @@
       "product_id": "windsurf_editor",
       "company_id": "windsurf",
       "name": "Windsurf Editor",
-      "description": "A downloadable editor available for macOS, Windows, and Linux.",
+      "description": "A tool for coding with AI capabilities, available for macOS, Windows, and Linux.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -132,17 +140,17 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com",
+          "source_url": "web_content",
           "crawled_at": "2025-08-14",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "wave_11",
+      "product_id": "swe_1_5",
       "company_id": "windsurf",
-      "name": "Wave 11: Just Keep Shipping",
-      "description": "A product update or release from Windsurf.",
+      "name": "SWE-1.5",
+      "description": "Our latest frontier model for AI coding.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -153,59 +161,18 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com",
+          "source_url": "web_content",
           "crawled_at": "2025-08-14",
           "snippet": null
         }
       ]
     }
   ],
-  "leadership": [
-    {
-      "person_id": "varun-mohan",
-      "company_id": "windsurf",
-      "name": "Varun Mohan",
-      "role": "CEO & Co-Founder",
-      "is_founder": true,
-      "start_date": null,
-      "end_date": null,
-      "previous_affiliation": null,
-      "education": null,
-      "linkedin": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2025-06-02",
-          "snippet": "Windsurf CEO & Co-Founder, Varun Mohan: The Future of Software"
-        }
-      ]
-    },
-    {
-      "person_id": "sarah-perkel",
-      "company_id": "windsurf",
-      "name": "Sarah Perkel",
-      "role": "Unknown",
-      "is_founder": false,
-      "start_date": null,
-      "end_date": null,
-      "previous_affiliation": null,
-      "education": null,
-      "linkedin": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2025-06-30",
-          "snippet": "Sarah Perkel"
-        }
-      ]
-    }
-  ],
+  "leadership": [],
   "visibility": [
     {
       "company_id": "windsurf",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-09",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -214,32 +181,12 @@
       "provenance": [
         {
           "source_url": "https://example.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "Windsurf makes coding insanely fun and fast!"
-        },
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "One of the many cool features of the Windsurf IDE is the \"Problems\" tab that lists all the issues in your project."
-        },
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "Windsurf is one of the best AI coding tools I’ve ever used."
-        },
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "Windsurf is simply better from my experience over the last month."
-        },
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "Windsurf UX beats Cursor for novices like me. Just click \"preview\" - it sets everything up for you."
+          "crawled_at": "2023-10-09",
+          "snippet": "Cognition (Windsurf) Named a Leader in the 2025 Gartner® Magic Quadrant™ for AI Code Assistants"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:41:18.224893",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:46:13.779240",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

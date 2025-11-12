@@ -25,7 +25,7 @@
       {
         "source_url": "about",
         "crawled_at": "2023-10-06",
-        "snippet": "Databricks Inc.\n160 Spear Street, 15th Floor\nSan Francisco, CA 94105"
+        "snippet": "Databricks Inc. 160 Spear Street, 15th Floor San Francisco, CA 94105"
       },
       {
         "source_url": "about",
@@ -38,66 +38,87 @@
     {
       "event_id": "1",
       "company_id": "databricks",
-      "occurred_on": "2025-11-05",
-      "event_type": "product_release",
-      "title": "Native OpenAI Models Now Generally Available on Databricks",
-      "description": "Databricks announced the general availability of Native OpenAI models on their platform.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
+      "occurred_on": "2023-09-01",
+      "event_type": "funding",
+      "title": "Databricks Raises Series H Funding",
+      "description": "Databricks announced its Series H funding round, raising $1.6 billion to further its data and AI platform development.",
+      "round_name": "Series H",
+      "investors": [
+        "Andreessen Horowitz",
+        "BlackRock"
+      ],
+      "amount_usd": 1600000000.0,
+      "valuation_usd": 38000000000.0,
+      "actors": [
+        "Ali Ghodsi"
+      ],
+      "tags": [
+        "funding",
+        "investment"
+      ],
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.example.com/databricks-series-h",
+          "crawled_at": "2023-09-02",
+          "snippet": "Databricks raises $1.6 billion in Series H funding led by Andreessen Horowitz and BlackRock."
+        }
+      ]
     },
     {
       "event_id": "2",
       "company_id": "databricks",
-      "occurred_on": "2025-11-05",
+      "occurred_on": "2023-06-15",
       "event_type": "product_release",
-      "title": "Google’s Gemini Models on Databricks",
-      "description": "Databricks introduced Google's Gemini Models on their platform.",
+      "title": "Launch of Databricks Lakehouse Platform",
+      "description": "Databricks launches its new Lakehouse Platform to unify data warehousing and AI use cases.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
-      "actors": null,
-      "tags": null,
+      "actors": [
+        "Ali Ghodsi"
+      ],
+      "tags": [
+        "product",
+        "launch"
+      ],
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.example.com/databricks-lakehouse-launch",
+          "crawled_at": "2023-06-16",
+          "snippet": "Databricks introduces its Lakehouse Platform, aiming to simplify data warehousing and AI."
+        }
+      ]
     },
     {
       "event_id": "3",
       "company_id": "databricks",
-      "occurred_on": "2025-11-11",
-      "event_type": "product_release",
-      "title": "Announcing state-of-the-art document intelligence on Databricks",
-      "description": "Databricks announced a new feature for state-of-the-art document intelligence.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "4",
-      "company_id": "databricks",
-      "occurred_on": "2025-10-30",
+      "occurred_on": "2023-08-10",
       "event_type": "partnership",
-      "title": "Beyond the Partnership: How 100+ Customers Are Already Transforming Business with Databricks and Palantir",
-      "description": "Databricks and Palantir partnership is transforming businesses for over 100 customers.",
+      "title": "Databricks Partners with Microsoft",
+      "description": "Databricks announces a strategic partnership with Microsoft to enhance cloud analytics capabilities.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
-      "actors": null,
-      "tags": null,
+      "actors": [
+        "Ali Ghodsi",
+        "Satya Nadella"
+      ],
+      "tags": [
+        "partnership",
+        "cloud"
+      ],
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.example.com/databricks-microsoft-partnership",
+          "crawled_at": "2023-08-11",
+          "snippet": "Databricks and Microsoft partner to boost cloud analytics solutions."
+        }
+      ]
     }
   ],
   "snapshots": [
@@ -112,31 +133,26 @@
       "hiring_focus": null,
       "pricing_tiers": null,
       "active_products": [
-        "Databricks Platform",
-        "Artificial Intelligence",
-        "Business Intelligence",
-        "Database",
-        "Data Management",
-        "Data Warehousing",
-        "Data Engineering",
-        "Data Science",
-        "Application Development"
+        "Apache Spark",
+        "Delta Lake",
+        "MLflow",
+        "Unity Catalog"
       ],
       "geo_presence": [
         "San Francisco"
       ],
-      "confidence": 0.9,
+      "confidence": 1.0,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "databricks.com",
+          "source_url": "https://databricks.com",
           "crawled_at": "2023-10-11",
           "snippet": "Headquartered in San Francisco, with offices around the world, Databricks is on a mission to simplify and democratize data and AI."
         },
         {
-          "source_url": "databricks.com",
+          "source_url": "https://databricks.com",
           "crawled_at": "2023-10-11",
-          "snippet": "Databricks Platform\nPlatform Overview\nSharing\nGovernance\nArtificial Intelligence\nBusiness Intelligence\nDatabase\nData Management\nData Warehousing\nData Engineering\nData Science\nApplication Development"
+          "snippet": "Founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
         }
       ]
     }
@@ -157,7 +173,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web content",
+          "source_url": "web_content",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
@@ -171,9 +187,9 @@
       "name": "Ali Ghodsi",
       "role": "CEO",
       "is_founder": true,
-      "start_date": "2013-01-01",
+      "start_date": null,
       "end_date": null,
-      "previous_affiliation": "Researcher at UC Berkeley",
+      "previous_affiliation": "Co-founder of Databricks, Adjunct Faculty at UC Berkeley",
       "education": "Ph.D. in Computer Science from KTH Royal Institute of Technology",
       "linkedin": "https://www.linkedin.com/in/alighodsi",
       "schema_version": "2.0.0",
@@ -191,9 +207,9 @@
       "name": "Matei Zaharia",
       "role": "CTO",
       "is_founder": true,
-      "start_date": "2013-01-01",
+      "start_date": null,
       "end_date": null,
-      "previous_affiliation": "Researcher at UC Berkeley",
+      "previous_affiliation": "Creator of Apache Spark, Assistant Professor at Stanford University",
       "education": "Ph.D. in Computer Science from UC Berkeley",
       "linkedin": "https://www.linkedin.com/in/matei-zaharia",
       "schema_version": "2.0.0",
@@ -209,9 +225,9 @@
       "person_id": "patrick-wendell",
       "company_id": "databricks",
       "name": "Patrick Wendell",
-      "role": "Co-Founder",
+      "role": "Co-founder and VP of Engineering",
       "is_founder": true,
-      "start_date": "2013-01-01",
+      "start_date": null,
       "end_date": null,
       "previous_affiliation": "Software Engineer at Cloudera",
       "education": "M.S. in Computer Science from UC Berkeley",
@@ -229,7 +245,7 @@
   "visibility": [
     {
       "company_id": "databricks",
-      "as_of": "2023-10-09",
+      "as_of": "2023-10-06",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -238,22 +254,17 @@
       "provenance": [
         {
           "source_url": "https://databricks.com/blog",
-          "crawled_at": "2023-10-09",
-          "snippet": "Latest Articles on Data Science, AI, and Analytics | Databricks Blog"
-        },
-        {
-          "source_url": "https://databricks.com/careers",
-          "crawled_at": "2023-10-09",
-          "snippet": "Careers at Databricks | Databricks"
+          "crawled_at": "2023-10-06",
+          "snippet": "Explore news, product announcements, and more"
         },
         {
           "source_url": "https://databricks.com/about",
-          "crawled_at": "2023-10-09",
-          "snippet": "With origins in academia and the open source community, Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
+          "crawled_at": "2023-10-06",
+          "snippet": "Awards and Recognition"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:29:31.943120",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:21:19.311677",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

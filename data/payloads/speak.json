@@ -9,8 +9,7 @@
     "hq_country": null,
     "founded_year": null,
     "categories": [
-      "Language Learning",
-      "Education Technology"
+      "Language Learning"
     ],
     "related_companies": null,
     "total_raised_usd": 27000000.0,
@@ -22,23 +21,23 @@
     "provenance": [
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-09",
         "snippet": "Speak started in San Francisco, and today the U.S team works out of a sunny penthouse office in Jackson Square."
       },
       {
         "source_url": "product",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-09",
         "snippet": "Speak - The languages learning app that gets you speaking"
       },
       {
         "source_url": "blog",
-        "crawled_at": "2023-10-06",
-        "snippet": "Speak Announces $27M Series B Led by OpenAI Startup Fund"
+        "crawled_at": "2023-10-09",
+        "snippet": "Speak Hits $500M Valuation, Expands Rapidly Across Markets"
       },
       {
         "source_url": "blog",
-        "crawled_at": "2023-10-06",
-        "snippet": "Speak Hits $500M Valuation, Expands Rapidly Across Markets"
+        "crawled_at": "2023-10-09",
+        "snippet": "Speak Announces $27M Series B Led by OpenAI Startup Fund"
       }
     ]
   },
@@ -79,7 +78,7 @@
       "event_id": "3",
       "company_id": "speak",
       "occurred_on": "2024-06-18",
-      "event_type": "benchmark",
+      "event_type": "funding",
       "title": "Speak Hits $500M Valuation, Expands Rapidly Across Markets",
       "description": null,
       "round_name": null,
@@ -144,8 +143,8 @@
       "company_id": "speak",
       "occurred_on": "2022-11-18",
       "event_type": "funding",
-      "title": "Speak Announces $27M Series B",
-      "description": "Series B funding round led by unspecified investors",
+      "title": "Speak Announces $27M Series B Led by Unknown",
+      "description": null,
       "round_name": null,
       "investors": null,
       "amount_usd": 27000000.0,
@@ -195,7 +194,12 @@
         {
           "source_url": "[product] Speak - The languages learning app that gets you speaking",
           "crawled_at": "2023-10-06",
-          "snippet": "Choose your region: United States, South Korea, Japan, Mexico, Taiwan, Hong Kong, Germany, France, Italy, Spain, China, Vietnam."
+          "snippet": "Speak makes language learning apps that help you ge"
+        },
+        {
+          "source_url": "[product] Speak - The languages learning app that gets you speaking",
+          "crawled_at": "2023-10-06",
+          "snippet": "Choose your region United States, South Korea, Japan, Mexico, Taiwan, Hong Kong, Germany, France, Italy, Spain, China, Vietnam"
         }
       ]
     }
@@ -204,35 +208,42 @@
     {
       "product_id": "speak_app",
       "company_id": "speak",
-      "name": "Speak - The language learning app that gets you speaking",
-      "description": "The most effective way to learn a language by talking out loud and getting instant feedback. Speak’s language education program gets you speaking fluently as quickly as possible.",
-      "pricing_model": "Free trial",
-      "pricing_tiers_public": [
-        "7 day free trial"
-      ],
+      "name": "Speak",
+      "description": "The language learning app that gets you speaking fluently with the world's most advanced speaking curriculum.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
       "ga_date": null,
-      "integration_partners": [
-        "OpenAI"
-      ],
+      "integration_partners": null,
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-05",
-          "snippet": "Speak’s language education program gets you speaking fluently as quickly as possible. It’s one of the main reasons people love Speak."
-        },
+          "source_url": "web_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "speak_tutor",
+      "company_id": "speak",
+      "name": "Speak Tutor",
+      "description": "An AI-powered tutor that designs a personalized curriculum and acts as an on-the-go conversational partner.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
         {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-05",
-          "snippet": "Speak offers users a 7 day free trial where they can experience all features of the app!"
-        },
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-05",
-          "snippet": "Speak Collaborates with OpenAI on New ChatGPT Plugins"
+          "source_url": "web_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
         }
       ]
     }
@@ -273,15 +284,10 @@
           "source_url": "https://example.com/blog",
           "crawled_at": "2023-10-06",
           "snippet": "Speak named Google Play’s “Best App of 2024” in Hong Kong, Korea and Taiwan"
-        },
-        {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-06",
-          "snippet": "4.8 Rating\n15M+ Downloads"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:38:09.445232",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:40:18.246398",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

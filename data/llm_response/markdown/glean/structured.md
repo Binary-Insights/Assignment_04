@@ -4,7 +4,7 @@ Glean.ai is a private AI startup headquartered in New York, NY, USA. The company
 
 ## Business Model and GTM
 
-Glean.ai offers an Intelligent AP Solution that combines smart automation with spend intelligence. This product aims to drive material savings and empower finance teams to make smarter spending decisions. The company also provides a mobile app that offers a holistic view of vendor spend, centralized vendor management, and various automated features to enhance financial operations. The company states that their solution is unique in its combination of automation and intelligence.
+Glean.ai offers a product that combines smart automation with spend intelligence, aiming to drive material savings and empower finance teams to make smarter spending decisions. The company states that their solution is unique in the AP space. Additionally, they provide a mobile app that offers a holistic view of vendor spend, centralized vendor management, automated line item extraction, flexible workflows, detailed variance analysis, renewal notifications, anomalous spend alerts, and trend analysis.
 
 ## Funding & Investor Profile
 
@@ -12,7 +12,7 @@ Not disclosed.
 
 ## Growth Momentum
 
-Glean.ai has demonstrated growth through product innovation, as evidenced by the introduction of new features such as Partial Payments and vendor renewal enhancements. These developments suggest a focus on improving user experience and vendor management capabilities.
+Glean.ai has formed a partnership with Pipe to enhance spend management solutions for small businesses. This partnership indicates a strategic move to expand their market reach and enhance their product offerings.
 
 ## Visibility & Market Sentiment
 
@@ -20,15 +20,15 @@ Not disclosed.
 
 ## Risks and Challenges
 
-Not disclosed.
+Glean.ai has reported a security incident involving a sophisticated phishing technique targeting AP teams. This highlights potential vulnerabilities in their system and the importance of robust security measures.
 
 ## Outlook
 
-Glean.ai's recent SOC 2 Type II recertification indicates a commitment to maintaining high standards of security and compliance, which is crucial for building trust with clients in the financial sector. The company's continuous product enhancements suggest a proactive approach to addressing market needs and improving customer satisfaction.
+The partnership with Pipe suggests a positive outlook for Glean.ai as it seeks to enhance its product offerings and expand its market presence. However, addressing security challenges will be crucial for maintaining trust and ensuring sustainable growth.
 
 ## Disclosure Gaps
 
-- Specific funding details and investor profiles are not disclosed.
-- Detailed visibility and market sentiment information are not available.
-- Risks and challenges faced by the company are not disclosed.
-- Leadership roles and responsibilities are not fully detailed.
+- Specific dates for the partnership and security incident are not disclosed.
+- Funding and investor information is not disclosed.
+- Visibility and market sentiment details are not provided.
+- Leadership roles and responsibilities are not detailed.

@@ -19,149 +19,36 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-09",
         "snippet": "VAST emerges from stealth with $80M and a bold plan to end decades of storage tradeoffs"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-09",
         "snippet": "VAST triples valuation to $9.1B as demand surges for AI-first infrastructure"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-09",
         "snippet": "VAST triples valuation to $9.1B as demand surges for AI-first infrastructure"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-09",
         "snippet": "VAST triples valuation to $9.1B as demand surges for AI-first infrastructure"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-09",
         "snippet": "VAST Data is founded with a vision to reinvent data infrastructure from the ground up"
       }
     ]
   },
-  "events": [
-    {
-      "event_id": "1",
-      "company_id": "vast_data",
-      "occurred_on": "2023-12-01",
-      "event_type": "funding",
-      "title": "Series E Funding",
-      "description": "VAST triples valuation to $9.1B as demand surges for AI-first infrastructure",
-      "round_name": "Series E",
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": 9100000000.0,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "2",
-      "company_id": "vast_data",
-      "occurred_on": "2023-09-23",
-      "event_type": "benchmark",
-      "title": "VAST Certified as a Secure Financial Services DataStore",
-      "description": "VAST certified as a secure solution for financial services, emphasizing all-flash performance for archival data.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "3",
-      "company_id": "vast_data",
-      "occurred_on": "2025-02-26",
-      "event_type": "product_release",
-      "title": "Latest VAST Release Focuses on Protocols",
-      "description": "Expansion of the VAST Data Platform to include understanding of database tables and processing data through the VAST Data Engine.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "4",
-      "company_id": "vast_data",
-      "occurred_on": "2024-11-05",
-      "event_type": "product_release",
-      "title": "VAST 5.2 Release",
-      "description": "Introduction of AI workflow automation system co-developed with partners.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "5",
-      "company_id": "vast_data",
-      "occurred_on": "2025-01-01",
-      "event_type": "benchmark",
-      "title": "VAST Named to 2025 Forbes AI 50",
-      "description": "VAST Data recognized as one of the top privately-held startups developing promising AI business use cases.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "6",
-      "company_id": "vast_data",
-      "occurred_on": "2025-01-01",
-      "event_type": "benchmark",
-      "title": "VAST Named Data Management Company of the Year",
-      "description": "VAST recognized in the 2025 Data Breakthrough Awards for its contributions to data management.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "7",
-      "company_id": "vast_data",
-      "occurred_on": "2024-01-01",
-      "event_type": "benchmark",
-      "title": "VAST Named Overall Data Technology Company of the Year",
-      "description": "Recognition in the 2024 Data Breakthrough Awards for leading data technology innovations.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    }
-  ],
+  "events": [],
   "snapshots": [
     {
       "company_id": "vast_data",
-      "as_of": "2023-10-11",
+      "as_of": "2023-10-06",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": 100,
@@ -170,32 +57,26 @@
       "hiring_focus": null,
       "pricing_tiers": null,
       "active_products": [
+        "VAST DataStore",
+        "VAST DataSpace",
         "VAST DataBase",
         "VAST DataEngine",
         "Gemini: Consumption Model",
         "DASE Architecture"
       ],
-      "geo_presence": [
-        "U.S.",
-        "Raleigh, NC"
-      ],
+      "geo_presence": null,
       "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "[careers] Come build with us. - VAST Data",
-          "crawled_at": "2023-10-11",
+          "crawled_at": "2023-10-06",
           "snippet": "With over 100 positions open all over the world, join one of the fastest growing enterprise infrastructure compan"
         },
         {
-          "source_url": "[blog] May 19, 2022",
-          "crawled_at": "2023-10-11",
-          "snippet": "VAST Data Expands Engineering Team in U.S., Opens New Office in Raleigh, NC"
-        },
-        {
           "source_url": "[product] VAST DataBase",
-          "crawled_at": "2023-10-11",
-          "snippet": "VAST DataBase\nVAST DataEngine\nGemini: Consumption Model\nDASE Architecture"
+          "crawled_at": "2023-10-06",
+          "snippet": "Platform\nData Platform Services\nVAST DataStore\nVAST DataSpace\nVAST DataBase\nVAST DataEngine\nGemini: Consumption Model\nDASE Ar"
         }
       ]
     }
@@ -205,7 +86,7 @@
       "product_id": "vast_database",
       "company_id": "vast_data",
       "name": "VAST DataBase",
-      "description": "Automates Continuously Iterative Learning. Scale across a nearly-infinite number of tables while automatically querying and refining datasets that extend from real-time streams to exabyte scale archives.",
+      "description": "Supercharge Your Apache NiFi Data Pipelines with the VAST DataBase. In the world of data engineering, Apache NiFi is the gold standard for orchestrating data flows.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -216,8 +97,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "extracted_content",
-          "crawled_at": "2023-10-06",
+          "source_url": "source",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -225,8 +106,8 @@
     {
       "product_id": "vast_data_platform",
       "company_id": "vast_data",
-      "name": "The Data Platform Built for the AI Era and Beyond",
-      "description": "Unlock 90% of your untapped data with a breakthrough data architecture.",
+      "name": "VAST Data Platform",
+      "description": "The Data Platform Built for the AI Era and Beyond. Unlock 90% of your untapped data with a breakthrough data architecture.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -237,8 +118,71 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "extracted_content",
-          "crawled_at": "2023-10-06",
+          "source_url": "source",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "vast_catalog",
+      "company_id": "vast_data",
+      "name": "VAST Catalog",
+      "description": "Treat Your File System Like a Database. Our customers deal with some of the world's largest data sets.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "vast_uplink",
+      "company_id": "vast_data",
+      "name": "VAST Uplink",
+      "description": "Uplink is VAST’s cloud-based service for telemetry and centralized fleet management, offering customers a single control plane to monitor their VAST clusters.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "vast_dataengine",
+      "company_id": "vast_data",
+      "name": "VAST DataEngine",
+      "description": "Unlocking Data-Driven Automation with VAST Serverless Functions in DataEngine. Discover how VAST DataEngine uses serverless functions and event-driven architecture.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -259,8 +203,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -269,7 +213,7 @@
       "person_id": "alon-horev",
       "company_id": "vast_data",
       "name": "Alon Horev",
-      "role": "Co-Founder and CTO",
+      "role": "Co-Founder and Chief R&D Officer",
       "is_founder": true,
       "start_date": null,
       "end_date": null,
@@ -279,8 +223,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -299,8 +243,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -319,8 +263,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -339,8 +283,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -359,8 +303,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -379,28 +323,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "person_id": "john",
-      "company_id": "vast_data",
-      "name": "John",
-      "role": "VP, Global Business Development",
-      "is_founder": false,
-      "start_date": null,
-      "end_date": null,
-      "previous_affiliation": null,
-      "education": null,
-      "linkedin": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://example.com/careers",
-          "crawled_at": "2023-10-01",
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -409,7 +333,7 @@
   "visibility": [
     {
       "company_id": "vast_data",
-      "as_of": "2023-10-13",
+      "as_of": "2023-10-10",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -417,18 +341,33 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.vastdata.com/blog",
-          "crawled_at": "2023-10-13",
+          "source_url": "https://www.forbes.com",
+          "crawled_at": "2023-10-10",
+          "snippet": "VAST Data Ranks #7 Overall in Forbes’ America’s Best Startup Employers 2024 List"
+        },
+        {
+          "source_url": "https://www.forbes.com",
+          "crawled_at": "2023-10-10",
+          "snippet": "VAST Data, the AI data platform company, has been named to the 2025 Forbes AI 50"
+        },
+        {
+          "source_url": "https://www.ai-breakthrough.com",
+          "crawled_at": "2023-10-10",
+          "snippet": "AI Breakthrough Names VAST Deep Learning Company of the Year for the Second Time"
+        },
+        {
+          "source_url": "https://www.databreakthroughawards.com",
+          "crawled_at": "2023-10-10",
           "snippet": "VAST Named Data Management Company of the Year in the 2025 Data Breakthrough Awards"
         },
         {
-          "source_url": "https://www.vastdata.com/about",
-          "crawled_at": "2023-10-13",
-          "snippet": "VAST Data, the AI data platform company, has been named to the 2025 Forbes AI 50, which honors the privately-held startups developing the most promising business use cases of AI."
+          "source_url": "https://www.databreakthroughawards.com",
+          "crawled_at": "2023-10-10",
+          "snippet": "VAST Named Overall Data Technology Company of the Year in 2024 Data Breakthrough Awards"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:40:34.923292",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:45:38.250365",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

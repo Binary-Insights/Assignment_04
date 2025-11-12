@@ -4,21 +4,21 @@
     "company_name": "Anysphere",
     "company_slug": "anysphere",
     "pipeline_type": "structured",
-    "timestamp": "2025-11-12T01:46:55.683613Z",
+    "timestamp": "2025-11-12T22:59:48.121425Z",
     "markdown_file": "markdown/anysphere/structured.md",
-    "content": "## Company Overview\n\nAnysphere, Inc. is a private AI startup known for its product, Cursor. The company is led by a team including Michael Chen, Sarah Lee, and David Kim. The company record indicates that the information is current as of October 1, 2023.\n\n## Business Model and GTM\n\nNot disclosed.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nNot disclosed.\n\n## Visibility & Market Sentiment\n\nThe company has limited visibility and market presence with only one mention, details of which are not disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nNot disclosed.\n\n## Disclosure Gaps\n\n- Detailed business model and go-to-market strategy are not disclosed.\n- Funding history and investor profiles are not available.\n- Growth metrics and momentum details are not provided.\n- Specifics on visibility and market sentiment are lacking.\n- Risks and challenges faced by the company are not outlined.\n- Future outlook and strategic direction are not disclosed."
+    "content": "## Company Overview\nAnysphere, Inc. is a private AI startup known for its product, Cursor, which is designed to enhance software development processes. The company claims that Cursor is a powerful and customizable tool that helps standardize engineering teams on the same tools and best practices, aiming to catch real bugs and security issues before they reach production. The company is reportedly used by major enterprises such as Salesforce, NVIDIA, and PwC to accelerate product velocity and build durable software.\n\n## Business Model and GTM\nThe company states that its product, Cursor, is the best way to build software, suggesting a focus on enterprise clients who require robust and customizable software development tools. The go-to-market strategy appears to target large enterprises, as evidenced by its reported use by companies like Salesforce, NVIDIA, and PwC.\n\n## Funding & Investor Profile\nNot disclosed.\n\n## Growth Momentum\nAnysphere's product, Cursor, is reportedly used by tens of thousands of enterprises, indicating significant adoption and growth momentum within the enterprise software development market.\n\n## Visibility & Market Sentiment\nThe company has limited visibility and market presence data available. There is one mention, but details are not disclosed.\n\n## Risks and Challenges\nNot disclosed.\n\n## Outlook\nThe company appears to be positioned well within the enterprise software development market, with its product being adopted by major enterprises. However, specific future plans or strategic directions are not disclosed.\n\n## Disclosure Gaps\n- Specific funding and investor information is not disclosed.\n- Detailed information on leadership roles and responsibilities is not provided.\n- Exact dates for product releases are unknown.\n- Risks and challenges faced by the company are not disclosed.\n- Market sentiment and broader visibility details are limited."
   },
   "rag": {
     "company_name": "Anysphere",
     "company_slug": "anysphere",
     "pipeline_type": "rag",
-    "timestamp": "2025-11-12T01:47:15.413166Z",
+    "timestamp": "2025-11-12T23:02:51.801413Z",
     "markdown_file": "markdown/anysphere/rag.md",
-    "content": "## Company Overview\n\nAnysphere, Inc. is a private company that is SOC 2 Certified, indicating a commitment to security and data protection standards. The company operates in multiple languages, including English, Simplified Chinese, Japanese, and Traditional Chinese. Anysphere is focused on creating a work environment that attracts self-motivated individual contributors, suggesting a strong emphasis on talent and innovation.\n\n## Business Model and GTM\n\nThe company states that it is designing a haven for self-motivated individual contributors, which implies a focus on high-performance teams. Anysphere is actively hiring across various teams, including GTM (Go-To-Market), Engineering, Operations, and User Ops, with positions available in San Francisco, New York, and remotely. This hiring strategy indicates a flexible and expansive approach to talent acquisition, likely supporting a scalable business model.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nNot disclosed.\n\n## Visibility & Market Sentiment\n\nAnysphere maintains a presence on LinkedIn and YouTube, which suggests an effort to engage with a professional audience and increase its visibility in the market. However, specific details about market sentiment or brand recognition are not disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company’s emphasis on attracting top talent and its SOC 2 Certification suggest a strong foundation for growth and innovation. However, without specific data on funding, growth metrics, or market sentiment, the outlook remains speculative.\n\n## Disclosure Gaps\n\n- Funding & Investor Profile: Not disclosed.\n- Growth Momentum: Not disclosed.\n- Specific market sentiment and brand recognition details: Not disclosed.\n- Risks and Challenges: Not disclosed.",
+    "content": "## Company Overview\n\nAnysphere, Inc. is a private company that operates in the AI sector. The company is SOC 2 Certified, indicating a commitment to maintaining high standards of data security and privacy. Anysphere provides its services in multiple languages, including English, Simplified Chinese, Japanese, and Traditional Chinese.\n\n## Business Model and GTM\n\nNot disclosed.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nNot disclosed.\n\n## Visibility & Market Sentiment\n\nAnysphere maintains a presence on platforms such as LinkedIn and YouTube, which suggests an effort to engage with a professional audience and share content related to its operations and offerings.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nNot disclosed.\n\n## Disclosure Gaps\n\nThe provided context lacks specific details on Anysphere's business model, go-to-market strategy, funding history, investor profile, growth metrics, specific risks and challenges, and future outlook.",
     "context_results": [
       {
         "id": "anysphere_careers_7648a062",
-        "similarity_score": 0.345821381,
+        "similarity_score": 0.345436096,
         "text": "X\n↗\nLinkedIn\n↗\nYouTube\n↗\n©\n2025\nAnysphere, Inc.\n🛡\nSOC 2 Certified\n🖥\n☉\n☾\n🌐\nEnglish\n↓\nEnglish\n✓\n简体中文\n日本語\n繁體中文",
         "metadata": {
           "chunk_index": 6.0,
@@ -31,7 +31,7 @@
       },
       {
         "id": "anysphere_blog_7648a062",
-        "similarity_score": 0.345638275,
+        "similarity_score": 0.345253,
         "text": "X\n↗\nLinkedIn\n↗\nYouTube\n↗\n©\n2025\nAnysphere, Inc.\n🛡\nSOC 2 Certified\n🖥\n☉\n☾\n🌐\nEnglish\n↓\nEnglish\n✓\n简体中文\n日本語\n繁體中文",
         "metadata": {
           "chunk_index": 6.0,
@@ -44,7 +44,7 @@
       },
       {
         "id": "anysphere_about_7648a062",
-        "similarity_score": 0.345516205,
+        "similarity_score": 0.345123291,
         "text": "X\n↗\nLinkedIn\n↗\nYouTube\n↗\n©\n2025\nAnysphere, Inc.\n🛡\nSOC 2 Certified\n🖥\n☉\n☾\n🌐\nEnglish\n↓\nEnglish\n✓\n简体中文\n日本語\n繁體中文",
         "metadata": {
           "chunk_index": 6.0,
@@ -57,7 +57,7 @@
       },
       {
         "id": "anysphere_product_7648a062",
-        "similarity_score": 0.345458984,
+        "similarity_score": 0.345081329,
         "text": "X\n↗\nLinkedIn\n↗\nYouTube\n↗\n©\n2025\nAnysphere, Inc.\n🛡\nSOC 2 Certified\n🖥\n☉\n☾\n🌐\nEnglish\n↓\nEnglish\n✓\n简体中文\n日本語\n繁體中文",
         "metadata": {
           "chunk_index": 6.0,
@@ -66,19 +66,6 @@
           "indexed_at": "2025-11-11T04:48:58.503625",
           "page_type": "product",
           "source_file": "data/raw/anysphere/product/text.txt"
-        }
-      },
-      {
-        "id": "anysphere_careers_b1d6d0f3",
-        "similarity_score": 0.339996338,
-        "text": "We obsess over talent to an unusual degree and are designing a company that’s a haven for self-motivated individual contributors. This work demands our best.\nIf this sounds exciting, we’d love to hear from you.\nOpen roles\nAll teams\n↓\nAll teams\n✓\nGTM\nEngineering\nOperations\nUser Ops\nAll locations\n↓\nAll locations\n✓\nSF / NY\nSan Francisco\nRemote\nAccount Executive\nGTM\n·\nFull-time\n·\nSF / NY\nApply →\nData Engineer, Analytics\nEngineering\n·\nFull-time\n·\nSF / NY\nApply →\nField Engineer\nGTM\n·\nFull-time\n·",
-        "metadata": {
-          "chunk_index": 2.0,
-          "company_slug": "anysphere",
-          "content_hash": "b1d6d0f3",
-          "indexed_at": "2025-11-11T20:35:41.458132",
-          "page_type": "careers",
-          "source_file": "data/raw/anysphere/careers/text.txt"
         }
       }
     ]

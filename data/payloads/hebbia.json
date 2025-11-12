@@ -19,17 +19,17 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-08",
         "snippet": "In 2020, Hebbia was one of the first companies to"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-08",
         "snippet": "Hebbia has pioneered the most used AI architectures in the world."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-10-08",
         "snippet": "Hebbia Crosses 1 Billion Pages Processed"
       }
     ]
@@ -54,6 +54,22 @@
     {
       "event_id": "2",
       "company_id": "hebbia",
+      "occurred_on": "2025-10-09",
+      "event_type": "product_release",
+      "title": "Release of New Excel, PowerPoint, and Word Generation Features",
+      "description": "Hebbia released new Excel, PowerPoint, and Word generation features to help build expert financial models and accelerate the process of presenting ideas.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "3",
+      "company_id": "hebbia",
       "occurred_on": "2025-09-12",
       "event_type": "benchmark",
       "title": "Introducing Hebbia's Financial AI Benchmark",
@@ -68,28 +84,12 @@
       "provenance": []
     },
     {
-      "event_id": "3",
-      "company_id": "hebbia",
-      "occurred_on": "2025-10-09",
-      "event_type": "product_release",
-      "title": "Release of New Excel, PowerPoint, and Word Generation Features",
-      "description": "We’ve released new Excel, PowerPoint, and Word generation features to help you build expert financial models and accelerate the process of presenting your ideas.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
       "event_id": "4",
       "company_id": "hebbia",
-      "occurred_on": "2025-11-04",
+      "occurred_on": "2025-07-30",
       "event_type": "product_release",
-      "title": "Automation of Essential Tasks for Excel and PowerPoint",
-      "description": "This month, we automated more essential tasks for Excel and PowerPoint, added European filings, and made other improvements.",
+      "title": "Launch of Deeper Research Agent",
+      "description": "Hebbia created Deeper Research: a solution purpose-built for research-intensive industries like investing, banking, and law.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -103,7 +103,7 @@
   "snapshots": [
     {
       "company_id": "hebbia",
-      "as_of": "2023-10-09",
+      "as_of": "2023-11-04",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -112,35 +112,27 @@
       "hiring_focus": null,
       "pricing_tiers": null,
       "active_products": [
-        "AI architectures",
         "Excel",
         "PowerPoint",
         "Word generation features"
       ],
-      "geo_presence": [
-        "Downtown NY"
-      ],
+      "geo_presence": null,
       "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2023-10-09",
+          "crawled_at": "2023-11-04",
           "snippet": null
         },
         {
           "source_url": "[about]",
-          "crawled_at": "2023-10-09",
+          "crawled_at": "2023-11-04",
           "snippet": null
         },
         {
           "source_url": "[product]",
-          "crawled_at": "2023-10-09",
-          "snippet": null
-        },
-        {
-          "source_url": "[blog]",
-          "crawled_at": "2023-10-09",
+          "crawled_at": "2023-11-04",
           "snippet": null
         }
       ]
@@ -148,30 +140,43 @@
   ],
   "products": [
     {
-      "product_id": "hebbia_product_1",
+      "product_id": "1",
       "company_id": "hebbia",
-      "name": "Hebbia AI",
-      "description": "Hebbia has pioneered the most used AI architectures in the world. We continue to set the pace of innovation in useful AI.",
+      "name": "Deeper Research",
+      "description": "A solution purpose-built for research-intensive industries like investing, banking, and law. It introduces more steps in the research process.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": [
-        "JP Morgan",
-        "KKR",
-        "Sixth Street",
-        "Evercore",
-        "Lazard",
-        "Paul Hastings",
-        "YC"
-      ],
+      "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "[blog]",
+          "crawled_at": "2025-07-30",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "hebbia",
+      "name": "Matrix",
+      "description": "A speed change product that exceeds the limits.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product]",
+          "crawled_at": "2025-07-30",
           "snippet": null
         }
       ]
@@ -193,7 +198,7 @@
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2025-01-01",
+          "crawled_at": "2025-09-25",
           "snippet": null
         }
       ]
@@ -213,7 +218,7 @@
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2025-01-01",
+          "crawled_at": "2025-09-25",
           "snippet": null
         }
       ]
@@ -233,7 +238,7 @@
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2025-01-01",
+          "crawled_at": "2025-09-25",
           "snippet": null
         }
       ]
@@ -253,7 +258,7 @@
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2025-01-01",
+          "crawled_at": "2025-09-25",
           "snippet": null
         }
       ]
@@ -273,7 +278,7 @@
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2025-01-01",
+          "crawled_at": "2025-09-25",
           "snippet": null
         }
       ]
@@ -293,7 +298,7 @@
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2025-01-01",
+          "crawled_at": "2025-09-25",
           "snippet": null
         }
       ]
@@ -302,7 +307,7 @@
   "visibility": [
     {
       "company_id": "hebbia",
-      "as_of": "2023-10-21",
+      "as_of": "2023-10-06",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -310,18 +315,18 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://hebbia.com",
-          "crawled_at": "2023-10-21",
-          "snippet": "Hebbia Crosses 1 Billion Pages Processed Today Hebbia crossed 1,000,000,000 pages processed—up from a mere 47 million pages just one year ago."
+          "source_url": "https://hebbia.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "Hebbia has pioneered the most used AI architectures in the world. We continue to set the pace of innovation in useful AI."
         },
         {
-          "source_url": "https://hebbia.com",
-          "crawled_at": "2023-10-21",
-          "snippet": "Hebbia has pioneered the most used AI architectures in the world. We continue to set the pace of innovation in useful AI."
+          "source_url": "https://hebbia.com/blog",
+          "crawled_at": "2023-10-06",
+          "snippet": "Today Hebbia crossed 1,000,000,000 pages processed—up from a mere 47 million pages just one year ago."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:27:08.092872",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:26:38.272057",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

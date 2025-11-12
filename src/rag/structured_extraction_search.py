@@ -53,7 +53,7 @@ load_dotenv()
 # Global configuration
 FALLBACK_STRATEGY = 'pinecone_first'  # Can be: 'pinecone_only', 'raw_only', 'pinecone_first'
 USE_RAW_TEXT = False  # Set to True to skip Pinecone and use raw text directly
-PINECONE_SEARCH_LIMIT = 10  # Increased from 5 to get more results per query
+PINECONE_SEARCH_LIMIT = 100  # Increased from 5 to get more results per query
 PINECONE_MIN_SIMILARITY = 0.0  # Minimum similarity score (0.0 = accept all results)
 
 

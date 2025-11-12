@@ -21,12 +21,12 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-17",
+        "crawled_at": "2023-10-06",
         "snippet": "OpenEvidence is the leading medical information platform."
       },
       {
         "source_url": "product",
-        "crawled_at": "2023-10-17",
+        "crawled_at": "2023-10-06",
         "snippet": "© OpenEvidence 2025. All rights reserved."
       }
     ]
@@ -36,9 +36,9 @@
       "event_id": "1",
       "company_id": "openevidence",
       "occurred_on": "2025-10-19",
-      "event_type": "partnership",
-      "title": "Content Agreements with Leading Medical Journals",
-      "description": "OpenEvidence has signed content agreements with NEJM, JAMA, NCCN, and more.",
+      "event_type": "product_release",
+      "title": "Launch of OpenEvidence Platform",
+      "description": "OpenEvidence launched from the Mayo Clinic Platform Accelerate program, aiming to organize and expand the world's collective medical knowledge.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -59,8 +59,8 @@
       "company_id": "openevidence",
       "occurred_on": "2025-10-19",
       "event_type": "partnership",
-      "title": "Partnerships with Medical Associations",
-      "description": "Partnerships include NCCN, ACC, ADA, AAFP, AAOS, AAO-HNS, ACEP and more.",
+      "title": "Content Agreements with Leading Medical Journals",
+      "description": "OpenEvidence has signed content agreements with NEJM, JAMA, NCCN, and more, enhancing its platform with multimedia and clinical findings.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -80,31 +80,9 @@
       "event_id": "3",
       "company_id": "openevidence",
       "occurred_on": "2025-10-19",
-      "event_type": "funding",
-      "title": "Supported by Leading Investors",
-      "description": "Investors include Sequoia, Google Ventures, Kleiner Perkins, Coatue, Thrive, Conviction, ICONIQ, Greycroft, Breyer Capital, BOND, Blackstone, Mayo Clinic, and others.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://openevidence.com/about",
-          "crawled_at": "2025-10-19",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "4",
-      "company_id": "openevidence",
-      "occurred_on": "2025-10-19",
-      "event_type": "product_release",
-      "title": "Launched from the Mayo Clinic Platform Accelerate program",
-      "description": "OpenEvidence is launched from the Mayo Clinic Platform Accelerate program to organize and expand the world's collective medical knowledge.",
+      "event_type": "mna",
+      "title": "Acquisition of Amaro",
+      "description": "OpenEvidence acquired Amaro, a company founded by Kush Khosla and Sauren Khosla.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -124,25 +102,40 @@
   "snapshots": [
     {
       "company_id": "openevidence",
-      "as_of": "2023-10-11",
+      "as_of": "2023-10-24",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
       "engineering_openings": null,
       "sales_openings": null,
-      "hiring_focus": [
-        "engineering"
-      ],
+      "hiring_focus": null,
       "pricing_tiers": null,
-      "active_products": null,
+      "active_products": [
+        "OpenEvidence"
+      ],
       "geo_presence": null,
-      "confidence": 0.8,
+      "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "[careers]",
-          "crawled_at": "2023-10-11",
+          "crawled_at": "2023-10-24",
           "snippet": "If you think you would be a fit for this engineering team, tell us why at engineering@openevidence.c"
+        },
+        {
+          "source_url": "[about]",
+          "crawled_at": "2023-10-24",
+          "snippet": "OpenEvidence is the leading medical information platform."
+        },
+        {
+          "source_url": "[about]",
+          "crawled_at": "2023-10-24",
+          "snippet": "OpenEvidence has signed content agreements with NEJM, JAMA, NCCN, and more."
+        },
+        {
+          "source_url": "[careers]",
+          "crawled_at": "2023-10-24",
+          "snippet": "Launched from the Mayo Clinic Platform Accelerate program"
         }
       ]
     }
@@ -151,27 +144,31 @@
     {
       "product_id": "1",
       "company_id": "openevidence",
-      "name": "OpenEvidence Platform",
-      "description": "OpenEvidence is the leading medical information platform. Featuring multimedia and clinical findings from The New England Journal of Me. It aggregates, synthesizes, and visualizes clinically relevant evidence in understandable, accessible formats to make more evidenced-based decisions and improve patient outcomes.",
-      "pricing_model": "free",
-      "pricing_tiers_public": [
-        "free for healthcare professionals"
-      ],
+      "name": "OpenEvidence",
+      "description": "OpenEvidence is the leading medical information platform. It aggregates, synthesizes, and visualizes clinically relevant evidence in understandable, accessible formats that can be used to make more evidenced-based decisions and improve patient outcomes. It features multimedia and clinical findings from JAMA and the JAMA Network specialty journals, NCCN Guidelines®, multimedia, and Clinical Pathways from the National Comprehensive Cancer Network.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
       "ga_date": null,
-      "integration_partners": [
-        "NEJM",
-        "JAMA",
-        "NCCN"
-      ],
+      "integration_partners": null,
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://openevidence.example.com/about",
-          "crawled_at": "2023-10-05",
-          "snippet": null
+          "source_url": "[product] OpenEvidence",
+          "crawled_at": "2025-10-20",
+          "snippet": "OpenEvidence has signed content agreements with NEJM, JAMA, NCCN, and more. Log In Sign Up New Visit Write a Prior Auth Letter Ask about Drug Interactions Ask a Pop-Science Question Explore More Capabilities The leading medical inform"
+        },
+        {
+          "source_url": "[about] To tame the medical information firehose, we built OpenEvidence",
+          "crawled_at": "2025-10-20",
+          "snippet": "To tame the medical information firehose, we built OpenEvidence to aggregate, synthesize, and visualize clinically relevant evidence in understandable, accessible formats that can be used to make more evidenced-based decisions and improve patient out"
+        },
+        {
+          "source_url": "[product] Featuring multimedia and clinical findings from JAMA and the JAMA Network specialty journals",
+          "crawled_at": "2025-10-20",
+          "snippet": "Featuring multimedia and clinical findings from JAMA and the JAMA Network specialty journals Featuring NCCN Guidelines®, multimedia, and Clinical Pathways from the National Comprehensive Cancer Network Launched from the Mayo Clinic Platform Accelerat"
         }
       ]
     }
@@ -181,7 +178,7 @@
       "person_id": "benjamin-chrobot",
       "company_id": "openevidence",
       "name": "Benjamin Chrobot",
-      "role": "Engineering Team Member",
+      "role": "Key Team Member",
       "is_founder": false,
       "start_date": null,
       "end_date": null,
@@ -191,13 +188,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://openevidence.c/about",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/careers",
+          "crawled_at": "2025-10-19",
           "snippet": null
         },
         {
-          "source_url": "https://openevidence.c/careers",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/about",
+          "crawled_at": "2025-10-19",
           "snippet": null
         }
       ]
@@ -216,13 +213,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://openevidence.c/about",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/careers",
+          "crawled_at": "2025-10-19",
           "snippet": null
         },
         {
-          "source_url": "https://openevidence.c/careers",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/about",
+          "crawled_at": "2025-10-19",
           "snippet": null
         }
       ]
@@ -231,7 +228,7 @@
       "person_id": "benedict-neo",
       "company_id": "openevidence",
       "name": "Benedict Neo",
-      "role": "Data Scientist",
+      "role": "Key Team Member",
       "is_founder": false,
       "start_date": null,
       "end_date": null,
@@ -241,13 +238,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://openevidence.c/about",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/careers",
+          "crawled_at": "2025-10-19",
           "snippet": null
         },
         {
-          "source_url": "https://openevidence.c/careers",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/about",
+          "crawled_at": "2025-10-19",
           "snippet": null
         }
       ]
@@ -266,13 +263,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://openevidence.c/about",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/careers",
+          "crawled_at": "2025-10-19",
           "snippet": null
         },
         {
-          "source_url": "https://openevidence.c/careers",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/about",
+          "crawled_at": "2025-10-19",
           "snippet": null
         }
       ]
@@ -291,13 +288,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://openevidence.c/about",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/careers",
+          "crawled_at": "2025-10-19",
           "snippet": null
         },
         {
-          "source_url": "https://openevidence.c/careers",
-          "crawled_at": "2023-10-05",
+          "source_url": "https://openevidence.c/about",
+          "crawled_at": "2025-10-19",
           "snippet": null
         }
       ]
@@ -319,18 +316,18 @@
           "snippet": "OpenEvidence has signed content agreements with NEJM, JAMA, NCCN, and more."
         },
         {
-          "source_url": "https://openevidence.com/blog/news",
+          "source_url": "https://openevidence.com/careers",
           "crawled_at": "2023-10-11",
-          "snippet": "Meta-analysis cements SGLT2 inhibitors as universal guardians of the kidney."
+          "snippet": "Supported by the Best Investors include Sequoia, Google Ventures, Kleiner Perkins, Coatue, Thrive, Conviction, ICONIQ, Greycroft, Breyer Capital, BOND, Blackstone, Mayo Clinic, and others."
         },
         {
-          "source_url": "https://openevidence.com/product",
+          "source_url": "https://openevidence.com/blog",
           "crawled_at": "2023-10-11",
-          "snippet": "Investors include Sequoia, Google Ventures, Kleiner Perkins, Coatue, Thrive, Conviction, ICONIQ, Greycroft, Breyer Capital, BOND, Blackstone, Mayo Clinic, and others."
+          "snippet": "Meta-analysis cements SGLT2 inhibitors as universal guardians of the kidney."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:34:43.394643",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:33:30.653261",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

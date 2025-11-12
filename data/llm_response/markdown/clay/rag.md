@@ -1,22 +1,22 @@
 ## Company Overview
 
-Clay is a private AI startup focused on building creative tools for growth teams. The company offers a suite of products designed to automate and enhance go-to-market (GTM) strategies, including tools like Claygent for AI-driven research, Sculptor for building GTM workflows, and Signals for tracking job changes and social mentions. Clay serves a diverse range of customers, including notable names like OpenAI, Vanta, Verkada, Sendoso, Anthropic, and Rippling.
+Clay is a private AI startup focused on building creative tools for growth teams. The company offers a suite of products designed to automate and enhance go-to-market (GTM) strategies, including tools for sales prospecting, CRM enrichment, and data-driven marketing campaigns. Clay's platform integrates with over 150 providers, allowing users to connect with their favorite tools and streamline workflows.
 
 ## Business Model and GTM
 
-Clay's business model revolves around providing AI-powered tools that streamline sales and marketing processes. The company offers solutions for automating prospecting, research, and CRM enrichment, targeting both enterprise and startup clients. Clay's GTM strategy includes integrations with over 150 providers, enabling seamless connectivity with existing tools and systems. The company also emphasizes the importance of building a strong data foundation for GTM workflows, allowing businesses to launch targeted campaigns efficiently.
+Clay's business model revolves around providing AI-powered solutions for sales and marketing teams. The company offers products such as Claygent for AI-driven research, Sculptor for building GTM workflows, and Sequencer for automating personalized email outreach. Clay targets both enterprise and startup clients, helping them build robust data foundations and launch growth campaigns efficiently. The company also supports a partner program to enhance its GTM efforts through collaborations with solution partners.
 
 ## Funding & Investor Profile
 
-Clay has successfully raised significant funding, including a Series C expansion at a $3.1 billion valuation in 2025. The company is backed by world-class investors, including Sequoia, Meritech Capital, First Round, Box Group, and Boldstart. Notable individual investors include Elena Verna (Head of Growth, Dropbox), Scott Belsky (CPO, Adobe), and Maggie Hott (GTM Leader, OpenAI).
+Clay has successfully raised a Series C expansion fundraise at a $3.1 billion valuation in 2025. The company is backed by prominent investors, including Sequoia, Meritech Capital, First Round, and other top venture capital and angel investors. Notable individuals involved include Elena Verna, Head of Growth at Dropbox, and Scott Belsky, CPO at Adobe.
 
 ## Growth Momentum
 
-Clay has demonstrated impressive growth, with a reported 10x revenue increase from 2022 to 2023. The company has expanded its customer base to over 8,000 clients, including high-profile organizations like OpenAI and Hubspot. In 2024, Clay experienced 6x growth, further solidifying its position in the market.
+Clay has demonstrated significant growth, with a reported 10x revenue increase from 2022 to 2023. The company serves over 8,000 customers, including high-profile clients like OpenAI and Hubspot. Clay's growth is further supported by strategic acquisitions, such as the acquisition of Avenue to enhance its capabilities in acting on intent signals.
 
 ## Visibility & Market Sentiment
 
-The company has garnered positive attention in the media, being described as a "secret weapon" for companies like Anthropic and OpenAI by Forbes. Clay has also been recognized on the Enterprise Tech 30 list and was the only GTM company featured on Forbes' 2025 AI 50 List. These accolades reflect strong market sentiment and visibility.
+Clay has garnered positive attention in the market, being named the only GTM company on Forbes' 2025 AI 50 List and recognized as a "secret weapon" for companies like Anthropic and OpenAI. The company has also been featured in various reputable publications, including Forbes, TechCrunch, and the NY Times.
 
 ## Risks and Challenges
 
@@ -24,10 +24,10 @@ Not disclosed.
 
 ## Outlook
 
-The company states that it is entering a new era of GTM engineering, with plans to continue expanding its product offerings and customer base. Clay's focus on AI-driven solutions positions it well for future growth in the evolving sales and marketing landscape.
+The company states that it is on a mission to grow and continues to innovate in the GTM space. With its strong investor backing and a robust product lineup, Clay is well-positioned to capitalize on the increasing demand for AI-driven sales and marketing solutions.
 
 ## Disclosure Gaps
 
 - Specific financial metrics such as revenue figures and profitability are not disclosed.
-- Detailed information on competitive positioning and market share is not available.
-- Risks and challenges facing the company are not disclosed.
+- Detailed information on competitive landscape and market positioning is not provided.
+- Risks and challenges faced by the company are not disclosed.

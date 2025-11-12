@@ -2,7 +2,7 @@
   "company_record": {
     "company_id": "lambda",
     "legal_name": "Lambda",
-    "brand_name": "Lambda, The Superintelligence Cloud",
+    "brand_name": null,
     "website": null,
     "hq_city": "San Jose",
     "hq_state": "CA",
@@ -22,167 +22,63 @@
     "as_of": null,
     "provenance": [
       {
-        "source_url": "about",
-        "crawled_at": "2023-10-10",
-        "snippet": "Lambda was founded in 2012 by published AI engineers."
-      },
-      {
         "source_url": "careers",
-        "crawled_at": "2023-10-10",
+        "crawled_at": "2023-11-01",
         "snippet": "We have two office locations in San Jose and San Francisco, close to Salesforce Tower."
       },
       {
-        "source_url": "careers",
-        "crawled_at": "2023-10-10",
+        "source_url": "about",
+        "crawled_at": "2023-11-01",
+        "snippet": "Lambda was founded in 2012 by published AI engineers."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-11-01",
         "snippet": "Lambda, The Superintelligence Cloud, builds gigawatt-scale AI factories for training and inference."
       }
     ]
   },
-  "events": [
-    {
-      "event_id": "1",
-      "company_id": "lambda",
-      "occurred_on": "2018-01-01",
-      "event_type": "product_release",
-      "title": "Launch of Lambda GPU Cloud and Lambda Stack",
-      "description": "The launch of Lambda GPU Cloud and Lambda Stack, a comprehensive AI software repository.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "2",
-      "company_id": "lambda",
-      "occurred_on": "2021-01-01",
-      "event_type": "funding",
-      "title": "Series A investment",
-      "description": "Lambda secures investment from Gradient Ventures.",
-      "round_name": "Series A",
-      "investors": [
-        "Gradient Ventures"
-      ],
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "3",
-      "company_id": "lambda",
-      "occurred_on": "2023-01-01",
-      "event_type": "funding",
-      "title": "Series C investment led by USIT",
-      "description": "Series C investment led by USIT.",
-      "round_name": "Series C",
-      "investors": [
-        "USIT"
-      ],
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "4",
-      "company_id": "lambda",
-      "occurred_on": "2024-01-01",
-      "event_type": "product_release",
-      "title": "Launch of 1-Click Clusters and Inference API",
-      "description": "Lambda unveils 1-Click Clusters™, giving AI developers instant access to NVIDIA H100 Tensor Core GPU clusters, with NVIDIA InfiniBand networking. Launch of our Inference API.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "5",
-      "company_id": "lambda",
-      "occurred_on": "2025-01-01",
-      "event_type": "funding",
-      "title": "Series D investment",
-      "description": "Series D investment led by An.",
-      "round_name": "Series D",
-      "investors": [
-        "An"
-      ],
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    },
-    {
-      "event_id": "6",
-      "company_id": "lambda",
-      "occurred_on": "2025-07-29",
-      "event_type": "partnership",
-      "title": "Multibillion-Dollar Agreement With Microsoft",
-      "description": "Lambda announces a multibillion-dollar, multi-year agreement with Microsoft to deploy AI infrastructure powered by tens of thousands of NVIDIA GPUs.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": []
-    }
-  ],
+  "events": [],
   "snapshots": [
     {
       "company_id": "lambda",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-28",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
       "engineering_openings": null,
       "sales_openings": null,
       "hiring_focus": null,
-      "pricing_tiers": null,
+      "pricing_tiers": [
+        "Enterprise"
+      ],
       "active_products": [
         "1-Click Clusters",
-        "On-Demand Cloud"
+        "On-Demand Cloud",
+        "Inference API"
       ],
       "geo_presence": [
-        "San Jose",
-        "San Francisco"
+        "San Jose, CA",
+        "San Francisco, CA",
+        "Kansas City, MO"
       ],
       "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers]",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "source_url": "https://lambda.com/careers",
+          "crawled_at": "2023-10-28",
+          "snippet": "Lambda announces a multibillion-dollar, multi-year agreement with Microsoft. AI Factories Enterprise Pricing Products 1-Click Clusters On-demand GPU clusters for multi-node training & fine-tuning On-Demand Cloud GPU instances"
         },
         {
-          "source_url": "[about]",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "source_url": "https://lambda.com/about",
+          "crawled_at": "2023-10-28",
+          "snippet": "Series C investment led by USIT. 2024 Lambda unveils 1-Click Clusters™, giving AI developers instant access to NVIDIA H100 Tensor Core GPU clusters, with NVIDIA InfiniBand networking Launch of our Inference API"
         },
         {
-          "source_url": "[product]",
-          "crawled_at": "2023-10-06",
-          "snippet": null
-        },
-        {
-          "source_url": "[blog]",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "source_url": "https://lambda.com/blog",
+          "crawled_at": "2023-10-28",
+          "snippet": "Lambda Doubles Down on Midwest Expansion, To Build AI Factory in Kansas City, MO Site in Kansas City, MO, to welcome new jobs and more than 10,000 NVIDIA GPUs, with additional growth opportunities"
         }
       ]
     }
@@ -196,7 +92,9 @@
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "NVIDIA"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -208,12 +106,7 @@
           "snippet": null
         },
         {
-          "source_url": "[careers] Careers at Lambda",
-          "crawled_at": "2023-10-06",
-          "snippet": null
-        },
-        {
-          "source_url": "[blog] The Lambda Deep Learning Blog",
+          "source_url": "[product] AI Cloud Platform | Lambda",
           "crawled_at": "2023-10-06",
           "snippet": null
         }
@@ -223,16 +116,14 @@
       "product_id": "2",
       "company_id": "lambda",
       "name": "On-Demand Cloud",
-      "description": "ML Engineers & Researchers love Lambda On-Demand Cloud for its simplicity, speed & ML-first user experience.",
+      "description": "GPU instances for AI workloads",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": [
-        "AI Cloud developers"
-      ],
+      "reference_customers": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
@@ -245,12 +136,10 @@
     {
       "product_id": "3",
       "company_id": "lambda",
-      "name": "Private Cloud",
-      "description": "Single-tenant, caged clusters with NVIDIA GPUs on 3+ year contracts.",
-      "pricing_model": "contract",
-      "pricing_tiers_public": [
-        "B200 as low as $2.99/hr"
-      ],
+      "name": "Lambda Stack",
+      "description": "A comprehensive AI software repository",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
       "ga_date": null,
       "integration_partners": null,
       "github_repo": null,
@@ -259,32 +148,58 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[product] ✔️ NVIDIA H100 ✔️ ... and more",
+          "source_url": "[about] , the world's first plug-and-play Deep Learning supercomputer under $20,000.",
           "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
     }
   ],
-  "leadership": [],
+  "leadership": [
+    {
+      "person_id": "anket-sah",
+      "company_id": "lambda",
+      "name": "Anket Sah",
+      "role": "Executive",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Published on July 29, 2025 by Anket Sah",
+          "crawled_at": "2025-07-29",
+          "snippet": null
+        }
+      ]
+    }
+  ],
   "visibility": [
     {
       "company_id": "lambda",
       "as_of": "2023-10-06",
-      "news_mentions_30d": 1,
+      "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/lambda-news",
+          "source_url": "https://lambda.com/blog",
           "crawled_at": "2023-10-06",
-          "snippet": "Lambda announces a multibillion-dollar, multi-year agreement with Microsoft."
+          "snippet": "Lambda Announces Multibillion-Dollar Agreement With Microsoft to Deploy AI Infrastructure Powered by Tens of Thousands of NVIDIA GPUs"
+        },
+        {
+          "source_url": "https://lambda.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "Lambda, The Superintelligence Cloud, builds gigawatt-scale AI factories for training and inference."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:28:10.308475",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:27:49.912594",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

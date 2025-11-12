@@ -11,12 +11,7 @@
     "categories": [
       "Media",
       "Telecommunication",
-      "Resources",
-      "Health & Wellness",
-      "Retail",
-      "Travel & Hospitality",
-      "Technology",
-      "Financial Services"
+      "Resources"
     ],
     "related_companies": null,
     "total_raised_usd": null,
@@ -28,18 +23,13 @@
     "provenance": [
       {
         "source_url": "product",
-        "crawled_at": "2023-10-17",
-        "snippet": "With built-in enterprise-grade guardrails, Decagon is the trusted choice for industry leaders, including those in highly regulated industries."
+        "crawled_at": "2023-10-07",
+        "snippet": "Media\nTelecommunication\nResources"
       },
       {
-        "source_url": "careers",
-        "crawled_at": "2023-10-17",
-        "snippet": "Industries Retail Travel & Hospitality Technology Financial Services Health & Wellness Media Telecommunication Resources"
-      },
-      {
-        "source_url": "blog",
-        "crawled_at": "2023-10-17",
-        "snippet": "Industry leaders elevate CX into a strategic growth driver with Decagon."
+        "source_url": "about",
+        "crawled_at": "2023-10-07",
+        "snippet": "Media\nTelecommunication\nResources"
       }
     ]
   },
@@ -58,13 +48,7 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Decagon arrives in London",
-          "crawled_at": "2025-01-01",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "2",
@@ -73,22 +57,14 @@
       "event_type": "funding",
       "title": "Decagon's Series B",
       "description": "We've raised a $65m Series B led by Bain Capital Ventures to bring our total funding to $100m.",
-      "round_name": "Series B",
-      "investors": [
-        "Bain Capital Ventures"
-      ],
+      "round_name": null,
+      "investors": null,
       "amount_usd": 65000000.0,
-      "valuation_usd": null,
+      "valuation_usd": 100000000.0,
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Decagon's Series B",
-          "crawled_at": "2025-01-01",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "3",
@@ -97,23 +73,14 @@
       "event_type": "funding",
       "title": "Decagon's Series A",
       "description": "We're excited to share our $35M Series A from Accel and a16z to bring AI agents to the enterprise.",
-      "round_name": "Series A",
-      "investors": [
-        "Accel",
-        "a16z"
-      ],
+      "round_name": null,
+      "investors": null,
       "amount_usd": 35000000.0,
       "valuation_usd": null,
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Decagon's Series A",
-          "crawled_at": "2025-01-01",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "4",
@@ -129,13 +96,7 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Decagon expands to New York City",
-          "crawled_at": "2025-01-01",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "5",
@@ -151,13 +112,7 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] OpenAI Partnership",
-          "crawled_at": "2025-01-01",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "6",
@@ -173,35 +128,7 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Anthropic Partnership",
-          "crawled_at": "2025-01-01",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "7",
-      "company_id": "decagon",
-      "occurred_on": "2025-01-01",
-      "event_type": "product_release",
-      "title": "Decagon Voice 2.0: Faster, smarter, and ready to call",
-      "description": "Introducing Decagon Voice 2.0 for faster conversations, smarter controls, and seamless cross-channel memory.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Decagon Voice 2.0",
-          "crawled_at": "2025-01-01",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     }
   ],
   "snapshots": [
@@ -226,15 +153,26 @@
         "Trust Center"
       ],
       "geo_presence": [
-        "London"
+        "London",
+        "New York City"
       ],
       "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "extracted_content",
+          "source_url": "https://decagon.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "Decagon was founded by serial entrepreneurs who saw how limited, rigid, and inefficient legacy customer experience systems had become."
+        },
+        {
+          "source_url": "https://decagon.com/blog",
           "crawled_at": "2023-10-06",
           "snippet": "Decagon arrives in London. We’re excited to announce the opening of Decagon’s new London office."
+        },
+        {
+          "source_url": "https://decagon.com/blog",
+          "crawled_at": "2023-10-06",
+          "snippet": "Decagon expands to New York City. We're opening a New York office to g"
         }
       ]
     }
@@ -244,7 +182,7 @@
       "product_id": "1",
       "company_id": "decagon",
       "name": "Agent Assist",
-      "description": "Supercharge your human agents with an AI copilot that automates mundane tasks, drafts customer responses, and continuously learns from real-world situations addressed by your experts. Secure by design.",
+      "description": "Supercharge your human agents with an Al copilot that automates mundane tasks, drafts customer responses, and continuously learns from real-world situations addressed by your experts. Secure by design.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -255,7 +193,28 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web_content",
+          "source_url": "extracted",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "decagon",
+      "name": "AI agent engine",
+      "description": "Decagon powers the most comprehensive AI agent platform with its AI agent engine— a self-improving data flywheel built to deliver intelligent, context-rich, and effortlessly satisfying customer experiences.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted",
           "crawled_at": "2023-10-06",
           "snippet": null
         }
@@ -278,8 +237,8 @@
       "provenance": [
         {
           "source_url": "[blog] Why I Joined Decagon",
-          "crawled_at": "2023-10-06",
-          "snippet": null
+          "crawled_at": "2023-10-01",
+          "snippet": "Cynthia is an engineer at Decagon. Here's her reflection on why she joined after graduating from Harvard."
         }
       ]
     }
@@ -293,25 +252,9 @@
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://decagon.com/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "Decagon arrives in London. We’re excited to announce the opening of Decagon’s new London office."
-        },
-        {
-          "source_url": "https://decagon.com/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "OpenAI Partnership. Read on OpenAI's blog: Decagon and OpenAI deliver high-performance, fully automated customer support at scale."
-        },
-        {
-          "source_url": "https://decagon.com/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "Anthropic Partnership. Read on Anthropic's blog: Decagon delivers white-glove customer service at scale with Claude."
-        }
-      ]
+      "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:30:02.570732",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:21:50.306226",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

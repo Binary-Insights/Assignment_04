@@ -1,38 +1,34 @@
 ## Company Overview
-
-Crusoe was founded in 2018 with an energy-first approach, pioneering technology to convert wasted natural gas into energy for high-performance computing. The company has since expanded its focus to include AI infrastructure, with a mission to build large-scale AI factories and expand its Crusoe Cloud offering.
+Crusoe was founded in 2018 with an energy-first approach, pioneering technology to convert wasted natural gas into energy for high-performance computing. The company has expanded its operations to include AI infrastructure, focusing on sustainable and innovative energy solutions.
 
 ## Business Model and GTM
-
-Crusoe's business model revolves around leveraging its patented Digital Flare Mitigation® technology to provide sustainable energy solutions for high-performance computing. The company has expanded its data center footprint globally, including a geothermal and hydro-powered deployment in Iceland. Crusoe partners with companies like GE Vernova and Redwood Materials to enhance its AI data center capabilities, including the use of second-life EV battery systems.
+Crusoe's business model revolves around leveraging wasted natural gas to power high-performance computing solutions. The company has expanded its offerings to include Crusoe Cloud, which provides scalable AI infrastructure. Crusoe has also partnered with companies like GE Vernova and Redwood Materials to enhance its energy solutions and AI data centers.
 
 ## Funding & Investor Profile
-
-Crusoe has successfully raised multiple funding rounds to support its growth:
-- **2019**: Series A funding to establish a financial foundation.
-- **2021**: $128M Series B to expand Digital Flare Mitigation® technology.
-- **2022**: $350M Series C to scale infrastructure for high-performance computing.
-- **2024**: $600M Series D to launch Crusoe Cloud with NVIDIA support.
-- **2025**: $1B+ Series E to accelerate AI factories and expand Crusoe Cloud.
+Crusoe has completed several funding rounds:
+- **2019**: Series A funding to build the financial foundation.
+- **2021**: Series B round of $128M to expand Digital Flare Mitigation® technology.
+- **2022**: Series C round of $350M to scale infrastructure for high-performance computing.
+- **2024**: Series D round of $600M, announcing the General Availability of Crusoe Cloud.
+- **2025**: Series E round raising over $1B to accelerate AI factories and expand Crusoe Cloud.
 
 ## Growth Momentum
-
-Crusoe has demonstrated significant growth momentum through strategic acquisitions and partnerships. The acquisition of Atero, a GPU memory optimization startup, and the establishment of a Tel Aviv office are key milestones. The company has also announced a 1.8 GW data center in Wyoming and a 1.2 GW data center campus in Abilene, Texas, marking significant expansions in its infrastructure capabilities.
+Crusoe has shown significant growth through strategic expansions and partnerships:
+- Expanded data center footprint to Europe with a geothermal and hydro-powered deployment in Iceland.
+- Announced a 1.8 GW data center in Wyoming with Tallgrass.
+- Broke ground on a 1.2 GW data center campus in Abilene, Texas.
+- Acquired GPU memory optimization startup Atero and established a Tel Aviv office.
 
 ## Visibility & Market Sentiment
-
-The company states that it is highly collaborative and responsive to customer feedback, which has contributed to positive market sentiment. Crusoe's partnerships with industry leaders like AMD and NVIDIA further enhance its visibility and credibility in the AI infrastructure space.
+The company states that it has pioneered a new category of energy-first computing and has been recognized for its innovative approach to sustainable energy solutions. Crusoe's partnerships with major companies like GE Vernova and AMD highlight its growing influence in the AI infrastructure market.
 
 ## Risks and Challenges
-
 Not disclosed.
 
 ## Outlook
-
-Crusoe's outlook appears positive, with plans to continue expanding its AI infrastructure capabilities and data center footprint. The company's focus on sustainable energy solutions and strategic partnerships positions it well for future growth in the AI and high-performance computing markets.
+Crusoe is positioned to continue its growth trajectory by focusing on sustainable energy solutions and expanding its AI infrastructure capabilities. The company's strategic partnerships and recent funding rounds suggest a strong potential for future expansion and innovation.
 
 ## Disclosure Gaps
-
-- Specific details on revenue and profitability are not disclosed.
-- Information on customer base and market share is not disclosed.
+- Specific financial metrics and performance indicators are not disclosed.
+- Detailed information on customer base and market share is not provided.
 - Risks and challenges facing the company are not disclosed.

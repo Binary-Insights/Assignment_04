@@ -3,7 +3,7 @@
     "company_id": "deepl",
     "legal_name": "DeepL",
     "brand_name": null,
-    "website": "https://www.deepl.com/",
+    "website": null,
     "hq_city": null,
     "hq_state": null,
     "hq_country": null,
@@ -19,17 +19,17 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-11-02",
+        "crawled_at": "2023-10-06",
         "snippet": "DeepL works with leading organizations around the world to transform the way they communicate, grow, and get things done."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-11-02",
-        "snippet": "DeepL is built on bold, forward-thinking innovation. From becoming the first company in Europe to deploy NVIDIA’s DGX SuperPOD with DGX GB200 systems."
+        "crawled_at": "2023-10-06",
+        "snippet": "DeepL is built on bold, forward-thinking innovation."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-11-02",
+        "crawled_at": "2023-10-06",
         "snippet": "At DeepL, we’re on a mission to build intelligent, trusted AI that helps organizations achieve their most important goals."
       }
     ]
@@ -38,10 +38,10 @@
     {
       "event_id": "1",
       "company_id": "deepl",
-      "occurred_on": "2025-10-03",
-      "event_type": "regulatory",
-      "title": "DeepL’s C5 Type 2 attestation",
-      "description": "DeepL achieves C5 Type 2 attestation, enhancing data security for organizations in regulated industries.",
+      "occurred_on": "2025-11-06",
+      "event_type": "product_release",
+      "title": "DeepL Dialogues 2025 Highlights",
+      "description": "Discover the highlights from DeepL Dialogues 2025, where visionary speakers explored 'Future Fluency'.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -49,15 +49,21 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.deepl.com/blog",
+          "crawled_at": "2025-11-06",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "2",
       "company_id": "deepl",
-      "occurred_on": "2025-11-06",
-      "event_type": "product_release",
-      "title": "DeepL Dialogues 2025",
-      "description": "Highlights from DeepL Dialogues 2025 where visionary speakers explored 'Future Fluency'.",
+      "occurred_on": "2025-10-03",
+      "event_type": "regulatory",
+      "title": "DeepL’s C5 Type 2 Attestation",
+      "description": "DeepL's C5 Type 2 attestation enhances data security for organizations in regulated industries.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -65,14 +71,20 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.deepl.com/blog",
+          "crawled_at": "2025-10-03",
+          "snippet": null
+        }
+      ]
     }
   ],
   "snapshots": [
     {
       "company_id": "deepl",
-      "as_of": "2023-10-10",
-      "headcount_total": null,
+      "as_of": "2023-10-25",
+      "headcount_total": 1000,
       "headcount_growth_pct": null,
       "job_openings_count": null,
       "engineering_openings": null,
@@ -82,9 +94,6 @@
       "active_products": [
         "DeepL Translator",
         "DeepL Write",
-        "DeepL API",
-        "DeepL Voice",
-        "DeepL for Android",
         "DeepL for iPhone",
         "DeepL for Windows",
         "DeepL Chrome extension",
@@ -98,15 +107,15 @@
         "DeepL for iPad"
       ],
       "geo_presence": [
-        "multiple time zones",
-        "multiple countries"
+        "multiple countries",
+        "multiple continents"
       ],
       "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "https://www.deepl.com",
-          "crawled_at": "2023-10-10",
+          "crawled_at": "2023-10-25",
           "snippet": null
         }
       ]
@@ -196,6 +205,27 @@
           "snippet": null
         }
       ]
+    },
+    {
+      "product_id": "deepl_api",
+      "company_id": "deepl",
+      "name": "DeepL API",
+      "description": "Secure and scalable AI translation for enterprises.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     }
   ],
   "leadership": [
@@ -213,7 +243,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "careers",
+          "source_url": "[careers]",
           "crawled_at": "2025-10-22",
           "snippet": null
         }
@@ -233,7 +263,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "careers",
+          "source_url": "[careers]",
           "crawled_at": "2025-10-22",
           "snippet": null
         }
@@ -253,7 +283,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "careers",
+          "source_url": "[careers]",
           "crawled_at": "2025-10-22",
           "snippet": null
         }
@@ -273,7 +303,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "careers",
+          "source_url": "[careers]",
           "crawled_at": "2025-10-22",
           "snippet": null
         }
@@ -293,7 +323,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "blog",
+          "source_url": "[blog]",
           "crawled_at": "2025-10-22",
           "snippet": null
         }
@@ -313,7 +343,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "careers",
+          "source_url": "[careers]",
           "crawled_at": "2025-10-22",
           "snippet": null
         }
@@ -333,7 +363,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "careers",
+          "source_url": "[careers]",
           "crawled_at": "2025-10-22",
           "snippet": null
         }
@@ -343,7 +373,7 @@
   "visibility": [
     {
       "company_id": "deepl",
-      "as_of": "2023-11-03",
+      "as_of": "2023-10-10",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -352,22 +382,22 @@
       "provenance": [
         {
           "source_url": "https://www.deepl.com/press",
-          "crawled_at": "2023-11-03",
+          "crawled_at": "2023-10-10",
           "snippet": "Further information about DeepL and our history can be found on our press page."
         },
         {
-          "source_url": "https://www.deepl.com/blog",
-          "crawled_at": "2023-11-03",
-          "snippet": "DeepL Blog for cutting-edge thought leadership from the world leader in Language AI."
+          "source_url": "https://www.deepl.com/about",
+          "crawled_at": "2023-10-10",
+          "snippet": "DeepL is built on bold, forward-thinking innovation. From becoming the first company in Europe to deploy NVIDIA’s DGX SuperPOD with DGX GB200 systems."
         },
         {
           "source_url": "https://www.deepl.com/about",
-          "crawled_at": "2023-11-03",
-          "snippet": "DeepL is built on bold, forward-thinking innovation. From becoming the first company in Europe to deploy NVIDIA’s DGX SuperPOD with DGX GB200 systems."
+          "crawled_at": "2023-10-10",
+          "snippet": "Trusted by more than 200,000 business customers worldwide, our AI solutions combine precision, security, and speed."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:23:30.611425",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:22:39.743198",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

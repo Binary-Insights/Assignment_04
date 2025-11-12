@@ -19,22 +19,17 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-11",
+        "crawled_at": "2023-10-09",
         "snippet": "Cohere was founded in 2019 in Toronto with a bold vision: to do whatever it takes to scale intelligence to serve humanity."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-11",
-        "snippet": "Cohere was founded in 2019 in Toronto with a bold vision: to do whatever it takes to scale intelligence to serve humanity."
-      },
-      {
-        "source_url": "about",
-        "crawled_at": "2023-10-11",
+        "crawled_at": "2023-10-09",
         "snippet": "Born in Canada 🇨🇦"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-11",
+        "crawled_at": "2023-10-09",
         "snippet": "Between 2021 and 2024, we secured four major funding rounds (Series A through D), raising nearly $1 billion."
       }
     ]
@@ -54,35 +49,23 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Research",
-          "crawled_at": "2025-08-14",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "2",
       "company_id": "cohere",
-      "occurred_on": "2021-01-01",
-      "event_type": "funding",
-      "title": "Early growth funding rounds",
-      "description": "Between 2021 and 2024, Cohere secured four major funding rounds (Series A through D), raising nearly $1 billion.",
+      "occurred_on": "2025-08-15",
+      "event_type": "partnership",
+      "title": "Cohere deepens partnership with Government of Canada",
+      "description": "Cohere deepens partnership with Government of Canada to build AI agents that reshape financial services",
       "round_name": null,
       "investors": null,
-      "amount_usd": 1000000000.0,
+      "amount_usd": null,
       "valuation_usd": null,
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[about] 2021 – 2024",
-          "crawled_at": "2025-08-14",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     },
     {
       "event_id": "3",
@@ -98,85 +81,13 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Cohere Team — Sep 15, 2025",
-          "crawled_at": "2025-09-15",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "4",
-      "company_id": "cohere",
-      "occurred_on": "2025-08-15",
-      "event_type": "partnership",
-      "title": "Cohere deepens partnership with Government of Canada",
-      "description": "Cohere deepens partnership with Government of Canada",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Cohere deepens partnership with Government of Canada",
-          "crawled_at": "2025-08-15",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "5",
-      "company_id": "cohere",
-      "occurred_on": "2025-10-07",
-      "event_type": "partnership",
-      "title": "Announcing the Cohere Partner Program",
-      "description": "Announcing the Cohere Partner Program: Boosting enterprise AI",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Securing AI supply chains: Cohere’s commitment to model signing",
-          "crawled_at": "2025-10-07",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "6",
-      "company_id": "cohere",
-      "occurred_on": "2025-07-31",
-      "event_type": "product_release",
-      "title": "Introducing Command A Vision",
-      "description": "Introducing Command A Vision: Multimodal AI built for business",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Company Newsroom Product",
-          "crawled_at": "2025-07-31",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     }
   ],
   "snapshots": [
     {
       "company_id": "cohere",
-      "as_of": "2023-10-10",
+      "as_of": "2023-10-06",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -204,19 +115,14 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers] Careers | Cohere",
-          "crawled_at": "2023-10-10",
-          "snippet": null
-        },
-        {
           "source_url": "[about] About Our Company | Cohere",
-          "crawled_at": "2023-10-10",
-          "snippet": null
+          "crawled_at": "2023-10-06",
+          "snippet": "Products\nProducts\nWorkplace Systems\nNorth\nNEW\nAn enterprise-ready AI platform that powers modern workplace productivity\nCompass\nAn intelligent search and discovery system to surface business insights\nGenerative Models\nCommand"
         },
         {
-          "source_url": "[blog] Cohere deepens partnership with Government of Canada",
-          "crawled_at": "2023-10-10",
-          "snippet": null
+          "source_url": "[about] Kosta Starostin",
+          "crawled_at": "2023-10-06",
+          "snippet": "Toronto\nNew York\nLondon\nSan Francisco\nMontreal\nParis\nSeoul"
         }
       ]
     }
@@ -237,8 +143,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] About Our Company | Cohere",
-          "crawled_at": "2025-09-15",
+          "source_url": "[careers] Careers | Cohere",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -258,8 +164,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] About Our Company | Cohere",
-          "crawled_at": "2025-09-15",
+          "source_url": "[careers] Careers | Cohere",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -279,8 +185,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] About Our Company | Cohere",
-          "crawled_at": "2025-09-15",
+          "source_url": "[careers] Careers | Cohere",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -289,7 +195,7 @@
       "product_id": "4",
       "company_id": "cohere",
       "name": "Generative Models",
-      "description": null,
+      "description": "Command A Reasoning: Enterprise-grade control for AI agents",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -300,8 +206,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] About Our Company | Cohere",
-          "crawled_at": "2025-09-15",
+          "source_url": "[blog] Newsroom",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -321,8 +227,29 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[blog] Newsroom",
-          "crawled_at": "2025-08-21",
+          "source_url": "[careers] Careers | Cohere",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "6",
+      "company_id": "cohere",
+      "name": "Command A Vision",
+      "description": "Multimodal AI built for business",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Company",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -330,22 +257,142 @@
   ],
   "leadership": [
     {
-      "person_id": "geoffrey-hinton",
+      "person_id": "nick-frosst",
       "company_id": "cohere",
-      "name": "Geoffrey Hinton",
-      "role": "Nobel Laureate in Physics",
-      "is_founder": false,
+      "name": "Nick Frosst",
+      "role": "Co-founder and CEO",
+      "is_founder": true,
       "start_date": null,
       "end_date": null,
       "previous_affiliation": null,
-      "education": "University of Toronto",
+      "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-06",
-          "snippet": "Geoffrey Hinton\n2024 Nobel Laureate in Physics\nUniversity Professor Emeritus, Computer Science, University of Toronto"
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "ivan-zhang",
+      "company_id": "cohere",
+      "name": "Ivan Zhang",
+      "role": "Co-founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "joelle-pineau",
+      "company_id": "cohere",
+      "name": "Joelle Pineau",
+      "role": "Chief AI Officer",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "francois-chadwick",
+      "company_id": "cohere",
+      "name": "François Chadwick",
+      "role": "Chief Financial Officer",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "phil-blunsom",
+      "company_id": "cohere",
+      "name": "Phil Blunsom",
+      "role": "Chief Technology Officer",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "laura-moss",
+      "company_id": "cohere",
+      "name": "Laura Moss",
+      "role": "SVP, Finance",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "nora-beatty",
+      "company_id": "cohere",
+      "name": "Nora Beatty",
+      "role": "SVP, People Operations",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
         }
       ]
     },
@@ -363,9 +410,9 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-06",
-          "snippet": "Kosta Starostin\nVP, Legal\nBorn in Canada 🇨🇦"
+          "source_url": "source",
+          "crawled_at": "2023-10-10",
+          "snippet": null
         }
       ]
     }
@@ -373,21 +420,15 @@
   "visibility": [
     {
       "company_id": "cohere",
-      "as_of": "2023-10-10",
+      "as_of": "2023-10-09",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://cohere.ai/blog",
-          "crawled_at": "2023-10-10",
-          "snippet": null
-        }
-      ]
+      "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:21:14.702419",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T22:19:41.044416",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }
