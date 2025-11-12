@@ -17,7 +17,7 @@ def slugify(text):
 def get_ai50_companies_from_seed():
     """Load valid AI50 companies from seed data."""
     logger = logging.getLogger(__name__)
-    seed_file = '/opt/airflow/workspace/data/forbes_ai50_seed.json'
+    seed_file = '/app/data/forbes_ai50_seed.json'
     
     if not os.path.exists(seed_file):
         logger.error(f"Seed file not found: {seed_file}")
@@ -45,7 +45,7 @@ def get_ai50_companies_from_seed():
 def discover_valid_companies(company_map):
     """Discover valid AI50 companies with existing raw data."""
     logger = logging.getLogger(__name__)
-    raw_data_path = '/opt/airflow/workspace/data/raw'
+    raw_data_path = '/app/data/raw'
     valid_companies = []
     
     if not os.path.exists(raw_data_path):
@@ -86,7 +86,7 @@ def upload_company_to_s3(company_info):
     company_name = company_info.get('company_name')
     
     logger = logging.getLogger(__name__)
-    base_dir = '/opt/airflow/workspace'
+    base_dir = '/app'
     uploader_script = os.path.join(base_dir, 'src', 'store', 's3_uploader.py')
     bucket = os.environ.get('S3_BUCKET_NAME', 'damg-assignment-04-airflow')
     
@@ -166,7 +166,7 @@ def upload_company_to_s3(company_info):
 def upload_consolidated_data_backup():
     """Upload consolidated data backup: payloads, llm_response, eval."""
     logger = logging.getLogger(__name__)
-    base_dir = '/opt/airflow/workspace'
+    base_dir = '/app'
     uploader_script = os.path.join(base_dir, 'src', 'store', 's3_uploader.py')
     bucket = os.environ.get('S3_BUCKET_NAME', 'damg-assignment-04-airflow')
     
@@ -300,5 +300,8 @@ backup_task = PythonOperator(
 )
 
 if company_tasks:
+    # All company tasks must complete before backup runs
     for task in company_tasks:
         task >> backup_task
+else:
+    logger.warning("No companies to process, backup task will run standalone")
