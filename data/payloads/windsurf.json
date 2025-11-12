@@ -1,0 +1,201 @@
+{
+  "company_record": {
+    "company_id": "windsurf",
+    "legal_name": "Windsurf Inc.",
+    "brand_name": null,
+    "website": null,
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "Windsurf Inc."
+      },
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-06",
+        "snippet": "Windsurf Inc."
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-06",
+        "snippet": "Windsurf Inc."
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "windsurf",
+      "occurred_on": "2025-07-16",
+      "event_type": "mna",
+      "title": "Acquisition by Cognition",
+      "description": "Windsurf was acquired by Cognition. The acquisition aims to enhance Windsurf's capabilities and expand its market reach.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/acquisition-news",
+          "crawled_at": "2025-07-16",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "windsurf",
+      "occurred_on": "2025-09-17",
+      "event_type": "benchmark",
+      "title": "Leader in 2025 Gartner Magic Quadrant",
+      "description": "Cognition's Windsurf has been named a Leader in the 2025 Gartner Magic Quadrant for AI Code Assistants.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/gartner-news",
+          "crawled_at": "2025-09-17",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "windsurf",
+      "as_of": "2023-10-09",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Editor",
+        "Plugins",
+        "Cascade",
+        "Tab",
+        "Cascade on JetBrains"
+      ],
+      "geo_presence": null,
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2023-10-09",
+          "snippet": "Product Editor Plugins Windsurf Reviews Pricing Windsurf for Enterprise Capabilities Cascade Tab Cascade on JetBrains"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "windsurf_editor",
+      "company_id": "windsurf",
+      "name": "Windsurf Editor",
+      "description": "A tool built to keep you in flow, offering features like server setup and extensions.",
+      "pricing_model": "token usage",
+      "pricing_tiers_public": [
+        "clear and fair"
+      ],
+      "ga_date": null,
+      "integration_partners": [
+        "JetBrains"
+      ],
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2025-08-14",
+          "snippet": "The reason I chose Windsurf is because you guys are on a constant mission of streamlining, improving and generally making the experience better for your users. The recent pricing rework with the clear and fair token usage."
+        },
+        {
+          "source_url": "web_content",
+          "crawled_at": "2025-08-14",
+          "snippet": "Windsurf UX beats Cursor for novices like me. Just click \"preview\" - it sets up a server and keeps it *active*. Same goes for MCPs and extensions."
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "varun-mohan",
+      "company_id": "windsurf",
+      "name": "Varun Mohan",
+      "role": "CEO & Co-Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2025-06-02",
+          "snippet": "Windsurf CEO & Co-Founder, Varun Mohan: The Future of Software"
+        }
+      ]
+    },
+    {
+      "person_id": "anshul-ramachandran",
+      "company_id": "windsurf",
+      "name": "Anshul Ramachandran",
+      "role": "Founding Team member",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2025-04-28",
+          "snippet": "Windsurf Founding Team member on Reinventing Software in the Age of AI | IIA 2025 @MIT"
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "windsurf",
+      "as_of": "2023-11-01",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:46:04.051688",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

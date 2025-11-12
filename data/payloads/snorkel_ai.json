@@ -1,0 +1,176 @@
+{
+  "company_record": {
+    "company_id": "snorkel_ai",
+    "legal_name": "Snorkel AI, Inc.",
+    "brand_name": null,
+    "website": null,
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": 100000000.0,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-20",
+        "snippet": "Redwood City, CA (Hybrid); San Francisco, CA (Hybrid); United States (Remote)"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-20",
+        "snippet": "Copyright © 2025 Snorkel AI, Inc. All rights reserved."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-20",
+        "snippet": "Snorkel AI Raises $100 Million To"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "snorkel_ai",
+      "occurred_on": "2023-10-01",
+      "event_type": "product_release",
+      "title": "Snorkel helps build Terminal-Bench 2.0",
+      "description": "Snorkel AI contributes to the development of Terminal-Bench 2.0, enhancing AI capabilities.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://snorkel.ai/blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "snorkel_ai",
+      "as_of": "2023-10-11",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Data-as-a-Service",
+        "Terminal-Bench 2.0"
+      ],
+      "geo_presence": [
+        "United States"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.snorkel.ai",
+          "crawled_at": "2023-10-11",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "snorkel_ai",
+      "name": "Expert data services",
+      "description": "Custom AI solutions. The technology powering Snorkel solutions. Our AI data development platform bridges the gap between data and production AI. It connects enterprise data streams and ML platforms to the systems that run AI in production.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "snorkel_ai",
+      "name": "100x Faster data curation",
+      "description": "40x Faster model delivery. 99% Model accuracy. Explore AI solutions. Partner with Snorkel to accelerate your AI development. Our applied research and data engineering teams work with you to co-develop and evaluate production-ready AI systems.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "founders",
+      "company_id": "snorkel_ai",
+      "name": "Founders",
+      "role": "Founders",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://snorkel.ai/about",
+          "crawled_at": "2023-10-05",
+          "snippet": "Snorkel AI’s founders spent half a decade researching programmatic labeling, weak supervision, and other techniques to break through one of the biggest bottlenecks in AI: the lack of labeled training data."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "snorkel_ai",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://snorkel.ai",
+          "crawled_at": "2023-10-06",
+          "snippet": "Snorkel AI is pioneering the shift from manual data labeling to programmatic data development for AI, empowering enterprises to build production-quality AI models faster and cheaper."
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:38:26.351034",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

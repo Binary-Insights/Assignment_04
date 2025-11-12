@@ -1,0 +1,187 @@
+{
+  "company_record": {
+    "company_id": "photoroom",
+    "legal_name": "Photoroom, Inc.",
+    "brand_name": null,
+    "website": null,
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": 2020,
+    "categories": [
+      "AI photo editor"
+    ],
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-09",
+        "snippet": "Photoroom was part of the 2020 YC cohort, and has since become the world's most popular AI photo editor."
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "photoroom",
+      "occurred_on": "2024-01-01",
+      "event_type": "benchmark",
+      "title": "Photoroom reached 300M users",
+      "description": "Photoroom featured on This Week in Startups: Our journey to 300M users",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://photoroom.com/updates",
+          "crawled_at": "2024-01-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "photoroom",
+      "as_of": "2023-11-01",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": [
+        "Free",
+        "Pro"
+      ],
+      "active_products": [
+        "Background remover",
+        "Image generator",
+        "Virtual model",
+        "Product staging",
+        "Background generator",
+        "AI product photography"
+      ],
+      "geo_presence": null,
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers] Photoroom Jobs",
+          "crawled_at": "2023-11-01",
+          "snippet": "Photoroom was part of the 2020 YC cohort, and has since become the world's most popular AI photo editor."
+        },
+        {
+          "source_url": "[product] What is the price of Photoroom?",
+          "crawled_at": "2023-11-01",
+          "snippet": "Photoroom offers a free version with basic features. However, for access to advanced functionalities such as HD quality, resizing, batch mode, and AI image generation, consider upgrading to our Pro plan."
+        },
+        {
+          "source_url": "[about] About Photoroom | Photoroom",
+          "crawled_at": "2023-11-01",
+          "snippet": "Product\nSolutions\nResources\nEnterprise\nPricing\nContact sales\nLog in\nStart creating\nCreate\nBackground remover\nImage generator\nVirtual model\nProduct staging\nBackground generator\nAI product photography\nSee all"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "photoroom",
+      "name": "Photoroom Pro",
+      "description": "Photoroom offers a Pro plan with advanced functionalities such as HD quality, resizing, batch mode, and AI image generation.",
+      "pricing_model": "tiered",
+      "pricing_tiers_public": [
+        "Free version with basic features",
+        "Pro plan with advanced features"
+      ],
+      "ga_date": null,
+      "integration_partners": [
+        "API (developers)"
+      ],
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://photoroom.com",
+          "crawled_at": "2023-10-05",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "matt",
+      "company_id": "photoroom",
+      "name": "Matt",
+      "role": "Cofounder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "eliot",
+      "company_id": "photoroom",
+      "name": "Eliot",
+      "role": "Cofounder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "photoroom",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.photoroom.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "Photoroom featured on This Week in Startups: Our journey to 300M users"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:34:08.021720",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

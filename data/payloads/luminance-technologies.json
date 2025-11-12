@@ -1,0 +1,218 @@
+{
+  "company_record": {
+    "company_id": "luminance-technologies",
+    "legal_name": "Luminance Technologies Ltd.",
+    "brand_name": null,
+    "website": null,
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": 2015,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": 75000000.0,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": "2025-01-01",
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-11-04",
+        "snippet": "Founded by mathematicians in 2015, Luminance has spent nearly a decade developing the most legally accurate AI on the market."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-11-04",
+        "snippet": "In early 2025, Luminance raised $75 milli"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "luminance",
+      "occurred_on": "2015-01-01",
+      "event_type": "product_release",
+      "title": "Luminance Founded",
+      "description": "Luminance was founded by mathematicians in 2015, developing the most legally accurate AI on the market.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.luminance.com/about",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "luminance",
+      "as_of": "2023-10-11",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Artificial Intelligence Solutions",
+        "Legal-Grade™ agents"
+      ],
+      "geo_presence": [
+        "70 countries"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about]",
+          "crawled_at": "2023-10-11",
+          "snippet": "Today, more than 700 organizations across 70 countries use Luminance, including all of the Big Four consultancy firms, over a quarter of the Global Top 100 law firms, and global companies such as AMD, BBC Studios, Hitachi, Liberty Mutual and Koch Ind"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "luminance-legal-brain",
+      "company_id": "luminance",
+      "name": "The Legal Brain of your Organization",
+      "description": "Luminance uses Legal-Grade™ agents to automate, expedite and enhance contract activity across the business.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": [
+        "All of the Big Four consultancy firms",
+        "Over a quarter of the Global Top 100 law firms",
+        "AMD",
+        "BBC Studios",
+        "Hitachi",
+        "Liberty Mutual",
+        "Koch Industries"
+      ],
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "graham-sills",
+      "company_id": "luminance",
+      "name": "Dr Graham Sills",
+      "role": "Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/founder-graham-sills",
+          "crawled_at": "2023-10-05",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "daniel",
+      "company_id": "luminance",
+      "name": "Daniel",
+      "role": "Chief Operating Officer",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/coo-daniel",
+          "crawled_at": "2023-10-05",
+          "snippet": "Daniel is Chief Operating Officer at Luminance, where he oversees a broad range of responsibilities including helping to drive business growth, developing go-to-market strategy, and implementing effective internal processes."
+        }
+      ]
+    },
+    {
+      "person_id": "eleanor",
+      "company_id": "luminance",
+      "name": "Eleanor",
+      "role": "Chief Executive Officer",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": "Director at Darktrace",
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/ceo-eleanor",
+          "crawled_at": "2023-10-05",
+          "snippet": "Eleanor is Chief Executive Officer at Luminance. Previously a Director at leading cyber AI company Darktrace, she founded and grew the company’s operations in Africa before serving as the Global Head of the Darktrace Industrial Division."
+        }
+      ]
+    },
+    {
+      "person_id": "adam-guthrie",
+      "company_id": "luminance",
+      "name": "Adam Guthrie",
+      "role": "Co-Founder and Chief Technical Architect",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/co-founder-adam-guthrie",
+          "crawled_at": "2023-10-05",
+          "snippet": "Adam Guthrie is the Co-Founder and Chief Technical Architect at Luminance, he leads the customer-focused technical aspects of the company. He has over 17 years’ experience in software engineering, having led product development."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "luminance",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.luminance.com",
+          "crawled_at": "2023-10-06",
+          "snippet": "Today, more than 700 organizations across 70 countries use Luminance, including all of the Big Four consultancy firms, over a quarter of the Global Top 100 law firms, and global companies such as AMD, BBC Studios, Hitachi, Liberty Mutual and Koch Ind"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:29:13.161327",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

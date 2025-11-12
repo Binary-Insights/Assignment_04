@@ -1,0 +1,208 @@
+{
+  "company_record": {
+    "company_id": "databricks",
+    "legal_name": "Databricks Inc.",
+    "brand_name": null,
+    "website": null,
+    "hq_city": "San Francisco",
+    "hq_state": "CA",
+    "hq_country": "USA",
+    "founded_year": 2013,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-03",
+        "snippet": "Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-03",
+        "snippet": "Databricks Inc.\n160 Spear Street, 15th Floor\nSan Francisco, CA 94105"
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-03",
+        "snippet": "Databricks Inc.\n160 Spear Street, 15th Floor\nSan Francisco, CA 94105"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "databricks",
+      "occurred_on": "2025-11-05",
+      "event_type": "product_release",
+      "title": "Google’s Gemini Models on Databricks",
+      "description": "Google’s Gemini Models are now available on Databricks, enhancing AI capabilities.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "2",
+      "company_id": "databricks",
+      "occurred_on": "2025-11-05",
+      "event_type": "product_release",
+      "title": "Native OpenAI Models Now Generally Available on Databricks",
+      "description": "OpenAI models are now generally available on Databricks, expanding the platform's AI offerings.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "3",
+      "company_id": "databricks",
+      "occurred_on": "2025-11-06",
+      "event_type": "product_release",
+      "title": "Supercharging AI Model Building: Data and Task Parallelism with Ray and Databricks",
+      "description": "Databricks introduces data and task parallelism with Ray to enhance AI model building.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "databricks",
+      "as_of": "2023-10-11",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Databricks Platform",
+        "Artificial Intelligence",
+        "Business Intelligence",
+        "Database",
+        "Data Management",
+        "Data Warehousing",
+        "Data Engineering",
+        "Data Science",
+        "Application Development"
+      ],
+      "geo_presence": [
+        "San Francisco, CA, USA"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] Headquartered in San Francisco, with offices around the world, Databricks is on a mission to simplify and democratize data and AI, helping data and AI teams solve the world’s toughest problems.",
+          "crawled_at": "2023-10-11",
+          "snippet": null
+        },
+        {
+          "source_url": "[careers] At Databricks, we’re innovators, builders and truthseekers. We have a proven track record as category creators. And now, we’re building data intelligence, helping the world’s largest companies use better data to build smarter AI. Over 60% of the Fort",
+          "crawled_at": "2023-10-11",
+          "snippet": null
+        },
+        {
+          "source_url": "[about] With origins in academia and the open source community, Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog.",
+          "crawled_at": "2023-10-11",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "databricks_platform",
+      "company_id": "databricks",
+      "name": "Databricks Platform",
+      "description": "A unified platform for data, offering capabilities in data management, data warehousing, data engineering, data science, and application development.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product]",
+          "crawled_at": "2023-10-10",
+          "snippet": "Product\nDatabricks Platform\nPlatform Overview\nA unified platform for data"
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "ali-ghodsi",
+      "company_id": "databricks",
+      "name": "Ali Ghodsi",
+      "role": "CEO",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": "Adjunct Professor at UC Berkeley",
+      "education": "Ph.D. in Computer Science from KTH Royal Institute of Technology",
+      "linkedin": "https://www.linkedin.com/in/alighodsi",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.databricks.com/company/about-us",
+          "crawled_at": "2023-10-09",
+          "snippet": "With origins in academia and the open source community, Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "databricks",
+      "as_of": "2023-11-01",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://databricks.com/company/press",
+          "crawled_at": "2023-11-01",
+          "snippet": "Press\nAwards and Recognition\nNewsroom\nSecurity and Trust"
+        },
+        {
+          "source_url": "https://databricks.com/company/about",
+          "crawled_at": "2023-11-01",
+          "snippet": "Awards and Recognition\nNewsroom\nSecurity and Trust"
+        },
+        {
+          "source_url": "https://databricks.com/company/careers",
+          "crawled_at": "2023-11-01",
+          "snippet": "Awards and Recognition\nNewsroom\nSecurity and Trust"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:22:25.021955",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

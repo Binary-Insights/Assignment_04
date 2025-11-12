@@ -1,0 +1,393 @@
+{
+  "company_record": {
+    "company_id": "cohere",
+    "legal_name": "Cohere",
+    "brand_name": null,
+    "website": null,
+    "hq_city": "Toronto",
+    "hq_state": null,
+    "hq_country": "Canada",
+    "founded_year": 2019,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": 1000000000.0,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-11",
+        "snippet": "Cohere was founded in 2019 in Toronto with a bold vision: to do whatever it takes to scale intelligence to serve humanity."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-11",
+        "snippet": "Cohere was founded in 2019 in Toronto with a bold vision: to do whatever it takes to scale intelligence to serve humanity."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-11",
+        "snippet": "Born in Canada 🇨🇦"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-11",
+        "snippet": "Between 2021 and 2024, we secured four major funding rounds (Series A through D), raising nearly $1 billion."
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "cohere",
+      "occurred_on": "2025-08-14",
+      "event_type": "funding",
+      "title": "Cohere raises $500M at $6.8B valuation",
+      "description": "Cohere raises $500M at $6.8B valuation to accelerate enterprise efficiency with agentic AI",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": 500000000.0,
+      "valuation_usd": 6800000000.0,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Research",
+          "crawled_at": "2025-08-14",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "cohere",
+      "occurred_on": "2021-01-01",
+      "event_type": "funding",
+      "title": "Early growth funding rounds",
+      "description": "Between 2021 and 2024, Cohere secured four major funding rounds (Series A through D), raising nearly $1 billion.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": 1000000000.0,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] 2021 – 2024",
+          "crawled_at": "2025-08-14",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "3",
+      "company_id": "cohere",
+      "occurred_on": "2025-09-15",
+      "event_type": "office_open",
+      "title": "Cohere opens Paris office as EMEA hub",
+      "description": "Cohere opens Paris office as EMEA hub",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Cohere Team — Sep 15, 2025",
+          "crawled_at": "2025-09-15",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "4",
+      "company_id": "cohere",
+      "occurred_on": "2025-08-15",
+      "event_type": "partnership",
+      "title": "Cohere deepens partnership with Government of Canada",
+      "description": "Cohere deepens partnership with Government of Canada",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Cohere deepens partnership with Government of Canada",
+          "crawled_at": "2025-08-15",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "5",
+      "company_id": "cohere",
+      "occurred_on": "2025-10-07",
+      "event_type": "partnership",
+      "title": "Announcing the Cohere Partner Program",
+      "description": "Announcing the Cohere Partner Program: Boosting enterprise AI",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Securing AI supply chains: Cohere’s commitment to model signing",
+          "crawled_at": "2025-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "6",
+      "company_id": "cohere",
+      "occurred_on": "2025-07-31",
+      "event_type": "product_release",
+      "title": "Introducing Command A Vision",
+      "description": "Introducing Command A Vision: Multimodal AI built for business",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Company Newsroom Product",
+          "crawled_at": "2025-07-31",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "cohere",
+      "as_of": "2023-10-10",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Workplace Systems",
+        "North",
+        "Compass",
+        "Generative Models",
+        "Command"
+      ],
+      "geo_presence": [
+        "London",
+        "Paris",
+        "New York",
+        "San Francisco",
+        "Toronto",
+        "Montreal",
+        "Seoul"
+      ],
+      "confidence": 0.8,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers] Careers | Cohere",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        },
+        {
+          "source_url": "[about] About Our Company | Cohere",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        },
+        {
+          "source_url": "[blog] Cohere deepens partnership with Government of Canada",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "cohere",
+      "name": "Workplace Systems",
+      "description": "An enterprise-ready AI platform that powers modern workplace productivity",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] About Our Company | Cohere",
+          "crawled_at": "2025-09-15",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "cohere",
+      "name": "North",
+      "description": "An enterprise-ready AI platform that powers modern workplace productivity",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] About Our Company | Cohere",
+          "crawled_at": "2025-09-15",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "3",
+      "company_id": "cohere",
+      "name": "Compass",
+      "description": "An intelligent search and discovery system to surface business insights",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] About Our Company | Cohere",
+          "crawled_at": "2025-09-15",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "4",
+      "company_id": "cohere",
+      "name": "Generative Models",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] About Our Company | Cohere",
+          "crawled_at": "2025-09-15",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "5",
+      "company_id": "cohere",
+      "name": "Command",
+      "description": "A family of generative models",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Newsroom",
+          "crawled_at": "2025-08-21",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "geoffrey-hinton",
+      "company_id": "cohere",
+      "name": "Geoffrey Hinton",
+      "role": "Nobel Laureate in Physics",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": "University of Toronto",
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "Geoffrey Hinton\n2024 Nobel Laureate in Physics\nUniversity Professor Emeritus, Computer Science, University of Toronto"
+        }
+      ]
+    },
+    {
+      "person_id": "kosta-starostin",
+      "company_id": "cohere",
+      "name": "Kosta Starostin",
+      "role": "VP, Legal",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "Kosta Starostin\nVP, Legal\nBorn in Canada 🇨🇦"
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "cohere",
+      "as_of": "2023-10-10",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://cohere.ai/blog",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:21:14.702419",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

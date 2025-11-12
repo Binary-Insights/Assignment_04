@@ -1,0 +1,740 @@
+{
+  "company_record": {
+    "company_id": "elevenlabs",
+    "legal_name": "ElevenLabs",
+    "brand_name": null,
+    "website": null,
+    "hq_city": "London",
+    "hq_state": null,
+    "hq_country": "UK",
+    "founded_year": null,
+    "categories": [
+      "AI Audio",
+      "Voice Technology"
+    ],
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-17",
+        "snippet": "ElevenLabs opens European HQ in London"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-17",
+        "snippet": "We're doubling down on UK’s capital as center for worldwide operations"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-17",
+        "snippet": "Create with the highest quality AI Audio"
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-17",
+        "snippet": "Pioneer the future of Audio AI"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-09-27",
+      "event_type": "partnership",
+      "title": "Partnership with Ukrainian Ministry of Digital Transformation",
+      "description": "ElevenLabs partners with the Ministry of Digital Transformation to add voice to core services.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Company",
+          "crawled_at": "2025-09-27",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-09-16",
+      "event_type": "partnership",
+      "title": "Partnership with Audacy",
+      "description": "ElevenLabs’ Synthetic Voice Capabilities to Augment Audacy Programming and Production Workflows.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] Customer stories",
+          "crawled_at": "2025-09-16",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "3",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-09-08",
+      "event_type": "partnership",
+      "title": "Partnership with Fábio Porchat in Brazil",
+      "description": "Launching our first campaign in Brazil with iconic AI voice.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Apr 14, 2025",
+          "crawled_at": "2025-09-08",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "4",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-10-06",
+      "event_type": "product_release",
+      "title": "Introducing ElevenLabs Agents",
+      "description": "Renaming Conversational AI to ElevenLabs Agents, a complete platform for launching conversational agents.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Oct 6, 2025",
+          "crawled_at": "2025-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "5",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-06-03",
+      "event_type": "product_release",
+      "title": "Introducing Eleven v3 (alpha)",
+      "description": "The most expressive Text to Speech model.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Aug 5, 2025",
+          "crawled_at": "2025-06-03",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "6",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-04-14",
+      "event_type": "partnership",
+      "title": "Partnership with Sir Michael Caine",
+      "description": "Announcing Partnership with Sir Michael Caine to Newly Launched Iconic Marketplace.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers]",
+          "crawled_at": "2025-04-14",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "7",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-04-14",
+      "event_type": "office_open",
+      "title": "ElevenLabs opens European HQ in London",
+      "description": "Doubling down on UK’s capital as center for worldwide operations.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[about] Company",
+          "crawled_at": "2025-04-14",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "8",
+      "company_id": "elevenlabs",
+      "occurred_on": "2025-04-14",
+      "event_type": "funding",
+      "title": "Matthew McConaughey as New Investor",
+      "description": "ElevenLabs welcomes Matthew McConaughey as a new investor.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Read article",
+          "crawled_at": "2025-04-14",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "elevenlabs",
+      "as_of": "2023-10-06",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Creative Platform",
+        "Agents Platform",
+        "Developers",
+        "Text to Speech (TTS)",
+        "Speech to Text",
+        "Realtime Speech to Text",
+        "Voice Changer",
+        "Text to Sound Effects",
+        "Voice Cloning",
+        "Voice Isolator",
+        "AI Music Generator",
+        "Studio",
+        "Dubbing Studio",
+        "Voice Library",
+        "Audio Native",
+        "ElevenStudios",
+        "API",
+        "Voiceover Studio",
+        "ElevenReader",
+        "Mobile App"
+      ],
+      "geo_presence": [
+        "New York",
+        "London",
+        "Warsaw",
+        "30+ countries"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers]",
+          "crawled_at": "2023-10-06",
+          "snippet": "Our diverse team spans 30+ countries with hubs in New York, London, and Warsaw."
+        },
+        {
+          "source_url": "[about]",
+          "crawled_at": "2023-10-06",
+          "snippet": "ElevenLabs opens European HQ in London"
+        },
+        {
+          "source_url": "[careers]",
+          "crawled_at": "2023-10-06",
+          "snippet": "Creative Platform, Agents Platform, Developers, Text to Speech (TTS), Speech to Text, Realtime Speech to Text, Voice Changer, Text to Sound Effects, Voice Cloning, Voice Isolator, AI Music Generator, Studio, Dubbing Studio, Voice Library, Audio Native, ElevenStudios, API, Voiceover Studio, ElevenReader, Mobile App."
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "elevenlabs",
+      "name": "Text to Speech (TTS)",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "elevenlabs",
+      "name": "Speech to Text",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "3",
+      "company_id": "elevenlabs",
+      "name": "Realtime Speech to Text",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "4",
+      "company_id": "elevenlabs",
+      "name": "Voice Changer",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "5",
+      "company_id": "elevenlabs",
+      "name": "Text to Sound Effects",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "6",
+      "company_id": "elevenlabs",
+      "name": "Voice Cloning",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "7",
+      "company_id": "elevenlabs",
+      "name": "Voice Isolator",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "8",
+      "company_id": "elevenlabs",
+      "name": "AI Music Generator",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "9",
+      "company_id": "elevenlabs",
+      "name": "Studio",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "10",
+      "company_id": "elevenlabs",
+      "name": "Agents Platform",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "11",
+      "company_id": "elevenlabs",
+      "name": "Dubbing Studio",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "12",
+      "company_id": "elevenlabs",
+      "name": "Voice Library",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "13",
+      "company_id": "elevenlabs",
+      "name": "Audio Native",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "14",
+      "company_id": "elevenlabs",
+      "name": "ElevenStudios",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "15",
+      "company_id": "elevenlabs",
+      "name": "API",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "16",
+      "company_id": "elevenlabs",
+      "name": "Voiceover Studio",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "17",
+      "company_id": "elevenlabs",
+      "name": "ElevenReader",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "18",
+      "company_id": "elevenlabs",
+      "name": "Mobile App",
+      "description": "Create with the highest quality AI Audio",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "provided_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "bill-weihl",
+      "company_id": "elevenlabs",
+      "name": "Bill Weihl",
+      "role": "Climate Policy Advocate",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-01",
+          "snippet": "Bill Weihl continues to fight for climate policy progress while b"
+        }
+      ]
+    },
+    {
+      "person_id": "matthew-mcconaughey",
+      "company_id": "elevenlabs",
+      "name": "Matthew McConaughey",
+      "role": "Investor",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-01",
+          "snippet": "ElevenLabs Welcomes Matthew McConaughey as New Investor"
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "elevenlabs",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/elevenlabs-european-hq",
+          "crawled_at": "2023-10-06",
+          "snippet": "ElevenLabs opens European HQ in London"
+        },
+        {
+          "source_url": "https://example.com/elevenlabs-audacy-partnership",
+          "crawled_at": "2023-10-06",
+          "snippet": "Audacy and ElevenLabs strike partnership"
+        },
+        {
+          "source_url": "https://example.com/elevenlabs-ukraine-partnership",
+          "crawled_at": "2023-10-06",
+          "snippet": "Ukrainian Public Services Will Speak Through AI: Announcing a Partnership with ElevenLabs"
+        },
+        {
+          "source_url": "https://example.com/elevenlabs-matthew-mcconaughey-investment",
+          "crawled_at": "2023-10-06",
+          "snippet": "ElevenLabs Welcomes Matthew McConaughey as New Investor"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:24:15.681165",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

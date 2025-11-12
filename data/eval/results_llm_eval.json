@@ -1,0 +1,62 @@
+{
+  "world-labs": {
+    "structured": {
+      "company_name": "World Labs",
+      "company_slug": "world-labs",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:57:19.044069",
+      "factual_accuracy": 2,
+      "schema_compliance": 2,
+      "provenance_quality": 0,
+      "hallucination_detection": 2,
+      "readability": 1,
+      "mrr_score": 1.0,
+      "notes": "The response accurately captures several key facts about World Labs, such as the founders, the focus on Large World Models, and the funding details. However, there is a factual inaccuracy regarding the founding year, which is stated as 2024 instead of the correct year. The response follows the expected structure well, hence a perfect schema compliance score. Provenance quality is low as there are no citations or sources provided for the claims. There are no hallucinations detected, and the response is clear and well-organized, earning full marks for readability. The most important facts, such as the company's mission and funding, are presented first, justifying a full score for MRR.",
+      "total_score": 8.0
+    },
+    "rag": {
+      "company_name": "World Labs",
+      "company_slug": "world-labs",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:57:25.419802",
+      "factual_accuracy": 1,
+      "schema_compliance": 2,
+      "provenance_quality": 1,
+      "hallucination_detection": 2,
+      "readability": 1,
+      "mrr_score": 0.5,
+      "notes": "The response contains some factual inaccuracies and omissions. While the funding details match the ground truth, the response fails to mention the core business focus on spatial intelligence and 3D world models, which is crucial information. The response also adds a list of additional investors not mentioned in the ground truth, which could be accurate but lacks verification. The structure of the response is compliant with the expected format, and it is readable and well-organized. Provenance quality is moderate as some claims lack direct citations from the context results. No hallucinations were detected. The most important facts about the company's core focus are missing, affecting the MRR score.",
+      "total_score": 7.5
+    }
+  },
+  "abridge": {
+    "structured": {
+      "company_name": "Abridge",
+      "company_slug": "abridge",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T01:18:14.061457",
+      "factual_accuracy": 2,
+      "schema_compliance": 2,
+      "provenance_quality": 0,
+      "hallucination_detection": 2,
+      "readability": 1,
+      "mrr_score": 0.5,
+      "notes": "The response accurately captures several key aspects of Abridge's operations, such as AI-driven solutions for healthcare, clinically accurate summaries, and real-time prior authorization. However, it misses some specific details from the ground truth, such as the integration into EHR workflows and the Abridge Contextual Reasoning Engine. The mention of a partnership with AltaMed Health Services Corporation is not found in the ground truth, which affects the factual accuracy score. The response is well-structured and readable, but lacks proper citations for the claims made, resulting in a low provenance quality score. The most important facts are mentioned early in the response, but some key details are missing or not prioritized, affecting the MRR score.",
+      "total_score": 7.5
+    },
+    "rag": {
+      "company_name": "Abridge",
+      "company_slug": "abridge",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T01:18:24.187752",
+      "factual_accuracy": 1,
+      "schema_compliance": 2,
+      "provenance_quality": 0,
+      "hallucination_detection": 2,
+      "readability": 1,
+      "mrr_score": 0.0,
+      "notes": "The response lacks alignment with the ground truth facts. It does not mention key aspects such as the generative AI platform for clinical conversations, the Abridge Contextual Reasoning Engine, or the company's mission. The response focuses on hiring and operational structure, which are not part of the provided ground truth. No hallucinations are detected, and the response is well-structured and readable. However, the provenance quality is poor as there are no citations for the claims made. Important facts are missing, leading to a low MRR score.",
+      "total_score": 6.0
+    }
+  }
+}

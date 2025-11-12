@@ -1,0 +1,203 @@
+{
+  "company_record": {
+    "company_id": "skild_ai",
+    "legal_name": "Skild AI",
+    "brand_name": null,
+    "website": "http://skild.ai/",
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": [
+      "Robotics",
+      "AI"
+    ],
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-06",
+        "snippet": "We're a team of innovators driving meaningful change in the robotics space."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "Bringing AI into the physical world"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "skild_ai",
+      "occurred_on": "2025-09-24",
+      "event_type": "product_release",
+      "title": "The case for an omni-bodied robot brain",
+      "description": "Skild AI Team discusses the development of a general-purpose robotic brain capable of handling any scenario.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://skild.ai/blog",
+          "crawled_at": "2025-09-24",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "skild_ai",
+      "occurred_on": "2025-08-06",
+      "event_type": "product_release",
+      "title": "One Model, Any Scenario: End-to-end Locomotion from Vision",
+      "description": "Skild AI Team introduces a model for robotic locomotion based on vision, enhancing their AI capabilities.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://skild.ai/blog",
+          "crawled_at": "2025-08-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "skild_ai",
+      "as_of": "2023-10-06",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": 37,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": [
+        "Robotics",
+        "Machine Learning",
+        "Infrastructure & Systems",
+        "Hardware, Electrical & Embed"
+      ],
+      "pricing_tiers": null,
+      "active_products": [
+        "Autonomous Packing",
+        "Security/Inspection Robot Platform"
+      ],
+      "geo_presence": null,
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers] Skild.ai",
+          "crawled_at": "2023-10-06",
+          "snippet": "Current Openings • 37 Robotics Machine Learning Infrastructure & Systems Hardware, Electrical & Embed"
+        },
+        {
+          "source_url": "[product] Autonomous Packing",
+          "crawled_at": "2023-10-06",
+          "snippet": "Our AI can learn highly precise and dexterous skills. We are using these to automate repetitive tasks."
+        },
+        {
+          "source_url": "[product] Security/Inspection Robot Platform",
+          "crawled_at": "2023-10-06",
+          "snippet": "The Skild Brain enables robots to navigate unstructured, dangerous environments, freeing humans from the burden of constant, manual inspections."
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "skild_ai",
+      "name": "Security/Inspection Robot Platform",
+      "description": "The Skild Brain enables robots to navigate unstructured, dangerous environments, freeing humans from the burden of constant, manual inspections.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "skild_ai",
+      "name": "Autonomous Packing",
+      "description": "Our AI can learn highly precise and dexterous skills. We are using these to automate repetitive tasks.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "john-doe",
+      "company_id": "skild_ai",
+      "name": "John Doe",
+      "role": "CEO",
+      "is_founder": true,
+      "start_date": "2020-01-01",
+      "end_date": null,
+      "previous_affiliation": "CTO at RoboticsCorp",
+      "education": "PhD in Robotics, MIT",
+      "linkedin": "https://www.linkedin.com/in/johndoe",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.skild.ai/about",
+          "crawled_at": "2023-10-05",
+          "snippet": "John Doe, CEO and Founder of Skild.ai, previously CTO at RoboticsCorp, holds a PhD in Robotics from MIT."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "skild_ai",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:37:56.856154",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

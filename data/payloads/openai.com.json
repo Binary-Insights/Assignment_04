@@ -1,0 +1,367 @@
+{
+  "company_record": {
+    "company_id": "openai.com",
+    "legal_name": "OpenAI",
+    "brand_name": null,
+    "website": "https://openai.com/",
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": 2015,
+    "categories": [
+      "AI research",
+      "Deployment"
+    ],
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "OpenAI is an AI research and deployment company."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "OpenAI © 2015–2025"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "openai",
+      "occurred_on": "2025-09-23",
+      "event_type": "partnership",
+      "title": "OpenAI, Oracle, and SoftBank expand Stargate with five new AI datacenter sites",
+      "description": "OpenAI, Oracle, and SoftBank have expanded their Stargate project by adding five new AI datacenter sites.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://openai.com/about",
+          "crawled_at": "2025-09-23",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "openai",
+      "occurred_on": "2025-09-15",
+      "event_type": "product_release",
+      "title": "Introducing upgrades to Codex",
+      "description": "OpenAI has introduced upgrades to its Codex product.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://openai.com/about",
+          "crawled_at": "2025-09-15",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "3",
+      "company_id": "openai",
+      "occurred_on": "2025-09-25",
+      "event_type": "product_release",
+      "title": "Introducing ChatGPT Pulse",
+      "description": "OpenAI has released a new product called ChatGPT Pulse.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://openai.com/about",
+          "crawled_at": "2025-09-25",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "openai",
+      "as_of": "2023-10-21",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Codex",
+        "ChatGPT",
+        "GPT-5",
+        "OpenAI o3",
+        "OpenAI o4-mini",
+        "GPT-4o",
+        "GPT-4o mini",
+        "Sora"
+      ],
+      "geo_presence": null,
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.openai.com",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "GPT-5",
+      "company_id": "openai",
+      "name": "GPT-5",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "OpenAI o3",
+      "company_id": "openai",
+      "name": "OpenAI o3",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "OpenAI o4-mini",
+      "company_id": "openai",
+      "name": "OpenAI o4-mini",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "GPT-4o",
+      "company_id": "openai",
+      "name": "GPT-4o",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "GPT-4o mini",
+      "company_id": "openai",
+      "name": "GPT-4o mini",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "Sora",
+      "company_id": "openai",
+      "name": "Sora",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "ChatGPT",
+      "company_id": "openai",
+      "name": "ChatGPT",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-21",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "sam-altman",
+      "company_id": "openai",
+      "name": "Sam Altman",
+      "role": "CEO",
+      "is_founder": true,
+      "start_date": "2019-03-01",
+      "end_date": null,
+      "previous_affiliation": "Y Combinator",
+      "education": "Stanford University",
+      "linkedin": "https://www.linkedin.com/in/samaltman",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://en.wikipedia.org/wiki/Sam_Altman",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "greg-brockman",
+      "company_id": "openai",
+      "name": "Greg Brockman",
+      "role": "CTO",
+      "is_founder": true,
+      "start_date": "2015-12-01",
+      "end_date": null,
+      "previous_affiliation": "Stripe",
+      "education": "Massachusetts Institute of Technology",
+      "linkedin": "https://www.linkedin.com/in/gregbrockman",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://en.wikipedia.org/wiki/Greg_Brockman",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "ilya-sutskever",
+      "company_id": "openai",
+      "name": "Ilya Sutskever",
+      "role": "Chief Scientist",
+      "is_founder": true,
+      "start_date": "2015-12-01",
+      "end_date": null,
+      "previous_affiliation": "Google Brain",
+      "education": "University of Toronto",
+      "linkedin": "https://www.linkedin.com/in/ilya-sutskever-7b0b441b",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://en.wikipedia.org/wiki/Ilya_Sutskever",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "openai",
+      "as_of": "2023-10-11",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://openai.com",
+          "crawled_at": "2023-10-11",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:32:35.610288",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

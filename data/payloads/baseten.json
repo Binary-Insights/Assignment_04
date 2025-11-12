@@ -1,0 +1,583 @@
+{
+  "company_record": {
+    "company_id": "baseten",
+    "legal_name": "Baseten",
+    "brand_name": "Baseten",
+    "website": null,
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-10",
+        "snippet": "© 2025 Baseten"
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-10",
+        "snippet": "© 2025 Baseten"
+      },
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-10",
+        "snippet": "Baseten brings AI video to life on Nebius"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "baseten",
+      "occurred_on": "2025-01-01",
+      "event_type": "product_release",
+      "title": "Baseten Training Is GA",
+      "description": "Baseten has made their training product generally available after positive feedback from early users.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://baseten.com/blog/train-ai-models-when-you-want",
+          "crawled_at": "2025-01-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "baseten",
+      "as_of": "2023-10-09",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Baseten Cloud",
+        "Self-hosted",
+        "Hybrid",
+        "Enterprise",
+        "Transcription",
+        "Image generation",
+        "Text-to-speech",
+        "Large language models",
+        "Compound AI",
+        "Embeddings"
+      ],
+      "geo_presence": [
+        "San Francisco",
+        "New York",
+        "Remote"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-09",
+          "snippet": "[product] Deployment options\nBaseten Cloud\nSelf-hosted\nHybrid\nSolutions\nEnterprise\nTranscription\nImage generation\nText-to-speech\nLarge language models\nCompound AI\nEmbeddings\nResources\nBlog\nGuides\nEvents\nCustomers\nPartner\nCareers\nContact us\nDeveloper\nDocumentat"
+        },
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-09",
+          "snippet": "[careers] San Francisco / New York / Remote\nSan Francisco / New York / Remote\nApply now\nController\nSan Francisco\nSan Francisco\nApply now\nDon't see a fitting open role?\nJoin our Talent Community!\nDon't see a fitting open role?\nJoin our Talent Community!\nExplore"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "baseten",
+      "name": "Baseten Cloud",
+      "description": "A cloud-based deployment option for Baseten products.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "baseten",
+      "name": "Self-hosted",
+      "description": "A self-hosted deployment option for Baseten products.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "3",
+      "company_id": "baseten",
+      "name": "Hybrid",
+      "description": "A hybrid deployment option for Baseten products.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "4",
+      "company_id": "baseten",
+      "name": "Enterprise",
+      "description": "Enterprise solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "5",
+      "company_id": "baseten",
+      "name": "Transcription",
+      "description": "Transcription solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "6",
+      "company_id": "baseten",
+      "name": "Image generation",
+      "description": "Image generation solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "7",
+      "company_id": "baseten",
+      "name": "Text-to-speech",
+      "description": "Text-to-speech solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "8",
+      "company_id": "baseten",
+      "name": "Large language models",
+      "description": "Large language model solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "9",
+      "company_id": "baseten",
+      "name": "Compound AI",
+      "description": "Compound AI solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "10",
+      "company_id": "baseten",
+      "name": "Embeddings",
+      "description": "Embeddings solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "11",
+      "company_id": "baseten",
+      "name": "Dedicated deployments",
+      "description": "Dedicated deployment solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "12",
+      "company_id": "baseten",
+      "name": "Model APIs",
+      "description": "Model API solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "13",
+      "company_id": "baseten",
+      "name": "Training",
+      "description": "Training solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "14",
+      "company_id": "baseten",
+      "name": "Inference Stack",
+      "description": "Inference stack solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "15",
+      "company_id": "baseten",
+      "name": "Model Runtimes",
+      "description": "Model runtime solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "16",
+      "company_id": "baseten",
+      "name": "Infrastructure",
+      "description": "Infrastructure solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "17",
+      "company_id": "baseten",
+      "name": "Multi-cloud Capacity Management",
+      "description": "Multi-cloud capacity management solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "18",
+      "company_id": "baseten",
+      "name": "Developer Experience",
+      "description": "Developer experience solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "19",
+      "company_id": "baseten",
+      "name": "Chains",
+      "description": "Chains solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "20",
+      "company_id": "baseten",
+      "name": "Model management",
+      "description": "Model management solutions offered by Baseten.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-07",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "nathan-sobo",
+      "company_id": "baseten",
+      "name": "Nathan Sobo",
+      "role": "Co-founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "mahendan-karunakaran",
+      "company_id": "baseten",
+      "name": "Mahendan Karunakaran",
+      "role": "Head of Mobile Engineering",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "baseten",
+      "as_of": "2023-10-07",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:18:40.662882",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

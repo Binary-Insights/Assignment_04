@@ -1,0 +1,47 @@
+{
+  "company_slug": "baseten",
+  "structured": {
+    "company_name": "Baseten",
+    "company_slug": "baseten",
+    "pipeline_type": "structured",
+    "timestamp": "2025-11-12T01:48:00.242522Z",
+    "markdown_file": "markdown/baseten/structured.md",
+    "content": "## Company Overview\n\nBaseten is a private AI startup that offers a range of products and solutions, including cloud-based, self-hosted, and hybrid deployment options. The company is focused on bringing AI capabilities to various applications, as evidenced by their recent product release and diverse product offerings.\n\n## Business Model and GTM\n\nBaseten provides a variety of deployment options for its AI products, catering to different customer needs such as cloud-based, self-hosted, and hybrid solutions. They also offer enterprise solutions and transcription services. The company states that their training product has been well-received by early users, indicating a customer-centric approach to product development.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nBaseten has shown growth momentum by expanding its product offerings to a total of 20 products. The general availability of their training product, following positive feedback from early users, suggests a strategic approach to product development and market entry.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is focused on expanding its AI capabilities and product offerings. With a diverse range of deployment options and a positive reception of its training product, Baseten appears to be well-positioned to capture a growing market interest in AI solutions.\n\n## Disclosure Gaps\n\n- Specific funding and investor information is not disclosed.\n- Detailed visibility and market sentiment data is not available.\n- Risks and challenges faced by the company are not disclosed.\n- Leadership roles and responsibilities are not detailed.\n- No specific dates are provided for key events or product releases."
+  },
+  "rag": {
+    "company_name": "Baseten",
+    "company_slug": "baseten",
+    "pipeline_type": "rag",
+    "timestamp": "2025-11-12T01:48:10.740545Z",
+    "markdown_file": "markdown/baseten/rag.md",
+    "content": "## Company Overview\nBaseten is a private AI startup focused on building products for engineering and machine learning teams. The company emphasizes creating \"delightful products\" that enable these teams to deliver their best work.\n\n## Business Model and GTM\nNot disclosed.\n\n## Funding & Investor Profile\nNot disclosed.\n\n## Growth Momentum\nNot disclosed.\n\n## Visibility & Market Sentiment\nNot disclosed.\n\n## Risks and Challenges\nNot disclosed.\n\n## Outlook\nThe company states that it is committed to building products that enhance the capabilities of engineering and machine learning teams, suggesting a focus on innovation and user satisfaction.\n\n## Disclosure Gaps\nKey information such as the business model, funding details, growth metrics, market sentiment, and specific risks and challenges are not disclosed.",
+    "context_results": [
+      {
+        "id": "baseten_careers_5f3912e1",
+        "similarity_score": 0.380065948,
+        "text": "Careers\nProduct\nProduct\nPlatform\nPlatform\nSolutions\nSolutions\nDeveloper\nDeveloper\nResources\nResources\nPricing\nPricing\nLog in\nGet started\nProduct\nPlatform\nSolutions\nDeveloper\nResources\nPricing\nCome build with us\nWe build delightful products for engineering and machine learning teams to deliver their best work.\nSee open roles",
+        "metadata": {
+          "chunk_index": 1.0,
+          "company_slug": "baseten",
+          "content_hash": "5f3912e1",
+          "indexed_at": "2025-11-11T20:36:08.746726",
+          "page_type": "careers",
+          "source_file": "data/raw/baseten/careers/text.txt"
+        }
+      },
+      {
+        "id": "baseten_about_5f3912e1",
+        "similarity_score": 0.380065948,
+        "text": "Careers\nProduct\nProduct\nPlatform\nPlatform\nSolutions\nSolutions\nDeveloper\nDeveloper\nResources\nResources\nPricing\nPricing\nLog in\nGet started\nProduct\nPlatform\nSolutions\nDeveloper\nResources\nPricing\nCome build with us\nWe build delightful products for engineering and machine learning teams to deliver their best work.\nSee open roles",
+        "metadata": {
+          "chunk_index": 1.0,
+          "company_slug": "baseten",
+          "content_hash": "5f3912e1",
+          "indexed_at": "2025-11-11T04:49:14.311474",
+          "page_type": "about",
+          "source_file": "data/raw/baseten/about/text.txt"
+        }
+      }
+    ]
+  }
+}

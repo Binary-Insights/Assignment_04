@@ -1,0 +1,221 @@
+{
+  "company_record": {
+    "company_id": "perplexity_ai",
+    "legal_name": "Perplexity",
+    "brand_name": null,
+    "website": "https://www.perplexity.ai/",
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-10",
+        "snippet": "Perplexity is a tool. A direct line to the world’s knowledge — compressed, cited, and made clear."
+      }
+    ]
+  },
+  "events": [],
+  "snapshots": [
+    {
+      "company_id": "perplexity_ai",
+      "as_of": "2023-10-06",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Comet Browser",
+        "Desktop App",
+        "iPhone App",
+        "Android App",
+        "Email Assistant"
+      ],
+      "geo_presence": null,
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai",
+          "crawled_at": "2023-10-06",
+          "snippet": "PRODUCT Comet Browser Desktop App iPhone App Android App Email Assistant"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "comet_browser",
+      "company_id": "perplexity_ai",
+      "name": "Comet Browser",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "desktop_app",
+      "company_id": "perplexity_ai",
+      "name": "Desktop App",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "iphone_app",
+      "company_id": "perplexity_ai",
+      "name": "iPhone App",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "android_app",
+      "company_id": "perplexity_ai",
+      "name": "Android App",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "email_assistant",
+      "company_id": "perplexity_ai",
+      "name": "Email Assistant",
+      "description": null,
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "aravind-srinivas",
+      "company_id": "perplexity_ai",
+      "name": "Aravind Srinivas",
+      "role": "CEO",
+      "is_founder": true,
+      "start_date": "2022-01-01",
+      "end_date": null,
+      "previous_affiliation": "Research Scientist at OpenAI",
+      "education": "Ph.D. in Computer Science from UC Berkeley",
+      "linkedin": "https://www.linkedin.com/in/aravind-srinivas",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai/about",
+          "crawled_at": "2023-10-05",
+          "snippet": "Aravind Srinivas is the CEO and Founder of Perplexity. He holds a Ph.D. in Computer Science from UC Berkeley and was previously a Research Scientist at OpenAI."
+        }
+      ]
+    },
+    {
+      "person_id": "denis-yuret",
+      "company_id": "perplexity_ai",
+      "name": "Denis Yuret",
+      "role": "CTO",
+      "is_founder": false,
+      "start_date": "2022-03-01",
+      "end_date": null,
+      "previous_affiliation": "Professor at Koc University",
+      "education": "Ph.D. in Computer Science from MIT",
+      "linkedin": "https://www.linkedin.com/in/denis-yuret",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.perplexity.ai/about",
+          "crawled_at": "2023-10-05",
+          "snippet": "Denis Yuret is the CTO of Perplexity. He holds a Ph.D. in Computer Science from MIT and was a Professor at Koc University."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "perplexity_ai",
+      "as_of": "2023-10-24",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:33:38.491954",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

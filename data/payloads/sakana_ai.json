@@ -1,0 +1,229 @@
+{
+  "company_record": {
+    "company_id": "sakana_ai",
+    "legal_name": "Sakana AI",
+    "brand_name": null,
+    "website": null,
+    "hq_city": "Tokyo",
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": 2023,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": 30000000.0,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "Sakana AI is a Tokyo-based R&D company founded by David Ha (CEO), Llion Jones (CTO), and Ren Ito (COO) in 2023."
+      },
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-06",
+        "snippet": "We raised $30M to develop nature-inspired AI in Japan"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "sakana_ai",
+      "occurred_on": "2024-01-16",
+      "event_type": "funding",
+      "title": "Sakana AI raised $30M to develop nature-inspired AI in Japan",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": 30000000.0,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "2",
+      "company_id": "sakana_ai",
+      "occurred_on": "2024-02-02",
+      "event_type": "contract_award",
+      "title": "Sakana AI received a supercomputing grant from the Japanese government",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "3",
+      "company_id": "sakana_ai",
+      "occurred_on": "2025-03-24",
+      "event_type": "benchmark",
+      "title": "Sakana AI Wins Award at US-Japan Competition for Defense Innovation",
+      "description": "Sakana AI proposed new AI solutions in both the biodefense and disinformation countermeasure categories at a competition jointly hosted by the US Department of Defense.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "sakana_ai",
+      "as_of": "2023-10-19",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": [
+        "applied research",
+        "engineering",
+        "business roles"
+      ],
+      "pricing_tiers": null,
+      "active_products": [
+        "The AI Scientist"
+      ],
+      "geo_presence": [
+        "Japan"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers] Career Opportunities",
+          "crawled_at": "2023-10-19",
+          "snippet": "Interested in joining us? We’re hiring! Although we are a small lab, we are always loo"
+        },
+        {
+          "source_url": "[product] We believe The AI Scientist will make a great",
+          "crawled_at": "2023-10-19",
+          "snippet": "We believe The AI Scientist will make a great companion to human scientists"
+        },
+        {
+          "source_url": "[about] largest enterprises",
+          "crawled_at": "2023-10-19",
+          "snippet": "and with the public sector in Japan, to develop AI solutions for Japan’s needs, and democratize AI in Japan."
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "sakana_ai",
+      "name": "The AI Scientist",
+      "description": "We believe The AI Scientist will make a great companion to human scientists, but only time will tell to the extent to which the nature of our human creativity and our moments of serendipitous innovation can be replicated by an open-ended discovery process.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product]",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "david-ha",
+      "company_id": "sakana_ai",
+      "name": "David Ha",
+      "role": "CEO",
+      "is_founder": true,
+      "start_date": "2023-07-07",
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/about-sakana-ai",
+          "crawled_at": "2023-07-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "llion-jones",
+      "company_id": "sakana_ai",
+      "name": "Llion Jones",
+      "role": "CTO",
+      "is_founder": true,
+      "start_date": "2023-07-07",
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/about-sakana-ai",
+          "crawled_at": "2023-07-07",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "ren-ito",
+      "company_id": "sakana_ai",
+      "name": "Ren Ito",
+      "role": "COO",
+      "is_founder": true,
+      "start_date": "2023-07-07",
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/about-sakana-ai",
+          "crawled_at": "2023-07-07",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "sakana_ai",
+      "as_of": "2023-10-10",
+      "news_mentions_30d": 1,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.tv-tokyo.co.jp",
+          "crawled_at": "2025-03-19",
+          "snippet": "Sakana AIは、日本の防衛装備庁と米国国防総省傘下のDefense Innovation Unit（DIU）が主催するチャレンジで、バイオディフェンスと偽情報対策の両部門で新たなAIソリューションを提案し、世界６０社の応募の内、日本企業として唯一の受賞を果たしました。"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:35:53.495496",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

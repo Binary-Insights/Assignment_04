@@ -26,7 +26,9 @@ attrs==25.4.0
     #   referencing
     #   trio
 beautifulsoup4==4.12.2
-    # via pe-dashboard-ai50 (pyproject.toml)
+    # via
+    #   pe-dashboard-ai50 (pyproject.toml)
+    #   linkedin-api
 blinker==1.9.0
     # via streamlit
 cachetools==5.5.2
@@ -144,8 +146,12 @@ langgraph-sdk==0.2.9
     # via langgraph
 langsmith==0.4.41
     # via langchain-core
-lxml==5.3.0
+linkedin-api==2.2.0
     # via pe-dashboard-ai50 (pyproject.toml)
+lxml==5.3.0
+    # via
+    #   pe-dashboard-ai50 (pyproject.toml)
+    #   linkedin-api
 markdown-it-py==4.0.0
     # via rich
 markupsafe==3.0.3
@@ -259,6 +265,7 @@ requests==2.32.3
     #   pe-dashboard-ai50 (pyproject.toml)
     #   instructor
     #   langsmith
+    #   linkedin-api
     #   pinecone-plugin-assistant
     #   requests-toolbelt
     #   streamlit
@@ -325,14 +332,17 @@ typer==0.20.0
     # via instructor
 typing-extensions==4.15.0
     # via
+    #   aiosignal
     #   altair
     #   anthropic
+    #   anyio
     #   fastapi
     #   langchain-core
     #   openai
     #   pinecone
     #   pydantic
     #   pydantic-core
+    #   referencing
     #   selenium
     #   streamlit
     #   typer

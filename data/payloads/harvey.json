@@ -1,0 +1,276 @@
+{
+  "company_record": {
+    "company_id": "harvey",
+    "legal_name": "Harvey",
+    "brand_name": null,
+    "website": null,
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-09",
+        "snippet": "Harvey now works where you work — across your tools, devices, organizations, and throughout your matters. It's AI that matches the reality of how legal professionals actually practice."
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-09",
+        "snippet": "Harvey now works where you work — across your tools, devices, organizations, and throughout your matters. It's AI that matches the reality of how legal professionals actually practice."
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-09",
+        "snippet": "Harvey now works where you work — across your tools, devices, organizations, and throughout your matters. It's AI that matches the reality of how legal professionals actually practice."
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "harvey",
+      "occurred_on": "2025-11-05",
+      "event_type": "product_release",
+      "title": "Harvey In Practice: How to Speed up Diligence Review",
+      "description": "Introduction of new features to speed up diligence review processes.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Beth de la Roche",
+          "crawled_at": "2025-11-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "harvey",
+      "occurred_on": "2025-11-04",
+      "event_type": "product_release",
+      "title": "Scale Securely With Finer Admin Controls",
+      "description": "Launch of new admin controls for enhanced security.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Beth de la Roche",
+          "crawled_at": "2025-11-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "3",
+      "company_id": "harvey",
+      "occurred_on": "2025-11-01",
+      "event_type": "customer_win",
+      "title": "Harvey's Momentum in Q3",
+      "description": "Celebrated major customer wins in Q3.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Newsroom",
+          "crawled_at": "2025-11-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "4",
+      "company_id": "harvey",
+      "occurred_on": "2025-11-01",
+      "event_type": "product_release",
+      "title": "Harvey's Momentum in Q3",
+      "description": "Introduced product breakthroughs and expanded global presence.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Newsroom",
+          "crawled_at": "2025-11-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "harvey",
+      "as_of": "2023-11-06",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": null,
+      "geo_presence": null,
+      "confidence": 0.8,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Newsroom",
+          "crawled_at": "2023-11-06",
+          "snippet": "In Q3, we celebrated major customer wins, introduced product breakthroughs, and expanded our global presence."
+        },
+        {
+          "source_url": "[careers] Macfarlanes | Harvey",
+          "crawled_at": "2023-11-06",
+          "snippet": "How Macfarlanes partners with Harvey."
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "harvey",
+      "name": "Work Without Boundaries: The AI Platform for Legal Work",
+      "description": "Harvey now works where you work — across your tools, devices, organizations, and throughout your matters. It's AI that matches the reality of how legal professionals actually practice.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] Work Without Boundaries: The AI Platform for Legal Work",
+          "crawled_at": "2023-10-04",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "harvey",
+      "name": "Macfarlanes | Harvey",
+      "description": "How Macfarlanes partners with Harvey.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] Macfarlanes | Harvey",
+          "crawled_at": "2023-10-04",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "beth-de-la-roche",
+      "company_id": "harvey",
+      "name": "Beth de la Roche",
+      "role": "Harvey Team",
+      "is_founder": false,
+      "start_date": "2025-11-05",
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Beth de la Roche",
+          "crawled_at": "2025-11-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "al-hounsell",
+      "company_id": "harvey",
+      "name": "Al Hounsell",
+      "role": "Harvey Team",
+      "is_founder": false,
+      "start_date": "2025-10-29",
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] Al Hounsell on Driving Legal Transformation That Lasts",
+          "crawled_at": "2025-10-29",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "julio-pereyra",
+      "company_id": "harvey",
+      "name": "Julio Pereyra",
+      "role": "Harvey Team",
+      "is_founder": false,
+      "start_date": "2025-10-24",
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] A Framework for Domain-Specific Evaluations",
+          "crawled_at": "2025-10-24",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "harvey",
+      "as_of": "2023-10-21",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:26:33.419996",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

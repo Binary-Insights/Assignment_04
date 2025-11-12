@@ -1,0 +1,432 @@
+{
+  "company_record": {
+    "company_id": "notion",
+    "legal_name": "Notion Labs, Inc.",
+    "brand_name": null,
+    "website": null,
+    "hq_city": "San Francisco",
+    "hq_state": "California",
+    "hq_country": "United States",
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-07",
+        "snippet": "© 2025 Notion Labs, Inc."
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-07",
+        "snippet": "Notion is based in beautiful downtown San Francisco, with offices around the world."
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "notion",
+      "occurred_on": "2023-10-01",
+      "event_type": "product_release",
+      "title": "Introducing Notion 3.0",
+      "description": "Today we launched Notion 3.0 with Agents. Anything you can do in Notion, your Agent can do too. The busywork that fills your day can now be done in minutes.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "notion",
+      "occurred_on": "2023-10-01",
+      "event_type": "leadership_change",
+      "title": "Meet Mick Hodgins, Notion’s new EMEA GM",
+      "description": "Meet our new EMEA GM, who brings strategic vision and international experience from Google and elsewhere to lead our teams across the region.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "notion",
+      "as_of": "2023-10-09",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": [
+        "AI Search $35/user",
+        "AI Chatbot $20/user",
+        "AI Meeting Notes $18/user",
+        "AI Writing Assistant $20/user",
+        "AI Email App $30/user",
+        "AI Research $40/user",
+        "Calendar Scheduling $15/user",
+        "Team Wiki $10/user",
+        "Project Management Tool $24/user"
+      ],
+      "active_products": [
+        "Notion AI",
+        "Enterprise Search",
+        "AI Meeting Notes",
+        "Docs",
+        "Knowledge Base"
+      ],
+      "geo_presence": [
+        "San Francisco",
+        "EMEA"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-09",
+          "snippet": null
+        },
+        {
+          "source_url": "[product] Over 100M users worldwide",
+          "crawled_at": "2023-10-09",
+          "snippet": null
+        },
+        {
+          "source_url": "[about] Why we built Notion – About",
+          "crawled_at": "2023-10-09",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "notion",
+      "name": "AI Search",
+      "description": "AI-powered search functionality for enterprises.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$35/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "notion",
+      "name": "AI Chatbot",
+      "description": "AI-driven chatbot for customer interaction.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$20/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "3",
+      "company_id": "notion",
+      "name": "AI Meeting Notes",
+      "description": "AI-generated meeting notes.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$18/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "4",
+      "company_id": "notion",
+      "name": "AI Writing Assistant",
+      "description": "AI tool to assist in writing tasks.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$20/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "5",
+      "company_id": "notion",
+      "name": "AI Email App",
+      "description": "AI application for managing emails.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$30/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "6",
+      "company_id": "notion",
+      "name": "AI Research",
+      "description": "AI tool for research purposes.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$40/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "7",
+      "company_id": "notion",
+      "name": "Calendar Scheduling",
+      "description": "Tool for scheduling and managing calendars.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$15/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "8",
+      "company_id": "notion",
+      "name": "Team Wiki",
+      "description": "Collaborative wiki for team knowledge sharing.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$10/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "9",
+      "company_id": "notion",
+      "name": "Project Management Tool",
+      "description": "Tool for managing projects and tasks.",
+      "pricing_model": "seat",
+      "pricing_tiers_public": [
+        "$24/user"
+      ],
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[product] See pricing plans",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "anastasia-crew",
+      "company_id": "notion",
+      "name": "Anastasia Crew",
+      "role": "Startup Marketing Lead",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "blog",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "akshay-kothari",
+      "company_id": "notion",
+      "name": "Akshay Kothari",
+      "role": "Co-founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "blog",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "david-rosenberg",
+      "company_id": "notion",
+      "name": "David Rosenberg",
+      "role": "Head of Business Development",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "blog",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "notion",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": 3,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.forbes.com",
+          "crawled_at": "2023-10-06",
+          "snippet": "$10 Billion Productivity Startup Notion Wants To Build Your AI Everything App"
+        },
+        {
+          "source_url": "https://www.fastcompany.com",
+          "crawled_at": "2023-10-06",
+          "snippet": "The most innovative workplace companies of 2024"
+        },
+        {
+          "source_url": "https://www.techcrunch.com",
+          "crawled_at": "2023-10-06",
+          "snippet": "Okta's 8th 'Businesses at Work' cloud usage report"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:31:45.323538",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

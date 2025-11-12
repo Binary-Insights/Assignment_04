@@ -1,0 +1,602 @@
+{
+  "world-labs": {
+    "structured": {
+      "company_name": "World Labs",
+      "company_slug": "world-labs",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:52.988747Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 2,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 8.0
+    },
+    "rag": {
+      "company_name": "World Labs",
+      "company_slug": "world-labs",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:52.989695Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "abridge": {
+    "structured": {
+      "company_name": "Abridge",
+      "company_slug": "abridge",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:52.991631Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 1,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 7.0
+    },
+    "rag": {
+      "company_name": "Abridge",
+      "company_slug": "abridge",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:52.992639Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "anthropic": {
+    "structured": {
+      "company_name": "Anthropic",
+      "company_slug": "anthropic",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:52.994860Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 2,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 8.0
+    },
+    "rag": {
+      "company_name": "Anthropic",
+      "company_slug": "anthropic",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:52.995746Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "anysphere": {
+    "structured": {
+      "company_name": "Anysphere",
+      "company_slug": "anysphere",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:52.997254Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 2,
+      "hallucination_detection": 1,
+      "readability": 1,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 9.0
+    },
+    "rag": {
+      "company_name": "Anysphere",
+      "company_slug": "anysphere",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:52.998311Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "baseten": {
+    "structured": {
+      "company_name": "Baseten",
+      "company_slug": "baseten",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.000084Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 1,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 7.0
+    },
+    "rag": {
+      "company_name": "Baseten",
+      "company_slug": "baseten",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.001392Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "captions": {
+    "structured": {
+      "company_name": "Captions",
+      "company_slug": "captions",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.002348Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Captions",
+      "company_slug": "captions",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.003679Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "clay": {
+    "structured": {
+      "company_name": "Clay",
+      "company_slug": "clay",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.004812Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Clay",
+      "company_slug": "clay",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.006293Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "coactive-ai": {
+    "structured": {
+      "company_name": "Coactive AI",
+      "company_slug": "coactive-ai",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.007675Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Coactive AI",
+      "company_slug": "coactive-ai",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.008994Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "cohere": {
+    "structured": {
+      "company_name": "Cohere",
+      "company_slug": "cohere",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.011382Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 1,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 7.0
+    },
+    "rag": {
+      "company_name": "Cohere",
+      "company_slug": "cohere",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.012466Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "crusoe": {
+    "structured": {
+      "company_name": "Crusoe",
+      "company_slug": "crusoe",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.014985Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 2,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 8.0
+    },
+    "rag": {
+      "company_name": "Crusoe",
+      "company_slug": "crusoe",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.016180Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "databricks": {
+    "structured": {
+      "company_name": "Databricks",
+      "company_slug": "databricks",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.018464Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 2,
+      "provenance_quality": 2,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 9.0
+    },
+    "rag": {
+      "company_name": "Databricks",
+      "company_slug": "databricks",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.019742Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "decagon": {
+    "structured": {
+      "company_name": "Decagon",
+      "company_slug": "decagon",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.022429Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 1,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 7.0
+    },
+    "rag": {
+      "company_name": "Decagon",
+      "company_slug": "decagon",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.023696Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "deepl": {
+    "structured": {
+      "company_name": "DeepL",
+      "company_slug": "deepl",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.026272Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 2,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 8.0
+    },
+    "rag": {
+      "company_name": "DeepL",
+      "company_slug": "deepl",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.027622Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "elevenlabs": {
+    "structured": {
+      "company_name": "ElevenLabs",
+      "company_slug": "elevenlabs",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.032104Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 2,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 8.0
+    },
+    "rag": {
+      "company_name": "ElevenLabs",
+      "company_slug": "elevenlabs",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.033505Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "figure-ai": {
+    "structured": {
+      "company_name": "Figure AI",
+      "company_slug": "figure-ai",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.035073Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Figure AI",
+      "company_slug": "figure-ai",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.038109Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "fireworks-ai": {
+    "structured": {
+      "company_name": "Fireworks AI",
+      "company_slug": "fireworks-ai",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.039946Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Fireworks AI",
+      "company_slug": "fireworks-ai",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.042012Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "glean": {
+    "structured": {
+      "company_name": "Glean",
+      "company_slug": "glean",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.043599Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Glean",
+      "company_slug": "glean",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.045455Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "harvey": {
+    "structured": {
+      "company_name": "Harvey",
+      "company_slug": "harvey",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.048186Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Harvey",
+      "company_slug": "harvey",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.049708Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "hebbia": {
+    "structured": {
+      "company_name": "Hebbia",
+      "company_slug": "hebbia",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.052130Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 1,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 7.0
+    },
+    "rag": {
+      "company_name": "Hebbia",
+      "company_slug": "hebbia",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.053534Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  },
+  "hugging-face": {
+    "structured": {
+      "company_name": "Hugging Face",
+      "company_slug": "hugging-face",
+      "pipeline_type": "structured",
+      "timestamp": "2025-11-12T00:51:53.055368Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using structured pipeline (programmatic)",
+      "total_score": 6.0
+    },
+    "rag": {
+      "company_name": "Hugging Face",
+      "company_slug": "hugging-face",
+      "pipeline_type": "rag",
+      "timestamp": "2025-11-12T00:51:53.057248Z",
+      "factual_accuracy": 2,
+      "schema_compliance": 1,
+      "provenance_quality": 0,
+      "hallucination_detection": 1,
+      "readability": 0,
+      "mrr_score": 1.0,
+      "notes": "Auto-calculated metrics using rag pipeline (programmatic)",
+      "total_score": 6.0
+    }
+  }
+}

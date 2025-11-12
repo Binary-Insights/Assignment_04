@@ -1,0 +1,256 @@
+{
+  "company_record": {
+    "company_id": "coactive",
+    "legal_name": "Coactive Systems Inc.",
+    "brand_name": "Coactive",
+    "website": null,
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": 2021,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": 44000000.0,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "2021\nYear founded"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "$44M\nFunding raised"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "Coactive Systems Inc."
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "coactive_ai",
+      "occurred_on": "2025-06-10",
+      "event_type": "product_release",
+      "title": "Coactive is Now on Azure",
+      "description": "Visual AI Search, Metadata Tagging, and Analytics, Built for Scale",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "2",
+      "company_id": "coactive_ai",
+      "occurred_on": "2025-05-09",
+      "event_type": "other",
+      "title": "Unlocking Content Discovery with AI: Kevin Hill at NAB 2025",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "3",
+      "company_id": "coactive_ai",
+      "occurred_on": "2025-03-26",
+      "event_type": "product_release",
+      "title": "Unlocking Video Insights",
+      "description": "How an Optimized Approach Enhances Understanding",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "coactive_ai",
+      "as_of": "2023-10-06",
+      "headcount_total": null,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Multimodal AI Platform"
+      ],
+      "geo_presence": [
+        "United States",
+        "Canada"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://coactive.ai",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "coactive_ai",
+      "name": "Coactive's Multimodal AI platform for video understanding",
+      "description": "Coactive's Multimodal AI platform for video understanding enables context-aware analysis across segments, providing robust metadata in minutes and flexible tagging with Dynamic Tags. It allows for future-proofing by not locking into any one foundation model.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "coactive_ai",
+      "name": "Multimodal AI Platform (MAP)",
+      "description": "Coactive's Multimodal AI Platform (MAP) provides a single place to manage and activate content catalogs, offering a powerful, flexible way for developers to create game-changing apps, fast. It supports the use of best-of-breed foundation models and fine-tuning that’s decoupled and evaluable.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "will-gaviria-rojas",
+      "company_id": "coactive_ai",
+      "name": "Will Gaviria Rojas",
+      "role": "Co-Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": "Data Scientist at eBay",
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "cody-coleman",
+      "company_id": "coactive_ai",
+      "name": "Cody Coleman",
+      "role": "Co-Founder and CEO",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "tia",
+      "company_id": "coactive_ai",
+      "name": "Tia",
+      "role": "Leadership in people, operations, and organizational strategy",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "josh",
+      "company_id": "coactive_ai",
+      "name": "Josh",
+      "role": "Chief Revenue Officer",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": "Amperity",
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "coactive_ai",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:20:38.227428",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}
