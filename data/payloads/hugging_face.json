@@ -1,0 +1,254 @@
+{
+  "company_record": {
+    "company_id": "huggingface.co",
+    "legal_name": "Hugging Face",
+    "brand_name": null,
+    "website": "https://huggingface.co/",
+    "hq_city": null,
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": null,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "Hugging Face\nTeam\ncompany\nVerified\nhttps://huggingface.co"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "hugging_face",
+      "occurred_on": "2023-09-15",
+      "event_type": "product_release",
+      "title": "Announcing Hugging Face Fundamentals: A New Learning Track on DataCamp",
+      "description": "Hugging Face has launched a new learning track on DataCamp to help users understand their platform better.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "hugging_face",
+      "occurred_on": "2023-07-23",
+      "event_type": "product_release",
+      "title": "TimeScope: How Long Can Your Video Large Multimodal Model Go?",
+      "description": "Hugging Face released TimeScope, a tool to test the limits of video large multimodal models.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "3",
+      "company_id": "hugging_face",
+      "occurred_on": "2023-01-20",
+      "event_type": "product_release",
+      "title": "Organizations can now publish blog Articles",
+      "description": "Hugging Face has enabled organizations to publish blog articles on their platform.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "hugging_face",
+      "as_of": "2023-10-17",
+      "headcount_total": 192,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "Models",
+        "Datasets",
+        "Spaces",
+        "Community",
+        "Docs",
+        "Enterprise",
+        "Pricing"
+      ],
+      "geo_presence": null,
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-17",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "hugging_face_models",
+      "company_id": "hugging_face",
+      "name": "Models",
+      "description": "A collection of pre-trained models for various AI and ML tasks.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "hugging_face_datasets",
+      "company_id": "hugging_face",
+      "name": "Datasets",
+      "description": "A repository of datasets for training and evaluating AI models.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "hugging_face_spaces",
+      "company_id": "hugging_face",
+      "name": "Spaces",
+      "description": "A platform for hosting and sharing AI applications.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "clement-delangue",
+      "company_id": "hugging_face",
+      "name": "Clement Delangue",
+      "role": "CEO",
+      "is_founder": true,
+      "start_date": "2016-01-01",
+      "end_date": null,
+      "previous_affiliation": "Co-founder at Mindsay",
+      "education": "HEC Paris",
+      "linkedin": "https://www.linkedin.com/in/clementdelangue",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-01",
+          "snippet": "Clement Delangue is the CEO and co-founder of Hugging Face. He studied at HEC Paris and was previously a co-founder at Mindsay."
+        }
+      ]
+    },
+    {
+      "person_id": "julien-chaumond",
+      "company_id": "hugging_face",
+      "name": "Julien Chaumond",
+      "role": "CTO",
+      "is_founder": true,
+      "start_date": "2016-01-01",
+      "end_date": null,
+      "previous_affiliation": "Research Engineer at Facebook AI Research",
+      "education": "Ecole Polytechnique",
+      "linkedin": "https://www.linkedin.com/in/julienchaumond",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-01",
+          "snippet": "Julien Chaumond is the CTO and co-founder of Hugging Face. He studied at Ecole Polytechnique and worked as a Research Engineer at Facebook AI Research."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "hugging_face",
+      "as_of": "2023-10-10",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://huggingface.co",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:31:56.785158",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

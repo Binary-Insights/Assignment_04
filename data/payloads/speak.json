@@ -1,0 +1,287 @@
+{
+  "company_record": {
+    "company_id": "speakeasy-labs",
+    "legal_name": "Speakeasy Labs, Inc.",
+    "brand_name": "Speak",
+    "website": null,
+    "hq_city": "San Francisco",
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": null,
+    "categories": [
+      "Language Learning",
+      "Education Technology"
+    ],
+    "related_companies": null,
+    "total_raised_usd": 27000000.0,
+    "last_disclosed_valuation_usd": 500000000.0,
+    "last_round_name": "Series B",
+    "last_round_date": "2022-11-18",
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-06",
+        "snippet": "Speak started in San Francisco, and today the U.S team works out of a sunny penthouse office in Jackson Square."
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-06",
+        "snippet": "Speak - The languages learning app that gets you speaking"
+      },
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-06",
+        "snippet": "Speak Announces $27M Series B Led by OpenAI Startup Fund"
+      },
+      {
+        "source_url": "blog",
+        "crawled_at": "2023-10-06",
+        "snippet": "Speak Hits $500M Valuation, Expands Rapidly Across Markets"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "speak",
+      "occurred_on": "2024-11-18",
+      "event_type": "benchmark",
+      "title": "Speak named Google Play’s “Best App of 2024” in Hong Kong, Korea and Taiwan",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "2",
+      "company_id": "speak",
+      "occurred_on": "2024-10-01",
+      "event_type": "product_release",
+      "title": "Live Roleplays powered by OpenAI Realtime API",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "3",
+      "company_id": "speak",
+      "occurred_on": "2024-06-18",
+      "event_type": "benchmark",
+      "title": "Speak Hits $500M Valuation, Expands Rapidly Across Markets",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": 500000000.0,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "4",
+      "company_id": "speak",
+      "occurred_on": "2023-03-23",
+      "event_type": "partnership",
+      "title": "Speak Collaborates with OpenAI on New ChatGPT Plugins",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "5",
+      "company_id": "speak",
+      "occurred_on": "2023-03-14",
+      "event_type": "product_release",
+      "title": "Speak Shares Details of AI Tutor, Built on Top of OpenAI’s GPT-4",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "6",
+      "company_id": "speak",
+      "occurred_on": "2023-03-01",
+      "event_type": "integration",
+      "title": "Speak + OpenAI Speech Recognition",
+      "description": null,
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "7",
+      "company_id": "speak",
+      "occurred_on": "2022-11-18",
+      "event_type": "funding",
+      "title": "Speak Announces $27M Series B",
+      "description": "Series B funding round led by unspecified investors",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": 27000000.0,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "speak",
+      "as_of": "2023-10-06",
+      "headcount_total": 130,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": null,
+      "pricing_tiers": null,
+      "active_products": [
+        "language learning apps"
+      ],
+      "geo_presence": [
+        "United States",
+        "South Korea",
+        "Japan",
+        "Mexico",
+        "Taiwan",
+        "Hong Kong",
+        "Germany",
+        "France",
+        "Italy",
+        "Spain",
+        "China",
+        "Vietnam"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers] People",
+          "crawled_at": "2023-10-06",
+          "snippet": "Team of 130 people across offices in San Francisco, Seoul, Tokyo, Taipei, and Ljubljana."
+        },
+        {
+          "source_url": "[product] Speak - The languages learning app that gets you speaking",
+          "crawled_at": "2023-10-06",
+          "snippet": "Choose your region: United States, South Korea, Japan, Mexico, Taiwan, Hong Kong, Germany, France, Italy, Spain, China, Vietnam."
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "speak_app",
+      "company_id": "speak",
+      "name": "Speak - The language learning app that gets you speaking",
+      "description": "The most effective way to learn a language by talking out loud and getting instant feedback. Speak’s language education program gets you speaking fluently as quickly as possible.",
+      "pricing_model": "Free trial",
+      "pricing_tiers_public": [
+        "7 day free trial"
+      ],
+      "ga_date": null,
+      "integration_partners": [
+        "OpenAI"
+      ],
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-05",
+          "snippet": "Speak’s language education program gets you speaking fluently as quickly as possible. It’s one of the main reasons people love Speak."
+        },
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-05",
+          "snippet": "Speak offers users a 7 day free trial where they can experience all features of the app!"
+        },
+        {
+          "source_url": "https://example.com",
+          "crawled_at": "2023-10-05",
+          "snippet": "Speak Collaborates with OpenAI on New ChatGPT Plugins"
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "connor",
+      "company_id": "speak",
+      "name": "Connor",
+      "role": "Founder",
+      "is_founder": true,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[careers] Annual offsites",
+          "crawled_at": "2023-10-01",
+          "snippet": "Here is Connor, our founder, in his best tie."
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "speak",
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": 4.8,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/blog",
+          "crawled_at": "2023-10-06",
+          "snippet": "Speak named Google Play’s “Best App of 2024” in Hong Kong, Korea and Taiwan"
+        },
+        {
+          "source_url": "https://example.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "4.8 Rating\n15M+ Downloads"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:38:09.445232",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

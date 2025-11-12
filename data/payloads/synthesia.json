@@ -21,17 +21,17 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-12",
         "snippet": "Synthesia was founded in 2017 by a team of AI researchers and entrepreneurs from UCL, Stanford, TUM and Cambridge."
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-05",
-        "snippet": "Synthesia is the #1 AI Video Communications Platform."
+        "crawled_at": "2023-10-12",
+        "snippet": "Synthesia is the #1 AI Video Communications Platform. Our AI Video Generator enables everyone to create professional videos without mics, cameras, actors or studios."
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-12",
         "snippet": "Nvidia-backed platform that turns text into A.I.-generated avatars boosts valuation to $1 billion"
       }
     ]
@@ -42,8 +42,8 @@
       "company_id": "synthesia",
       "occurred_on": "2023-10-01",
       "event_type": "funding",
-      "title": "Mark Cuban invests in Synthesia",
-      "description": "Mark Cuban decided to invest $1 million in Synthesia after extensive discussions.",
+      "title": "Mark Cuban Invests in Synthesia",
+      "description": "Mark Cuban decided to invest $1 million in Synthesia.",
       "round_name": null,
       "investors": null,
       "amount_usd": 1000000.0,
@@ -51,15 +51,21 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://synthesia.io/careers",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "2",
       "company_id": "synthesia",
-      "occurred_on": "2023-10-10",
+      "occurred_on": "2023-10-01",
       "event_type": "product_release",
-      "title": "Release of AI Dubbing",
-      "description": "Synthesia releases AI Dubbing, a new product to transform video localization.",
+      "title": "Launch of AI Dubbing",
+      "description": "Synthesia released AI Dubbing, a new product that speeds up and reduces the costs of localizing video.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -67,15 +73,21 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://synthesia.io/blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "3",
       "company_id": "synthesia",
-      "occurred_on": "2023-10-15",
+      "occurred_on": "2023-10-01",
       "event_type": "partnership",
-      "title": "Partnership with Amazon Web Services",
-      "description": "Synthesia expands collaboration with AWS to accelerate AI video adoption.",
+      "title": "Collaboration with AWS",
+      "description": "Synthesia and Amazon Web Services (AWS) are expanding their collaboration to accelerate the adoption of AI video in the enterprise space.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -83,15 +95,21 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://synthesia.io/blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "4",
       "company_id": "synthesia",
-      "occurred_on": "2023-10-20",
+      "occurred_on": "2023-10-01",
       "event_type": "product_release",
-      "title": "Launch of Synthesia 3.0",
-      "description": "Synthesia unveils Synthesia 3.0, a new AI video platform.",
+      "title": "ISO 27001 Certification",
+      "description": "Synthesia is now ISO/IEC 27001:2022 certified, emphasizing security as a core pillar of their enterprise platform.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -99,15 +117,21 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://synthesia.io/blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "5",
       "company_id": "synthesia",
-      "occurred_on": "2023-10-25",
+      "occurred_on": "2023-10-01",
       "event_type": "product_release",
-      "title": "Introduction of Veo 3-powered Generative Assets",
-      "description": "New feature allowing enterprise users to create AI-generated videos with Veo 3.",
+      "title": "Launch of Synthesia 3.0",
+      "description": "Synthesia 3.0, a new AI video platform reimagined for the future of video, is launched.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -115,15 +139,21 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://synthesia.io/blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "6",
       "company_id": "synthesia",
-      "occurred_on": "2023-10-30",
-      "event_type": "benchmark",
-      "title": "ISO 27001 Certification",
-      "description": "Synthesia achieves ISO/IEC 27001:2022 certification, emphasizing security.",
+      "occurred_on": "2023-10-01",
+      "event_type": "product_release",
+      "title": "Introduction of Veo 3-powered Generative Assets",
+      "description": "Generative Assets, a new feature for creating AI-generated videos with Veo 3, is announced.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -131,13 +161,19 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://synthesia.io/blog",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     }
   ],
   "snapshots": [
     {
       "company_id": "synthesia",
-      "as_of": "2023-10-11",
+      "as_of": "2023-10-09",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -153,32 +189,30 @@
         "Multilingual Player",
         "Captions",
         "Brand Kit",
-        "Live Collaboration"
+        "Live Collaboration",
+        "AI Avatar Generator",
+        "AI Video Editor",
+        "AI Voice Generator"
       ],
       "geo_presence": [
         "United Kingdom"
       ],
-      "confidence": 0.9,
+      "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers]",
-          "crawled_at": "2023-10-11",
+          "source_url": "[careers] Synthesia Jobs | See Current Openings - Hiring Now",
+          "crawled_at": "2023-10-09",
           "snippet": null
         },
         {
-          "source_url": "[about]",
-          "crawled_at": "2023-10-11",
+          "source_url": "[about] About Synthesia | Read our story here",
+          "crawled_at": "2023-10-09",
           "snippet": null
         },
         {
-          "source_url": "[product]",
-          "crawled_at": "2023-10-11",
-          "snippet": null
-        },
-        {
-          "source_url": "[blog]",
-          "crawled_at": "2023-10-11",
+          "source_url": "[careers] Synthesia Ltd, 20 Triton Street, Regent's Place, 3rd Floor, London NW1 3BF, United Kingdom.",
+          "crawled_at": "2023-10-09",
           "snippet": null
         }
       ]
@@ -200,8 +234,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-05",
+          "source_url": "[product] Discover Synthesia's 15+ Unique Features",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -221,8 +255,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-05",
+          "source_url": "[blog] Synthesia News",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -333,41 +367,21 @@
   "visibility": [
     {
       "company_id": "synthesia",
-      "as_of": "2023-10-06",
-      "news_mentions_30d": null,
+      "as_of": "2023-10-10",
+      "news_mentions_30d": 1,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://synthesia.io/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "Synthesia is now ISO 27001 certified, here’s why that matters"
-        },
-        {
-          "source_url": "https://synthesia.io/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "AI Dubbing set to transform how businesses localize video at scale"
-        },
-        {
-          "source_url": "https://synthesia.io/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "Introducing Veo 3-powered Generative Assets in Synthesia"
-        },
-        {
-          "source_url": "https://synthesia.io/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "Today, Synthesia and Amazon Web Services (AWS) are expanding their collaboration to accelerate the adoption of AI video in the enterprise space."
-        },
-        {
-          "source_url": "https://synthesia.io/blog",
-          "crawled_at": "2023-10-06",
-          "snippet": "With Synthesia 3.0, the next era of video is here"
+          "source_url": "https://www.cnbc.com",
+          "crawled_at": "2023-10-10",
+          "snippet": "Nvidia-backed platform that turns text into A.I.-generated av"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:43:02.410461",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:39:13.498965",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

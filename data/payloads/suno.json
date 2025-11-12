@@ -2,48 +2,30 @@
   "company_record": {
     "company_id": "suno",
     "legal_name": "Suno, Inc.",
-    "brand_name": "Suno",
-    "website": "https://suno.ai/",
+    "brand_name": null,
+    "website": null,
     "hq_city": "Cambridge",
     "hq_state": "MA",
     "hq_country": "USA",
     "founded_year": null,
-    "categories": [
-      "Music",
-      "Artificial Intelligence"
-    ],
+    "categories": null,
     "related_companies": null,
     "total_raised_usd": null,
     "last_disclosed_valuation_usd": null,
     "last_round_name": null,
     "last_round_date": null,
     "schema_version": "2.0.0",
-    "as_of": "2023-10-05",
+    "as_of": null,
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-06",
         "snippet": "We are a team of musicians and artificial intelligence experts based in Cambridge, MA."
       },
       {
         "source_url": "product",
-        "crawled_at": "2023-10-05",
+        "crawled_at": "2023-10-06",
         "snippet": "© 2025 Suno, Inc."
-      },
-      {
-        "source_url": "about",
-        "crawled_at": "2023-10-05",
-        "snippet": "We are a team of musicians and artificial intelligence experts based in Cambridge, MA."
-      },
-      {
-        "source_url": "about",
-        "crawled_at": "2023-10-05",
-        "snippet": "We are proud alumni of pioneering tech companies like Meta, TikTok and Kensho, where our founding team worked together before starting Suno."
-      },
-      {
-        "source_url": "product",
-        "crawled_at": "2023-10-05",
-        "snippet": "Suno | AI Music"
       }
     ]
   },
@@ -64,7 +46,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[blog] Blog - Suno AI",
+          "source_url": "https://suno.com/blog",
           "crawled_at": "2025-09-25",
           "snippet": null
         }
@@ -86,30 +68,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] Songs of Love Foundation Teams Up with Suno to Bring Personalized Songs to More People in Need",
+          "source_url": "https://suno.com/about",
           "crawled_at": "2025-07-22",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "3",
-      "company_id": "suno",
-      "occurred_on": "2024-03-17",
-      "event_type": "product_release",
-      "title": "A ChatGPT for Music Is Here: Inside Suno, the Startup Changing Everything",
-      "description": null,
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Announcements",
-          "crawled_at": "2024-03-17",
           "snippet": null
         }
       ]
@@ -118,7 +78,7 @@
   "snapshots": [
     {
       "company_id": "suno",
-      "as_of": "2023-10-11",
+      "as_of": "2023-11-01",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": 44,
@@ -147,9 +107,14 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-11",
-          "snippet": null
+          "source_url": "https://suno.ai/careers",
+          "crawled_at": "2023-11-01",
+          "snippet": "Open Positions (44) Filters: Department: Engineering, Growth, Machine Learning, Music, Operations. Location: Boston, Los Angeles, NYC, Remote."
+        },
+        {
+          "source_url": "https://suno.ai/product",
+          "crawled_at": "2023-11-01",
+          "snippet": "Premier Plan: $24/month. Access to Suno Studio."
         }
       ]
     }
@@ -158,12 +123,18 @@
     {
       "product_id": "1",
       "company_id": "suno",
-      "name": "Suno Studio",
-      "description": "Unlock creative possibilities with the first-ever generative audio workstation.",
-      "pricing_model": "tiered",
+      "name": "Suno | AI Music",
+      "description": "Make any song you can imagine. Start with a simple prompt or dive into our pro editing tools, your next track is just a step away. Advanced Create Mind blowing song quality.",
+      "pricing_model": "Free Plan",
       "pricing_tiers_public": [
-        "Premier Plan: $24/month, saves $72 by billing yearly",
-        "Free Plan: $0/month"
+        "$0/month",
+        "Access to v4.5-all",
+        "50 credits renew daily (10 songs)",
+        "No commercial use",
+        "Standard features only",
+        "Upload up to 1 min of audio",
+        "Shared creation queue",
+        "No add-on credit purchase"
       ],
       "ga_date": null,
       "integration_partners": null,
@@ -182,12 +153,13 @@
     {
       "product_id": "2",
       "company_id": "suno",
-      "name": "Suno AI Music",
-      "description": "Make any song you can imagine. Start with a simple prompt or dive into our pro editing tools, your next track is just a step away. Mind blowing song quality.",
-      "pricing_model": "tiered",
+      "name": "Premier Plan",
+      "description": "Maximum credits and every feature unlocked. Access to Suno Studio, Access to latest and most advanced v5 model, 10,000 credits (up to 2,000 songs), refreshes monthly, Commercial use rights for new songs made, Standard + Pro features (personas and advanced editing), Split songs into up to 12 vocal and instrument stems, Upload up to 8 min of audio, Add new vocals or instrumentals to existing songs, Early access to new features, Ability to purchase add-on credits, Priority queue, up to 10 songs at once.",
+      "pricing_model": "Subscription",
       "pricing_tiers_public": [
-        "Premier Plan: $24/month, saves $72 by billing yearly",
-        "Free Plan: $0/month"
+        "$24/month",
+        "Saves $72 by billing yearly!",
+        "Taxes calculated at checkout"
       ],
       "ga_date": null,
       "integration_partners": null,
@@ -209,7 +181,7 @@
       "person_id": "founding-team",
       "company_id": "suno",
       "name": "Founding Team",
-      "role": "Founders",
+      "role": "Founding Team",
       "is_founder": true,
       "start_date": null,
       "end_date": null,
@@ -219,8 +191,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/about",
-          "crawled_at": "2023-10-01",
+          "source_url": "https://suno.ai/about",
+          "crawled_at": "2025-09-25",
           "snippet": "We are proud alumni of pioneering tech companies like Meta, TikTok and Kensho, where our founding team worked together before starting Suno."
         }
       ]
@@ -229,7 +201,7 @@
   "visibility": [
     {
       "company_id": "suno",
-      "as_of": "2023-11-01",
+      "as_of": "2023-10-09",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -237,18 +209,13 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.rollingstone.com/music/music-news/chatgpt-for-music-suno-startup-1234698765/",
+          "source_url": "https://www.rollingstone.com",
           "crawled_at": "2024-03-17",
           "snippet": "A ChatGPT for Music Is Here: Inside Suno, the Startup Changing Everything"
-        },
-        {
-          "source_url": "https://www.suno.ai/blog/introducing-suno-studio",
-          "crawled_at": "2025-09-25",
-          "snippet": "Introducing Suno Studio. Unlock creative possibilities with the first-ever generative audio workstation."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:42:20.748949",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:38:44.682874",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

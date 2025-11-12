@@ -1,0 +1,336 @@
+{
+  "company_record": {
+    "company_id": "scale",
+    "legal_name": "Scale AI, Inc.",
+    "brand_name": null,
+    "website": null,
+    "hq_city": "San Francisco",
+    "hq_state": null,
+    "hq_country": null,
+    "founded_year": 2016,
+    "categories": null,
+    "related_companies": null,
+    "total_raised_usd": null,
+    "last_disclosed_valuation_usd": 29000000000.0,
+    "last_round_name": null,
+    "last_round_date": null,
+    "schema_version": "2.0.0",
+    "as_of": null,
+    "provenance": [
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-09",
+        "snippet": "San Francisco"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-09",
+        "snippet": "2016 Founded"
+      },
+      {
+        "source_url": "about",
+        "crawled_at": "2023-10-09",
+        "snippet": "$29B Valuation"
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_id": "1",
+      "company_id": "scale_ai",
+      "occurred_on": "2025-10-28",
+      "event_type": "partnership",
+      "title": "Scale AI Partners with Korea’s AI Safety Institute",
+      "description": "Scale AI partners with Korea’s AI Safety Institute to advance global AI evaluation and governance.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/scale-ai-partners-korea-ai-safety-institute",
+          "crawled_at": "2025-10-28",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "2",
+      "company_id": "scale_ai",
+      "occurred_on": "2025-11-05",
+      "event_type": "office_open",
+      "title": "Expanding Our Presence with New Offices Around the World",
+      "description": "Scale AI is expanding offices in New York, London, Washington D.C., and St. Louis to support growth, innovation, and reliable AI development worldwide.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/scale-ai-expanding-offices",
+          "crawled_at": "2025-11-05",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "3",
+      "company_id": "scale_ai",
+      "occurred_on": "2023-10-16",
+      "event_type": "product_release",
+      "title": "Scale AI unveils ‘Defense Llama’ large language model",
+      "description": "Scale AI unveils ‘Defense Llama’ large language model for national security users.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/scale-ai-defense-llama",
+          "crawled_at": "2023-10-16",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "4",
+      "company_id": "scale_ai",
+      "occurred_on": "2023-10-01",
+      "event_type": "funding",
+      "title": "Scale AI Valuation Doubles to $14bn",
+      "description": "AI data labelling start-up Scale valuation doubles to $14bn.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": 14000000000.0,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://example.com/scale-ai-valuation-doubles",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "company_id": "scale_ai",
+      "as_of": "2023-11-05",
+      "headcount_total": 1000,
+      "headcount_growth_pct": null,
+      "job_openings_count": null,
+      "engineering_openings": null,
+      "sales_openings": null,
+      "hiring_focus": [
+        "Business Operations",
+        "Data Science and Analytics",
+        "Engineering",
+        "Finance",
+        "Growth",
+        "Legal",
+        "Marketing and Communications",
+        "Operations",
+        "People",
+        "Product and Design",
+        "Public Sector",
+        "Research",
+        "Robotics",
+        "Sales",
+        "Specialist",
+        "University"
+      ],
+      "pricing_tiers": null,
+      "active_products": null,
+      "geo_presence": [
+        "San Francisco",
+        "New York",
+        "London",
+        "Washington D.C.",
+        "St. Louis"
+      ],
+      "confidence": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://scale.com/about",
+          "crawled_at": "2023-11-05",
+          "snippet": null
+        },
+        {
+          "source_url": "https://scale.com/careers",
+          "crawled_at": "2023-11-05",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "product_id": "1",
+      "company_id": "scale_ai",
+      "name": "Data Engine",
+      "description": "Collect, curate, and annotate data. Train models and evaluate.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "2",
+      "company_id": "scale_ai",
+      "name": "Scale 3D Sensor Fusion",
+      "description": "LiDAR",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "product_id": "3",
+      "company_id": "scale_ai",
+      "name": "Scalability",
+      "description": "Scale's data engine can support any ML project from lower-volume experiments to high-volume production projects. Scale up, or down, as needed.",
+      "pricing_model": null,
+      "pricing_tiers_public": null,
+      "ga_date": null,
+      "integration_partners": null,
+      "github_repo": null,
+      "license_type": null,
+      "reference_customers": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "web_content",
+          "crawled_at": "2023-10-10",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "person_id": "arun-murthy",
+      "company_id": "scale-ai",
+      "name": "Arun Murthy",
+      "role": "Chief Product & Technology Officer",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "careers",
+          "crawled_at": "2025-10-28",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "john-brennan",
+      "company_id": "scale-ai",
+      "name": "John Brennan",
+      "role": "General Manager",
+      "is_founder": false,
+      "start_date": null,
+      "end_date": null,
+      "previous_affiliation": null,
+      "education": null,
+      "linkedin": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "careers",
+          "crawled_at": "2025-10-28",
+          "snippet": null
+        }
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "company_id": "scale_ai",
+      "as_of": "2023-11-01",
+      "news_mentions_30d": null,
+      "avg_sentiment": null,
+      "github_stars": null,
+      "glassdoor_rating": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://fedscoop.com",
+          "crawled_at": "2023-11-01",
+          "snippet": "Scale AI unveils ‘Defense Llama’ large language model for national security users"
+        },
+        {
+          "source_url": "https://www.case-study.com",
+          "crawled_at": "2023-11-01",
+          "snippet": "Scale AI pushes Congress to take action on AI data, safety issues this year"
+        },
+        {
+          "source_url": "https://www.fastcompany.com",
+          "crawled_at": "2023-11-01",
+          "snippet": "TIME and Scale Revolutionize Media Publishing with Generative AI"
+        },
+        {
+          "source_url": "https://www.ft.com",
+          "crawled_at": "2023-11-01",
+          "snippet": "AI data labelling start-up Scale valuation doubles to $14bn"
+        },
+        {
+          "source_url": "https://www.bloomberg.com",
+          "crawled_at": "2023-11-01",
+          "snippet": "Scale AI’s Alexandr Wang’s Predictions for AI In 2025: Geopolitical Turf Wars Escalate, AI Agents Progress, Data Beats Compute"
+        },
+        {
+          "source_url": "https://www.cnn.com",
+          "crawled_at": "2023-11-01",
+          "snippet": "Most companies aren’t seeing a return on AI investments. This tech CEO wants to change that"
+        },
+        {
+          "source_url": "https://www.axios.com",
+          "crawled_at": "2023-11-01",
+          "snippet": "Scale AI's Jason Droege: We're here and we're growing"
+        }
+      ]
+    }
+  ],
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:36:25.611475",
+  "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
+}

@@ -6,7 +6,7 @@
     "website": null,
     "hq_city": "San Francisco",
     "hq_state": "California",
-    "hq_country": "United States",
+    "hq_country": null,
     "founded_year": null,
     "categories": null,
     "related_companies": null,
@@ -19,13 +19,13 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-07",
-        "snippet": "© 2025 Notion Labs, Inc."
+        "crawled_at": "2023-10-06",
+        "snippet": "Notion is based in beautiful downtown San Francisco, with offices around the world."
       },
       {
-        "source_url": "about",
-        "crawled_at": "2023-10-07",
-        "snippet": "Notion is based in beautiful downtown San Francisco, with offices around the world."
+        "source_url": "careers",
+        "crawled_at": "2023-10-06",
+        "snippet": "© 2025 Notion Labs, Inc."
       }
     ]
   },
@@ -46,7 +46,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "blog",
+          "source_url": "[blog] Anastasia Crew",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
@@ -55,7 +55,7 @@
     {
       "event_id": "2",
       "company_id": "notion",
-      "occurred_on": "2023-10-01",
+      "occurred_on": "2023-10-02",
       "event_type": "leadership_change",
       "title": "Meet Mick Hodgins, Notion’s new EMEA GM",
       "description": "Meet our new EMEA GM, who brings strategic vision and international experience from Google and elsewhere to lead our teams across the region.",
@@ -68,8 +68,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "blog",
-          "crawled_at": "2023-10-01",
+          "source_url": "[blog] David Rosenberg",
+          "crawled_at": "2023-10-02",
           "snippet": null
         }
       ]
@@ -98,6 +98,7 @@
       ],
       "active_products": [
         "Notion AI",
+        "Agents",
         "Enterprise Search",
         "AI Meeting Notes",
         "Docs",
@@ -105,7 +106,7 @@
       ],
       "geo_presence": [
         "San Francisco",
-        "EMEA"
+        "offices around the world"
       ],
       "confidence": null,
       "schema_version": "2.0.0",
@@ -133,13 +134,16 @@
       "product_id": "1",
       "company_id": "notion",
       "name": "AI Search",
-      "description": "AI-powered search functionality for enterprises.",
+      "description": "AI-powered search functionality for enterprise use.",
       "pricing_model": "seat",
       "pricing_tiers_public": [
         "$35/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -147,7 +151,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -162,7 +166,10 @@
         "$20/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -170,7 +177,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -179,13 +186,16 @@
       "product_id": "3",
       "company_id": "notion",
       "name": "AI Meeting Notes",
-      "description": "AI-generated meeting notes.",
+      "description": "AI-generated meeting notes for efficiency.",
       "pricing_model": "seat",
       "pricing_tiers_public": [
         "$18/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -193,7 +203,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -208,7 +218,10 @@
         "$20/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -216,7 +229,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -225,13 +238,16 @@
       "product_id": "5",
       "company_id": "notion",
       "name": "AI Email App",
-      "description": "AI application for managing emails.",
+      "description": "AI-enhanced email application.",
       "pricing_model": "seat",
       "pricing_tiers_public": [
         "$30/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -239,7 +255,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -248,13 +264,16 @@
       "product_id": "6",
       "company_id": "notion",
       "name": "AI Research",
-      "description": "AI tool for research purposes.",
+      "description": "AI tools for research purposes.",
       "pricing_model": "seat",
       "pricing_tiers_public": [
         "$40/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -262,7 +281,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -271,13 +290,16 @@
       "product_id": "7",
       "company_id": "notion",
       "name": "Calendar Scheduling",
-      "description": "Tool for scheduling and managing calendars.",
+      "description": "Tool for scheduling and managing calendar events.",
       "pricing_model": "seat",
       "pricing_tiers_public": [
         "$15/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -285,7 +307,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -300,7 +322,10 @@
         "$10/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -308,7 +333,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -317,13 +342,16 @@
       "product_id": "9",
       "company_id": "notion",
       "name": "Project Management Tool",
-      "description": "Tool for managing projects and tasks.",
+      "description": "Tool for managing and tracking projects.",
       "pricing_model": "seat",
       "pricing_tiers_public": [
         "$24/user"
       ],
       "ga_date": null,
-      "integration_partners": null,
+      "integration_partners": [
+        "Mail",
+        "Calendar"
+      ],
       "github_repo": null,
       "license_type": null,
       "reference_customers": null,
@@ -331,7 +359,7 @@
       "provenance": [
         {
           "source_url": "[product] See pricing plans",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-10",
           "snippet": null
         }
       ]
@@ -352,7 +380,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "blog",
+          "source_url": "[blog]",
           "crawled_at": "2023-10-06",
           "snippet": null
         }
@@ -372,7 +400,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "blog",
+          "source_url": "[blog]",
           "crawled_at": "2023-10-06",
           "snippet": null
         }
@@ -392,7 +420,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "blog",
+          "source_url": "[blog]",
           "crawled_at": "2023-10-06",
           "snippet": null
         }
@@ -402,7 +430,7 @@
   "visibility": [
     {
       "company_id": "notion",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-11",
       "news_mentions_30d": 3,
       "avg_sentiment": null,
       "github_stars": null,
@@ -411,22 +439,22 @@
       "provenance": [
         {
           "source_url": "https://www.forbes.com",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-11",
           "snippet": "$10 Billion Productivity Startup Notion Wants To Build Your AI Everything App"
         },
         {
           "source_url": "https://www.fastcompany.com",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-11",
           "snippet": "The most innovative workplace companies of 2024"
         },
         {
           "source_url": "https://www.techcrunch.com",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-11",
           "snippet": "Okta's 8th 'Businesses at Work' cloud usage report"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:31:45.323538",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:34:08.920536",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

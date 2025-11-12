@@ -19,12 +19,12 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-03",
+        "crawled_at": "2023-10-20",
         "snippet": "Sierra helps businesses build better, more human customer experiences with AI."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-03",
+        "crawled_at": "2023-10-20",
         "snippet": "Sierra was co-founded by Bret Taylor and Clay Bavor, who first met while working together at Google."
       }
     ]
@@ -35,8 +35,8 @@
       "company_id": "sierra",
       "occurred_on": "2025-11-05",
       "event_type": "product_release",
-      "title": "Sierra Agent OS 2.0 Unveiled",
-      "description": "At Sierra Summit, Sierra unveiled the future of AI agents: a single agent that works across every channel, learns from every interaction, and builds real customer connections.",
+      "title": "Sierra Agent OS 2.0 Launch",
+      "description": "At Sierra Summit, we unveiled the future of AI agents: a single agent that works across every channel, learns from every interaction, and builds real customer connections.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -52,7 +52,7 @@
       "occurred_on": "2025-11-03",
       "event_type": "office_open",
       "title": "Sierra Expands to Southeast Asia",
-      "description": "Sierra is expanding to Southeast Asia with a new Singapore office, strengthening its commitment to helping businesses across the region deliver more human customer experiences with AI.",
+      "description": "Sierra is expanding to Southeast Asia with a new Singapore office, strengthening our commitment to helping businesses across the region deliver more human customer experiences with AI.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -66,9 +66,9 @@
       "event_id": "3",
       "company_id": "sierra",
       "occurred_on": "2025-10-23",
-      "event_type": "product_release",
+      "event_type": "integration",
       "title": "Publish Your Agent to ChatGPT",
-      "description": "Sierra allows publishing of Sierra-built experiences to ChatGPT, reaching hundreds of millions of users while maintaining full control and brand integrity.",
+      "description": "Reach hundreds of millions of ChatGPT users with a single click — bringing your Sierra-built experiences into ChatGPT while maintaining full control and brand integrity.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -82,13 +82,16 @@
   "snapshots": [
     {
       "company_id": "sierra",
-      "as_of": "2023-10-29",
+      "as_of": "2023-10-11",
       "headcount_total": null,
       "headcount_growth_pct": null,
-      "job_openings_count": null,
-      "engineering_openings": null,
+      "job_openings_count": 3,
+      "engineering_openings": 3,
       "sales_openings": null,
-      "hiring_focus": null,
+      "hiring_focus": [
+        "AI agents",
+        "customer experience"
+      ],
       "pricing_tiers": null,
       "active_products": [
         "Agent OS"
@@ -98,20 +101,25 @@
         "London",
         "New York, NY"
       ],
-      "confidence": null,
+      "confidence": 0.8,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-29",
-          "snippet": null
+          "source_url": "[careers]",
+          "crawled_at": "2023-10-11",
+          "snippet": "Discover your next job at Sierra. Open roles: Software Engineer, Agent (New Grad) in San Francisco, CA, London, and New York, NY."
+        },
+        {
+          "source_url": "[product]",
+          "crawled_at": "2023-10-11",
+          "snippet": "Agent OS: Sierra's platform for building, managing, and optimizing highly efficient AI agents."
         }
       ]
     }
   ],
   "products": [
     {
-      "product_id": "agent_os",
+      "product_id": "1",
       "company_id": "sierra",
       "name": "Agent OS",
       "description": "Sierra's platform for building, managing, and optimizing highl",
@@ -125,7 +133,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.sierra.com/product",
+          "source_url": "[product] Product overview | Sierra",
           "crawled_at": "2023-11-01",
           "snippet": null
         }
@@ -141,15 +149,15 @@
       "is_founder": true,
       "start_date": null,
       "end_date": null,
-      "previous_affiliation": "Co-CEO of Salesforce, Founder of Quip, CTO of Facebook, Google (co-created Google Maps)",
+      "previous_affiliation": "Co-CEO of Salesforce, Founder of Quip, CTO of Facebook, Google",
       "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "about",
-          "crawled_at": "2025-11-05",
-          "snippet": null
+          "source_url": "https://example.com/about",
+          "crawled_at": "2023-11-01",
+          "snippet": "Bret is Co-Founder of Sierra. Most recently, he served as Co-CEO of Salesforce. Prior to Salesforce, Bret founded Quip and was CTO of Facebook. He started his career at Google, where he co-created Google Maps."
         }
       ]
     },
@@ -161,15 +169,15 @@
       "is_founder": true,
       "start_date": null,
       "end_date": null,
-      "previous_affiliation": "18 years at Google, led Google Labs, Google’s AR/VR effort, Project Starline, Google Lens, product and de",
+      "previous_affiliation": "Led Google Labs, Google’s AR/VR effort, Project Starline, Google Lens",
       "education": null,
       "linkedin": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "about",
-          "crawled_at": "2025-11-05",
-          "snippet": null
+          "source_url": "https://example.com/about",
+          "crawled_at": "2023-11-01",
+          "snippet": "Clay is Co-Founder of Sierra. Previously, Clay spent 18 years at Google, where he most recently led Google Labs. Earlier, he started and led Google’s AR/VR effort, Project Starline, and Google Lens."
         }
       ]
     }
@@ -177,31 +185,26 @@
   "visibility": [
     {
       "company_id": "sierra",
-      "as_of": "2023-11-02",
-      "news_mentions_30d": 3,
+      "as_of": "2023-11-03",
+      "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com/news1",
-          "crawled_at": "2023-11-02",
-          "snippet": "How AI is reinventing software business models"
+          "source_url": "https://www.sierra.com/blog",
+          "crawled_at": "2023-11-03",
+          "snippet": "Sierra Agent OS 2.0: from answers to memory and action. At Sierra Summit, we unveiled the future of AI agents."
         },
         {
-          "source_url": "https://example.com/news2",
-          "crawled_at": "2023-11-02",
-          "snippet": "AI agents’ role in an evolving global landscape"
-        },
-        {
-          "source_url": "https://example.com/news3",
-          "crawled_at": "2023-11-02",
-          "snippet": "2025 Forbes AI50"
+          "source_url": "https://www.sierra.com/about",
+          "crawled_at": "2023-11-03",
+          "snippet": "In the news: How AI is reinventing software business models, AI agents’ role in an evolving global landscape, 2025 Forbes AI50."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:37:26.742004",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:37:05.845510",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

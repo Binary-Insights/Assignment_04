@@ -19,12 +19,12 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-11-01",
         "snippet": "Copyright © 2025 Abridge Al, Inc."
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-06",
+        "crawled_at": "2023-11-01",
         "snippet": "abridge.com"
       }
     ]
@@ -44,7 +44,13 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "[product] Abridge in the Press",
+          "crawled_at": "2025-08-12",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "2",
@@ -60,15 +66,21 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "[product] Abridge in the Press",
+          "crawled_at": "2025-04-29",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "3",
       "company_id": "abridge",
       "occurred_on": "2025-11-03",
       "event_type": "other",
-      "title": "Abridge on Stage at NVIDIA GTC With Perpelxity, Cognition, and Crowdstrike",
-      "description": null,
+      "title": "Abridge on Stage at NVIDIA GTC",
+      "description": "Abridge on stage at NVIDIA GTC with Perpelxity, Cognition, and Crowdstrike.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -76,13 +88,19 @@
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "[blog] Read more",
+          "crawled_at": "2025-11-03",
+          "snippet": null
+        }
+      ]
     }
   ],
   "snapshots": [
     {
       "company_id": "abridge",
-      "as_of": "2023-10-11",
+      "as_of": "2023-11-02",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": 53,
@@ -106,7 +124,8 @@
       "active_products": [
         "Real Time Prior Authorization",
         "Revenue Cycle",
-        "Nursing AI",
+        "Nursing",
+        "AI",
         "Contextual Reasoning Engine"
       ],
       "geo_presence": null,
@@ -114,9 +133,9 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "abridge.com",
-          "crawled_at": "2023-10-11",
-          "snippet": "Abridge Jobs Open Positions (53) Filters: Reset filters Department All Departments Builder Foundations Engineering Platform Engineering Security ML Engineering Product Product Design Product Engineering Science Commercial Partner Experience Implement"
+          "source_url": "careers",
+          "crawled_at": "2023-11-02",
+          "snippet": "Abridge Jobs Open Positions (53)"
         }
       ]
     }
@@ -126,7 +145,7 @@
       "product_id": "1",
       "company_id": "abridge",
       "name": "Clinically Accurate Summaries",
-      "description": "Provides clinically accurate summaries and medical terms across specialties. Multilingual Recognizes, understands, and takes accurate notes across a wide range of languages. Integrated Workflows Adapts seamlessly to your existing implementations.",
+      "description": "Provides clinically accurate summaries and medical terms across specialties. Multilingual. Recognizes, understands, and takes accurate notes across a wide range of languages. Integrated Workflows. Adapts seamlessly to your existing implementations.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -154,7 +173,9 @@
       "integration_partners": null,
       "github_repo": null,
       "license_type": null,
-      "reference_customers": null,
+      "reference_customers": [
+        "AltaMed Health Services Corporation"
+      ],
       "schema_version": "2.0.0",
       "provenance": [
         {
@@ -167,7 +188,7 @@
   ],
   "leadership": [
     {
-      "person_id": "shiv-rao-md",
+      "person_id": "shiv-rao",
       "company_id": "abridge",
       "name": "Shiv Rao, MD",
       "role": "CEO, Co-Founder",
@@ -180,14 +201,14 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "source",
+          "source_url": "about",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "person_id": "zack-lipton-phd",
+      "person_id": "zack-lipton",
       "company_id": "abridge",
       "name": "Zack Lipton, PhD",
       "role": "CTO, Co-Founder",
@@ -200,7 +221,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "source",
+          "source_url": "about",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
@@ -220,7 +241,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "source",
+          "source_url": "about",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
@@ -240,7 +261,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "source",
+          "source_url": "about",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
@@ -260,7 +281,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "source",
+          "source_url": "about",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
@@ -280,7 +301,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "source",
+          "source_url": "about",
           "crawled_at": "2023-10-01",
           "snippet": null
         }
@@ -290,8 +311,8 @@
   "visibility": [
     {
       "company_id": "abridge",
-      "as_of": "2023-11-01",
-      "news_mentions_30d": 2,
+      "as_of": "2023-10-06",
+      "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
@@ -299,17 +320,17 @@
       "provenance": [
         {
           "source_url": "abridge.com",
-          "crawled_at": "2023-11-01",
-          "snippet": "August 12, 2025\nAnnouncing Real Time Prior Authorization at the Point of Conversation"
+          "crawled_at": "2023-10-06",
+          "snippet": "Announcing Real Time Prior Authorization at the Point of Conversation"
         },
         {
           "source_url": "abridge.com",
-          "crawled_at": "2023-11-01",
-          "snippet": "April 29, 2025\nAltaMed Health Services Corporation Partners with Abridge to Bring Leading AI Technology to Multilingual Com"
+          "crawled_at": "2023-10-06",
+          "snippet": "AltaMed Health Services Corporation Partners with Abridge to Bring Leading AI Technology to Multilingual Com"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:16:44.340115",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:25:19.109398",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

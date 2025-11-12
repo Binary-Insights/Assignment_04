@@ -6,7 +6,7 @@
     "website": null,
     "hq_city": "London",
     "hq_state": null,
-    "hq_country": "UK",
+    "hq_country": null,
     "founded_year": null,
     "categories": [
       "AI Audio",
@@ -22,208 +22,26 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-17",
+        "crawled_at": "2023-10-11",
         "snippet": "ElevenLabs opens European HQ in London"
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-17",
-        "snippet": "We're doubling down on UK’s capital as center for worldwide operations"
-      },
-      {
-        "source_url": "about",
-        "crawled_at": "2023-10-17",
+        "crawled_at": "2023-10-11",
         "snippet": "Create with the highest quality AI Audio"
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-17",
+        "crawled_at": "2023-10-11",
         "snippet": "Pioneer the future of Audio AI"
       }
     ]
   },
-  "events": [
-    {
-      "event_id": "1",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-09-27",
-      "event_type": "partnership",
-      "title": "Partnership with Ukrainian Ministry of Digital Transformation",
-      "description": "ElevenLabs partners with the Ministry of Digital Transformation to add voice to core services.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Company",
-          "crawled_at": "2025-09-27",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "2",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-09-16",
-      "event_type": "partnership",
-      "title": "Partnership with Audacy",
-      "description": "ElevenLabs’ Synthetic Voice Capabilities to Augment Audacy Programming and Production Workflows.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[about] Customer stories",
-          "crawled_at": "2025-09-16",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "3",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-09-08",
-      "event_type": "partnership",
-      "title": "Partnership with Fábio Porchat in Brazil",
-      "description": "Launching our first campaign in Brazil with iconic AI voice.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Apr 14, 2025",
-          "crawled_at": "2025-09-08",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "4",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-10-06",
-      "event_type": "product_release",
-      "title": "Introducing ElevenLabs Agents",
-      "description": "Renaming Conversational AI to ElevenLabs Agents, a complete platform for launching conversational agents.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Oct 6, 2025",
-          "crawled_at": "2025-10-06",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "5",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-06-03",
-      "event_type": "product_release",
-      "title": "Introducing Eleven v3 (alpha)",
-      "description": "The most expressive Text to Speech model.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Aug 5, 2025",
-          "crawled_at": "2025-06-03",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "6",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-04-14",
-      "event_type": "partnership",
-      "title": "Partnership with Sir Michael Caine",
-      "description": "Announcing Partnership with Sir Michael Caine to Newly Launched Iconic Marketplace.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[careers]",
-          "crawled_at": "2025-04-14",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "7",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-04-14",
-      "event_type": "office_open",
-      "title": "ElevenLabs opens European HQ in London",
-      "description": "Doubling down on UK’s capital as center for worldwide operations.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[about] Company",
-          "crawled_at": "2025-04-14",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "event_id": "8",
-      "company_id": "elevenlabs",
-      "occurred_on": "2025-04-14",
-      "event_type": "funding",
-      "title": "Matthew McConaughey as New Investor",
-      "description": "ElevenLabs welcomes Matthew McConaughey as a new investor.",
-      "round_name": null,
-      "investors": null,
-      "amount_usd": null,
-      "valuation_usd": null,
-      "actors": null,
-      "tags": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "[blog] Read article",
-          "crawled_at": "2025-04-14",
-          "snippet": null
-        }
-      ]
-    }
-  ],
+  "events": [],
   "snapshots": [
     {
       "company_id": "elevenlabs",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-09",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -254,28 +72,33 @@
         "Mobile App"
       ],
       "geo_presence": [
+        "30+ countries",
         "New York",
         "London",
-        "Warsaw",
-        "30+ countries"
+        "Warsaw"
       ],
       "confidence": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers]",
-          "crawled_at": "2023-10-06",
-          "snippet": "Our diverse team spans 30+ countries with hubs in New York, London, and Warsaw."
+          "source_url": "[careers] ElevenLabs Careers: Pioneer the Future of Audio AI | Join Us",
+          "crawled_at": "2023-10-09",
+          "snippet": null
         },
         {
-          "source_url": "[about]",
-          "crawled_at": "2023-10-06",
-          "snippet": "ElevenLabs opens European HQ in London"
+          "source_url": "[about] Company",
+          "crawled_at": "2023-10-09",
+          "snippet": null
         },
         {
-          "source_url": "[careers]",
-          "crawled_at": "2023-10-06",
-          "snippet": "Creative Platform, Agents Platform, Developers, Text to Speech (TTS), Speech to Text, Realtime Speech to Text, Voice Changer, Text to Sound Effects, Voice Cloning, Voice Isolator, AI Music Generator, Studio, Dubbing Studio, Voice Library, Audio Native, ElevenStudios, API, Voiceover Studio, ElevenReader, Mobile App."
+          "source_url": "[about] Customer stories",
+          "crawled_at": "2023-10-09",
+          "snippet": null
+        },
+        {
+          "source_url": "[careers] What we offer",
+          "crawled_at": "2023-10-09",
+          "snippet": null
         }
       ]
     }
@@ -296,8 +119,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -317,8 +140,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -338,8 +161,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -359,8 +182,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -380,8 +203,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -401,8 +224,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -422,8 +245,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -443,8 +266,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -464,8 +287,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -485,8 +308,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -506,8 +329,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -527,8 +350,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -548,8 +371,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -569,8 +392,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -590,8 +413,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -611,8 +434,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -632,8 +455,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
@@ -653,34 +476,14 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "provided_content",
-          "crawled_at": "2023-10-01",
+          "source_url": "web_content",
+          "crawled_at": "2023-10-06",
           "snippet": null
         }
       ]
     }
   ],
   "leadership": [
-    {
-      "person_id": "bill-weihl",
-      "company_id": "elevenlabs",
-      "name": "Bill Weihl",
-      "role": "Climate Policy Advocate",
-      "is_founder": false,
-      "start_date": null,
-      "end_date": null,
-      "previous_affiliation": null,
-      "education": null,
-      "linkedin": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-01",
-          "snippet": "Bill Weihl continues to fight for climate policy progress while b"
-        }
-      ]
-    },
     {
       "person_id": "matthew-mcconaughey",
       "company_id": "elevenlabs",
@@ -695,7 +498,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com",
+          "source_url": "[blog] Company",
           "crawled_at": "2023-10-01",
           "snippet": "ElevenLabs Welcomes Matthew McConaughey as New Investor"
         }
@@ -711,30 +514,9 @@
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "https://example.com/elevenlabs-european-hq",
-          "crawled_at": "2023-10-06",
-          "snippet": "ElevenLabs opens European HQ in London"
-        },
-        {
-          "source_url": "https://example.com/elevenlabs-audacy-partnership",
-          "crawled_at": "2023-10-06",
-          "snippet": "Audacy and ElevenLabs strike partnership"
-        },
-        {
-          "source_url": "https://example.com/elevenlabs-ukraine-partnership",
-          "crawled_at": "2023-10-06",
-          "snippet": "Ukrainian Public Services Will Speak Through AI: Announcing a Partnership with ElevenLabs"
-        },
-        {
-          "source_url": "https://example.com/elevenlabs-matthew-mcconaughey-investment",
-          "crawled_at": "2023-10-06",
-          "snippet": "ElevenLabs Welcomes Matthew McConaughey as New Investor"
-        }
-      ]
+      "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:24:15.681165",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:30:45.973103",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

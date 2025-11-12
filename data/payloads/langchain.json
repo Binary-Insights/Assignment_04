@@ -19,17 +19,17 @@
     "provenance": [
       {
         "source_url": "product",
-        "crawled_at": "2023-10-10",
-        "snippet": "LangChain is an open source framework with a pre-built agent architecture and integrations for any model or tool"
+        "crawled_at": "2023-10-06",
+        "snippet": "LangChain is an open source framework with a pre-built agent architecture and integrations for any model or tool — so you can build agents that adapt as fast as the ecosystem evolves."
       },
       {
         "source_url": "product",
-        "crawled_at": "2023-10-10",
-        "snippet": "LangChain runs on LangGraph’s durable runtime — giving agents built-in persistence, rewind, checkpointing, and human-in-the-loop support"
+        "crawled_at": "2023-10-06",
+        "snippet": "LangChain runs on LangGraph’s durable runtime — giving agents built-in persistence, rewind, checkpointing, and human-in-the-loop support."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-10",
+        "crawled_at": "2023-10-06",
         "snippet": "Our small and mighty team is growing fast Come join us We’re hiring across many teams."
       }
     ]
@@ -40,54 +40,106 @@
       "company_id": "langchain",
       "occurred_on": "2023-10-01",
       "event_type": "product_release",
-      "title": "Durable Runtime Launch",
-      "description": "LangChain launches Durable Runtime on LangGraph, providing agents with built-in persistence, rewind, checkpointing, and human-in-the-loop support.",
+      "title": "LangChain Durable Runtime Launch",
+      "description": "LangChain runs on LangGraph’s durable runtime — giving agents built-in persistence, rewind, checkpointing, and human-in-the-loop support.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
       "actors": null,
-      "tags": null,
+      "tags": [
+        "product",
+        "launch"
+      ],
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.langchain.com/product/durable-runtime",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "2",
       "company_id": "langchain",
       "occurred_on": "2023-10-01",
       "event_type": "product_release",
-      "title": "LangSmith Deployment",
-      "description": "LangChain announces the deployment of LangSmith, enhancing agent development and deployment capabilities.",
+      "title": "LangGraph Product Launch",
+      "description": "LangGraph is used for multi-agent research with specialized roles, long-running processes, use cases requiring human-in-the-loop approvals, and custom architectures with advanced control flow.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
       "actors": null,
-      "tags": null,
+      "tags": [
+        "product",
+        "launch"
+      ],
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.langchain.com/product/langgraph",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     },
     {
       "event_id": "3",
       "company_id": "langchain",
       "occurred_on": "2023-10-01",
-      "event_type": "hiring_spike",
-      "title": "LangChain Hiring Expansion",
-      "description": "LangChain is expanding its team and hiring across many teams.",
+      "event_type": "product_release",
+      "title": "LangSmith Deployment",
+      "description": "LangSmith Deployment is part of LangChain's product suite for observability and evaluation.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
       "valuation_usd": null,
       "actors": null,
-      "tags": null,
+      "tags": [
+        "product",
+        "launch"
+      ],
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.langchain.com/product/langsmith-deployment",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "4",
+      "company_id": "langchain",
+      "occurred_on": "2023-10-01",
+      "event_type": "hiring_spike",
+      "title": "LangChain Hiring Across Teams",
+      "description": "LangChain is hiring across many teams as part of its growth strategy.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": [
+        "hiring",
+        "growth"
+      ],
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.langchain.com/careers",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
     }
   ],
   "snapshots": [
     {
       "company_id": "langchain",
-      "as_of": "2023-10-10",
+      "as_of": "2023-10-06",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -107,26 +159,21 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about]",
-          "crawled_at": "2023-10-10",
+          "source_url": "https://www.langchain.com/about",
+          "crawled_at": "2023-10-06",
           "snippet": "Our small and mighty team is growing fast. Come join us. We’re hiring across many teams."
         },
         {
-          "source_url": "[product]",
-          "crawled_at": "2023-10-10",
+          "source_url": "https://www.langchain.com/product",
+          "crawled_at": "2023-10-06",
           "snippet": "LangChain is an open source framework with a pre-built agent architecture and integrations for any model or tool."
-        },
-        {
-          "source_url": "[product]",
-          "crawled_at": "2023-10-10",
-          "snippet": "LangChain runs on LangGraph’s durable runtime — giving agents built-in persistence, rewind, checkpointing, and human-in-the-loop support."
         }
       ]
     }
   ],
   "products": [
     {
-      "product_id": "1",
+      "product_id": "durable_runtime",
       "company_id": "langchain",
       "name": "Durable runtime",
       "description": "LangChain runs on LangGraph’s durable runtime — giving agents built-in persistence, rewind, checkpointing, and human-in-the-loop support. Instantly connect to your preferred LLM.",
@@ -141,13 +188,13 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "2",
+      "product_id": "trust_center",
       "company_id": "langchain",
       "name": "Trust Center",
       "description": "Build agents faster, your way. LangChain is an open source framework with a pre-built agent architecture and integrations for any model or tool — so you can build agents that adapt as needed.",
@@ -162,13 +209,13 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "3",
+      "product_id": "langgraph",
       "company_id": "langchain",
       "name": "LangGraph",
       "description": "LangGraph is often used for multi-agent research with specialized roles, long-running processes, use cases requiring human-in-the-loop approvals, and custom architectures with advanced control flow.",
@@ -183,13 +230,13 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
     },
     {
-      "product_id": "4",
+      "product_id": "langchain",
       "company_id": "langchain",
       "name": "LangChain",
       "description": "LangChain is an open source framework with pre-built agent architectures and integrations to models, tools, and databases to start building agents quickly.",
@@ -204,7 +251,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -221,12 +268,12 @@
       "end_date": null,
       "previous_affiliation": null,
       "education": null,
-      "linkedin": "https://www.linkedin.com/in/harrison-chase-96108126/",
+      "linkedin": "https://www.linkedin.com/in/harrison-chase-96107334/",
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.linkedin.com/in/harrison-chase-96108126/",
-          "crawled_at": "2023-10-06",
+          "source_url": "https://www.linkedin.com/in/harrison-chase-96107334/",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -235,7 +282,7 @@
   "visibility": [
     {
       "company_id": "langchain",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-09",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -243,13 +290,28 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.langchain.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "Millions of developers trust LangChain products to engineer reliable agents."
+          "source_url": "https://www.langchain.com/blog",
+          "crawled_at": "2023-10-09",
+          "snippet": null
+        },
+        {
+          "source_url": "https://www.langchain.com/about",
+          "crawled_at": "2023-10-09",
+          "snippet": null
+        },
+        {
+          "source_url": "https://www.langchain.com/product",
+          "crawled_at": "2023-10-09",
+          "snippet": null
+        },
+        {
+          "source_url": "https://www.langchain.com/careers",
+          "crawled_at": "2023-10-09",
+          "snippet": null
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:28:44.323913",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:32:32.878023",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

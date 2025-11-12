@@ -5,10 +5,14 @@
     "brand_name": null,
     "website": null,
     "hq_city": "San Francisco",
-    "hq_state": null,
+    "hq_state": "California",
     "hq_country": "USA",
-    "founded_year": null,
-    "categories": null,
+    "founded_year": 2025,
+    "categories": [
+      "Artificial Intelligence",
+      "Research",
+      "Product Development"
+    ],
     "related_companies": null,
     "total_raised_usd": null,
     "last_disclosed_valuation_usd": null,
@@ -19,13 +23,18 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-18",
+        "crawled_at": "2023-10-27",
         "snippet": "Thinking Machines Lab is an artificial intelligence research and product company."
       },
       {
         "source_url": "careers",
-        "crawled_at": "2023-10-18",
-        "snippet": "Software Engineer, Product San Francisco"
+        "crawled_at": "2023-10-27",
+        "snippet": "San Francisco"
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-27",
+        "snippet": "Thinking Machines Lab © 2025"
       }
     ]
   },
@@ -33,10 +42,10 @@
     {
       "event_id": "1",
       "company_id": "thinking_machine_labs",
-      "occurred_on": "2023-10-29",
+      "occurred_on": "2025-10-29",
       "event_type": "product_release",
       "title": "Announcing Tinker",
-      "description": "Thinking Machines Lab announced the release of Tinker, a new product.",
+      "description": "Thinking Machines Lab announced the release of Tinker, a new product aimed at enhancing AI research and training capabilities.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -46,8 +55,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[blog]",
-          "crawled_at": "2023-10-29",
+          "source_url": "https://thinkingmachineslab.com/blog",
+          "crawled_at": "2025-10-29",
           "snippet": null
         }
       ]
@@ -55,10 +64,10 @@
     {
       "event_id": "2",
       "company_id": "thinking_machine_labs",
-      "occurred_on": "2023-11-07",
+      "occurred_on": "2025-11-07",
       "event_type": "product_release",
       "title": "Tinker: Call for Community Projects",
-      "description": "Thinking Machines Lab called for community projects for their new product, Tinker.",
+      "description": "Thinking Machines Lab calls for community projects to utilize their new product, Tinker.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -68,8 +77,8 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[blog]",
-          "crawled_at": "2023-11-07",
+          "source_url": "https://thinkingmachineslab.com/blog",
+          "crawled_at": "2025-11-07",
           "snippet": null
         }
       ]
@@ -78,7 +87,7 @@
   "snapshots": [
     {
       "company_id": "thinking_machine_labs",
-      "as_of": "2023-11-27",
+      "as_of": "2023-11-23",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": 3,
@@ -107,13 +116,13 @@
       "provenance": [
         {
           "source_url": "[careers] Thinking Machines Lab",
-          "crawled_at": "2023-11-27",
-          "snippet": "Software Engineer, Product\nSan Francisco\nSoftware Engineer, Infrastructure Generalist\nSan Francisco\nTechnical Recruiter\nSan Francisco"
+          "crawled_at": "2023-11-23",
+          "snippet": null
         },
         {
           "source_url": "[product] Thinking Machines Lab",
-          "crawled_at": "2023-11-27",
-          "snippet": "Llama-3.2-1B\nLlama-3.2-3B\nLlama-3.1-8B\nLlama-3.1-70B\nDeepSeek-V3.1\nGPT-OSS-120B\nGPT-OSS-20B"
+          "crawled_at": "2023-11-23",
+          "snippet": null
         }
       ]
     }
@@ -123,16 +132,16 @@
       "product_id": "tinker",
       "company_id": "thinking_machine_labs",
       "name": "Tinker",
-      "description": "Tinker is a training API for developers. Control every aspect of model training and fine-tuning.",
+      "description": "Tinker is a training API for researchers and developers to control every aspect of model training and fine-tuning.",
       "pricing_model": "usage",
       "pricing_tiers_public": [
-        "Llama-3.2-1B: $0.03 Prefill, $0.09 Sample, $0.09 Train",
-        "Llama-3.2-3B: $0.06 Prefill, $0.18 Sample, $0.18 Train",
-        "Llama-3.1-8B: $0.13 Prefill, $0.40 Sample, $0.40 Train",
-        "Llama-3.1-70B: $1.05 Prefill, $3.16 Sample, $3.16 Train",
-        "DeepSeek-V3.1: $1.13 Prefill, $2.81 Sample, $3.38 Train",
-        "GPT-OSS-120B: $0.18 Prefill, $0.44 Sample, $0.52 Train",
-        "GPT-OSS-20B: $0.12 Prefill, $0.30 Sample, $0.36 Train"
+        "Llama-3.2-1B: $0.03-$0.09",
+        "Llama-3.2-3B: $0.06-$0.18",
+        "Llama-3.1-8B: $0.13-$0.40",
+        "Llama-3.1-70B: $1.05-$3.16",
+        "DeepSeek-V3.1: $1.13-$3.38",
+        "GPT-OSS-120B: $0.18-$0.52",
+        "GPT-OSS-20B: $0.12-$0.36"
       ],
       "ga_date": null,
       "integration_partners": null,
@@ -143,18 +152,18 @@
       "provenance": [
         {
           "source_url": "[product] Tinker - Thinking Machines Lab",
-          "crawled_at": "2023-11-24T10:00:00Z",
-          "snippet": "Tinker is a training API for developers. Control every aspect of model training and fine-tuning."
+          "crawled_at": "2023-10-27",
+          "snippet": null
         },
         {
-          "source_url": "[product] Can I download my model weights?",
-          "crawled_at": "2023-11-24T10:00:00Z",
-          "snippet": "How much do I have to pay to use Tinker? Tinker uses a pricing plan that reflects compute usage."
+          "source_url": "[product] $1.70 $2.04 Llama-3.2-1B $0.03 $0.09 $0.09 Llama-3.2-3B $0.06 $0.18 $0.18 Llama-3.1-8B $0.13 $0.40 $0.40 Llama-3.1-70B $1.05 $3.16 $3.16 DeepSeek-V3.1 $1.13 $2.81 $3.38 GPT-OSS-120B $0.18 $0.44 $0.52 GPT-OSS-20B $0.12 $0.30 $0.36 Thinking Machines La",
+          "crawled_at": "2023-10-27",
+          "snippet": null
         },
         {
-          "source_url": "[product] $1.70 $2.04 Llama-3.2-1B $0.03 $0.09 $0.09 Llama-3.2-3B $0.06 $0.18 $0.18 Llama-3.1-8B $0.13 $0.40 $0.40 Llama-3.1-70B $1.05 $3.16 $3.16 DeepSeek-V3.1 $1.13 $2.81 $3.38 GPT-OSS-120B $0.18 $0.44 $0.52 GPT-OSS-20B $0.12 $0.30 $0.36",
-          "crawled_at": "2023-11-24T10:00:00Z",
-          "snippet": "Pricing tiers for different models."
+          "source_url": "[product] Can I download my model weights? Yes, we have an API endpoint that lets you download any checkpoint you've saved. How much do I have to pay to use Tinker? Tinker uses a pricing plan that reflects compute usage. Model Prefill Sample Train Qwen3-4B-Ins",
+          "crawled_at": "2023-10-27",
+          "snippet": null
         }
       ]
     }
@@ -184,7 +193,7 @@
       "person_id": "jeremy-bernstein",
       "company_id": "thinking_machine_labs",
       "name": "Jeremy Bernstein",
-      "role": "Contributor",
+      "role": "Team Member",
       "is_founder": false,
       "start_date": null,
       "end_date": null,
@@ -204,7 +213,7 @@
   "visibility": [
     {
       "company_id": "thinking_machine_labs",
-      "as_of": "2023-11-07",
+      "as_of": "2023-11-25",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -213,6 +222,6 @@
       "provenance": []
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:43:37.534691",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:39:47.244430",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

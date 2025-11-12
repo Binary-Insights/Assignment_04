@@ -2,7 +2,7 @@
   "company_record": {
     "company_id": "baseten",
     "legal_name": "Baseten",
-    "brand_name": "Baseten",
+    "brand_name": null,
     "website": null,
     "hq_city": null,
     "hq_state": null,
@@ -19,18 +19,23 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-10",
-        "snippet": "© 2025 Baseten"
-      },
-      {
-        "source_url": "product",
-        "crawled_at": "2023-10-10",
+        "crawled_at": "2023-10-09",
         "snippet": "© 2025 Baseten"
       },
       {
         "source_url": "blog",
-        "crawled_at": "2023-10-10",
-        "snippet": "Baseten brings AI video to life on Nebius"
+        "crawled_at": "2023-10-09",
+        "snippet": "© 2025 Baseten"
+      },
+      {
+        "source_url": "careers",
+        "crawled_at": "2023-10-09",
+        "snippet": "© 2025 Baseten"
+      },
+      {
+        "source_url": "product",
+        "crawled_at": "2023-10-09",
+        "snippet": "© 2025 Baseten"
       }
     ]
   },
@@ -41,7 +46,7 @@
       "occurred_on": "2025-01-01",
       "event_type": "product_release",
       "title": "Baseten Training Is GA",
-      "description": "Baseten has made their training product generally available after positive feedback from early users.",
+      "description": "Baseten has made their training product GA for all customers after months of working with early users and receiving positive feedback.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -51,7 +56,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://baseten.com/blog/train-ai-models-when-you-want",
+          "source_url": "https://baseten.com/blog/train-ai-models-ga",
           "crawled_at": "2025-01-01",
           "snippet": null
         }
@@ -61,7 +66,7 @@
   "snapshots": [
     {
       "company_id": "baseten",
-      "as_of": "2023-10-09",
+      "as_of": "2023-10-11",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -81,23 +86,14 @@
         "Compound AI",
         "Embeddings"
       ],
-      "geo_presence": [
-        "San Francisco",
-        "New York",
-        "Remote"
-      ],
-      "confidence": null,
+      "geo_presence": null,
+      "confidence": 1.0,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-09",
-          "snippet": "[product] Deployment options\nBaseten Cloud\nSelf-hosted\nHybrid\nSolutions\nEnterprise\nTranscription\nImage generation\nText-to-speech\nLarge language models\nCompound AI\nEmbeddings\nResources\nBlog\nGuides\nEvents\nCustomers\nPartner\nCareers\nContact us\nDeveloper\nDocumentat"
-        },
-        {
-          "source_url": "https://example.com",
-          "crawled_at": "2023-10-09",
-          "snippet": "[careers] San Francisco / New York / Remote\nSan Francisco / New York / Remote\nApply now\nController\nSan Francisco\nSan Francisco\nApply now\nDon't see a fitting open role?\nJoin our Talent Community!\nDon't see a fitting open role?\nJoin our Talent Community!\nExplore"
+          "source_url": "extracted_content",
+          "crawled_at": "2023-10-11",
+          "snippet": "[product] Deployment options\nBaseten Cloud\nSelf-hosted\nHybrid\nSolutions\nEnterprise\nTranscription\nImage generation\nText-to-speech\nLarge language models\nCompound AI\nEmbeddings"
         }
       ]
     }
@@ -107,7 +103,7 @@
       "product_id": "1",
       "company_id": "baseten",
       "name": "Baseten Cloud",
-      "description": "A cloud-based deployment option for Baseten products.",
+      "description": "Deployment option for hosting on Baseten's cloud infrastructure.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -119,7 +115,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -128,7 +124,7 @@
       "product_id": "2",
       "company_id": "baseten",
       "name": "Self-hosted",
-      "description": "A self-hosted deployment option for Baseten products.",
+      "description": "Deployment option for hosting on your own infrastructure.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -140,7 +136,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -149,7 +145,7 @@
       "product_id": "3",
       "company_id": "baseten",
       "name": "Hybrid",
-      "description": "A hybrid deployment option for Baseten products.",
+      "description": "Deployment option combining cloud and on-premise hosting.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -161,7 +157,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -170,7 +166,7 @@
       "product_id": "4",
       "company_id": "baseten",
       "name": "Enterprise",
-      "description": "Enterprise solutions offered by Baseten.",
+      "description": "Solutions for large organizations.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -182,7 +178,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -191,7 +187,7 @@
       "product_id": "5",
       "company_id": "baseten",
       "name": "Transcription",
-      "description": "Transcription solutions offered by Baseten.",
+      "description": "Solution for transcribing audio to text.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -203,7 +199,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -212,7 +208,7 @@
       "product_id": "6",
       "company_id": "baseten",
       "name": "Image generation",
-      "description": "Image generation solutions offered by Baseten.",
+      "description": "Solution for generating images from text prompts.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -224,7 +220,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -233,7 +229,7 @@
       "product_id": "7",
       "company_id": "baseten",
       "name": "Text-to-speech",
-      "description": "Text-to-speech solutions offered by Baseten.",
+      "description": "Solution for converting text to speech.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -245,7 +241,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -254,7 +250,7 @@
       "product_id": "8",
       "company_id": "baseten",
       "name": "Large language models",
-      "description": "Large language model solutions offered by Baseten.",
+      "description": "Solutions involving large language models.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -266,7 +262,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -275,7 +271,7 @@
       "product_id": "9",
       "company_id": "baseten",
       "name": "Compound AI",
-      "description": "Compound AI solutions offered by Baseten.",
+      "description": "Baseten Chains enables granular hardware and autoscaling for compound AI.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -287,7 +283,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -296,7 +292,7 @@
       "product_id": "10",
       "company_id": "baseten",
       "name": "Embeddings",
-      "description": "Embeddings solutions offered by Baseten.",
+      "description": "Baseten Embeddings Inference (BEI) has over 2x higher throughput and 10% lower latency than any other solution on the market.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -308,7 +304,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -317,7 +313,7 @@
       "product_id": "11",
       "company_id": "baseten",
       "name": "Dedicated deployments",
-      "description": "Dedicated deployment solutions offered by Baseten.",
+      "description": "Dedicated infrastructure for specific deployment needs.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -329,7 +325,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -338,7 +334,7 @@
       "product_id": "12",
       "company_id": "baseten",
       "name": "Model APIs",
-      "description": "Model API solutions offered by Baseten.",
+      "description": "APIs for model interaction and deployment.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -350,7 +346,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -359,7 +355,7 @@
       "product_id": "13",
       "company_id": "baseten",
       "name": "Training",
-      "description": "Training solutions offered by Baseten.",
+      "description": "Train AI models on Baseten's infrastructure.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -371,7 +367,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -380,7 +376,7 @@
       "product_id": "14",
       "company_id": "baseten",
       "name": "Inference Stack",
-      "description": "Inference stack solutions offered by Baseten.",
+      "description": "Infrastructure for model inference.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -392,7 +388,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -401,7 +397,7 @@
       "product_id": "15",
       "company_id": "baseten",
       "name": "Model Runtimes",
-      "description": "Model runtime solutions offered by Baseten.",
+      "description": "Runtime environments for models.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -413,7 +409,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -422,7 +418,7 @@
       "product_id": "16",
       "company_id": "baseten",
       "name": "Infrastructure",
-      "description": "Infrastructure solutions offered by Baseten.",
+      "description": "Infrastructure solutions for AI deployment.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -434,7 +430,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -443,7 +439,7 @@
       "product_id": "17",
       "company_id": "baseten",
       "name": "Multi-cloud Capacity Management",
-      "description": "Multi-cloud capacity management solutions offered by Baseten.",
+      "description": "Manage capacity across multiple cloud providers.",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -455,70 +451,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-07",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "18",
-      "company_id": "baseten",
-      "name": "Developer Experience",
-      "description": "Developer experience solutions offered by Baseten.",
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-07",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "19",
-      "company_id": "baseten",
-      "name": "Chains",
-      "description": "Chains solutions offered by Baseten.",
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-07",
-          "snippet": null
-        }
-      ]
-    },
-    {
-      "product_id": "20",
-      "company_id": "baseten",
-      "name": "Model management",
-      "description": "Model management solutions offered by Baseten.",
-      "pricing_model": null,
-      "pricing_tiers_public": null,
-      "ga_date": null,
-      "integration_partners": null,
-      "github_repo": null,
-      "license_type": null,
-      "reference_customers": null,
-      "schema_version": "2.0.0",
-      "provenance": [
-        {
-          "source_url": "web_content",
-          "crawled_at": "2023-10-07",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -540,7 +473,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -560,7 +493,7 @@
       "provenance": [
         {
           "source_url": "web_content",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -569,15 +502,26 @@
   "visibility": [
     {
       "company_id": "baseten",
-      "as_of": "2023-10-07",
+      "as_of": "2023-10-06",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://www.baseten.com/blog",
+          "crawled_at": "2023-10-06",
+          "snippet": "Train AI Models When You Want. Deploy on Ultra Performant Infrastructure. Baseten Training Is GA. After months of working with early users, we have received very positive feedback and are ready to make our training product GA for all Baseten customers."
+        },
+        {
+          "source_url": "https://www.baseten.com/about",
+          "crawled_at": "2023-10-06",
+          "snippet": "I want the best possible experience for our users, but also for our company. Baseten has hands down provided both. We really appreciate the level of commitment and support from your entire team. Nathan Sobo, Co-founder"
+        }
+      ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:18:40.662882",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:27:12.694819",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

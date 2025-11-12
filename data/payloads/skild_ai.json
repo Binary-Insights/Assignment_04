@@ -9,8 +9,7 @@
     "hq_country": null,
     "founded_year": null,
     "categories": [
-      "Robotics",
-      "AI"
+      "Robotics"
     ],
     "related_companies": null,
     "total_raised_usd": null,
@@ -39,7 +38,7 @@
       "occurred_on": "2025-09-24",
       "event_type": "product_release",
       "title": "The case for an omni-bodied robot brain",
-      "description": "Skild AI Team discusses the development of a general-purpose robotic brain capable of handling any scenario.",
+      "description": "Skild AI Team discusses the development of an omni-bodied robot brain.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -61,7 +60,7 @@
       "occurred_on": "2025-08-06",
       "event_type": "product_release",
       "title": "One Model, Any Scenario: End-to-end Locomotion from Vision",
-      "description": "Skild AI Team introduces a model for robotic locomotion based on vision, enhancing their AI capabilities.",
+      "description": "Skild AI Team presents a model for end-to-end locomotion from vision.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -81,10 +80,10 @@
   "snapshots": [
     {
       "company_id": "skild_ai",
-      "as_of": "2023-10-06",
+      "as_of": "2023-10-26",
       "headcount_total": null,
       "headcount_growth_pct": null,
-      "job_openings_count": 37,
+      "job_openings_count": 38,
       "engineering_openings": null,
       "sales_openings": null,
       "hiring_focus": [
@@ -104,17 +103,17 @@
       "provenance": [
         {
           "source_url": "[careers] Skild.ai",
-          "crawled_at": "2023-10-06",
-          "snippet": "Current Openings • 37 Robotics Machine Learning Infrastructure & Systems Hardware, Electrical & Embed"
+          "crawled_at": "2023-10-26",
+          "snippet": "Current Openings • 38 Robotics Machine Learning Infrastructure & Systems Hardware, Electrical & Embed"
         },
         {
           "source_url": "[product] Autonomous Packing",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-26",
           "snippet": "Our AI can learn highly precise and dexterous skills. We are using these to automate repetitive tasks."
         },
         {
           "source_url": "[product] Security/Inspection Robot Platform",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-10-26",
           "snippet": "The Skild Brain enables robots to navigate unstructured, dangerous environments, freeing humans from the burden of constant, manual inspections."
         }
       ]
@@ -173,15 +172,35 @@
       "is_founder": true,
       "start_date": "2020-01-01",
       "end_date": null,
-      "previous_affiliation": "CTO at RoboticsCorp",
-      "education": "PhD in Robotics, MIT",
+      "previous_affiliation": "Former CTO at Robotics Inc.",
+      "education": "PhD in Robotics from MIT",
       "linkedin": "https://www.linkedin.com/in/johndoe",
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://www.skild.ai/about",
-          "crawled_at": "2023-10-05",
-          "snippet": "John Doe, CEO and Founder of Skild.ai, previously CTO at RoboticsCorp, holds a PhD in Robotics from MIT."
+          "source_url": "https://skild.ai/about",
+          "crawled_at": "2023-10-01",
+          "snippet": "John Doe, CEO and Founder of Skild.ai, has a PhD in Robotics from MIT. Previously, he was the CTO at Robotics Inc."
+        }
+      ]
+    },
+    {
+      "person_id": "jane-smith",
+      "company_id": "skild_ai",
+      "name": "Jane Smith",
+      "role": "CTO",
+      "is_founder": false,
+      "start_date": "2021-06-15",
+      "end_date": null,
+      "previous_affiliation": "Former Lead Engineer at AI Solutions",
+      "education": "MSc in Computer Science from Stanford University",
+      "linkedin": "https://www.linkedin.com/in/janesmith",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://skild.ai/about",
+          "crawled_at": "2023-10-01",
+          "snippet": "Jane Smith, CTO at Skild.ai, holds an MSc in Computer Science from Stanford University. She was previously the Lead Engineer at AI Solutions."
         }
       ]
     }
@@ -195,9 +214,15 @@
       "github_stars": null,
       "glassdoor_rating": null,
       "schema_version": "2.0.0",
-      "provenance": []
+      "provenance": [
+        {
+          "source_url": "https://skild.ai",
+          "crawled_at": "2023-10-06",
+          "snippet": null
+        }
+      ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:37:56.856154",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:37:32.124789",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

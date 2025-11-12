@@ -19,18 +19,18 @@
     "provenance": [
       {
         "source_url": "about",
-        "crawled_at": "2023-10-03",
+        "crawled_at": "2023-10-06",
         "snippet": "Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
       },
       {
         "source_url": "about",
-        "crawled_at": "2023-10-03",
+        "crawled_at": "2023-10-06",
         "snippet": "Databricks Inc.\n160 Spear Street, 15th Floor\nSan Francisco, CA 94105"
       },
       {
-        "source_url": "careers",
-        "crawled_at": "2023-10-03",
-        "snippet": "Databricks Inc.\n160 Spear Street, 15th Floor\nSan Francisco, CA 94105"
+        "source_url": "about",
+        "crawled_at": "2023-10-06",
+        "snippet": "Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
       }
     ]
   },
@@ -40,8 +40,8 @@
       "company_id": "databricks",
       "occurred_on": "2025-11-05",
       "event_type": "product_release",
-      "title": "Google’s Gemini Models on Databricks",
-      "description": "Google’s Gemini Models are now available on Databricks, enhancing AI capabilities.",
+      "title": "Native OpenAI Models Now Generally Available on Databricks",
+      "description": "Databricks announced the general availability of Native OpenAI models on their platform.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -56,8 +56,8 @@
       "company_id": "databricks",
       "occurred_on": "2025-11-05",
       "event_type": "product_release",
-      "title": "Native OpenAI Models Now Generally Available on Databricks",
-      "description": "OpenAI models are now generally available on Databricks, expanding the platform's AI offerings.",
+      "title": "Google’s Gemini Models on Databricks",
+      "description": "Databricks introduced Google's Gemini Models on their platform.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -70,10 +70,26 @@
     {
       "event_id": "3",
       "company_id": "databricks",
-      "occurred_on": "2025-11-06",
+      "occurred_on": "2025-11-11",
       "event_type": "product_release",
-      "title": "Supercharging AI Model Building: Data and Task Parallelism with Ray and Databricks",
-      "description": "Databricks introduces data and task parallelism with Ray to enhance AI model building.",
+      "title": "Announcing state-of-the-art document intelligence on Databricks",
+      "description": "Databricks announced a new feature for state-of-the-art document intelligence.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": []
+    },
+    {
+      "event_id": "4",
+      "company_id": "databricks",
+      "occurred_on": "2025-10-30",
+      "event_type": "partnership",
+      "title": "Beyond the Partnership: How 100+ Customers Are Already Transforming Business with Databricks and Palantir",
+      "description": "Databricks and Palantir partnership is transforming businesses for over 100 customers.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -107,35 +123,30 @@
         "Application Development"
       ],
       "geo_presence": [
-        "San Francisco, CA, USA"
+        "San Francisco"
       ],
-      "confidence": null,
+      "confidence": 0.9,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] Headquartered in San Francisco, with offices around the world, Databricks is on a mission to simplify and democratize data and AI, helping data and AI teams solve the world’s toughest problems.",
+          "source_url": "databricks.com",
           "crawled_at": "2023-10-11",
-          "snippet": null
+          "snippet": "Headquartered in San Francisco, with offices around the world, Databricks is on a mission to simplify and democratize data and AI."
         },
         {
-          "source_url": "[careers] At Databricks, we’re innovators, builders and truthseekers. We have a proven track record as category creators. And now, we’re building data intelligence, helping the world’s largest companies use better data to build smarter AI. Over 60% of the Fort",
+          "source_url": "databricks.com",
           "crawled_at": "2023-10-11",
-          "snippet": null
-        },
-        {
-          "source_url": "[about] With origins in academia and the open source community, Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog.",
-          "crawled_at": "2023-10-11",
-          "snippet": null
+          "snippet": "Databricks Platform\nPlatform Overview\nSharing\nGovernance\nArtificial Intelligence\nBusiness Intelligence\nDatabase\nData Management\nData Warehousing\nData Engineering\nData Science\nApplication Development"
         }
       ]
     }
   ],
   "products": [
     {
-      "product_id": "databricks_platform",
+      "product_id": "1",
       "company_id": "databricks",
       "name": "Databricks Platform",
-      "description": "A unified platform for data, offering capabilities in data management, data warehousing, data engineering, data science, and application development.",
+      "description": "A unified platform for data",
       "pricing_model": null,
       "pricing_tiers_public": null,
       "ga_date": null,
@@ -146,9 +157,9 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[product]",
-          "crawled_at": "2023-10-10",
-          "snippet": "Product\nDatabricks Platform\nPlatform Overview\nA unified platform for data"
+          "source_url": "web content",
+          "crawled_at": "2023-10-01",
+          "snippet": null
         }
       ]
     }
@@ -160,17 +171,57 @@
       "name": "Ali Ghodsi",
       "role": "CEO",
       "is_founder": true,
-      "start_date": null,
+      "start_date": "2013-01-01",
       "end_date": null,
-      "previous_affiliation": "Adjunct Professor at UC Berkeley",
+      "previous_affiliation": "Researcher at UC Berkeley",
       "education": "Ph.D. in Computer Science from KTH Royal Institute of Technology",
       "linkedin": "https://www.linkedin.com/in/alighodsi",
       "schema_version": "2.0.0",
       "provenance": [
         {
           "source_url": "https://www.databricks.com/company/about-us",
-          "crawled_at": "2023-10-09",
-          "snippet": "With origins in academia and the open source community, Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "matei-zaharia",
+      "company_id": "databricks",
+      "name": "Matei Zaharia",
+      "role": "CTO",
+      "is_founder": true,
+      "start_date": "2013-01-01",
+      "end_date": null,
+      "previous_affiliation": "Researcher at UC Berkeley",
+      "education": "Ph.D. in Computer Science from UC Berkeley",
+      "linkedin": "https://www.linkedin.com/in/matei-zaharia",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.databricks.com/company/about-us",
+          "crawled_at": "2023-10-01",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "person_id": "patrick-wendell",
+      "company_id": "databricks",
+      "name": "Patrick Wendell",
+      "role": "Co-Founder",
+      "is_founder": true,
+      "start_date": "2013-01-01",
+      "end_date": null,
+      "previous_affiliation": "Software Engineer at Cloudera",
+      "education": "M.S. in Computer Science from UC Berkeley",
+      "linkedin": "https://www.linkedin.com/in/patrickwendell",
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "https://www.databricks.com/company/about-us",
+          "crawled_at": "2023-10-01",
+          "snippet": null
         }
       ]
     }
@@ -178,7 +229,7 @@
   "visibility": [
     {
       "company_id": "databricks",
-      "as_of": "2023-11-01",
+      "as_of": "2023-10-09",
       "news_mentions_30d": null,
       "avg_sentiment": null,
       "github_stars": null,
@@ -186,23 +237,23 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "https://databricks.com/company/press",
-          "crawled_at": "2023-11-01",
-          "snippet": "Press\nAwards and Recognition\nNewsroom\nSecurity and Trust"
+          "source_url": "https://databricks.com/blog",
+          "crawled_at": "2023-10-09",
+          "snippet": "Latest Articles on Data Science, AI, and Analytics | Databricks Blog"
         },
         {
-          "source_url": "https://databricks.com/company/about",
-          "crawled_at": "2023-11-01",
-          "snippet": "Awards and Recognition\nNewsroom\nSecurity and Trust"
+          "source_url": "https://databricks.com/careers",
+          "crawled_at": "2023-10-09",
+          "snippet": "Careers at Databricks | Databricks"
         },
         {
-          "source_url": "https://databricks.com/company/careers",
-          "crawled_at": "2023-11-01",
-          "snippet": "Awards and Recognition\nNewsroom\nSecurity and Trust"
+          "source_url": "https://databricks.com/about",
+          "crawled_at": "2023-10-09",
+          "snippet": "With origins in academia and the open source community, Databricks was founded in 2013 by the original creators of the lakehouse architecture and open source projects Apache Spark™, Delta Lake, MLflow and Unity Catalog."
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:22:25.021955",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T04:29:31.943120",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }
