@@ -1468,7 +1468,7 @@ def process_company(company_slug: str, verbose: bool = False):
         payloads_dir = Path("data/payloads") 
         payloads_dir.mkdir(parents=True, exist_ok=True)
         
-        payload_file = payloads_dir / f"{company_id}.json"
+        payload_file = payloads_dir / f"{company_slug}.json"
         with open(payload_file, 'w', encoding='utf-8') as f:
             json.dump(payload.model_dump(mode='json'), f, indent=2, ensure_ascii=False, default=str)
         

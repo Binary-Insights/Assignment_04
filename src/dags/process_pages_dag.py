@@ -291,4 +291,3 @@ with DAG(
     else:
         # If no tasks, go directly to verify
         load_companies >> verify_completion
-

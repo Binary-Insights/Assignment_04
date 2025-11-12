@@ -1,0 +1,138 @@
+{
+  "company_slug": "harvey",
+  "structured": {
+    "company_name": "Harvey",
+    "company_slug": "harvey",
+    "pipeline_type": "structured",
+    "timestamp": "2025-11-12T03:02:31.970752Z",
+    "markdown_file": "markdown/harvey/structured.md",
+    "content": "## Company Overview\n\nHarvey is a private AI startup focused on providing AI solutions tailored for the legal industry. The company emphasizes its ability to integrate seamlessly across various tools, devices, and organizational structures, aligning with the practical needs of legal professionals.\n\n## Business Model and GTM\n\nThe company states that its platform, \"Work Without Boundaries: The AI Platform for Legal Work,\" is designed to operate across multiple environments, enhancing the efficiency of legal practices. Harvey's go-to-market strategy appears to involve partnerships with legal firms, as evidenced by its collaboration with Macfarlanes.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nHarvey has demonstrated growth momentum through several product releases, including new features for diligence review processes, enhanced security with new admin controls, and product breakthroughs that have expanded its global presence. Additionally, the company celebrated major customer wins in Q3, indicating positive traction in the market.\n\n## Visibility & Market Sentiment\n\nNot disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company is positioned to continue its growth trajectory by leveraging its AI platform to meet the evolving needs of legal professionals. The introduction of new features and global expansion efforts suggest a strategic focus on innovation and market penetration.\n\n## Disclosure Gaps\n\n- Specific dates for product releases and customer wins are not disclosed.\n- Funding details and investor profiles are not provided.\n- Information on market sentiment and visibility is incomplete.\n- Risks and challenges facing the company are not disclosed."
+  },
+  "rag": {
+    "company_name": "Harvey",
+    "company_slug": "harvey",
+    "pipeline_type": "rag",
+    "timestamp": "2025-11-12T03:02:48.023359Z",
+    "markdown_file": "markdown/harvey/rag.md",
+    "content": "## Company Overview\n\nHarvey is a private AI startup focused on delivering advanced AI solutions. The company emphasizes its commitment to building the best AI solutions for its customers and has been actively expanding its global presence. Harvey's platform includes features such as an Assistant, Vault, and Knowledge, aimed at unlocking professional-class AI capabilities for firms.\n\n## Business Model and GTM\n\nThe company states that it provides solutions to scale expertise and impact, driving firm-wide transformation. Harvey's offerings are tailored to streamline work processes, accelerate due diligence, contract analysis, and review, as well as reduce manual effort in litigation. The company partners with firms like Macfarlanes to enhance their operational efficiency and strategic focus.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nIn Q3, Harvey celebrated major customer wins and introduced product breakthroughs. The company has been expanding its global presence, indicating a positive growth trajectory. However, specific metrics or figures related to growth are not disclosed.\n\n## Visibility & Market Sentiment\n\nHarvey has been active in sharing its progress through press releases and partnership announcements. The company is positioning itself as a leader in AI solutions, with a focus on innovation and customer success. However, detailed market sentiment analysis or third-party validation is not provided.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is committed to deepening its focus on building the best AI solutions for its customers. With ongoing product innovations and global expansion, Harvey appears to be on a positive trajectory. However, specific future plans or strategic initiatives are not disclosed.\n\n## Disclosure Gaps\n\n- Funding and investor profile details are not disclosed.\n- Specific growth metrics or financial performance data are not provided.\n- Risks and challenges facing the company are not disclosed.\n- Detailed market sentiment analysis or third-party validation is not available.\n- Future strategic initiatives or detailed outlook plans are not disclosed.",
+    "context_results": [
+      {
+        "id": "harvey_blog_4109b672",
+        "similarity_score": 0.372932434,
+        "text": "Newsroom\nPress releases and partnership announcements.\nHarvey's Momentum in Q3\nIn Q3, we celebrated major customer wins, introduced product breakthroughs, and expanded our global presence. Most importantly, we continued to deepen our commitment to building the best AI solutions for our customers.\nRequest a Demo\nLogin\nUS\nEU\nAU\nBlog\nProduct updates, insights, and behind-the-scenes from the Harvey team.\nAll\nInsights\nCompany\nTechnical\nProduct Announcements\nOctober 31, 2025",
+        "metadata": {
+          "chunk_index": 6.0,
+          "company_slug": "harvey",
+          "content_hash": "4109b672",
+          "indexed_at": "2025-11-11T20:42:05.667795",
+          "page_type": "blog",
+          "source_file": "data/raw/harvey/blog/text.txt"
+        }
+      },
+      {
+        "id": "harvey_careers_80f65574",
+        "similarity_score": 0.369609833,
+        "text": "Newsroom\nPress releases and partnership announcements.\nHarvey's Momentum in Q3\nIn Q3, we celebrated major customer wins, introduced product breakthroughs, and expanded our global presence. Most importantly, we continued to deepen our commitment to building the best AI solutions for our customers.\nRequest a Demo\nLogin\nUS\nEU\nAU\n404\nIt appears the page you're looking for has been misplaced.\nReturn Home\nUnlock Professional Class AI for Your Firm\nRequest a Demo\nPlatform\nAssistant\n→\nVault\n→\nKnowledge",
+        "metadata": {
+          "chunk_index": 6.0,
+          "company_slug": "harvey",
+          "content_hash": "80f65574",
+          "indexed_at": "2025-11-11T20:42:05.668281",
+          "page_type": "careers",
+          "source_file": "data/raw/harvey/careers/text.txt"
+        }
+      },
+      {
+        "id": "harvey_about_80f65574",
+        "similarity_score": 0.369400024,
+        "text": "Newsroom\nPress releases and partnership announcements.\nHarvey's Momentum in Q3\nIn Q3, we celebrated major customer wins, introduced product breakthroughs, and expanded our global presence. Most importantly, we continued to deepen our commitment to building the best AI solutions for our customers.\nRequest a Demo\nLogin\nUS\nEU\nAU\n404\nIt appears the page you're looking for has been misplaced.\nReturn Home\nUnlock Professional Class AI for Your Firm\nRequest a Demo\nPlatform\nAssistant\n→\nVault\n→\nKnowledge",
+        "metadata": {
+          "chunk_index": 6.0,
+          "company_slug": "harvey",
+          "content_hash": "80f65574",
+          "indexed_at": "2025-11-11T20:42:05.667063",
+          "page_type": "about",
+          "source_file": "data/raw/harvey/about/text.txt"
+        }
+      },
+      {
+        "id": "harvey_product_80f65574",
+        "similarity_score": 0.369354248,
+        "text": "Newsroom\nPress releases and partnership announcements.\nHarvey's Momentum in Q3\nIn Q3, we celebrated major customer wins, introduced product breakthroughs, and expanded our global presence. Most importantly, we continued to deepen our commitment to building the best AI solutions for our customers.\nRequest a Demo\nLogin\nUS\nEU\nAU\n404\nIt appears the page you're looking for has been misplaced.\nReturn Home\nUnlock Professional Class AI for Your Firm\nRequest a Demo\nPlatform\nAssistant\n→\nVault\n→\nKnowledge",
+        "metadata": {
+          "chunk_index": 6.0,
+          "company_slug": "harvey",
+          "content_hash": "80f65574",
+          "indexed_at": "2025-11-11T20:42:05.668732",
+          "page_type": "product",
+          "source_file": "data/raw/harvey/product/text.txt"
+        }
+      },
+      {
+        "id": "harvey_blog_b491872f",
+        "similarity_score": 0.364524871,
+        "text": "→\nSecurity\n→\nCompany\n→\nNewsroom\n→\nCareers\n→\nResources\nBlog\n→\nVideos\n→\nLegal\n→\nPrivacy Policy\n→\nPress Kit\n→\nYour Privacy Choices\n→\nCopyright © 2025 Counsel AI Corporation. All rights reserved.\nX\nLinkedIn\nYouTube",
+        "metadata": {
+          "chunk_index": 12.0,
+          "company_slug": "harvey",
+          "content_hash": "b491872f",
+          "indexed_at": "2025-11-11T20:42:05.667858",
+          "page_type": "blog",
+          "source_file": "data/raw/harvey/blog/text.txt"
+        }
+      },
+      {
+        "id": "harvey_about_10d1a7a5",
+        "similarity_score": 0.343292236,
+        "text": "Solutions\nInnovation\nScale expertise and impact to drive firmwide transformation.\nIn-House\nStreamline work and shift focus to strategy and speed.\nTransactional\nAccelerate due diligence, contract analysis, and review with precision and control.\nLitigation\nReduce manual effort, prioritize strategy, and drive stronger outcomes in litigation.\nMacfarlanes | Harvey\nHow Macfarlanes partners with Harvey.\nCustomers\nSecurity\nResources\nBlog",
+        "metadata": {
+          "chunk_index": 3.0,
+          "company_slug": "harvey",
+          "content_hash": "10d1a7a5",
+          "indexed_at": "2025-11-11T20:42:05.666942",
+          "page_type": "about",
+          "source_file": "data/raw/harvey/about/text.txt"
+        }
+      },
+      {
+        "id": "harvey_blog_10d1a7a5",
+        "similarity_score": 0.34324649,
+        "text": "Solutions\nInnovation\nScale expertise and impact to drive firmwide transformation.\nIn-House\nStreamline work and shift focus to strategy and speed.\nTransactional\nAccelerate due diligence, contract analysis, and review with precision and control.\nLitigation\nReduce manual effort, prioritize strategy, and drive stronger outcomes in litigation.\nMacfarlanes | Harvey\nHow Macfarlanes partners with Harvey.\nCustomers\nSecurity\nResources\nBlog",
+        "metadata": {
+          "chunk_index": 3.0,
+          "company_slug": "harvey",
+          "content_hash": "10d1a7a5",
+          "indexed_at": "2025-11-11T20:42:05.667761",
+          "page_type": "blog",
+          "source_file": "data/raw/harvey/blog/text.txt"
+        }
+      },
+      {
+        "id": "harvey_careers_10d1a7a5",
+        "similarity_score": 0.343231201,
+        "text": "Solutions\nInnovation\nScale expertise and impact to drive firmwide transformation.\nIn-House\nStreamline work and shift focus to strategy and speed.\nTransactional\nAccelerate due diligence, contract analysis, and review with precision and control.\nLitigation\nReduce manual effort, prioritize strategy, and drive stronger outcomes in litigation.\nMacfarlanes | Harvey\nHow Macfarlanes partners with Harvey.\nCustomers\nSecurity\nResources\nBlog",
+        "metadata": {
+          "chunk_index": 3.0,
+          "company_slug": "harvey",
+          "content_hash": "10d1a7a5",
+          "indexed_at": "2025-11-11T20:42:05.668258",
+          "page_type": "careers",
+          "source_file": "data/raw/harvey/careers/text.txt"
+        }
+      },
+      {
+        "id": "harvey_product_10d1a7a5",
+        "similarity_score": 0.343200713,
+        "text": "Solutions\nInnovation\nScale expertise and impact to drive firmwide transformation.\nIn-House\nStreamline work and shift focus to strategy and speed.\nTransactional\nAccelerate due diligence, contract analysis, and review with precision and control.\nLitigation\nReduce manual effort, prioritize strategy, and drive stronger outcomes in litigation.\nMacfarlanes | Harvey\nHow Macfarlanes partners with Harvey.\nCustomers\nSecurity\nResources\nBlog",
+        "metadata": {
+          "chunk_index": 3.0,
+          "company_slug": "harvey",
+          "content_hash": "10d1a7a5",
+          "indexed_at": "2025-11-11T20:42:05.668712",
+          "page_type": "product",
+          "source_file": "data/raw/harvey/product/text.txt"
+        }
+      }
+    ]
+  }
+}

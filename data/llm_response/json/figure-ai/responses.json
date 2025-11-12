@@ -1,0 +1,34 @@
+{
+  "company_slug": "figure-ai",
+  "structured": {
+    "company_name": "Figure AI",
+    "company_slug": "figure-ai",
+    "pipeline_type": "structured",
+    "timestamp": "2025-11-12T03:00:50.842503Z",
+    "markdown_file": "markdown/figure-ai/structured.md",
+    "content": "## Company Overview\n\nFigure is an AI robotics company focused on developing a general-purpose humanoid robot. The company is pioneering in the field with its first-generation robot, F.01, which took its initial steps in May 2023. Figure aims to bring humanoid robots to life, capable of performing various household tasks autonomously.\n\n## Business Model and GTM\n\nThe company states that its product, Figure 03, is designed to handle household tasks such as laundry, cleaning, and doing dishes. It is engineered to operate in real homes, navigating stairs, tight corners, and changing layouts. The robot is capable of understanding and adapting to complex environments, suggesting a focus on consumer markets for home automation.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nNot disclosed.\n\n## Visibility & Market Sentiment\n\nThe company has limited visibility with only one mention in the provided data. Further details on market sentiment are not disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is at the forefront of AI robotics with its humanoid robot development. However, without disclosed funding, partnerships, or product release dates, the outlook remains speculative based on the available data.\n\n## Disclosure Gaps\n\n- Specific funding details are not disclosed.\n- Information on partnerships is not disclosed.\n- Product release dates are not disclosed.\n- Detailed visibility and market sentiment data are not available.\n- Risks and challenges are not outlined.\n- Growth momentum metrics are not provided."
+  },
+  "rag": {
+    "company_name": "Figure AI",
+    "company_slug": "figure-ai",
+    "pipeline_type": "rag",
+    "timestamp": "2025-11-12T03:01:01.977798Z",
+    "markdown_file": "markdown/figure-ai/rag.md",
+    "content": "## Company Overview\nFigure AI is a private company focused on AI and robotics. The company emphasizes a strong team culture, operating with a \"championship mindset\" to meet the demands of their work. They have assembled a leading robotics team with over 100 years of combined experience in AI and humanoid technology.\n\n## Business Model and GTM\nNot disclosed.\n\n## Funding & Investor Profile\nNot disclosed.\n\n## Growth Momentum\nNot disclosed.\n\n## Visibility & Market Sentiment\nNot disclosed.\n\n## Risks and Challenges\nNot disclosed.\n\n## Outlook\nThe company states that they are bringing \"impossible ideas to life,\" suggesting a focus on innovation and cutting-edge technology in the AI and robotics space.\n\n## Disclosure Gaps\n- Business model and go-to-market strategy details are not disclosed.\n- Funding and investor information is not disclosed.\n- Growth metrics and momentum are not disclosed.\n- Visibility and market sentiment data are not disclosed.\n- Specific risks and challenges are not disclosed.",
+    "context_results": [
+      {
+        "id": "figure_ai_about_23c1b1ea",
+        "similarity_score": 0.346382171,
+        "text": "Championship Mindset\nTo address the extraordinary demands of our work, we believe in operating as a winning team. We are in the trenches together, collaborating in person, remaining hyper-focused, and pushing each other to the highest levels of performance.\nDIVE DEEPER INTO OUR CULTURE\nThe team bringing impossible ideas to life\nFigure has attracted the world’s leading robotics team with over 100 years of combined AI & humanoid experience.\nCareers\nKeep up with us",
+        "metadata": {
+          "chunk_index": 7.0,
+          "company_slug": "figure_ai",
+          "content_hash": "23c1b1ea",
+          "indexed_at": "2025-11-11T23:05:51.786216",
+          "page_type": "about",
+          "source_file": "data/raw/figure_ai/about/text.txt"
+        }
+      }
+    ]
+  }
+}

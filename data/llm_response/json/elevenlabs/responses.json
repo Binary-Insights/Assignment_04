@@ -1,0 +1,229 @@
+{
+  "company_slug": "elevenlabs",
+  "structured": {
+    "company_name": "ElevenLabs",
+    "company_slug": "elevenlabs",
+    "pipeline_type": "structured",
+    "timestamp": "2025-11-12T02:59:59.899553Z",
+    "markdown_file": "markdown/elevenlabs/structured.md",
+    "content": "## Company Overview\n\nElevenLabs is a private company headquartered in London, UK. It operates in the AI Audio and Voice Technology sectors. The company is focused on pioneering the future of Audio AI, as evidenced by its recent establishment of a European headquarters in London. ElevenLabs is committed to creating high-quality AI audio products.\n\n## Business Model and GTM\n\nThe company states that it offers a range of AI audio products, including Text to Speech (TTS), Speech to Text, Realtime Speech to Text, Voice Changer, and Text to Sound Effects. These products are designed to deliver high-quality AI audio experiences. ElevenLabs has engaged in several partnerships to enhance its market presence, including collaborations with the Ministry of Digital Transformation and Audacy for voice augmentation in programming and production workflows.\n\n## Funding & Investor Profile\n\nElevenLabs has attracted investment from notable individuals, including Matthew McConaughey, who is also listed as part of the company's leadership. The specific details of the funding rounds, amounts, and other investors are not disclosed.\n\n## Growth Momentum\n\nThe company has shown growth momentum through strategic partnerships and product releases. Notable events include the renaming of its Conversational AI platform to ElevenLabs Agents and the release of an expressive Text to Speech model. The company is also expanding its operations in the UK, indicating a focus on scaling its business.\n\n## Visibility & Market Sentiment\n\nElevenLabs has a presence in the market through its partnerships and product offerings. However, specific details on market sentiment and visibility metrics are not disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company is positioned to leverage its AI audio technology in various applications, as demonstrated by its partnerships and product innovations. The establishment of a European headquarters in London suggests a strategic focus on expanding its operations and influence in the AI audio market.\n\n## Disclosure Gaps\n\n- Specific dates for events such as partnerships, product releases, and funding are not disclosed.\n- Detailed information on the company's business model, revenue streams, and go-to-market strategies is not provided.\n- Financial details, including funding amounts and investor profiles, are not disclosed.\n- Market sentiment and specific visibility metrics are not available.\n- Risks and challenges faced by the company are not disclosed."
+  },
+  "rag": {
+    "company_name": "ElevenLabs",
+    "company_slug": "elevenlabs",
+    "pipeline_type": "rag",
+    "timestamp": "2025-11-12T03:00:16.643784Z",
+    "markdown_file": "markdown/elevenlabs/rag.md",
+    "content": "## Company Overview\n\nElevenLabs is a global leader in AI voice technology, focusing on creating innovative audio solutions. The company has expanded its operations internationally, establishing a subsidiary in Japan and opening a European headquarters in London. ElevenLabs aims to be the first choice for AI audio solutions, leveraging a team experienced in startups and high-growth environments.\n\n## Business Model and GTM\n\nElevenLabs offers a range of AI-driven audio products and solutions, including Text to Speech (TTS), Speech to Text, Voice Cloning, and AI Music Generation. The company provides services for various sectors such as retail, telecommunications, financial services, and technology. Their go-to-market strategy includes partnerships with enterprises and startups, as well as offering resources like APIs and product guides to developers and commercial partners.\n\n## Funding & Investor Profile\n\nThe company states that Academy Award-winning actor Matthew McConaughey is an investor and early supporter of ElevenLabs. However, specific details about funding rounds, amounts, or other investors are not disclosed.\n\n## Growth Momentum\n\nElevenLabs has shown significant growth momentum by expanding into new markets, such as Japan and Brazil, and forming strategic partnerships with major companies like Deutsche Telekom. The company is also actively hiring for various roles across the globe, indicating ongoing expansion and scaling efforts.\n\n## Visibility & Market Sentiment\n\nThe company has increased its visibility through strategic partnerships and high-profile collaborations, such as with Sir Michael Caine for their Iconic Marketplace. ElevenLabs is also involved in AI safety initiatives, partnering with Reality Defender to enhance AI detection systems.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company is poised for continued growth with its international expansion and strategic partnerships. ElevenLabs' focus on innovation and excellence in AI audio solutions positions it well in the competitive AI technology landscape.\n\n## Disclosure Gaps\n\n- Specific funding details, including amounts and additional investors, are not disclosed.\n- Detailed information on risks and challenges faced by the company is not provided.",
+    "context_results": [
+      {
+        "id": "elevenlabs_blog_9e9212a7",
+        "similarity_score": 0.382637024,
+        "text": "Sep 16, 2025\nAuthors\nSam Sklar\n, Growth\nCompany\nCompany\nVoice AI for India Scale\nMarking a year of rapid development from India’s top enterprises, startups, and creators scaling customer engagement and storytelling\nSep 23, 2025\nAuthors\nRuta Bhatt\n, Growth\nCompany\nCompany\nElevenLabs establishes Japanese Subsidiary, ElevenLabs G.K.\nGlobal AI voice technology leader expands to Asia-Pacific region, launching international hub in Japan\nApr 14, 2025\nAuthors\nJim Tamura\nCompany\nCompany",
+        "metadata": {
+          "chunk_index": 8.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "9e9212a7",
+          "indexed_at": "2025-11-11T23:02:24.224825",
+          "page_type": "blog",
+          "source_file": "data/raw/elevenlabs/blog/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_careers_0d29bfc6",
+        "similarity_score": 0.378173828,
+        "text": "Our team has learned their craft in various startups and high-growth environments.\nOur principles\nWe operate on foundational principles that guide both our technical innovations and our company culture.\nFirst principles\nApproach the problem without bias; start with the first principles to try to find the best solution\nExcellence everywhere\nWe want to lead in what we do - from the way we build our models to how we engage with our community, and for that we go the extra mile\nOwning outcomes",
+        "metadata": {
+          "chunk_index": 3.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "0d29bfc6",
+          "indexed_at": "2025-11-11T23:02:24.225566",
+          "page_type": "careers",
+          "source_file": "data/raw/elevenlabs/careers/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_about_d2b36ab1",
+        "similarity_score": 0.376663208,
+        "text": "For Startups\nFor Students\nRetail and E-Commerce\nTelecommunications\nFinancial Services\nTechnology\nCustomer Support\nAI Voice Agents\nEarn As\nAffiliate\nVoice Actor\nData Partner\nCommercial Partner\nResources\nAPI Reference\nProduct Guides\nHelp Centre\nLanguages\nWebinars\nDiscord\nCompany\nAbout\nSafety\nCareers\nBlog\nImpact Program\nBrand and Press Kit\nIconic Marketplace\nModern Slavery Policy\nCCPA Notice\nReach everyone with AI audio\n© 2025 ElevenLabs\nPrivacy\nTerms\nSafety\nSoc II\nGDPR\nC2PA\nVoice chat",
+        "metadata": {
+          "chunk_index": 11.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "d2b36ab1",
+          "indexed_at": "2025-11-11T23:02:24.224142",
+          "page_type": "about",
+          "source_file": "data/raw/elevenlabs/about/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_product_4ee3f985",
+        "similarity_score": 0.372043639,
+        "text": "Technology\nCustomer Support\nAI Voice Agents\nEarn As\nAffiliate\nVoice Actor\nData Partner\nCommercial Partner\nResources\nAPI Reference\nProduct Guides\nHelp Centre\nLanguages\nWebinars\nDiscord\nCompany\nAbout\nSafety\nCareers\nBlog\nImpact Program\nBrand and Press Kit\nIconic Marketplace\nModern Slavery Policy\nCCPA Notice\nPrivacy\nTerms\nSafety\nVoice chat\nPowered by ElevenLabs\nAgents\nChat",
+        "metadata": {
+          "chunk_index": 21.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "4ee3f985",
+          "indexed_at": "2025-11-11T23:02:24.226548",
+          "page_type": "product",
+          "source_file": "data/raw/elevenlabs/product/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_careers_2aff73c2",
+        "similarity_score": 0.371963501,
+        "text": "Join us in shaping the future of voice technology and AI\nOpen Positions\nWho we are\nWe are a global team of passionate and innovative individuals united by curiosity and a shared goal: to be the first choice for AI audio solutions. Together, we solve challenges and create tools that change how people work with sound.\nPrevious slide\nNext slide\nOur team has learned their craft in various startups and high-growth environments.\nOur principles",
+        "metadata": {
+          "chunk_index": 2.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "2aff73c2",
+          "indexed_at": "2025-11-11T23:02:24.225560",
+          "page_type": "careers",
+          "source_file": "data/raw/elevenlabs/careers/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_careers_16ebae34",
+        "similarity_score": 0.366924286,
+        "text": "Mexico\nArgentina\nEnterprise Marketing - US\nUnited States\nNew York\nSan Francisco\nFull-Stack Growth Engineer\nUnited Kingdom\nUnited States\nPoland\nLanding Page Designer\nUnited Kingdom\nUnited States\nPoland\nPR & Communications Lead\nUnited Kingdom\nNew York\nLondon\nSEO Content Marketer\nUnited States\nUnited Kingdom\nStartup Partnerships\nUnited States\nSan Francisco\nStrategic Partnerships\nUnited States\nNew York\nLos Angeles\nWebsite Engineering\nLondon\nOperations\nCommercial Counsel - Singapore\nSingapore",
+        "metadata": {
+          "chunk_index": 14.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "16ebae34",
+          "indexed_at": "2025-11-11T23:02:24.225641",
+          "page_type": "careers",
+          "source_file": "data/raw/elevenlabs/careers/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_about_0b95a633",
+        "similarity_score": 0.365947723,
+        "text": "Company\nCompany\nElevenLabs opens European HQ in London\nWe're doubling down on UK’s capital as center for worldwide operations\nCornell lecturer creates an AI-powered teaching assistant\nMaking AI education accessible and engaging\nSafety\nSafety\nElevenLabs and Reality Defender Partner On AI Safety Initiatives\nReality Defender boosts AI detection systems by leveraging ElevenLabs’ Audio AI data and insights\nCustomer stories\nCustomer stories\nAudacy and ElevenLabs strike partnership",
+        "metadata": {
+          "chunk_index": 6.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "0b95a633",
+          "indexed_at": "2025-11-11T23:02:24.224101",
+          "page_type": "about",
+          "source_file": "data/raw/elevenlabs/about/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_about_1fd03f59",
+        "similarity_score": 0.353183746,
+        "text": "Iconic Marketplace\nModern Slavery Policy\nCCPA Notice\nResearch\nText to Speech (TTS)\nSpeech to Text\nRealtime Speech to Text\nVoice Changer\nText to Sound Effects\nVoice Cloning\nVoice Isolator\nAI Music Generator\nProducts\nStudio\nAgents Platform\nDubbing Studio\nVoice Library\nAudio Native\nElevenStudios\nAPI\nVoiceover Studio\nElevenReader\nMobile App\nSolutions\nFor Enterprise\nFor Teams\nFor Developers\nFor Startups\nFor Students\nRetail and E-Commerce\nTelecommunications\nFinancial Services\nTechnology",
+        "metadata": {
+          "chunk_index": 10.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "1fd03f59",
+          "indexed_at": "2025-11-11T23:02:24.224135",
+          "page_type": "about",
+          "source_file": "data/raw/elevenlabs/about/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_careers_559bebe6",
+        "similarity_score": 0.352714539,
+        "text": "Commercial Partner\nResources\nAPI Reference\nProduct Guides\nHelp Centre\nLanguages\nWebinars\nDiscord\nCompany\nAbout\nSafety\nCareers\nBlog\nImpact Program\nBrand and Press Kit\nIconic Marketplace\nModern Slavery Policy\nCCPA Notice\nResearch\nText to Speech (TTS)\nSpeech to Text\nRealtime Speech to Text\nVoice Changer\nText to Sound Effects\nVoice Cloning\nVoice Isolator\nAI Music Generator\nProducts\nStudio\nAgents Platform\nDubbing Studio\nVoice Library\nAudio Native\nElevenStudios\nAPI\nVoiceover Studio\nElevenReader",
+        "metadata": {
+          "chunk_index": 25.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "559bebe6",
+          "indexed_at": "2025-11-11T23:02:24.225892",
+          "page_type": "careers",
+          "source_file": "data/raw/elevenlabs/careers/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_product_df8a573a",
+        "similarity_score": 0.350254029,
+        "text": "For Startups\nFor Students\nRetail and E-Commerce\nTelecommunications\nFinancial Services\nTechnology\nCustomer Support\nAI Voice Agents\nEarn As\nAffiliate\nVoice Actor\nData Partner\nCommercial Partner\nResources\nAPI Reference\nProduct Guides\nHelp Centre\nLanguages\nWebinars\nDiscord\nCompany\nAbout\nSafety\nCareers\nBlog\nImpact Program\nBrand and Press Kit\nIconic Marketplace\nModern Slavery Policy\nCCPA Notice\nResearch\nText to Speech (TTS)\nSpeech to Text\nRealtime Speech to Text\nVoice Changer\nText to Sound Effects",
+        "metadata": {
+          "chunk_index": 19.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "df8a573a",
+          "indexed_at": "2025-11-11T23:02:24.226537",
+          "page_type": "product",
+          "source_file": "data/raw/elevenlabs/product/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_careers_579f9fe3",
+        "similarity_score": 0.348262787,
+        "text": "New York\nLos Angeles\nWebsite Engineering\nLondon\nOperations\nCommercial Counsel - Singapore\nSingapore\nCommercial Counsel - UK / Ireland\nUnited Kingdom\nDublin\nCommercial Counsel - U.S.\nUnited States\nCustomer Support Specialist\nSofia\nPhilippines\nPoland\n+4 more\nParalegal\nNew York\nUnited States\nTechnical Customer Support Specialist - United States\nUnited States\nResearch & Research Engineering\nResearch Engineer\nPoland\nGermany\nUnited Kingdom\n+2 more\nRevenue\nAccount Executive - Australia & New Zealand",
+        "metadata": {
+          "chunk_index": 15.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "579f9fe3",
+          "indexed_at": "2025-11-11T23:02:24.225647",
+          "page_type": "careers",
+          "source_file": "data/raw/elevenlabs/careers/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_blog_721d0ef5",
+        "similarity_score": 0.348220825,
+        "text": "Read article\nProduct\nFeatured\nAffiliates\nAgents Platform Stories\nCompany\nCreative Platform Stories\nCustomer stories\nDeveloper\nImpact\nProduct\nResearch\nResources\nCompany\nCompany\nElevenLabs Welcomes Matthew McConaughey as New Investor\nAt ElevenLabs’ inaugural Summit, the company revealed that Academy Award-winning actor Matthew McConaughey has been a part of ElevenLabs story for years – as an investor, early supporter, and now, as a customer.\nNov 11, 2025\nImpact\nImpact",
+        "metadata": {
+          "chunk_index": 2.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "721d0ef5",
+          "indexed_at": "2025-11-11T23:02:24.224782",
+          "page_type": "blog",
+          "source_file": "data/raw/elevenlabs/blog/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_blog_f3355729",
+        "similarity_score": 0.347156554,
+        "text": "Discord\nCompany\nAbout\nSafety\nCareers\nBlog\nImpact Program\nBrand and Press Kit\nIconic Marketplace\nModern Slavery Policy\nCCPA Notice\nResearch\nText to Speech (TTS)\nSpeech to Text\nRealtime Speech to Text\nVoice Changer\nText to Sound Effects\nVoice Cloning\nVoice Isolator\nAI Music Generator\nProducts\nStudio\nAgents Platform\nDubbing Studio\nVoice Library\nAudio Native\nElevenStudios\nAPI\nVoiceover Studio\nElevenReader\nMobile App\nSolutions\nFor Enterprise\nFor Teams\nFor Developers\nFor Startups\nFor Students",
+        "metadata": {
+          "chunk_index": 16.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "f3355729",
+          "indexed_at": "2025-11-11T23:02:24.224878",
+          "page_type": "blog",
+          "source_file": "data/raw/elevenlabs/blog/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_blog_afbac7c7",
+        "similarity_score": 0.343383789,
+        "text": "Apr 14, 2025\nAuthors\nJim Tamura\nCompany\nCompany\nExpanding into Brazil - ElevenLabs Launches Iconic Partnership with Fábio Porchat\nLaunching our first campaign in Brazil with iconic AI voice\nSep 8, 2025\nAuthors\nCarles Reina\n,\nDustin Blank\n,\nLorena Oliveira\nCompany\nCompany\nDeutsche Telekom and ElevenLabs announce strategic partnership to power AI-driven podcasting in Magenta App\nBringing AI-powered audio experiences to millions of users\nMar 4, 2025\nAuthors\nCarles Reina\n,\nStan Massueras",
+        "metadata": {
+          "chunk_index": 9.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "afbac7c7",
+          "indexed_at": "2025-11-11T23:02:24.224832",
+          "page_type": "blog",
+          "source_file": "data/raw/elevenlabs/blog/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_careers_f6ede17a",
+        "similarity_score": 0.342113495,
+        "text": "San Francisco\nEnterprise Account Executive - United States - Government\nWashington, D.C.\nEnterprise Account Executive - United States - Healthcare\nBoston\nExecutive Assistant to GTM NA\nRemote\nSan Francisco\nSales Development - Germany\nGermany\nDublin\nLondon\nSales Development - India\nIndia\nSales Development - Middle East\nUAE\nSales Development - Poland\nRemote\nSales Development - United States\nSan Francisco\nNew York\nLatest company updates",
+        "metadata": {
+          "chunk_index": 20.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "f6ede17a",
+          "indexed_at": "2025-11-11T23:02:24.225694",
+          "page_type": "careers",
+          "source_file": "data/raw/elevenlabs/careers/text.txt"
+        }
+      },
+      {
+        "id": "elevenlabs_careers_aad97d53",
+        "similarity_score": 0.340503693,
+        "text": "Remote\nSales Development - United States\nSan Francisco\nNew York\nLatest company updates\nAnnouncing Partnership with Sir Michael Caine to Newly Launched Iconic Marketplace\nAt today’s Summit, ElevenLabs announced a partnership with British cultural icon and award-winning actor Sir Michael Caine. Caine’s voice will be available on the ElevenReader app, and on the newly launched Iconic Marketplace.\nNov 11, 2025\nHonoring veterans and their voices: Lt Col Thomas Brittingham’s story",
+        "metadata": {
+          "chunk_index": 21.0,
+          "company_slug": "elevenlabs",
+          "content_hash": "aad97d53",
+          "indexed_at": "2025-11-11T23:02:24.225701",
+          "page_type": "careers",
+          "source_file": "data/raw/elevenlabs/careers/text.txt"
+        }
+      }
+    ]
+  }
+}

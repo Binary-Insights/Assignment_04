@@ -1,0 +1,99 @@
+{
+  "company_slug": "fireworks-ai",
+  "structured": {
+    "company_name": "Fireworks AI",
+    "company_slug": "fireworks-ai",
+    "pipeline_type": "structured",
+    "timestamp": "2025-11-12T03:01:21.843282Z",
+    "markdown_file": "markdown/fireworks-ai/structured.md",
+    "content": "## Company Overview\n\nFireworks AI is a private company focused on providing advanced generative AI solutions. The company emphasizes its capability to deliver the fastest inference for generative AI, as stated on their website. Their product offerings include Fireworks RFT, Fireworks AI Cloud, and AI Native, which are designed to enhance and optimize generative AI capabilities.\n\n## Business Model and GTM\n\nFireworks AI's business model revolves around offering a suite of products that cater to the needs of businesses looking to leverage generative AI. The company provides platforms and tools such as Fireworks RFT for fine-tuning open models, Fireworks AI Cloud for scalable AI capabilities, and AI Native for supporting the latest open models. The company states that these products are optimized for performance and scalability, suggesting a focus on enterprise clients seeking cutting-edge AI solutions.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nNot disclosed.\n\n## Visibility & Market Sentiment\n\nThe company has limited visibility and market presence, with only one mention in the provided data. The specific details of this mention are not disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is positioned to offer the fastest inference for generative AI, which could be a significant competitive advantage in the rapidly evolving AI market. However, without disclosed funding information or detailed growth metrics, it is challenging to assess the company's long-term sustainability and market impact.\n\n## Disclosure Gaps\n\n- Specific dates and details for partnerships, product releases, and funding events are not disclosed.\n- Information on the company's funding history and investor profile is not available.\n- Growth metrics and market sentiment details are not provided.\n- Risks and challenges facing the company are not disclosed.\n- Leadership roles and responsibilities are not detailed."
+  },
+  "rag": {
+    "company_name": "Fireworks AI",
+    "company_slug": "fireworks-ai",
+    "pipeline_type": "rag",
+    "timestamp": "2025-11-12T03:01:38.467907Z",
+    "markdown_file": "markdown/fireworks-ai/rag.md",
+    "content": "## Company Overview\n\nFireworks AI is a private company focused on building infrastructure for the next generation of AI applications. The company provides a platform that supports real-time inference and model optimization, enabling developers and enterprises to deploy, scale, and innovate with advanced AI technologies. Fireworks AI is involved in various AI domains, including code assistance, conversational AI, agentic systems, search, multimedia, and enterprise RAG (retrieval-augmented generation).\n\n## Business Model and GTM\n\nFireworks AI operates an AI-native platform tailored for enterprise customers. The company offers a range of services, including serverless and on-demand computing, fine-tuning of models, and one-click deployment configurations. The platform is designed to empower developers and enterprises by providing tools for model library access, API integration, and CLI usage. Fireworks AI also partners with cloud and infrastructure providers, consulting and services firms, and technology companies to enhance its offerings.\n\n## Funding & Investor Profile\n\nFireworks AI recently raised $250 million to support its mission of helping enterprises own their AI capabilities. Specific details about the investors involved in this funding round are not disclosed.\n\n## Growth Momentum\n\nThe company has demonstrated growth momentum through strategic partnerships and product advancements. Notably, Fireworks AI has partnered with AMD to power next-generation AI infrastructure using AMD Instinct™ GPUs. Additionally, the company has launched the Fireworks RFT, a tool for fine-tuning open models that outperform frontier models, achieving significant cost reductions.\n\n## Visibility & Market Sentiment\n\nThe company states that its platform is designed to accelerate AI deployment and innovation, which has likely contributed to positive market sentiment. Fireworks AI's collaboration with major technology companies like AMD and its substantial funding round suggest a strong market presence and investor confidence.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nFireworks AI is positioned to continue its growth trajectory by leveraging its partnerships and technological advancements. The company's focus on enterprise AI solutions and infrastructure development aligns with current market trends, suggesting a favorable outlook for future expansion and innovation.\n\n## Disclosure Gaps\n\n- Specific details about the company's leadership and investor profiles are not disclosed.\n- Information regarding potential risks and challenges faced by the company is not provided.\n- Detailed financial performance metrics and customer acquisition data are not available.",
+    "context_results": [
+      {
+        "id": "fireworks_ai_blog_98e96636",
+        "similarity_score": 0.387470245,
+        "text": "Resources\nBlog\nDemos\nCookbooks\nCompany\nLeadership\nInvestors\nCareers\nTrust Center\n© 2025 Fireworks AI, Inc. All rights reserved.",
+        "metadata": {
+          "chunk_index": 25.0,
+          "company_slug": "fireworks_ai",
+          "content_hash": "98e96636",
+          "indexed_at": "2025-11-11T23:06:05.010116",
+          "page_type": "blog",
+          "source_file": "data/raw/fireworks_ai/blog/text.txt"
+        }
+      },
+      {
+        "id": "fireworks_ai_careers_98e96636",
+        "similarity_score": 0.387470245,
+        "text": "Resources\nBlog\nDemos\nCookbooks\nCompany\nLeadership\nInvestors\nCareers\nTrust Center\n© 2025 Fireworks AI, Inc. All rights reserved.",
+        "metadata": {
+          "chunk_index": 6.0,
+          "company_slug": "fireworks_ai",
+          "content_hash": "98e96636",
+          "indexed_at": "2025-11-11T23:06:05.010545",
+          "page_type": "careers",
+          "source_file": "data/raw/fireworks_ai/careers/text.txt"
+        }
+      },
+      {
+        "id": "fireworks_ai_careers_c48a681a",
+        "similarity_score": 0.361721039,
+        "text": "Technical Developer Advocate\nNew York, NY; San Mateo, CA\nNo content available\nPlatform\nAI Native\nEnterprise\nCustomers\nUse Cases\nCode Assistance\nConversational AI\nAgentic Systems\nSearch\nMultimedia\nEnterprise RAG\nDevelopers\nModel Library\nDocs\nCLI\nAPI\nChangelog\nPricing\nServerless\nOn-Demand\nFine Tuning\nEnterprise\nPartners\nCloud and Infrastructure\nConsulting and Services\nTechnology\nFireworks for Startups\nResources\nBlog\nDemos\nCookbooks\nCompany\nLeadership\nInvestors\nCareers\nTrust Center",
+        "metadata": {
+          "chunk_index": 5.0,
+          "company_slug": "fireworks_ai",
+          "content_hash": "c48a681a",
+          "indexed_at": "2025-11-11T23:06:05.010539",
+          "page_type": "careers",
+          "source_file": "data/raw/fireworks_ai/careers/text.txt"
+        }
+      },
+      {
+        "id": "fireworks_ai_blog_f3f8e5bb",
+        "similarity_score": 0.347869873,
+        "text": "Product\n11/3/2025\nGenspark’s Deep Research Agent Outperforms a Frontier Closed Model in Quality and Tool Calls using Fireworks RFT, Achieving a 50% Cost Reduction\n10/31/2025\nWe raised $250M To Help Enterprises Own Their AI\n10/28/2025\nAccelerate your Vision Pipelines with the new NVIDIA Nemotron Nano 2 VL Model on Fireworks AI\n10/27/2025\nDeployment Shapes: One-Click Deployment Configured For You\n10/23/2025\nFireworks and AMD partner to power the next gen of AI infrastructure on AMD Instinct™ GPUs",
+        "metadata": {
+          "chunk_index": 2.0,
+          "company_slug": "fireworks_ai",
+          "content_hash": "f3f8e5bb",
+          "indexed_at": "2025-11-11T23:06:05.009944",
+          "page_type": "blog",
+          "source_file": "data/raw/fireworks_ai/blog/text.txt"
+        }
+      },
+      {
+        "id": "fireworks_ai_product_3cf54dbe",
+        "similarity_score": 0.342388153,
+        "text": "Get Started\nTalk to an expert\nPlatform\nAI Native\nEnterprise\nCustomers\nUse Cases\nCode Assistance\nConversational AI\nAgentic Systems\nSearch\nMultimedia\nEnterprise RAG\nDevelopers\nModel Library\nDocs\nCLI\nAPI\nChangelog\nPricing\nServerless\nOn-Demand\nFine Tuning\nEnterprise\nPartners\nCloud and Infrastructure\nConsulting and Services\nTechnology\nFireworks for Startups\nResources\nBlog\nDemos\nCookbooks\nCompany\nLeadership\nInvestors\nCareers\nTrust Center\n© 2025 Fireworks AI, Inc. All rights reserved.",
+        "metadata": {
+          "chunk_index": 7.0,
+          "company_slug": "fireworks_ai",
+          "content_hash": "3cf54dbe",
+          "indexed_at": "2025-11-11T23:06:05.011172",
+          "page_type": "product",
+          "source_file": "data/raw/fireworks_ai/product/text.txt"
+        }
+      },
+      {
+        "id": "fireworks_ai_careers_1ddb35e2",
+        "similarity_score": 0.341110229,
+        "text": "Fireworks AI | Careers\nFireworks RFT now available! Fine-tune open models that outperform frontier models. Try today\nPlatform\nModels\nDevelopers\nPricing\nPartners\nResources\nCompany\nLog In\nGet Started\nShape the future of AI\nWe’re building the infrastructure that powers the next generation of AI applications. From real-time inference to model optimization, our platform empowers developers and enterprises to deploy, scale, and innovate with cutting-edge AI—faster than ever before\nDepartment",
+        "metadata": {
+          "chunk_index": 1.0,
+          "company_slug": "fireworks_ai",
+          "content_hash": "1ddb35e2",
+          "indexed_at": "2025-11-11T23:06:05.010509",
+          "page_type": "careers",
+          "source_file": "data/raw/fireworks_ai/careers/text.txt"
+        }
+      }
+    ]
+  }
+}

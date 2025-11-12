@@ -28,11 +28,6 @@
         "snippet": "We renamed our company from Captions to Mirage."
       },
       {
-        "source_url": "product",
-        "crawled_at": "2023-11-01",
-        "snippet": "Captions will stay the app you know and love, and that includes keeping the same name for the app itself."
-      },
-      {
         "source_url": "blog",
         "crawled_at": "2023-11-01",
         "snippet": "Captions announces Series C to invest $100M in AI video research in New York."
@@ -41,11 +36,6 @@
         "source_url": "blog",
         "crawled_at": "2023-11-01",
         "snippet": "Captions announces a $25 million Series B for our AI-powered cre"
-      },
-      {
-        "source_url": "blog",
-        "crawled_at": "2023-11-01",
-        "snippet": "Captions announces Series C to invest $100M in AI video research in New York."
       }
     ]
   },
@@ -53,21 +43,21 @@
     {
       "event_id": "1",
       "company_id": "captions",
-      "occurred_on": "2023-10-01",
-      "event_type": "product_release",
-      "title": "Video editing startup Captions launches a dubbing app",
-      "description": null,
-      "round_name": null,
+      "occurred_on": "2023-06-22",
+      "event_type": "funding",
+      "title": "Captions announces Series C to invest $100M in AI video research in New York",
+      "description": "Captions announced a Series C funding round to invest $100 million in AI video research in New York.",
+      "round_name": "Series C",
       "investors": null,
-      "amount_usd": null,
+      "amount_usd": 100000000.0,
       "valuation_usd": null,
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "Tech Crunch",
-          "crawled_at": "2023-10-01",
+          "source_url": "[blog] June 2, 2025",
+          "crawled_at": "2025-06-02",
           "snippet": null
         }
       ]
@@ -78,7 +68,7 @@
       "occurred_on": "2023-06-01",
       "event_type": "funding",
       "title": "AI video creation app Captions bags $25M from top VCs",
-      "description": null,
+      "description": "Captions raised $25 million from top venture capitalists to enhance its AI video creation capabilities.",
       "round_name": null,
       "investors": null,
       "amount_usd": 25000000.0,
@@ -97,21 +87,21 @@
     {
       "event_id": "3",
       "company_id": "captions",
-      "occurred_on": "2023-06-22",
-      "event_type": "funding",
-      "title": "Captions announces Series C to invest $100M in AI video research in New York",
-      "description": null,
-      "round_name": "Series C",
+      "occurred_on": "2023-10-01",
+      "event_type": "product_release",
+      "title": "Video editing startup Captions launches a dubbing app",
+      "description": "Captions launched a new dubbing app to enhance video editing capabilities.",
+      "round_name": null,
       "investors": null,
-      "amount_usd": 100000000.0,
+      "amount_usd": null,
       "valuation_usd": null,
       "actors": null,
       "tags": null,
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "blog",
-          "crawled_at": "2023-06-22",
+          "source_url": "Tech Crunch",
+          "crawled_at": "2023-10-01",
           "snippet": null
         }
       ]
@@ -122,7 +112,7 @@
       "occurred_on": "2024-10-01",
       "event_type": "product_release",
       "title": "Video editing app Captions launches an AI-powered social media manager for sites",
-      "description": null,
+      "description": "Captions introduced an AI-powered social media manager to assist users in managing their social media presence.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -141,10 +131,32 @@
     {
       "event_id": "5",
       "company_id": "captions",
+      "occurred_on": "2024-07-09",
+      "event_type": "product_release",
+      "title": "Mirage: world's first foundation model for UGC video",
+      "description": "Captions, now Mirage, announced the world's first foundation model for user-generated content video.",
+      "round_name": null,
+      "investors": null,
+      "amount_usd": null,
+      "valuation_usd": null,
+      "actors": null,
+      "tags": null,
+      "schema_version": "2.0.0",
+      "provenance": [
+        {
+          "source_url": "[blog] June 2, 2025",
+          "crawled_at": "2025-06-02",
+          "snippet": null
+        }
+      ]
+    },
+    {
+      "event_id": "6",
+      "company_id": "captions",
       "occurred_on": "2023-10-01",
       "event_type": "product_release",
       "title": "Video editing startup Captions launches a dubbing app",
-      "description": null,
+      "description": "Captions launched a new dubbing app to enhance video editing capabilities.",
       "round_name": null,
       "investors": null,
       "amount_usd": null,
@@ -164,7 +176,7 @@
   "snapshots": [
     {
       "company_id": "captions",
-      "as_of": "2023-11-03",
+      "as_of": "2023-11-05",
       "headcount_total": null,
       "headcount_growth_pct": null,
       "job_openings_count": null,
@@ -189,14 +201,19 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[careers] We are a rapidly growing team of ambitious, experienced, and devoted engineers, researchers, designers, marketers, and operators based in NYC. As an early member of our team, you’ll have an opportunity to have an outsized impact on our products and o",
-          "crawled_at": "2023-11-03",
-          "snippet": null
+          "source_url": "[careers]",
+          "crawled_at": "2023-11-05",
+          "snippet": "We are a rapidly growing team of ambitious, experienced, and devoted engineers, researchers, designers, marketers, and operators based in NYC."
         },
         {
-          "source_url": "[product] Captions by Mirage | AI Video Generator & Video Editor Products Solutions Research Resources Get started Open Mirage Studio From vision to video, all in the Captions app. Captions is an all-in-one video generator and AI editor. Powered by Mirage AI,",
-          "crawled_at": "2023-11-03",
-          "snippet": null
+          "source_url": "[product]",
+          "crawled_at": "2023-11-05",
+          "snippet": "Captions by Mirage | AI Video Generator & Video Editor"
+        },
+        {
+          "source_url": "[product]",
+          "crawled_at": "2023-11-05",
+          "snippet": "Captions is an all-in-one video generator and AI editor. Powered by Mirage AI,"
         }
       ]
     }
@@ -206,10 +223,11 @@
       "product_id": "captions_ai_video_editor",
       "company_id": "mirage",
       "name": "Captions",
-      "description": "Captions is an all-in-one video generator and AI editor. It produces fully-edited videos, allows uploading of existing footage, and uses AI editing tools to finish projects or generate new footage. It automatically generates subtitles and transcribes audio with high accuracy.",
-      "pricing_model": "free with subscription options",
+      "description": "Captions is an all-in-one video generator and AI editor. Captions is an AI video editor that produces fully-edited videos. You can upload existing footage and use easy AI editing tools to finish the project. Or, use Captions to generate entirely new footage, without having to record.",
+      "pricing_model": "Free to download, subscription for full features",
       "pricing_tiers_public": [
-        "free to download with some features accessible without a subscription"
+        "Free",
+        "Subscription"
       ],
       "ga_date": null,
       "integration_partners": null,
@@ -245,7 +263,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] Our vision",
+          "source_url": "[about]",
           "crawled_at": "2025-11-07",
           "snippet": null
         }
@@ -265,7 +283,7 @@
       "schema_version": "2.0.0",
       "provenance": [
         {
-          "source_url": "[about] Our vision",
+          "source_url": "[about]",
           "crawled_at": "2025-11-07",
           "snippet": null
         }
@@ -276,7 +294,7 @@
     {
       "company_id": "captions",
       "as_of": "2023-10-06",
-      "news_mentions_30d": 5,
+      "news_mentions_30d": 3,
       "avg_sentiment": 0.8,
       "github_stars": null,
       "glassdoor_rating": null,
@@ -289,27 +307,17 @@
         },
         {
           "source_url": "https://venturebeat.com",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-06-01",
           "snippet": "AI video creation app Captions bags $25M from top VCs"
         },
         {
           "source_url": "https://forbes.com",
-          "crawled_at": "2023-10-06",
+          "crawled_at": "2023-06-01",
           "snippet": "Video Editing App Captions Just Raised $25 Million To Bring AI To Creators"
-        },
-        {
-          "source_url": "https://digiday.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "How generative AI is changing creator contracts"
-        },
-        {
-          "source_url": "https://theverge.com",
-          "crawled_at": "2023-10-06",
-          "snippet": "Gaurav Misra, Co Founder + CEO at Captions Joins NYSE TV Live"
         }
       ]
     }
   ],
-  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T00:19:20.317103",
+  "notes": "Extracted with semantic search via Pinecone on 2025-11-12T02:50:09.715848",
   "provenance_policy": "Use only the sources you scraped. If a field is missing, write 'Not disclosed.' Do not infer valuation."
 }

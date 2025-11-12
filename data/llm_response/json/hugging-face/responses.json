@@ -1,0 +1,34 @@
+{
+  "company_slug": "hugging-face",
+  "structured": {
+    "company_name": "Hugging Face",
+    "company_slug": "hugging-face",
+    "pipeline_type": "structured",
+    "timestamp": "2025-11-12T03:03:40.764552Z",
+    "markdown_file": "markdown/hugging-face/structured.md",
+    "content": "## Company Overview\n\nHugging Face is a private AI startup known for its platform that facilitates the hosting and sharing of machine learning models, datasets, and applications. The company's website is [huggingface.co](https://huggingface.co/).\n\n## Business Model and GTM\n\nHugging Face operates a platform-centric business model, offering three main products:\n- **Models**: A platform for hosting and sharing machine learning models.\n- **Datasets**: A repository for sharing datasets for machine learning.\n- **Spaces**: A platform for hosting and sharing machine learning applications.\n\nThe company has also expanded its educational offerings by launching a new learning track on DataCamp, focusing on the fundamentals of their platform. Additionally, they have introduced TimeScope, a tool for evaluating the duration capabilities of video large multimodal models, and a feature allowing organizations to publish blog articles on their platform.\n\n## Funding & Investor Profile\n\nNot disclosed.\n\n## Growth Momentum\n\nHugging Face has demonstrated growth momentum through continuous product releases, including educational tracks and new tools like TimeScope. However, specific metrics or growth figures are not disclosed.\n\n## Visibility & Market Sentiment\n\nThe company has a presence in the market, but specific details regarding visibility and market sentiment are not disclosed.\n\n## Risks and Challenges\n\nNot disclosed.\n\n## Outlook\n\nThe company states that it is expanding its platform capabilities and educational offerings, which may position it well for future growth in the AI and machine learning sectors. However, specific strategic outlooks or forecasts are not disclosed.\n\n## Disclosure Gaps\n\n- Specific funding and investor information is not disclosed.\n- Detailed growth metrics and market sentiment data are not available.\n- Risks and challenges faced by the company are not disclosed.\n- Leadership details are incomplete, with only usernames provided.\n- No specific strategic outlook or forecasts are disclosed."
+  },
+  "rag": {
+    "company_name": "Hugging Face",
+    "company_slug": "hugging-face",
+    "pipeline_type": "rag",
+    "timestamp": "2025-11-12T03:03:57.116000Z",
+    "markdown_file": "markdown/hugging-face/rag.md",
+    "content": "## Company Overview\nHugging Face is a company focused on artificial intelligence and machine learning. The company is known for its contributions to decentralized progress in AI and ML. Specific details about the company's team size, leadership, or headquarters location are not disclosed.\n\n## Business Model and GTM\nNot disclosed.\n\n## Funding & Investor Profile\nNot disclosed.\n\n## Growth Momentum\nNot disclosed.\n\n## Visibility & Market Sentiment\nThe company states that it is involved in decentralized progress within the AI and ML sectors. However, specific details about its market presence or sentiment are not disclosed.\n\n## Risks and Challenges\nNot disclosed.\n\n## Outlook\nNot disclosed.\n\n## Disclosure Gaps\nThe provided context lacks detailed information on Hugging Face's business model, funding history, growth metrics, market visibility, specific risks, and future outlook.",
+    "context_results": [
+      {
+        "id": "hugging_face_careers_7d5203b3",
+        "similarity_score": 0.341880828,
+        "text": "JOIN-US (SHARE YOUR WORK)\nHugging Face\nModels\nDatasets\nSpaces\nCommunity\nDocs\nEnterprise\nPricing\nLog In\nSign Up\nSHARE YOUR WORK\ncompany\nActivity Feed\nRequest to join this org\nFollow\n1\nAI & ML interests\nDecentralized progress\nTeam members\n1\nmodels\n0\nNone public yet\ndatasets\n0\nNone public yet\nSystem theme\nCompany\nTOS\nPrivacy\nAbout\nJobs\nWebsite\nModels\nDatasets\nSpaces\nPricing\nDocs",
+        "metadata": {
+          "chunk_index": 1.0,
+          "company_slug": "hugging_face",
+          "content_hash": "7d5203b3",
+          "indexed_at": "2025-11-11T20:42:42.943727",
+          "page_type": "careers",
+          "source_file": "data/raw/hugging_face/careers/text.txt"
+        }
+      }
+    ]
+  }
+}
