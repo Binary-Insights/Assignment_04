@@ -375,6 +375,24 @@ python src/rag/delete_pinecone_records.py --all-namespaces
 python src/rag/delete_pinecone_records.py --namespace default --skip-confirmation
 
 
+# Count records for company 'abridge'
+python src/rag/count_pinecone_records.py --key company_slug --value abridge
+
+# Count records for specific page type
+python src/rag/count_pinecone_records.py --key page_type --value careers
+
+# Multiple filters (both must match)
+python src/rag/count_pinecone_records.py --key company_slug --value abridge --key page_type --value about
+
+# Custom namespace
+python src/rag/count_pinecone_records.py --key company_slug --value world_labs --namespace custom_ns
+
+# Show overall statistics
+python src/rag/count_pinecone_records.py --stats
+
+# Verbose output
+python src/rag/count_pinecone_records.py --key company_slug --value abridge --verbose
+
 
 --------------------------------------------------------------------------------------------------
 Great question! This is a common problem in vector database ingestion. Let me explain the issue and the solutions:
