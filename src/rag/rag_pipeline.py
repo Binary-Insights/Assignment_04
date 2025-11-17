@@ -296,11 +296,18 @@ def generate_dashboard_with_retrieval(
                 fetch_size = min(top_k * fetch_multiplier, 1000)  # Cap at 1000 (Pinecone limit)
                 logger.debug(f"Attempt {attempt + 1}: Fetching {fetch_size} results (multiplier: {fetch_multiplier}x)...")
                 
-                # Search the default namespace
+                # Search the default namespace with metadata filter for company_slug
+                metadata_filter = {
+                    "company_slug": {"$eq": company_slug}
+                }
+                
+                logger.debug(f"Searching with metadata filter: {metadata_filter}")
+                
                 search_result = pinecone_index.query(
                     vector=query_embedding,
                     top_k=fetch_size,
                     namespace="default",
+                    filter=metadata_filter,
                     include_metadata=True
                 )
                 

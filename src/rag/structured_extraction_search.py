@@ -453,7 +453,7 @@ def search_pinecone_for_context(
     limit: int = 10,
     min_similarity: float = 0.0
 ) -> List[Dict[str, Any]]:
-    """Search Pinecone for relevant context using semantic search with lenient matching."""
+    """Search Pinecone for relevant context using semantic search with company_slug filtering."""
     logger = logging.getLogger('structured_extraction')
     
     if not pinecone_index or not embeddings:
@@ -466,16 +466,21 @@ def search_pinecone_for_context(
         # Generate embedding for query
         query_embedding = embeddings.embed_query(query)
         
-        # Search Pinecone without company filter - rely on semantic relevance
-        # Note: We removed the company_slug filter because company_id (hyphenated) 
-        # doesn't match company_slug (underscored) in metadata
-        logger.debug(f"🔍 Searching Pinecone (namespace '{namespace}'): '{query}'")
+        # Build metadata filter for company_slug
+        # This ensures we only search within the specified company's vectors
+        metadata_filter = {
+            "company_slug": {"$eq": company_slug}
+        }
+        
+        logger.info(f"🔍 Searching Pinecone (namespace '{namespace}', company_slug='{company_slug}'): '{query}'")
         results = pinecone_index.query(
             vector=query_embedding,
             top_k=limit,
             namespace=namespace,
+            filter=metadata_filter,
             include_metadata=True
         )
+        
         
         # Extract context from results with full source tracking
         context_docs = []
