@@ -250,7 +250,7 @@ Generated: 2025-11-08T16:34:53.044297Z
 
 📚 [Full Technical Codelabs](https://codelabs-preview.appspot.com/?file_id=1hCRRMtxdtcyp1OVLlNYxGbYM1qvOBnoxT4442yt5ZXY#0) — Detailed walkthrough  
 📋 [Assignment Requirements](./Assignment.md) — Lab breakdown  
-🎥 [Demo Video]() — Project walkthrough
+🎥 [Demo Video](https://drive.google.com/file/d/1vQLBQm9rvPF-507po9DbKMpR22Mnl87O/view?usp=drive_link) — Project walkthrough
 
 ---
 
@@ -261,6 +261,7 @@ Selenium | ChromeDriver | BeautifulSoup | AWS S3 | Apache Airflow | Pinecone | L
 ---
 
 WE ATTEST THAT WE HAVEN'T USED ANY OTHER STUDENTS' WORK IN OUR ASSIGNMENT AND ABIDE BY THE POLICIES LISTED IN THE STUDENT HANDBOOK.
+
 
 
 
